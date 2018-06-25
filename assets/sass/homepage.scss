@@ -1,0 +1,350 @@
+/* =======================================================
+*
+* 	@IMPORT SCSS
+*
+* ======================================================= */
+
+@import "main";
+
+/* =======================================================
+*
+* 	HOMEPAGE STYLE
+*
+* ======================================================= */
+
+#slider{
+    padding-left: 0;
+    padding-right: 0;
+
+    .slide{
+        height: 75vh;
+
+        .carousel-inner{
+            height: 100%;
+
+            .item{
+                height: 100%;
+
+                > .mask{
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+
+                    > img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.section{
+    &#tour-intro{
+        background-color: #fcfcfc;
+
+        .container{
+            .row{
+                .left{
+
+                }
+
+                .right{
+                    .row{
+                        .item{
+                            text-align: center;
+
+                            .circle-border{
+                                width: 100px;
+                                height: 100px;
+
+                                margin: 10px auto;
+
+                                border-radius: 50%;
+                                border: 1px solid $gray-light;
+
+                                position: relative;
+
+                                i.fa{
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+
+                                    @include makeItCenter;
+
+                                    font-size: 2.5em;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .item{
+                    margin-bottom: 30px;
+
+                    .mask{
+                        width: 100%;
+                        height: 400px;
+                        overflow: hidden;
+
+                        position: relative;
+
+                        border-radius: 7px;
+
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+
+                        .overview{
+                            width: 100%;
+                            height: 50%;
+
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            z-index: 990;
+
+                            padding: 15px;
+
+                            color: #fff;
+
+                            opacity: 1;
+
+                            @include transition(0.5s)
+                        }
+
+                        .content{
+                            width: 100%;
+                            height: 100%;
+
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            z-index: 991;
+
+                            padding: 15px;
+
+                            background-color: rgba(0,0,0,0.5);
+
+                            color: #fff;
+
+                            opacity: 0;
+
+                            @include transition(0.5s)
+                        }
+                    }
+
+                    &:hover{
+                        .mask{
+                            .overview{
+                                top: 0;
+                                opacity: 0;
+
+                                @include transition(0.5s)
+                            }
+
+                            .content{
+                                top: 0;
+                                opacity: 1;
+
+                                @include transition(0.5s)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.tour-intro{
+        .row{
+            .item{
+                .mask{
+                    width: 100%;
+                    height: 400px;
+                    overflow: hidden;
+
+                    position: relative;
+
+                    border-radius: 7px;
+
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+
+                    .top{
+                        position: absolute;
+                        top: 15px;
+                        left: 15px;
+
+                        span{
+                            display: block;
+
+                            &.sub-header{
+
+                            }
+
+                            &.header{
+
+                            }
+                        }
+                    }
+
+                    .bottom{
+                        position: absolute;
+                        bottom: 15px;
+                        left: 15px;
+                    }
+
+                    &:last-of-type{
+                        .head{
+
+                        }
+
+                        .body{
+                            p{
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &#tour-request{
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+
+        position: relative;
+
+        padding-top: 200px;
+        padding-bottom: 200px;
+
+        .overlay{
+            width: 100%;
+            height: 100%;
+
+            background-color: rgba(0,0,0,0.5);
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            text-align: center;
+            color: #fff;
+
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+    }
+
+    &#services{
+        .item{
+            .mask{
+                width: 100%;
+                height: 400px;
+                overflow: hidden;
+
+                position: relative;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .content{
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+
+                    padding: 15px;
+
+                    color: #fff;
+
+                    a{
+                        color: #fff;
+
+                        &:hover{
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &#blogs{
+        .item{
+            .inner{
+                background-color: #fff;
+                padding: 15px;
+
+                .mask{
+                    width: 100%;
+                    height: 230px;
+                    overflow: hidden;
+
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .head{
+
+                }
+
+                .body{
+
+                }
+
+                .foot{
+
+                }
+            }
+        }
+    }
+
+    &#visa{
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+
+        position: relative;
+
+        padding-top: 200px;
+        padding-bottom: 200px;
+
+        .overlay{
+            width: 100%;
+            height: 100%;
+
+            background-color: rgba(0,0,0,0.5);
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            text-align: center;
+            color: #fff;
+
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+    }
+
+}
+
+
