@@ -41,7 +41,7 @@
                                 <label>Hình ảnh</label>
                                 <div class="row">
                                     <div class="item col-md-12">
-                                        <div class="mask-lg">
+                                        <div class="mask-lg" style="padding: 0px;background: gray;">
                                             <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['slug'].'/' .$detail['image']) ?>" alt="anh-cua-<?php echo $detail['slug'] ?>" width="300px" > 
                                         </div>
                                     </div>
@@ -90,65 +90,26 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-pills nav-justified" role="tablist">
-                                    <?php $i = 0; ?>
-                                    <?php foreach ($page_languages as $key => $value): ?>
-                                        <li role="presentation" class="<?php echo ($i == 0)? 'active' : '' ?>">
-                                            <a href="#<?php echo $key ?>" aria-controls="<?php echo $key ?>" role="tab" data-toggle="tab">
-                                                <span class="badge"><?php echo $i + 1 ?></span> <?php echo $value ?>
-                                            </a>
-                                        </li>
-                                        <?php $i++; ?>
-                                    <?php endforeach ?>
-                                </ul>
-
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <?php $i = 0; ?>
-                                    <?php foreach ($template as $key => $value): ?>
-                                        <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">
-                                            <?php foreach ($value as $k => $val): ?>
-                                                <?php if(in_array($k, $request_language_template)): ?>
-                                                    <div class="table-responsive">
-                                                        <table class="table table-striped">
-                                                            <tbody>
-                                                                <?php if ($k == 'title' && in_array($k, $request_language_template)): ?>
-                                                                    <tr>
-                                                                        <th style="width: 120px">Tiêu đề: </th>
-                                                                        <td><?php echo $detail['title_'. $key] ?></td>
-                                                                    </tr>
-                                                                <?php elseif($k == 'description' && in_array($k, $request_language_template)): ?>
-                                                                    <tr>
-                                                                        <th style="width: 120px">Giới thiệu: </th>
-                                                                        <td><?php echo $detail['description_'. $key] ?></td>
-                                                                    </tr>
-                                                                <?php elseif($k == 'content' && in_array($k, $request_language_template)): ?>
-                                                                    <tr>
-                                                                        <th style="width: 120px">Nội dung: </th>
-                                                                        <td><?php echo $detail['content_'. $key] ?></td>
-                                                                    </tr>
-                                                                <?php elseif($k == 'metakeywords' && in_array($k, $request_language_template)): ?>
-                                                                    <tr>
-                                                                        <th style="width: 120px">Từ khóa Meta: </th>
-                                                                        <td><?php echo $detail['metakeywords_'. $key] ?></td>
-                                                                    </tr>
-                                                                <?php elseif($k == 'metadescription' && in_array($k, $request_language_template)): ?>
-                                                                    <tr>
-                                                                        <th style="width: 120px">Mô tả Meta: </th>
-                                                                        <td><?php echo $detail['metadescription_'. $key] ?></td>
-                                                                    </tr>
-                                                                <?php endif ?>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                <?php endif; ?>
-                                            <?php endforeach ?>
-                                        </div>
-                                    <?php $i++; ?>
-                                    <?php endforeach ?>
-                                </div>
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 120px">Tiêu đề: </th>
+                                            <td><?php echo $detail['title'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width: 120px">Nội dung: </th>
+                                            <td><?php echo $detail['content'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width: 120px">Từ khóa Meta: </th>
+                                            <td><?php echo $detail['metakeywords'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width: 120px">Mô tả Meta: </th>
+                                            <td><?php echo $detail['metadescription'] ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
                             </div>
 
@@ -177,8 +138,8 @@
                     </div>
                     <?php if ($sub_category): ?>
                         <?php foreach ($sub_category as $key => $value): ?>
-                            <div class="box-body">
-                                <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>" class="btn btn-block btn-social btn-dropbox" role="button">
+                            <div class="box-body" style="height: 30px;">
+                                <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>" class="btn btn-block btn-social btn-dropbox" role="button" style="height: 30px;">
                                     <i class="fa fa-link" aria-hidden="true"></i>
                                     <?php echo $value['title'] ?>
                                 </a>

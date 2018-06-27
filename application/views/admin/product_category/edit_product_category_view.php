@@ -40,14 +40,6 @@
                         </div>
                         <div class="form-group col-xs-12">
                             <?php
-                            echo form_label('Slug', 'slug_shared');
-                            echo form_error('slug_shared');
-                            echo form_input('slug_shared', $detail['slug'], 'class="form-control" id="slug_shared" readonly');
-                            ?>
-                        </div>
-
-                        <div class="form-group col-xs-12">
-                            <?php
                             echo form_label('Danh Mục', 'parent_id_shared');
                             echo form_error('parent_id_shared');
                             ?>
@@ -57,56 +49,24 @@
                                 <?php echo $product_category; ?>
                             </select>
                         </div>
-
-                        <div>
-                            <ul class="nav nav-pills nav-justified" role="tablist">
-                                <?php $i = 0; ?>
-                                <?php foreach ($page_languages as $key => $value): ?>
-                                    <li role="presentation" class="<?php echo ($i == 0)? 'active' : '' ?>">
-                                        <a href="#<?php echo $key ?>" aria-controls="<?php echo $key ?>" role="tab" data-toggle="tab">
-                                            <span class="badge"><?php echo $i + 1 ?></span> <?php echo $value ?>
-                                        </a>
-                                    </li>
-                                <?php $i++; ?>
-                                <?php endforeach ?>
-                                
-                            </ul>
-                            <hr>
-                            <div class="tab-content">
-                                <?php $i = 0; ?>
-                                <?php foreach ($template as $key => $value): ?>
-                                    <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">
-                                        <?php foreach ($value as $k => $val): ?>
-                                            <div class="form-group col-xs-12">
-                                                <?php
-                                                    if($k == 'title' && in_array($k, $request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, trim($detail['title_'. $key]), 'class="form-control" id="title_'.$key.'"');
-                                                    }elseif($k == 'description' && in_array($k, $request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_textarea($k .'_'. $key,  trim($detail['description_'. $key]), 'class="form-control" rows="5"');
-                                                    }elseif($k == 'content' && in_array($k, $request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_textarea($k .'_'. $key,  trim($detail['content_'. $key]), 'class="tinymce-area form-control" rows="5"');
-                                                    }elseif($k == 'metakeywords' && in_array($k,$request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, $detail['metakeywords_'. $key], 'class="form-control"');
-                                                    }elseif($k == 'metadescription' && in_array($k, $request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, $detail['metadescription_'. $key], 'class="form-control"');
-                                                    }
-                                                ?>
-                                            </div>
-                                        <?php endforeach ?>
-                                    </div>
-                                <?php $i++; ?>
-                                <?php endforeach ?>
-                            </div>
+                        <div class="form-group col-xs-12">
+                            <?php
+                            echo form_label('Slug', 'slug_shared');
+                            echo form_error('slug_shared');
+                            echo form_input('slug_shared', $detail['slug'], 'class="form-control" id="slug_shared" readonly');
+                            echo form_label('Tiêu đề', 'title');
+                            echo form_error('title');
+                            echo form_input('title', trim($detail['title']), 'class="form-control" id="title"');
+                            echo form_label('Từ khóa meta', 'metakeywords');
+                            echo form_error('metakeywords');
+                            echo form_input('metakeywords', trim($detail['metakeywords']), 'class="form-control"');
+                            echo form_label('Mô tả meta', 'metadescription');
+                            echo form_error('metadescription');
+                            echo form_input('metadescription', trim($detail['metadescription']), 'class="form-control"');
+                            echo form_label('Nội dung', 'content');
+                            echo form_error('content');
+                            echo form_textarea('content', trim($detail['content']), 'class="tinymce-area form-control" rows="5"');
+                            ?>
                         </div>
                         <?php echo form_submit('submit_shared', 'OK', 'class="btn btn-primary"'); ?>
                         <?php echo form_close(); ?>

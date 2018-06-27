@@ -59,46 +59,13 @@
                                     echo form_label('Tên vị trí đến trong khu vực', 'localtion');
                                     echo form_error('localtion');
                                     echo form_input('localtion', set_value('localtion'), 'class="form-control" id="localtion" placeholder ="VD:Nguyễn Bỉnh Khiêm"');
+                                    echo form_label('Tiêu đề', 'title');
+                                    echo form_error('title');
+                                    echo form_input('title', set_value('title'), 'class="form-control" id="title"');
+                                    echo form_label('Nội dung', 'content');
+                                    echo form_error('content');
+                                    echo form_textarea('content', set_value('content', '', false), 'class="tinymce-area form-control" rows="5" ');
                                     ?>
-                                </div>
-                                <div>
-                                    <div class="col-xs-12">
-                                        <ul class="col-xs-12 nav nav-pills nav-justified language" role="tablist">
-                                            <?php $i = 0; ?>
-                                            <?php foreach ($page_languages as $key => $value): ?>
-                                                <li role="presentation" class="<?php echo ($i == 0)? 'active' : '' ?>">
-                                                    <a href="#<?php echo $key ?>" aria-controls="<?php echo $key ?>" role="tab" data-toggle="tab">
-                                                        <span class="badge"><?php echo $i + 1 ?></span> <?php echo $value ?>
-                                                    </a>
-                                                </li>
-                                                <?php $i++; ?>
-                                            <?php endforeach ?>
-                                        </ul>
-                                    </div>
-                                    <hr>
-                                    <div class="tab-content">
-                                        <?php $i = 0; ?>
-                                        <?php foreach ($template as $key => $value): ?>
-                                            <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">
-                                                <?php foreach ($value as $k => $val): ?>
-                                                    <div class=" col-xs-12">
-                                                        <?php
-                                                        if($k == 'title' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_input($k .'_'. $key, set_value($k .'_'. $key), 'class="form-control" id="title_'.$key.'"');
-                                                        }elseif($k == 'content' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_textarea($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="tinymce-area form-control" rows="5" ');
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                <?php endforeach ?>
-                                            </div>
-                                            <?php $i++; ?>
-                                        <?php endforeach ?>
-                                    </div>
                                 </div>
                             </div>
                         </div>

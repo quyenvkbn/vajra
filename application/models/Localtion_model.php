@@ -49,50 +49,18 @@ class Localtion_model extends MY_Model {
         $this->db->where_not_in('id', $notlibrarylocaltion);
         return $result = $this->db->get()->result_array();
     }
-    public function get_by_id_array($id = array(), $select = array('title','content'), $lang = '') {
-        $this->db->query('SET SESSION group_concat_max_len = 10000000');
-        $this->db->select($this->table .'.*');
-        if(in_array('title', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_title');
-        }
-        if(in_array('content', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_content');
-        }
-        if($select == null){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_title');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_content');
-        }
-        
+    public function get_by_id_array($id = array()) {
+        $this->db->select('*');
         $this->db->from($this->table);
-        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
-        if($lang != ''){
-            $this->db->where($this->table_lang .'.language', $lang);
-        }
-        $this->db->where($this->table .'.is_deleted', 0);
-        $this->db->where_in($this->table .'.id', $id);
+        $this->db->where('is_deleted', 0);
+        $this->db->where_in('id', $id);
         return $this->db->get()->row_array();
     }
-    public function get_by_id_array_lang($id = array(), $select = array('title','content'), $lang = 'vi') {
-        $this->db->query('SET SESSION group_concat_max_len = 10000000');
+    public function get_by_id_array_lang($id = array()) {
         $this->db->select($this->table .'.*');
-        if(in_array('title', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. 'title');
-        }
-        if(in_array('content', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. 'content');
-        }
-        if($select == null){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. 'title');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. 'content');
-        }
-        
         $this->db->from($this->table);
-        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
-        if($lang != ''){
-            $this->db->where($this->table_lang .'.language', $lang);
-        }
         $this->db->where($this->table .'.is_deleted', 0);
-        $this->db->where_in($this->table .'.id', $id);
-        return $this->db->get()->row_array();
+        $this->db->where_in('id', $id);
+        return $this->db->get()->result_array();
     }
 }

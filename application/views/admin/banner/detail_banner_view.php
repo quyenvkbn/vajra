@@ -49,52 +49,19 @@
                                 <?php endif ?>
                             </div>
                             <div class="col-md-12" style="margin-top: 5px;">
-
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-pills nav-justified" role="tablist">
-                                    <?php $i = 0; ?>
-                                    <?php foreach ($page_languages as $key => $value): ?>
-                                        <li role="presentation" class="<?php echo ($i == 0)? 'active' : '' ?>">
-                                            <a href="#<?php echo $key ?>" aria-controls="<?php echo $key ?>" role="tab" data-toggle="tab">
-                                                <span class="badge"><?php echo $i + 1 ?></span> <?php echo $value ?>
-                                            </a>
-                                        </li>
-                                        <?php $i++; ?>
-                                    <?php endforeach ?>
-                                </ul>
-
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <?php $i = 0; ?>
-                                    <?php foreach ($template as $key => $value): ?>
-                                        <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">
-                                            <?php foreach ($value as $k => $val): ?>
-                                                <div class="table-responsive">
-                                                    <table class="table table-striped">
-                                                        <tbody>
-                                                            <?php if ($k == 'title' && in_array($k, $request_language_template)): ?>
-                                                                <tr>
-                                                                    <th style="width: 100px">Tiêu đề: </th>
-                                                                    <td><?php echo $detail['title_'. $key] ?></td>
-                                                                </tr>
-                                                            <?php elseif($k == 'description' && in_array($k, $request_language_template)): ?>
-                                                                <tr>
-                                                                    <th style="width: 100px">Giới thiệu: </th>
-                                                                    <td><?php echo $detail['description_'. $key] ?></td>
-                                                                </tr>
-                                                            <?php elseif($k == 'content' && in_array($k, $request_language_template)): ?>
-                                                                <tr>
-                                                                    <th style="width: 100px">Nội dung: </th>
-                                                                    <td><?php echo $detail['content_'. $key] ?></td>
-                                                                </tr>
-                                                            <?php endif ?>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            <?php endforeach ?>
-                                        </div>
-                                    <?php $i++; ?>
-                                    <?php endforeach ?>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                                <tr>
+                                                    <th style="width: 100px">Tiêu đề: </th>
+                                                    <td><?php echo $detail['title'] ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 100px">Giới thiệu: </th>
+                                                    <td><?php echo $detail['description'] ?></td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
 
                             </div>

@@ -7,21 +7,16 @@ class Post_category_model extends MY_Model{
 	
 	public $table = 'post_category';
 
-	public function get_by_parent_id($parent_id, $order = 'desc',$lang = ''){
-		$this->db->select($this->table .'.*, '. $this->table_lang .'.title');
+	public function get_by_parent_id($parent_id, $order = 'desc'){
+		$this->db->select('*');
         $this->db->from($this->table);
-        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
-        $this->db->where($this->table .'.is_deleted', 0);
-        $this->db->where($this->table .'.is_activated', 0);
-        if($lang != ''){
-            $this->db->where($this->table_lang .'.language', $lang);
-        }
+        $this->db->where('is_deleted', 0);
+        $this->db->where('is_activated', 0);
         if(is_numeric($parent_id)){
-            $this->db->where($this->table .'.parent_id', $parent_id);
+            $this->db->where('parent_id', $parent_id);
         }
-    	
-        $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
-        $this->db->order_by($this->table .".sort", $order);
+        $this->db->group_by('id');
+        $this->db->order_by("sort", $order);
 
         return $result = $this->db->get()->result_array();
 	}
