@@ -89,7 +89,16 @@
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                 <td><?php echo $value['product_title'] ?></td>
-                                                <td><?php echo $value['time'] ?></td>
+                                                <td>
+                                                    <?php 
+                                                        if($value['time'] != "0000-00-00 00:00:00" && $value['time'] != "1970-01-01 08:00:00"){
+                                                            $time = explode("-",str_replace(" 00:00:00","",$value['time']));
+                                                            if(count($time) == 3){
+                                                                echo $time[2]."/".$time[1]."/".$time[0];
+                                                            }
+                                                        }
+                                                    ?>
+                                                </td>
 
                                                 <td><a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_<?php echo $value['customize_id']; ?>" aria-expanded="false" aria-controls="collapseExample">
                                                     Chi Tiết

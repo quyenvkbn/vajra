@@ -120,65 +120,30 @@
                                         <?php echo $product_category; ?>
                                     </select>
                                 </div>
-
-                                <div>
-                                    <div class="col-xs-12"">
-                                        <ul class="nav nav-pills nav-justified" role="tablist">
-                                            <?php $i = 0; ?>
-                                            <?php foreach ($page_languages as $key => $value): ?>
-                                                <li role="presentation" class="<?php echo ($i == 0)? 'active' : '' ?>">
-                                                    <a href="#<?php echo $key ?>" aria-controls="<?php echo $key ?>" role="tab" data-toggle="tab">
-                                                        <span class="badge"><?php echo $i + 1 ?></span> <?php echo $value ?>
-                                                    </a>
-                                                </li>
-                                                <?php $i++; ?>
-                                            <?php endforeach ?>
-                                        </ul>
-                                    </div>
-                                    <hr>
-                                    <div class="tab-content">
-                                        <?php $i = 0; ?>
-                                        <?php foreach ($template as $key => $value): ?>
-                                            <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">
-                                                <?php foreach ($value as $k => $val): ?>
-                                                    <div class="col-xs-12">
-                                                        <?php
-                                                        if($k == 'title' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_input($k .'_'. $key, trim($detail['title_'. $key]), 'class="form-control" id="title_'.$key.'"');
-                                                        }elseif($k == 'description' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_textarea($k .'_'. $key,  trim($detail['description_'. $key]), 'class="form-control" rows="5" id="description_'.$key.'" ');
-                                                        }elseif($k == 'content' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_textarea($k .'_'. $key,  trim($detail['content_'. $key]), 'class="tinymce-area form-control" rows="5" id="content_'.$key.'" ');
-                                                        }elseif($k == 'metakeywords' && in_array($k, $request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, trim($detail['metakeywords_'. $key]), 'class="form-control" id="metakeywords_'.$key.'"');
-                                                        }elseif($k == 'metadescription' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_input($k .'_'. $key, trim($detail['metadescription_'. $key]), 'class="form-control" id="metadescription_'.$key.'"');
-                                                        }elseif($k == 'tripnodes' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_textarea($k .'_'. $key, trim($detail['tripnodes_'. $key]), 'class="tinymce-area form-control" rows="5" ');
-                                                        }elseif($k == 'detailsprice' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_textarea($k .'_'. $key, trim($detail['detailsprice_'. $key]), 'class="tinymce-area form-control" rows="5" ');
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                <?php endforeach ?>
-                                            </div>
-                                            <?php $i++; ?>
-                                        <?php endforeach ?>
-                                    </div>
+                                <div class="col-xs-12">
+                                    <?php
+                                    echo form_label('Tiêu đề', 'title');
+                                    echo form_error('title');
+                                    echo form_input('title', trim($detail['title']), 'class="form-control" id="title"');
+                                    echo form_label('Mô tả', 'description');
+                                    echo form_error('description');
+                                    echo form_textarea('description', trim($detail['description']), 'class="form-control" rows="5" id="description" ');
+                                    echo form_label('Nội dung', 'content');
+                                    echo form_error('content');
+                                    echo form_textarea('content', trim($detail['content']), 'class="tinymce-area form-control" rows="5" ');
+                                    echo form_label('Từ khóa meta', 'metakeywords');
+                                    echo form_error('metakeywords');
+                                    echo form_input('metakeywords', trim($detail['metakeywords']), 'class="form-control" id="metakeywords" ');
+                                    echo form_label('Mô tả meta', 'metadescription');
+                                    echo form_error('metadescription');
+                                    echo form_input('metadescription', trim($detail['metadescription']), 'class="form-control" id="metadescription" ');
+                                    echo form_label('Ghi chú', 'tripnodes');
+                                    echo form_error('tripnodes');
+                                    echo form_textarea('tripnodes', trim($detail['tripnodes']), 'class="tinymce-area form-control" rows="5" ');
+                                    echo form_label('Chi tiết giá', 'detailsprice');
+                                    echo form_error('detailsprice');
+                                    echo form_textarea('detailsprice', trim($detail['detailsprice']), 'class="tinymce-area form-control" rows="5" ');
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +164,7 @@
                                     <div class="col-md-10" style="margin-top:5px;">
                                         <div class="col-xs-12" style="padding: 0px">
                                             <?php  
-                                                echo form_input("number", (int)count($detail['datetitle_vi']), 'class="form-control" onkeypress=" return isNumberKey(event)" id="numberdate"');
+                                                echo form_input("number", (int)count($detail['datetitle']), 'class="form-control" onkeypress=" return isNumberKey(event)" id="numberdate"');
                                             ?>
                                         </div>
                                     </div>
@@ -208,13 +173,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12" id="content-full-date">
-                                    <?php for ($i=0; $i < count($detail['datecontent_vi']); $i++): ?>
+                                    <?php for ($i=0; $i < count($detail['datecontent']); $i++): ?>
                                         <div class="vi">
                                             <div role="tabpanel" class="tab-pane active" id="<?php echo $i; ?>">
                                                 <div class="title-content-date showdate <?php echo $i; ?>">
                                                     <div class="btn btn-primary col-xs-12 btn-margin" type="button" data-toggle="collapse" href="#showdatecontent_<?php echo $i; ?>" aria-expanded="true" aria-controls="messageContent" style="padding:10px 0px;margin-bottom:3px;">
                                                         <div class="col-xs-11">Nội dung Đầy đủ Ngày <?php echo $i+1; ?></div>
-                                                        <?php echo ((count($detail['datecontent_vi']) -1) > 0 && $i == (count($detail['datecontent_vi']) -1))?"<span class='col-xs-1 remove' style='float:right;padding:0px;z-index:9999;' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>":""; ?>
+                                                        <?php echo ((count($detail['datecontent']) -1) > 0 && $i == (count($detail['datecontent']) -1))?"<span class='col-xs-1 remove' style='float:right;padding:0px;z-index:9999;' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>":""; ?>
                                                     </div>
                                                     <div class="no_border">
                                                         <div class="collapse in" id="showdatecontent_<?php echo $i; ?>">
@@ -251,40 +216,14 @@
                                                                 echo form_label('Phương tiện đi ngày '.($i+1), 'vehicles');
                                                                 echo form_error('vehicles');
                                                                 echo form_dropdown('vehicles_'.$i, $request_vehicles,$detail['vehicles'][$i], 'class="form-control" id="vehicles_'.$i.'"');
+                                                                echo form_label('Tiêu đề ngày '.($i+1), 'title_date_'.$i,'class="title_date"   id="label_title_date_'.$i.'" ');
+                                                                echo form_error('title_date_'.$i);
+                                                                echo form_input('title_date_'.$i,$detail['datetitle'][$i], 'class="form-control" id="title_date_'.$i.'"');
+                                                                echo form_label('Nội dung ngày '.($i+1),'content_date_'.$i,'class="content_date"  id="label_content_date_'.$i.'" ');
+                                                                echo form_error('content_date_'.$i);
+                                                                echo form_textarea('content_date_'.$i,$detail['datecontent'][$i], 'class="tinymce-area form-control" id="content_date_'.$i.'" rows="3"');
+
                                                             ?>
-                                                                <div style="margin-top: 10px;">
-                                                                    <ul class="nav nav-pills nav-justified language" role="tablist">
-                                                                        <?php $number = 0; ?>
-                                                                        <?php foreach ($page_languages as $key => $value) : ?>
-                                                                            <?php $active = ($number == 0)?'active':''; ?>
-                                                                            <li role="presentation" class="<?php echo $active; ?>">
-                                                                                <a href="#<?php echo $key.$i;?>" aria-controls="<?php echo $key.$i;?>" role="tab" data-toggle="tab">
-                                                                                    <span class="badge"><?php echo $number + 1; ?></span><?php echo $value; ?>
-                                                                                </a>
-                                                                            </li>
-                                                                            <?php $number++; ?>
-                                                                        <?php endforeach; ?>
-                                                                        <?php $number = 0; ?>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="tab-content">
-                                                                    <?php foreach ($page_languages as $key => $value) : ?>
-                                                                        <?php $active = ($number == 0)?'active':''; ?>
-                                                                        <div role="tabpanel" class="tab-pane <?php echo $active;?>" id="<?php echo $key.$i; ?>">
-                                                                            <div class="col-xs-12" style="padding:0px">
-                                                                            <?php
-                                                                                echo form_label(($key == 'vi')?'Tiêu đề ngày '.($i+1):'Title date '.($i+1), 'title_date_'.$i.'_'. $key,'class="title_date"   id="label_title_date_'.$key.'_'.$i.'" ');
-                                                                                echo form_error('title_date_'.$i.'_'. $key);
-                                                                                echo form_input('title_date_'.$i.'_'. $key,$detail['datetitle_'.$key][$i], 'class="form-control" id="title_date_'.$key.'_'.$i.'"');
-                                                                                echo form_label(($key == 'vi')?'Nội dung ngày '.($i+1):'Content date '.($i+1),'content_date_'.$i.'_'. $key,'class="content_date"  id="label_content_date_'.$key.'_'.$i.'" ');
-                                                                                echo form_error('content_date_'.$i.'_'. $key);
-                                                                                echo form_textarea('content_date_'.$i.'_'. $key,$detail['datecontent_'.$key][$i], 'class="tinymce-area form-control" id="content_date_'.$key.'_'.$i.'" rows="3"');
-                                                                            ?>
-                                                                            </div>
-                                                                        </div>
-                                                                        <?php $number++;?>
-                                                                    <?php endforeach; ?>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -312,11 +251,9 @@
                     </div>
                 </div>
                 <div class="hidden">
-                    <input type="text" name="titledate_vi[]" value=""/>
-                    <input type="text" name="contentdate_vi[]" value=""/>
-                    <input type="text" name="titledate_en[]" value=""/>
-                    <input type="text" name="contentdate_en[]" value=""/>
-                    <input type="text" name="numberdatehidden" value="<?php echo count($detail['datecontent_vi']);?>"/>
+                    <input type="text" name="titledate[]" value=""/>
+                    <input type="text" name="contentdate[]" value=""/>
+                    <input type="text" name="numberdatehidden" value="<?php echo count($detail['datecontent']);?>"/>
                     <input type="file" name="dateimg[]" multiple="">
                     <input type="text" name="librarylocaltion[]">
                 </div>

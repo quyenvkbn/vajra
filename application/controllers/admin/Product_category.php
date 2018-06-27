@@ -14,9 +14,6 @@ class Product_category extends Admin_Controller{
         $this->load->model('product_category_model');
         $this->load->helper('common');
         $this->load->helper('file');
-
-        $this->data['template'] = build_template();
-        $this->data['request_language_template'] = $this->request_language_template;
         $this->data['controller'] = $this->product_category_model->table;
         $this->author_data = handle_author_common_data();
     }
@@ -26,16 +23,16 @@ class Product_category extends Admin_Controller{
         if($this->input->get('search')){
             $keywords = $this->input->get('search');
         }
-        $total_rows  = $this->product_category_model->count_search('vi');
+        $total_rows  = $this->product_category_model->count_search();
         if($keywords != ''){
-            $total_rows  = $this->product_category_model->count_search('vi', $keywords);
+            $total_rows  = $this->product_category_model->count_search($keywords);
         }
 
         
         $this->load->library('pagination');
         $config = array();
         $base_url = base_url('admin/'. $this->data['controller'] .'/index');
-        $per_page = 10;
+        $per_page = 30;
         $uri_segment = 4;
         foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
             $config[$key] = $value;
@@ -44,9 +41,9 @@ class Product_category extends Admin_Controller{
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
-        $result = $this->product_category_model->get_all_with_pagination_and_sort_search('asc','vi' , $per_page, $this->data['page']);
+        $result = $this->product_category_model->get_all_with_pagination_and_sort_search('asc', $per_page, $this->data['page']);
         if($keywords != ''){
-            $result = $this->product_category_model->get_all_with_pagination_and_sort_search('asc','vi' , $per_page, $this->data['page'], $keywords);
+            $result = $this->product_category_model->get_all_with_pagination_and_sort_search('asc', $per_page, $this->data['page'], $keywords);
         }
         foreach ($result as $key => $value) {
             $parent_title = $this->build_parent_title($value['parent_id']);
@@ -68,8 +65,7 @@ class Product_category extends Admin_Controller{
         $this->build_new_category($product_category,0,$this->data['product_category']);
         if($this->input->post()){
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
-            $this->form_validation->set_rules('title_en', 'Title', 'required');
+            $this->form_validation->set_rules('title', 'Tiêu đề', 'required');
             if($this->form_validation->run() == TRUE){
                 if(!empty($_FILES['image_shared']['name'])){
                     $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
@@ -86,30 +82,26 @@ class Product_category extends Admin_Controller{
                 }
                 $shared_request = array(
                     'slug' => $unique_slug,
-                    'parent_id' => $this->input->post('parent_id_shared')
+                    'title' => $this->input->post('title'),
+                    'content' => $this->input->post('content'),
+                    'metakeywords' => $this->input->post('metakeywords'),
+                    'metadescription' => $this->input->post('metadescription'),
+                    'parent_id' => $this->input->post('parent_id_shared'),
                 );
                 if(isset($image)){
                     $shared_request['image'] = $image;
                 }
-                $this->db->trans_begin();
                 $insert = $this->product_category_model->common_insert(array_merge($shared_request,$this->author_data));
                 if($insert){
-                    $requests = handle_multi_language_request('product_category_id', $insert, $this->request_language_template, $this->input->post(), $this->page_languages);
-                    $this->product_category_model->insert_with_language($requests);
-                }
-                if ($this->db->trans_status() === false) {
-                    $this->db->trans_rollback();
-                    $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
-                    $this->render('admin/'. $this->data['controller'] .'/create_product_category_view');
-                } else {
-                    $this->db->trans_commit();
                     $this->session->set_flashdata('message_success', MESSAGE_CREATE_SUCCESS);
                     if(isset($id) && is_numeric($id)){
                         redirect('admin/'. $this->data['controller'] .'/detail/' . $id,'refresh');
                     }else{
                         redirect('admin/'. $this->data['controller'], 'refresh');
                     }
-                    
+                }else {
+                    $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
+                    $this->render('admin/'. $this->data['controller'] .'/create_product_category_view');
                 }
             }
         }
@@ -126,11 +118,10 @@ class Product_category extends Admin_Controller{
             }
             $detail = $this->product_category_model->get_by_id($id, array('title', 'content', 'metakeywords', 'metadescription'));
             $this->build_new_category($product_category,0,$this->data['product_category'],$detail['parent_id'],$id);
-            $this->data['detail'] = build_language($this->data['controller'], $detail, array('title', 'content', 'metakeywords', 'metadescription'), $this->page_languages);
+            $this->data['detail'] = $detail;
             if($this->input->post()){
                 $this->load->library('form_validation');
-                $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
-                $this->form_validation->set_rules('title_en', 'Title', 'required');
+                $this->form_validation->set_rules('title', 'Tiêu đề', 'required');
                 if($this->form_validation->run() == TRUE){
                     if(!empty($_FILES['image_shared']['name'])){
                         $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
@@ -138,6 +129,9 @@ class Product_category extends Admin_Controller{
                     $unique_slug = $this->data['detail']['slug'];
                     if($unique_slug !== $this->input->post('slug_shared')){
                         $unique_slug = $this->product_category_model->build_unique_slug($this->input->post('slug_shared'));
+                        if(file_exists("assets/upload/product_category/".$this->data['detail']['slug'])) {
+                            rename("assets/upload/product_category/".$detail['slug'], "assets/upload/product_category/".$unique_slug);
+                        }
                     }
                     if(!file_exists("assets/upload/product_category/".$unique_slug) && !empty($_FILES['image_shared']['name'])){
                         mkdir("assets/upload/product_category/".$unique_slug, 0755);
@@ -147,6 +141,10 @@ class Product_category extends Admin_Controller{
                         $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'.$this->data['controller']."/".$unique_slug, 'assets/upload/'.$this->data['controller']."/".$unique_slug .'/thumb');
                     }
                     $shared_request = array(
+                        'title' => $this->input->post('title'),
+                        'content' => $this->input->post('content'),
+                        'metakeywords' => $this->input->post('metakeywords'),
+                        'metadescription' => $this->input->post('metadescription'),
                         'parent_id' => $this->input->post('parent_id_shared')
                     );
                     if($unique_slug != $this->data['detail']['slug']){
@@ -155,26 +153,17 @@ class Product_category extends Admin_Controller{
                     if(isset($image)){
                         $shared_request['image'] = $image;
                     }
-                    $this->db->trans_begin();
                     $update = $this->product_category_model->common_update($id,array_merge($shared_request,$this->author_data));
                     if($update){
-                        $requests = handle_multi_language_request('product_category_id', $id, $this->request_language_template, $this->input->post(), $this->page_languages);
-                        foreach ($requests as $key => $value) {
-                            $this->product_category_model->update_with_language($id, $requests[$key]['language'],$value);
-                        }
-                    }
-                    if ($this->db->trans_status() === false) {
-                        $this->db->trans_rollback();
-                        $this->session->set_flashdata('message_error', MESSAGE_EDIT_ERROR);
-                        $this->render('admin/'. $this->data['controller'] .'/edit_product_category_view');
-                    } else {
-                        $this->db->trans_commit();
                         $this->session->set_flashdata('message_success', MESSAGE_EDIT_SUCCESS);
                         if(isset($image) && !empty($this->data['detail']['image'])){
                             if(file_exists('assets/upload/'. $this->data['controller'] .'/'.$this->data['detail']['image']))
                             unlink('assets/upload/'. $this->data['controller'] .'/'.$this->data['detail']['image']);
                         }
                         redirect('admin/'. $this->data['controller'] .'', 'refresh');
+                    }else {
+                        $this->session->set_flashdata('message_error', MESSAGE_EDIT_ERROR);
+                        $this->render('admin/'. $this->data['controller'] .'/edit_product_category_view');
                     }
                 }
             }
@@ -206,7 +195,7 @@ class Product_category extends Admin_Controller{
                 }
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_REMOVE_ERROR);
             }else{
-                return $this->return_api(HTTP_NOT_FOUND,sprintf(MESSAGE_FOREIGN_KEY_LINK_ERROR,$product,$parent_id));
+                return $this->return_api(HTTP_NOT_FOUND,sprintf(MESSAGE_FOREIGN_KEY_LINK_ERROR_PRODUCT,$product,$parent_id));
             }
         }
         return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ID_ERROR);
@@ -223,7 +212,6 @@ class Product_category extends Admin_Controller{
                 redirect('admin/'. $this->data['controller'] .'', 'refresh');
             }
             $detail = $this->product_category_model->get_by_id($id, array('title', 'content', 'metakeywords', 'metadescription'));
-            $detail = build_language($this->data['controller'], $detail, array('title', 'content', 'metakeywords', 'metadescription'), $this->page_languages);
             $parent_title = $this->build_parent_title($detail['parent_id']);
             $detail['parent_title'] = $parent_title;
             $this->data['detail'] = $detail;
@@ -288,14 +276,9 @@ class Product_category extends Admin_Controller{
 
 
     protected function build_parent_title($parent_id){
-        $sub = $this->product_category_model->get_by_id($parent_id, array('title'));
-
+        $sub = $this->product_category_model->get_by_id($parent_id);
         if($parent_id != 0){
-            $title = explode('|||', $sub['product_category_title']);
-            $sub['title_en'] = $title[0];
-            $sub['title_vi'] = $title[1];
-
-            $title = $sub['title_vi'];
+            $title = $sub['title'];
         }else{
             $title = 'Danh mục gốc';
         }

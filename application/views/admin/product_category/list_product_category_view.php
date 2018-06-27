@@ -60,11 +60,12 @@
                             <table id="table" class="table table_product">
                                 <thead>
                                 <tr>
-                                    <th>No.</th>
                                     <th>Hình ảnh</th>
                                     <th>Tiêu đề</th>
                                     <th>Danh mục</th>
                                     <th>Trạng thái</th>
+                                    <th>Cấp danh mục</th>
+                                    <th>Danh mục con</th>
                                     <th>Detail</th>
                                     <th>Action</th>
                                 </tr>

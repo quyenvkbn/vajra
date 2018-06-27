@@ -7,14 +7,14 @@
         <h1>
             Chi tiết
             <small>
-                Thực Đơn
+                Tour
             </small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="#"><i class="fa fa-dashboard"></i> Chi tiết</a></li>
             <li class="active">
-                Thực Đơn
+                Tour
             </li>
         </ol>
     </section>
@@ -86,7 +86,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Số ngày tour</th>
-                                                    <td><?php echo count($detail['datetitle_vi']) ?></td>
+                                                    <td><?php echo count($detail['datetitle']) ?></td>
                                                 </tr>
                                                 <tr>
                                                     <th>Giá</th>
@@ -105,73 +105,39 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-pills nav-justified" role="tablist">
-                                            <?php $i = 0; ?>
-                                            <?php foreach ($page_languages as $key => $value): ?>
-                                                <li role="presentation" class="<?php echo ($i == 0)? 'active' : '' ?>">
-                                                    <a href="#<?php echo $key ?>" aria-controls="<?php echo $key ?>" role="tab" data-toggle="tab">
-                                                        <span class="badge"><?php echo $i + 1 ?></span> <?php echo $value ?>
-                                                    </a>
-                                                </li>
-                                                <?php $i++; ?>
-                                            <?php endforeach ?>
-                                        </ul>
-
-                                        <!-- Tab panes -->
-                                        <div class="tab-content">
-                                            <?php $i = 0; ?>
-                                            <?php foreach ($template as $key => $value): ?>
-                                                <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">
-                                                    <?php foreach ($value as $k => $val): ?>
-                                                        <?php if(in_array($k, $request_language_template)): ?>
-                                                            <div class="table-responsive">
-                                                                <table class="table table-striped">
-                                                                    <tbody>
-                                                                        <?php if ($k == 'title' && in_array($k, $request_language_template)): ?>
-                                                                            <tr>
-                                                                                <th style="width: 140px"><?php echo $val;?>: </th>
-                                                                                <td><?php echo $detail['title_'. $key] ?></td>
-                                                                            </tr>
-                                                                        <?php elseif($k == 'description' && in_array($k, $request_language_template)): ?>
-                                                                            <tr>
-                                                                                <th style="width: 140px"><?php echo $val;?>: </th>
-                                                                                <td><?php echo $detail['description_'. $key] ?></td>
-                                                                            </tr>
-                                                                        <?php elseif($k == 'content' && in_array($k, $request_language_template)): ?>
-                                                                            <tr>
-                                                                                <th style="width: 140px"><?php echo $val;?>: </th>
-                                                                                <td><?php echo $detail['content_'. $key] ?></td>
-                                                                            </tr>
-                                                                        <?php elseif($k == 'metakeywords' && in_array($k, $request_language_template)): ?>
-                                                                            <tr>
-                                                                                <th style="width: 140px"><?php echo $val;?>: </th>
-                                                                                <td><?php echo $detail['metakeywords_'. $key] ?></td>
-                                                                            </tr>
-                                                                        <?php elseif($k == 'metadescription' && in_array($k, $request_language_template)): ?>
-                                                                            <tr>
-                                                                                <th style="width: 140px"><?php echo $val;?>: </th>
-                                                                                <td><?php echo $detail['metadescription_'. $key] ?></td>
-                                                                            </tr>
-                                                                        <?php elseif($k == 'tripnodes' && in_array($k, $request_language_template)): ?>
-                                                                            <tr>
-                                                                                <th style="width: 140px"><?php echo $val;?>: </th>
-                                                                                <td><?php echo $detail['tripnodes_'. $key] ?></td>
-                                                                            </tr>
-                                                                        <?php elseif($k == 'detailsprice' && in_array($k, $request_language_template)): ?>
-                                                                            <tr>
-                                                                                <th style="width: 140px"><?php echo $val;?>: </th>
-                                                                                <td><?php echo $detail['detailsprice_'. $key] ?></td>
-                                                                            </tr>
-                                                                        <?php endif ?>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    <?php endforeach ?>
-                                                </div>
-                                                <?php $i++; ?>
-                                            <?php endforeach ?>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    <tr>
+                                                        <th style="width: 20%">Tiêu đề: </th>
+                                                        <td><?php echo $detail['title'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 20%">Mô tả: </th>
+                                                        <td><?php echo $detail['description'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 20%">Nội dung: </th>
+                                                        <td><?php echo $detail['content'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 20%">Từ khóa meta: </th>
+                                                        <td><?php echo $detail['metakeywords'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 20%">Mô tả meta: </th>
+                                                        <td><?php echo $detail['metadescription'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 20%">Ghi chú: </th>
+                                                        <td><?php echo $detail['tripnodes'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 20%">Chi tiết giá: </th>
+                                                        <td><?php echo $detail['detailsprice'] ?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
 
                                     </div>
@@ -189,7 +155,7 @@
                                                 $detailimg = json_decode($detail['dateimg']);
                                             }
                                         ?>
-                                        <?php for ($i=0; $i < count($detail['datetitle_vi']); $i++): ?>
+                                        <?php for ($i=0; $i < count($detail['datetitle']); $i++): ?>
                                             <div role="tabpanel" class="tab-pane active" id="<?php echo $i; ?>">
                                                 <div class="title-content-date showdate <?php echo $i; ?>">
                                                     <div class="btn btn-primary col-xs-12 btn-margin collapsed" type="button" data-toggle="collapse" href="#showdatecontent_<?php echo $i; ?>" aria-expanded="false" aria-controls="messageContent" style="padding:10px 0px;margin-bottom:3px;">
@@ -200,55 +166,29 @@
                                                             <div class="col-xs-12 title-content-date date " style="margin-top:-5px;">
                                                                 <div class="img-vehicles">
                                                                     <div class="col-md-6 img">
-                                                                        <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['slug'].'/' .$detailimg[$i]) ?>" alt="anh-cua-<?php echo $detail['datetitle_'.$key][$i] ?>" width="100%" >
+                                                                        <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['slug'].'/' .$detailimg[$i]) ?>" alt="anh-cua-<?php echo $detail['datetitle'][$i] ?>" width="100%" >
                                                                     </div>
-                                                                    <div class="col-md-6 vehicles">
-                                                                        <strong>Phương tiện đi: </strong><?php echo $request_vehicles[$detail['vehicles'][$i]];?>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-12" style="margin-top: 10px;">
-                                                                    <ul class="nav nav-pills nav-justified language" role="tablist">
-                                                                        <?php $number = 0; ?>
-                                                                        <?php foreach ($page_languages as $key => $value) : ?>
-                                                                            <?php $active = ($number == 0)?'active':''; ?>
-                                                                            <li role="presentation" class="<?php echo $active; ?>">
-                                                                                <a href="#<?php echo $key.$i;?>" aria-controls="<?php echo $key.$i;?>" role="tab" data-toggle="tab">
-                                                                                    <span class="badge"><?php echo $number + 1; ?></span><?php echo $value; ?>
-                                                                                </a>
-                                                                            </li>
-                                                                            <?php $number++; ?>
-                                                                        <?php endforeach; ?>
-                                                                        <?php $number = 0; ?>
-                                                                    </ul>
-                                                                </div>
-                                                                <!-- Tab panes -->
-                                                                <div class="col-xs-12 tab-content">
-                                                                    <?php
-                                                                        if(!empty($detail['dateimg'])){
-                                                                            $detailimg = json_decode($detail['dateimg']);
-                                                                        }
-                                                                    ?>
-                                                                    <?php foreach ($template as $key => $value): ?>
-                                                                        <?php $active = ($number == 0)?'active':''; ?>
-                                                                        <div role="tabpanel" class="tab-pane <?php echo $active; ?>" id="<?php echo $key.$i; ?>">
-                                                                            <div class="table-responsive" style="border:1px solid gray;margin: 10px auto;">
-                                                                                <table class="table table-striped">
-                                                                                    <tbody>
+                                                                    <div class="col-md-6">
+                                                                        <div class="table-responsive" style="border:1px solid gray;">
+                                                                            <table class="table table-responsive">
+                                                                                <tbody>
 
-                                                                                        <tr>
-                                                                                            <th style="width: 150px"><?php echo ($key == 'vi')?'Tiêu đề ngày '.($i+1):'Title date '.($i+1); ?>: </th>
-                                                                                            <td><?php echo $detail['datetitle_'.$key][$i]; ?></td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <th style="width: 150px"><?php echo ($key == 'vi')?'Nội dung ngày '.($i+1):'Content date '.($i+1); ?>: </th>
-                                                                                            <td><?php echo $detail['datecontent_'.$key][$i]; ?></td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </div>
+                                                                                    <tr>
+                                                                                        <th style="width: 150px">Phương tiện đi: </th>
+                                                                                        <td><?php echo $request_vehicles[$detail['vehicles'][$i]]; ?></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th style="width: 150px">Tiêu đề ngày <?php echo ($i+1); ?>: </th>
+                                                                                        <td><?php echo $detail['datetitle'][$i]; ?></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th style="width: 150px">Nội dung ngày <?php echo ($i+1); ?>: </th>
+                                                                                        <td><?php echo $detail['datecontent'][$i]; ?></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
                                                                         </div>
-                                                                        <?php $number++;?>
-                                                                    <?php endforeach ?>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -283,37 +223,17 @@
                                                                                 <img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/' .$value['image']) ?>" alt="anh-cua-<?php echo $detail['slug'] ?>"  style="width: 100%;">
                                                                             </div>
                                                                             <div class="col-sm-7" style="padding: 0px;">
-                                                                                    <ul class="nav nav-pills nav-justified language" role="tablist">
-                                                                                        <?php $number = 0; ?>
-                                                                                        <?php foreach ($page_languages as $key => $val) : ?>
-                                                                                            <?php $active = ($number == 0)?'active':''; ?>
-                                                                                            <li role="presentation" class="<?php echo $active; ?>">
-                                                                                                <a href="#date-localtion<?php echo $key.$h.$k;?>" aria-controls="<?php echo $key.$h;?>" role="tab" data-toggle="tab">
-                                                                                                    <span class="badge"><?php echo $number + 1; ?></span><?php echo $val; ?>
-                                                                                                </a>
-                                                                                            </li>
-                                                                                            <?php $number++; ?>
-                                                                                        <?php endforeach; ?>
-                                                                                        <?php $number = 0; ?>
-                                                                                    </ul>
-                                                                                <div class="tab-content">
-                                                                                    <?php $number = 0; ?>
-                                                                                    <?php foreach ($template as $key => $val): ?>
-                                                                                        <div role="tabpanel" class="tab-pane <?php echo ($number == 0)? 'active' : '' ?>" id="date-localtion<?php echo $key.$h.$k; ?>">
-                                                                                            <div style="padding: 5px;">
-                                                                                                <label for=""><?php echo $template[$key]['title'];?>:</label>
-                                                                                                <p>
-                                                                                                    <?php echo $value['title_'. $key] ?>
-                                                                                                </p>
-                                                                                                <label for=""><?php echo $template[$key]['content'];?>:</label>
-                                                                                                <p>
-                                                                                                    <?php echo $value['content_'. $key] ?>
-                                                                                                </p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <?php $number++; ?>
-                                                                                    <?php endforeach; ?>
-                                                                                </div>
+                                                                                
+                                                                                    <div style="padding: 5px;">
+                                                                                        <label for="">Tiêu đề:</label>
+                                                                                        <p>
+                                                                                            <?php echo $value['title'] ?>
+                                                                                        </p>
+                                                                                        <label for="">Nội dung:</label>
+                                                                                        <p>
+                                                                                            <?php echo $value['content'] ?>
+                                                                                        </p>
+                                                                                    </div>
                                                                             </div>
                                                                         </div>
                                                                         <?php if ($k+1 < count($detail['librarylocaltion'][$h])): ?>

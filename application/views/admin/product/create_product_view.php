@@ -98,10 +98,6 @@
                                     echo form_label('Giảm giá', 'percen');
                                     echo form_error('percen');
                                     echo form_input('percen', "", 'class="form-control" id="percen" placeholder ="Đơn vị : Phần trăm (%)" onkeypress=" return isNumberKey(event)"');
-                                    ?>
-                                </div>
-                                <div class="col-xs-12">
-                                    <?php
                                     echo form_label('Vị trí đến', 'localtion');
                                     echo form_error('localtion');
                                     echo form_input('localtion', "", 'class="form-control" id="localtion" placeholder ="VD:Hanoi, Halong Bay, Hue, Hoian, Saigon, Cu Chi"');
@@ -113,64 +109,30 @@
                                         <?php echo $product_category; ?>
                                     </select>
                                 </div>
-                                <div>
-                                    <div class="col-xs-12">
-                                        <ul class="col-xs-12 nav nav-pills nav-justified language" role="tablist">
-                                            <?php $i = 0; ?>
-                                            <?php foreach ($page_languages as $key => $value): ?>
-                                                <li role="presentation" class="<?php echo ($i == 0)? 'active' : '' ?>">
-                                                    <a href="#<?php echo $key ?>" aria-controls="<?php echo $key ?>" role="tab" data-toggle="tab">
-                                                        <span class="badge"><?php echo $i + 1 ?></span> <?php echo $value ?>
-                                                    </a>
-                                                </li>
-                                                <?php $i++; ?>
-                                            <?php endforeach ?>
-                                        </ul>
-                                    </div>
-                                    <hr>
-                                    <div class="tab-content">
-                                        <?php $i = 0; ?>
-                                        <?php foreach ($template as $key => $value): ?>
-                                            <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">
-                                                <?php foreach ($value as $k => $val): ?>
-                                                    <div class=" col-xs-12">
-                                                        <?php
-                                                        if($k == 'title' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_input($k .'_'. $key, set_value($k .'_'. $key), 'class="form-control" id="title_'.$key.'"');
-                                                        }elseif($k == 'description' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_textarea($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="form-control" rows="5" id="description_'.$key.'" ');
-                                                        }elseif($k == 'content' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_textarea($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="tinymce-area form-control" rows="5" ');
-                                                        }elseif($k == 'metakeywords' && in_array($k, $request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="form-control" id="metakeywords_'.$key.'" ');
-                                                        }elseif($k == 'metadescription' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_input($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="form-control" id="metadescription_'.$key.'" ');
-                                                        }elseif($k == 'tripnodes' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_textarea($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="tinymce-area form-control" rows="5" ');
-                                                        }elseif($k == 'detailsprice' && in_array($k, $request_language_template)){
-                                                            echo form_label($val, $k .'_'. $key);
-                                                            echo form_error($k .'_'. $key);
-                                                            echo form_textarea($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="tinymce-area form-control" rows="5" ');
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                <?php endforeach ?>
-                                            </div>
-                                            <?php $i++; ?>
-                                        <?php endforeach ?>
-                                    </div>
+                                <div class="col-xs-12">
+                                    <?php
+                                    echo form_label('Tiêu đề', 'title');
+                                    echo form_error('title');
+                                    echo form_input('title', set_value('title'), 'class="form-control" id="title"');
+                                    echo form_label('Mô tả', 'description');
+                                    echo form_error('description');
+                                    echo form_textarea('description', set_value('description', '', false), 'class="form-control" rows="5" id="description" ');
+                                    echo form_label('Nội dung', 'content');
+                                    echo form_error('content');
+                                    echo form_textarea('content', set_value('content', '', false), 'class="tinymce-area form-control" rows="5" ');
+                                    echo form_label('Từ khóa meta', 'metakeywords');
+                                    echo form_error('metakeywords');
+                                    echo form_input('metakeywords', set_value('metakeywords', '', false), 'class="form-control" id="metakeywords" ');
+                                    echo form_label('Mô tả meta', 'metadescription');
+                                    echo form_error('metadescription');
+                                    echo form_input('metadescription', set_value('metadescription', '', false), 'class="form-control" id="metadescription" ');
+                                    echo form_label('Ghi chú', 'tripnodes');
+                                    echo form_error('tripnodes');
+                                    echo form_textarea('tripnodes', set_value('tripnodes', '', false), 'class="tinymce-area form-control" rows="5" ');
+                                    echo form_label('Chi tiết giá', 'detailsprice');
+                                    echo form_error('detailsprice');
+                                    echo form_textarea('detailsprice', set_value('detailsprice', '', false), 'class="tinymce-area form-control" rows="5" ');
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -219,10 +181,8 @@
                         </div>
                     </div>
                     <div class="hidden">
-                        <input type="text" name="datetitle_vi[]" value=""/>
-                        <input type="text" name="datecontent_vi[]" value=""/>
-                        <input type="text" name="datetitle_en[]" value=""/>
-                        <input type="text" name="datecontent_en[]" value=""/>
+                        <input type="text" name="datetitle[]" value=""/>
+                        <input type="text" name="datecontent[]" value=""/>
                         <input type="file" name="dateimg[]" multiple="">
                         <input type="text" name="librarylocaltion[]">
                     </div>

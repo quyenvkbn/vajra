@@ -75,6 +75,10 @@
                                                     <td><?php echo $detail['title'] ?></td>
                                                 </tr>
                                                 <tr>
+                                                    <th style="width: 100px">Mô tả: </th>
+                                                    <td><?php echo $detail['description'] ?></td>
+                                                </tr>
+                                                <tr>
                                                     <th style="width: 100px">Nội dung: </th>
                                                     <td><?php echo $detail['content'] ?></td>
                                                 </tr>

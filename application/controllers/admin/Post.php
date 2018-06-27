@@ -4,9 +4,6 @@
 * 
 */
 class Post extends Admin_Controller{
-	private $request_language_template = array(
-        'title', 'description', 'content'
-    );
     private $author_data = array();
     private $controller = '';
 
@@ -16,12 +13,8 @@ class Post extends Admin_Controller{
         $this->load->model('post_category_model');
 		$this->load->helper('common');
         $this->load->helper('file');
-
-        $this->data['template'] = build_template();
-        $this->data['request_language_template'] = $this->request_language_template;
         $this->controller = 'post';
         $this->data['controller'] = $this->controller;
-
 		$this->author_data = handle_author_common_data();
 	}
 
@@ -30,9 +23,9 @@ class Post extends Admin_Controller{
         if($this->input->get('search')){
             $keywords = $this->input->get('search');
         }
-        $total_rows  = $this->post_model->count_search('vi');
+        $total_rows  = $this->post_model->count_search();
         if($keywords != ''){
-            $total_rows  = $this->post_model->count_search('vi', $keywords);
+            $total_rows  = $this->post_model->count_search($keywords);
         }
 
         $this->load->library('pagination');
@@ -47,15 +40,14 @@ class Post extends Admin_Controller{
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
-        $result = $this->post_model->get_all_with_pagination_search('desc','vi' , $per_page, $this->data['page']);
+        $result = $this->post_model->get_all_with_pagination_search('desc', $per_page, $this->data['page']);
         if($keywords != ''){
-            $result = $this->post_model->get_all_with_pagination_search('desc','vi' , $per_page, $this->data['page'], $keywords);
+            $result = $this->post_model->get_all_with_pagination_search('desc', $per_page, $this->data['page'], $keywords);
         }
         foreach ($result as $key => $value) {
             $parent_title = $this->build_parent_title($value['post_category_id']);
             $result[$key]['parent_title'] = $parent_title;
         }
-        // print_r($result);die;
         $this->data['result'] = $result;
         
         
@@ -69,8 +61,7 @@ class Post extends Admin_Controller{
         $post_category = $this->post_category_model->get_by_parent_id(null,'asc');
         $this->data['post_category'] = $post_category;
 
-        $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
-        $this->form_validation->set_rules('title_en', 'Title', 'required');
+        $this->form_validation->set_rules('title', 'Tiêu đề', 'required');
 
         if ($this->form_validation->run() == FALSE) {
         	$this->render('admin/post/create_post_view');
@@ -88,29 +79,23 @@ class Post extends Admin_Controller{
                     $shared_request = array(
                         'slug' => $unique_slug,
                         'image' => $image,
+                        'title' => $this->input->post('title'),
+                        'description' => $this->input->post('description'),
+                        'content' => $this->input->post('content'),
                         'post_category_id' => $this->input->post('parent_id_shared'),
                         'created_at' => $this->author_data['created_at'],
                         'created_by' => $this->author_data['created_by'],
                         'updated_at' => $this->author_data['updated_at'],
                         'updated_by' => $this->author_data['updated_by']
                     );
-                    $this->db->trans_begin();
-
                     $insert = $this->post_model->common_insert($shared_request);
                     if($insert){
-                        $requests = handle_multi_language_request('post_id', $insert, $this->request_language_template, $this->input->post(), $this->page_languages);
-                        $this->post_model->insert_with_language($requests);
-                    }
-
-                    if ($this->db->trans_status() === false) {
-                        $this->db->trans_rollback();
+                        $this->session->set_flashdata('message_success', MESSAGE_CREATE_SUCCESS);
+                        redirect('admin/'. $this->controller, 'refresh');
+                    }else {
                         $this->load->libraries('session');
                         $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
                         $this->render('admin/'. $this->controller .'/create_post_category_view');
-                    } else {
-                        $this->db->trans_commit();
-                        $this->session->set_flashdata('message_success', MESSAGE_CREATE_SUCCESS);
-                        redirect('admin/'. $this->controller, 'refresh');
                     }
                 }else{
                     $this->session->set_flashdata('message_error',sprintf(MESSAGE_PHOTOS_ERROR, 1200));
@@ -125,10 +110,7 @@ class Post extends Admin_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $detail = $this->post_model->get_by_id($id, array('title', 'description', 'content'));
-        
-
-        $detail = build_language($this->controller, $detail, array('title', 'description', 'content'), $this->page_languages);
+        $detail = $this->post_model->get_by_id($id);
         $parent_title = $this->build_parent_title($detail['post_category_id']);
         $detail['parent_title'] = $parent_title;
 
@@ -136,24 +118,20 @@ class Post extends Admin_Controller{
         
         
 
-        $this->render('admin/post_category/detail_post_category_view');
+        $this->render('admin/post/detail_post_view');
     }
 
     public function edit($id){
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $detail = $this->post_model->get_by_id($id, array('title', 'description', 'content'));
-        $detail = build_language($this->controller, $detail, array('title', 'description', 'content'), $this->page_languages);
+        $detail = $this->post_model->get_by_id($id);
         $category = $this->post_category_model->get_by_parent_id(null,'asc');
         
         $this->data['category'] = $category;
         
         $this->data['detail'] = $detail;
-        // print_r($category);die;
-
-        $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
-        $this->form_validation->set_rules('title_en', 'Title', 'required');
+        $this->form_validation->set_rules('title', 'Tiêu đề', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->render('admin/post/edit_post_view');
@@ -169,6 +147,9 @@ class Post extends Admin_Controller{
                     $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'. $this->controller .'', 'assets/upload/'. $this->controller .'/thumb');
                     $shared_request = array(
                         'slug' => $unique_slug,
+                        'title' => $this->input->post('title'),
+                        'description' => $this->input->post('description'),
+                        'content' => $this->input->post('content'),
                         'post_category_id' => $this->input->post('parent_id_shared'),
                         'created_at' => $this->author_data['created_at'],
                         'created_by' => $this->author_data['created_by'],
@@ -178,28 +159,17 @@ class Post extends Admin_Controller{
                     if($image){
                         $shared_request['image'] = $image;
                     }
-                    $this->db->trans_begin();
-
                     $update = $this->post_model->common_update($id, $shared_request);
                     if($update){
-                        $requests = handle_multi_language_request('post_id', $id, $this->request_language_template, $this->input->post(), $this->page_languages);
-                        foreach ($requests as $key => $value){
-                            $this->post_model->update_with_language($id, $requests[$key]['language'], $value);
-                        }
-                    }
-
-                    if ($this->db->trans_status() === false) {
-                        $this->db->trans_rollback();
-                        $this->load->libraries('session');
-                        $this->session->set_flashdata('message_error', MESSAGE_EDIT_ERROR);
-                        $this->render('admin/'. $this->controller .'/edit/'.$id);
-                    } else {
-                        $this->db->trans_commit();
                         $this->session->set_flashdata('message_success', MESSAGE_EDIT_SUCCESS);
                         if($image != '' && $image != $detail['image'] && file_exists('assets/upload/'. $this->controller .'/'.$detail['image'])){
                             unlink('assets/upload/'. $this->controller .'/'.$detail['image']);
                         }
                         redirect('admin/'. $this->controller .'', 'refresh');
+                    }else {
+                        $this->load->libraries('session');
+                        $this->session->set_flashdata('message_error', MESSAGE_EDIT_ERROR);
+                        $this->render('admin/'. $this->controller .'/edit/'.$id);
                     }
                 }else{
                     $this->session->set_flashdata('message_error', sprintf(MESSAGE_PHOTOS_ERROR, 1200));
@@ -217,15 +187,9 @@ class Post extends Admin_Controller{
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
             );
-            return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(HTTP_SUCCESS)
-                ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => true)));
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_REMOVE_SUCCESS,$reponse);
         }
-            return $this->output
-                    ->set_content_type('application/json')
-                    ->set_status_header(HTTP_BAD_REQUEST)
-                    ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
+        return $this->return_api(HTTP_NOT_FOUND,MESSAGE_REMOVE_ERROR);
     }
 
 
@@ -235,14 +199,9 @@ class Post extends Admin_Controller{
      * @return [type]            [description]
      */
     protected function build_parent_title($parent_id){
-        $sub = $this->post_category_model->get_by_id($parent_id, array('title'));
-
+        $sub = $this->post_category_model->get_by_id($parent_id);
         if($parent_id != 0){
-            $title = explode('|||', $sub['post_category_title']);
-            $sub['title_en'] = $title[0];
-            $sub['title_vi'] = $title[1];
-
-            $title = $sub['title_vi'];
+            $title = $sub['title'];
         }else{
             $title = 'Danh mục gốc';
         }
