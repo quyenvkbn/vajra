@@ -16,7 +16,7 @@ class Homepage extends Public_Controller {
         $this->load->model('product_category_model');
     }
 
-    function get_multiple_products_with_category_id($categories, $parent_id = 0, &$ids){
+    public function get_multiple_products_with_category_id($categories, $parent_id = 0, &$ids){
         foreach ($categories as $key => $item){
             if ($item['parent_id'] == $parent_id){
                 $ids[] = $item['id'];
@@ -25,7 +25,7 @@ class Homepage extends Public_Controller {
             }
         }
     }
-    function get_multiple_products_with_category($categories, $parent_id = 0, &$sub){
+    public function get_multiple_products_with_category($categories, $parent_id = 0, &$sub){
         foreach ($categories as $key => $item){
             if (!empty($item) && $item['id'] == $parent_id){
                 $sub[] = $categories[$key];
@@ -34,8 +34,8 @@ class Homepage extends Public_Controller {
             }
         }
     }
-    function get_all_product_in_category($tour_in_category,$number_tour=0){
-        $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),'vi'),$tour_in_category['parent_id'],$sub);
+    public function get_all_product_in_category($tour_in_category,$number_tour=0){
+        $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(),$tour_in_category['parent_id'],$sub);
         if(empty($sub)){
             $tour_in_category['sub'] = $sub;
         }else{
@@ -46,40 +46,44 @@ class Homepage extends Public_Controller {
             $ids = array();
         }
         array_unshift($ids,$tour_in_category['id']);
-        $check = 0;
-        $tour_all_in_category=array();
-        for ($i=0; $i < count($ids); $i++) {
-             $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
-             if($tour['id'] != ''){
-                $tour_all_in_category[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
-                $tour_all_in_category[$check]['parent'] = $this->product_category_model->get_by_id_lang($tour_all_in_category[$check]['product_category_id']);
-                $check++;
-                if($check == $number_tour){
-                    break;
-                }
-             }
-        }
-        return $tour_all_in_category;
+        $tour =$this->product_model->get_by_product_category_id_array($ids,$number_tour);
+        return $tour;
     }
     public function index() {
-        //banner
-        $this->data['banner'] = $this->banner_model->get_all_lang(array('title','description'),'vi');
-        //tour
-        $this->data['domestic'] = $this->product_category_model->get_by_slug_lang('trong-nuoc',array(),'vi');
+        /**
+         * GET BANNER
+         */
+        $this->data['banner'] = $this->banner_model->get_all_lang();
+        /**
+         * GET TOURS IN EACH CATEGORY AND CATEGORY DOMESTIC_PILGRIMAGE,INTERNATIONAL_PILGRIMAGE
+         */
+        $this->data['domestic'] = $this->product_category_model->get_by_id(FIXED_DOMESTIC_PILGRIMAGE_CATEGORY_ID);
         $this->data['tour_domestic'] = $this->get_all_product_in_category($this->data['domestic'],3);
-        $this->data['international'] = $this->product_category_model->get_by_slug_lang('nuoc-ngoai',array(),'vi');
+        $this->data['international'] = $this->product_category_model->get_by_id(FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID);
         $this->data['tour_international'] = $this->get_all_product_in_category($this->data['international'],3);
-        $this->data['specialtour'] = $this->product_category_model->get_by_slug_lang('tour-dac-biet',array(),'vi');
-        $this->data['tour_specialtour'] = $this->get_all_product_in_category($this->data['specialtour'],6);
-        //post
-        $this->data['services'] = $this->post_category_model->get_by_slug('dich-vu','asc','vi');
-        $this->data['post_services'] = $this->post_model->get_by_post_category_id_lang($this->data['services']['id'],array('title'),'vi',2);
-        $this->data['visa'] = $this->post_category_model->get_by_slug('visa','asc','vi');
-        $this->data['blogs'] = $this->post_category_model->get_by_slug('blogs','asc','vi');
-        $this->data['post_blogs'] = $this->post_model->get_by_post_category_id_lang($this->data['blogs']['id'],array('title','description'),'vi',3);
+        /**
+         * GET POSTS IN SHARED CORNER
+         */
+        $shared_corner = array(FIXED_SHARED_CORNER);
+        $this->get_post_category_data(FIXED_SHARED_CORNER,$shared_corner);
+        $this->data['shared_corner'] = $this->post_category_model->get_by_id(FIXED_SHARED_CORNER);
+        $this->data['post_shared_corner'] = $this->post_model->get_post_in_array_category_id($shared_corner,2);
+        /**
+         * GET POSTS IN ARCHIVE LIBRARY
+         */
+        $archive_library = array(FIXED_ARCHIVE_LIBRARY);
+        $this->get_post_category_data(FIXED_ARCHIVE_LIBRARY,$archive_library);
+        $this->data['archive_library'] = $this->post_category_model->get_by_id(FIXED_ARCHIVE_LIBRARY);
+        $this->data['post_archive_library'] = $this->post_model->get_post_in_array_category_id($archive_library,3);
         $this->render('homepage_view');
     }
-
+    public function get_post_category_data($parent = '',&$array_id){
+        $categories = $this->post_category_model->fetch_post_category_menu($parent);
+        foreach($categories as $key => $category){
+            array_push($array_id, $category['id']);
+            $this->get_post_category_data($category['id'],$array_id);
+        }
+    }
     function about(){
     	$this->load->model('about_model');
     	$about = $this->about_model->get_by_id_in_about($this->data['lang']);
@@ -90,22 +94,5 @@ class Homepage extends Public_Controller {
     	$this->load->model('blog_model');
     	$blogs = $this->blog_model->get_all_field('desc', array('title', 'description', 'content'), $this->data['lang'], 3, 0);
     	return $blogs;
-    }
-
-    public function build_new_category($categorie, $parent_id = 0,&$result, $id = "",$char=""){
-        $cate_child = array();
-        foreach ($categorie as $key => $item){
-            if ($item['parent_id'] == $parent_id){
-                $cate_child[] = $item;
-                unset($categorie[$key]);
-            }
-        }
-        if ($cate_child){
-            foreach ($cate_child as $key => $value){
-            $select = ($value['id'] == $id)? 'selected' : '';
-            $result.='<option value="'.$value['id'].'">'.$char.$value['title'].'</option>';
-            $this->build_new_category($categorie, $value['id'],$result, $id, $char.'---|');
-            }
-        }
     }
 }
