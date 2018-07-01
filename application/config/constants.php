@@ -23,6 +23,7 @@ defined('FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID') OR define('FIXED_INTERNATI
  * FIXED POST CATEGORIES ID
  */
 defined('FIXED_SHARED_CORNER')        OR define('FIXED_SHARED_CORNER', 19);
+defined('FIXED_NEWS')        OR define('FIXED_NEWS', 15);
 defined('FIXED_ARCHIVE_LIBRARY')        OR define('FIXED_ARCHIVE_LIBRARY', 16);
 /*
 |--------------------------------------------------------------------------

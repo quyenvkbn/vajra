@@ -15,7 +15,7 @@ class Post_model extends MY_Model{
         $this->db->group_by("id");
         return $this->db->get()->result_array();
     }
-    public function get_post_in_array_category_id($post_category_id = array(),$limit =0,$order ="desc") {
+    public function get_post_in_array_category_id($post_category_id = array(),$limit = NULL, $start = NULL,$order ="desc") {
         $this->db->select('post.*, post_category.title as parent_title,post_category.slug as parent_slug');
         $this->db->from($this->table);
         $this->db->join('post_category','post_category.id = post.post_category_id');

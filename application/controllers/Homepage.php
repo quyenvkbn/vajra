@@ -14,6 +14,7 @@ class Homepage extends Public_Controller {
         $this->load->model('post_category_model');
         $this->load->model('banner_model');
         $this->load->model('product_category_model');
+        $this->load->model('localtion_model');
     }
 
     public function get_multiple_products_with_category_id($categories, $parent_id = 0, &$ids){
@@ -67,7 +68,15 @@ class Homepage extends Public_Controller {
         $shared_corner = array(FIXED_SHARED_CORNER);
         $this->get_post_category_data(FIXED_SHARED_CORNER,$shared_corner);
         $this->data['shared_corner'] = $this->post_category_model->get_by_id(FIXED_SHARED_CORNER);
-        $this->data['post_shared_corner'] = $this->post_model->get_post_in_array_category_id($shared_corner,2);
+        $this->data['post_shared_corner'] = $this->post_model->get_post_in_array_category_id($shared_corner,3);
+        /**
+         * GET POSTS IN NEWS
+         */
+        $news = array(FIXED_NEWS);
+        $this->get_post_category_data(FIXED_NEWS,$news);
+        $this->data['news'] = $this->post_category_model->get_by_id(FIXED_NEWS);
+        $this->data['post_news'] = $this->post_model->get_post_in_array_category_id($news,4);
+        //$this->data['post_news_one'] = $this->post_model->get_post_in_array_category_id($news,1,0);
         /**
          * GET POSTS IN ARCHIVE LIBRARY
          */
@@ -75,6 +84,10 @@ class Homepage extends Public_Controller {
         $this->get_post_category_data(FIXED_ARCHIVE_LIBRARY,$archive_library);
         $this->data['archive_library'] = $this->post_category_model->get_by_id(FIXED_ARCHIVE_LIBRARY);
         $this->data['post_archive_library'] = $this->post_model->get_post_in_array_category_id($archive_library,3);
+        /**
+         * GET POSTS IN ARCHIVE LIBRARY
+         */
+        $this->data['location_archive_library'] = $this->localtion_model->get_all_with_pagination_search('desc',7);
         $this->render('homepage_view');
     }
     public function get_post_category_data($parent = '',&$array_id){
