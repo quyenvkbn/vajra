@@ -1,6 +1,8 @@
 <!-- Homepage Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.min.css">
 
+<!-- Slider JS -->
+<script src="<?php echo site_url('assets/js/admin/slider.js') ?>"></script>
 <section id="slider" class="container-fluid">
 	<div id="homepage-slider" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
@@ -41,208 +43,257 @@
 		</a>
 	</div>
 </section>
-
-<section id="tour-intro" class="container-fluid section">
-	<div class="container">
-		<div class="row">
-			<div class="left col-sm-6 col-xs-12">
-				<div class="head">
-					<h3>1</h3>
-				</div>
-				<div class="body">
-					<p>2</p>
-					<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-						<?php echo $this->lang->line('see-all') ?>
-					</a>
-				</div>
-			</div>
-			<div class="right col-sm-6 col-xs-12">
-				<div class="row">
-					<div class="item col-sm-4 col-xs-12">
-						<div class="circle-border">
-							<i class="fa fa-plane" aria-hidden="true"></i>
-						</div>
-						<h4>Transport</h4>
-					</div>
-					<div class="item col-sm-4 col-xs-12">
-						<div class="circle-border">
-							<i class="fa fa-compass" aria-hidden="true"></i>
-						</div>
-						<h4>Trip Guiding</h4>
-					</div>
-					<div class="item col-sm-4 col-xs-12">
-						<div class="circle-border">
-							<i class="fa fa-hotel" aria-hidden="true"></i>
-						</div>
-						<h4>Hotel Advisor</h4>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-					<div class="item col-md-4 col-6 col-xs-12">
-						<div class="mask">
-							<img src="http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg" alt="image">
-							<div class="overview">
-								<div class="head">
-									<span class="sub-header">header</span>
-									<h3>header</h3>
-								</div>
-								<div class="body">
-									<h2 class="price">100vnd</h2>
-								</div>
-							</div>
-							<div class="content">
-								<div class="head">
-									<span class="sub-header">parent</span>
-									<h4>title</h4>
-									<h3 class="price">pricevnd</h3>
-								</div>
-								<div class="body">
-									<table class="table">
-										<tr>
-											<td>Time</td>
-											<td>Time</td>
-										</tr>
-										<tr>
-											<td>Start</td>
-											<td>
-										            date
-											</td>
-										</tr>
-									</table>
-								</div>
-								<div class="foot">
-									<a href="" class="btn btn-primary" role="button">
-		                                <?php echo $this->lang->line('explore') ?>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-		</div>
-	</div>
-</section>
-
 <section id="domestic" class="container-fluid section tour-intro">
 	<div class="container">
 		<div class="row">
-			<?php if (!empty($tour_domestic)): ?>
-	            <?php foreach ($tour_domestic as $key => $value): ?>
-				<div class="item col-sm-3 col-xs-12">
-					<div class="mask">
-						<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
-						<div class="top">
-							<span class="sub-header"><?php echo $value['parent_title']; ?></span>
-							<span class="header"><?php echo $value['title']; ?></span>
-						</div>
-						<div class="bottom">
-							<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
-								<?php echo $this->lang->line('explore') ?>
-							</a>
+			<div class="left col-sm-12 col-xs-12">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="carousel carousel-showmanymoveone slider" id="domestic-slider">
+							<div class="carousel-inner">
+								<div class="item active">
+									<div class="inner col-xs-12 col-sm-6 col-md-4">
+	                                    <div class="mask" id="no-hover">
+	                                    	<a href="<?php echo base_url('tours/' . $domestic['slug']) ?>">
+                                                <?php if($domestic['image']){ ?>
+                                                    <img src="<?php echo base_url('/assets/upload/product_category/'.$domestic['slug'].'/'.$domestic['image']) ?>" alt="image">
+                                                <?php }else{ ?>
+                                                    <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+                                                <?php } ?>
+                                            </a>
+                                            <div class="overview">
+                                                <div class="head">
+                                                    <h4 class="post-subtitle"><?php echo $domestic['title'] ?></h4>
+                                                    <h2 class="post-title"><?php echo $domestic['content']; ?></h2>
+                                                </div>
+                                                <div class="body">
+                                                    <a href="<?php echo base_url('/danh-muc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
+                    									<?php echo $this->lang->line('see-all') ?>
+													</a>
+                                                </div>
+                                            </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+                                <?php if (!empty($tour_domestic)): ?>
+                                    <?php foreach ($tour_domestic as $key => $value): ?>
+                                        <div class="item">
+                                            <div class="inner col-xs-12 col-sm-6 col-md-4">
+                                                <div class="mask">
+                                                    <a href="<?php echo base_url('tours/' . $value['slug']) ?>">
+                                                        <?php if($value['image']){ ?>
+                                                            <img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+                                                        <?php }else{ ?>
+                                                            <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+                                                        <?php } ?>
+                                                    </a>
+                                                    <div class="overview">
+                                                        <div class="head">
+                                                            <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
+                                                        </div>
+                                                        <div class="body">
+                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="head">
+                                                            <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
+                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+                                                        </div>
+                                                        <div class="body">
+                                                            <table class="table">
+                                                                <tr>
+                                                                    <td>Time</td>
+                                                                    <td><?php echo count(json_decode($value['dateimg'])) ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Start</td>
+                                                                    <td>
+                                                                        <?php
+                                                                        if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
+                                                                            $rmtime = str_replace(" 00:00:00","",$value['date']);
+                                                                            $date= explode("-",$rmtime);
+                                                                            if(count($date) == 3){
+                                                                                $value['date'] = $date[2]."/".$date[1]."/".$date[0];
+                                                                            }
+                                                                        }
+                                                                        ?>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <div class="foot">
+                                                            <a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+                                                                <?php echo $this->lang->line('explore') ?>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+							</div>
 						</div>
 					</div>
 				</div>
-	            <?php endforeach; ?>
-			<?php endif ?>
-			<div class="item col-sm-<?php echo (!empty($tour_domestic))?(12 - count($tour_domestic)*3): '12'; ?> col-xs-12">
-				<div class="head">
-					<!-- <span class="sub-header"><?php echo $this->lang->line('domestic') ?></span> -->
-					<span style="font-size: 2em;"><?php echo $this->lang->line('domestic') ?></span>
-				</div>
-				<div class="body">
-					<div><?php echo $domestic['content']; ?></div>
-				</div>
-				<div class="foot">
-					<a href="<?php echo base_url('/danhmuc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
-                        <?php echo $this->lang->line('see-all') ?>
-					</a>
-				</div>
+			</div>
+			<div class="foot">
+				<ul class="list-inline">
+					<li>
+						<a class="btn btn-default" href="#domestic-slider" data-slide="prev">
+							<i class="fa fa-arrow-left" aria-hidden="false"></i>
+						</a>
+					</li>
+					<li>
+						<a class="btn btn-default" href="#domestic-slider" data-slide="next">
+							<i class="fa fa-arrow-right" aria-hidden="false"></i>
+						</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 </section>
+
+
 
 <section id="international" class="container-fluid section tour-intro">
 	<div class="container">
 		<div class="row">
-			<?php if (!empty($tour_international)): ?>
-	            <?php foreach ($tour_international as $key => $value): ?>
-					<div class="item col-sm-3 col-xs-12">
-						<div class="mask">
-							<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
-							<div class="top">
-								<span class="sub-header"><?php echo $value['parent_title']; ?></span>
-								<span class="header"><?php echo $value['title']; ?></span>
-							</div>
-							<div class="bottom">
-								<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
-	                                <?php echo $this->lang->line('explore') ?>
-								</a>
+			<div class="left col-sm-12 col-xs-12">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="carousel carousel-showmanymoveone slider" id="international-slider">
+							<div class="carousel-inner">
+								<div class="item active">
+									<div class="inner col-xs-12 col-sm-6 col-md-4">
+	                                    <div class="mask" id="no-hover">
+	                                    	<a href="<?php echo base_url('tours/' . $international['slug']) ?>">
+                                                <?php if($international['image']){ ?>
+                                                    <img src="<?php echo base_url('/assets/upload/product_category/'.$international['slug'].'/'.$international['image']) ?>" alt="image">
+                                                <?php }else{ ?>
+                                                    <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+                                                <?php } ?>
+                                            </a>
+                                            <div class="overview">
+                                                <div class="head">
+                                                    <h4 class="post-subtitle"><?php echo $international['title'] ?></h4>
+                                                    <h2 class="post-title"><?php echo $international['content']; ?></h2>
+                                                </div>
+                                                <div class="body">
+                                                    <a href="<?php echo base_url('/danh-muc/'.$international['slug']) ?>" class="btn btn-primary" role="button">
+                    									<?php echo $this->lang->line('see-all') ?>
+													</a>
+                                                </div>
+                                            </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+                                <?php if (!empty($tour_international)): ?>
+                                    <?php foreach ($tour_international as $key => $value): ?>
+                                        <div class="item">
+                                            <div class="inner col-xs-12 col-sm-6 col-md-4">
+                                                <div class="mask">
+                                                    <a href="<?php echo base_url('tours/' . $value['slug']) ?>">
+                                                        <?php if($value['image']){ ?>
+                                                            <img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+                                                        <?php }else{ ?>
+                                                            <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+                                                        <?php } ?>
+                                                    </a>
+                                                    <div class="overview">
+                                                        <div class="head">
+                                                            <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
+                                                        </div>
+                                                        <div class="body">
+                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="head">
+                                                            <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
+                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+                                                        </div>
+                                                        <div class="body">
+                                                            <table class="table">
+                                                                <tr>
+                                                                    <td>Time</td>
+                                                                    <td><?php echo count(json_decode($value['dateimg'])) ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Start</td>
+                                                                    <td>
+                                                                        <?php
+                                                                        if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
+                                                                            $rmtime = str_replace(" 00:00:00","",$value['date']);
+                                                                            $date= explode("-",$rmtime);
+                                                                            if(count($date) == 3){
+                                                                                $value['date'] = $date[2]."/".$date[1]."/".$date[0];
+                                                                            }
+                                                                        }
+                                                                        ?>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <div class="foot">
+                                                            <a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+                                                                <?php echo $this->lang->line('explore') ?>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
 							</div>
 						</div>
 					</div>
-            	<?php endforeach; ?>
-            <?php endif; ?>
-
-			<div class="item col-sm-<?php echo (!empty($tour_international))?(12 - count($tour_international)*3): '12'; ?> col-xs-12">
-				<div class="head">
-					<!-- <span class="sub-header"><?php echo $this->lang->line('international') ?></span> -->
-					<span style="font-size: 2em;"><?php echo $this->lang->line('international') ?></span>
 				</div>
-				<div class="body">
-					<div><?php echo $international['content']; ?></div>
-				</div>
-				<div class="foot">
-					<a href="<?php echo base_url('/danhmuc/'.$international['slug']) ?>" class="btn btn-primary" role="button">
-                        <?php echo $this->lang->line('see-all') ?>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section id="tour-request" class="container-fluid section" style="background-image: url('https://images.unsplash.com/photo-1523698157635-f68771d9e761?ixlib=rb-0.3.5&s=332933132e5bfedb487304d4978df2c6&auto=format&fit=crop&w=2690&q=80');">
-	<div class="overlay">
-		<div class="container">
-			<div class="head">
-				<h1><?php echo $this->lang->line('tour-request-title') ?></h1>
-			</div>
-			<div class="body">
-				<h4><?php echo $this->lang->line('tour-request-content') ?></h4>
 			</div>
 			<div class="foot">
-				<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-                    <?php echo $this->lang->line('tour-request') ?>
-				</a>
+				<ul class="list-inline">
+					<li>
+						<a class="btn btn-default" href="#international-slider" data-slide="prev">
+							<i class="fa fa-arrow-left" aria-hidden="false"></i>
+						</a>
+					</li>
+					<li>
+						<a class="btn btn-default" href="#international-slider" data-slide="next">
+							<i class="fa fa-arrow-right" aria-hidden="false"></i>
+						</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 </section>
 
-<section id="services" class="section container">
-	<div class="section-header">
-		<div class="row">
-			<div class="col-sm-6 col-xs-12">
-				<h1><?php echo $shared_corner['title'];?></h1>
-				<div class="line">
-					<div class="line-primary"></div>
-				</div>
-				<p><?php echo $shared_corner['content'];?></p>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<?php foreach ($post_shared_corner as $key => $value): ?>
-			<div class="item col-sm-6 col-xs-12">
+<section id="news" class="section container">
+	<div class="row" style="padding-top: 25px;">
+		<?php foreach ($post_news as $key => $value): ?>
+			<div class="item col-sm-<?php echo ($key == 0)? '12': '4'; ?> col-xs-12" style="<?php echo ($key == 0)? 'padding-bottom: 25px;': ''; ?>">
 				<div class="mask">
-					<img src="http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg" alt="blogs image">
-					<div class="content">
-						<h4 class="sub-header"><?php echo $value['title'];?></h4>
-						<a href="<?php echo base_url('bai-viet/').$value['slug'] ?>">
-							<h2 class="header"><?php echo $value['title']; ?></h2>
-						</a>
+					<div class="col-md-<?php echo ($key == 0)? '8': '12'; ?>" style="padding:0px;<?php echo ($key == 0)? 'padding-right: 10px;': ''; ?>">
+							<img src="http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg" alt="blogs image">
+					</div>
+					<div class="col-md-<?php echo ($key == 0)? '4': '12'; ?>" style="padding:0px;">
+						<div class="content">
+                            <p class="sub-header"><?php echo $value['created_at'];?></p>
+							<h4 class="sub-header"><?php echo $value['title'];?></h4>
+								<p class="header"><?php echo $value['description']; ?></p>
+							<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+	                            View detail
+	                        </a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -250,54 +301,50 @@
 	</div>
 </section>
 
-<section id="visa" class="container-fluid section" style="background-image: url('http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg');">
-	<div class="overlay">
-		<div class="container">
-			<div class="head">
-				<h1>title</h1>
+<section id="gallery" class="section container">
+	<div class="row">
+		<?php foreach ($location_archive_library as $key => $value): ?>
+			<div class="item col-sm-4 col-xs-12">
+				<div class="mask">
+					<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="blogs image">
+					<div class="content">
+						<p class="sub-header"><?php echo $value['created_at'];?></p>
+                        <h3>
+                            <a href="<?php echo base_url('tours/'.$value['slug']) ?>" role="button">
+                                <?php echo $value['title'];?>
+                            </a>
+                        </h3>
+					</div>
+				</div>
 			</div>
-			<div class="body">
-				<h4>content</h4>
-			</div>
-			<div class="foot">
-				<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-                    <?php echo $this->lang->line('explore') ?>
-				</a>
-			</div>
-		</div>
+			<?php echo (($key+1)%3 == 0)?'<div class="clear" style="clear: left;"></div>':''; ?>
+		<?php endforeach ?>
 	</div>
 </section>
 
-<section id="blogs" class="section container">
-	<div class="section-header">
-		<div class="row">
-			<div class="col-sm-6 col-xs-12">
-				<h3><?php echo $archive_library['title']; ?></h3>
-				<p><?php echo $archive_library['content']; ?></p>
+<section id="shared_corner" class="section container">
+	<div class="row" style="padding-top: 25px;">
+		<div class="item col-sm-12 col-xs-12">
+			<div class="mask">
+				<img src="<?php echo base_url('assets/upload/post_category/'.$shared_corner['image']); ?>" alt="blogs image"  style="height: 300px;">
+				<h2><?php echo $shared_corner['title']; ?></h2>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-        <?php foreach ($post_archive_library as $value): ?>
-		<div class="item col-sm-4 col-xs-12">
-			<div class="inner">
+		<?php foreach ($post_shared_corner as $key => $value): ?>
+			<div class="item col-sm-4 col-xs-12">
 				<div class="mask">
 					<img src="http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg" alt="blogs image">
-				</div>
-				<div class="head">
-					<h2><?php echo $value['title']; ?></h2>
-				</div>
-				<div class="body">
-					<p><?php echo $value['description']; ?></p>
-				</div>
-				<div class="foot">
-					<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-                        <?php echo $this->lang->line('tour-request') ?>
-					</a>
+					<div class="content">
+                        <p class="sub-header"><?php echo $value['created_at'];?></p>
+                        <h3>
+                            <a href="<?php echo base_url('tours/'.$value['slug']) ?>" role="button">
+                                <?php echo $value['title'];?>
+                            </a>
+                        </h3>
+					</div>
 				</div>
 			</div>
-		</div>
-		<?php endforeach; ?>
+		<?php endforeach ?>
 	</div>
 </section>
 
