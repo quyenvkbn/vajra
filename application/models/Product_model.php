@@ -19,33 +19,13 @@ class Product_model extends MY_Model{
 
         return $result = $this->db->get()->row_array();
 	}
-    public function get_by_product_category_id($product_category_id = array(), $select = array(), $lang = '') {
-        $this->db->query('SET SESSION group_concat_max_len = 10000000');
-        $this->db->select($this->table .'.*');
-        if(in_array('title', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_title');
-        }
-        if(in_array('description', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_description');
-        }
-        if(in_array('content', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_content');
-        }
-        if($select == null){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_title');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_description');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_content');
-        }
-        
+    public function get_by_product_category_id($product_category_id = array()) {
+        $this->db->select('*');
         $this->db->from($this->table);
-        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id','left');
-        if($lang != ''){
-            $this->db->where($this->table_lang .'.language', $lang);
-        }
-        $this->db->where($this->table .'.is_deleted', 0);
-        $this->db->where($this->table .'.is_activated', 0);
-        $this->db->where_in($this->table .'.product_category_id', $product_category_id);
-        $this->db->group_by($this->table .".id");
+        $this->db->where('is_deleted', 0);
+        $this->db->where('is_activated', 0);
+        $this->db->where_in('product_category_id', $product_category_id);
+        $this->db->group_by("id");
         return $this->db->get()->result_array();
     }
     // public function get_all($select = array(), $lang = '',$order="asc") {
@@ -93,7 +73,7 @@ class Product_model extends MY_Model{
         return $this->db->get()->row_array();
     }
     public function get_by_slug_lang($slug) {
-        $this->db->select('*, product_category.title as parent_title, product_category.slug as parent_slug');
+        $this->db->select('product.*, product_category.title as parent_title, product_category.slug as parent_slug');
         $this->db->from($this->table);
         $this->db->join('product_category', 'product_category.id = product.product_category_id');
         $this->db->where($this->table .'.is_deleted', 0);
@@ -101,14 +81,16 @@ class Product_model extends MY_Model{
         $this->db->limit(1);
         return $this->db->get()->row_array();
     }
-    public function get_by_product_category_id_array($product_category_id=array()) {
-        $this->db->select('*, product_category.title as parent_title, product_category.slug as parent_slug');
+    public function get_by_product_category_id_array($product_category_id=array(),$limit=0,$order='asc') {
+        $this->db->select('product.*, product_category.title as parent_title, product_category.slug as parent_slug');
         $this->db->from($this->table);
         $this->db->join('product_category', 'product_category.id = product.product_category_id');
         $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where_in('product.product_category_id', $product_category_id);
         $this->db->group_by('product.id');
         $this->db->order_by('product.id', $order);
-        return $result = $this->db->get()->result_array();
+        $this->db->limit($limit);
+        return $this->db->get()->result_array();
     }     
 
     public function rating_by_id($id=''){
@@ -119,12 +101,12 @@ class Product_model extends MY_Model{
         return $result = $this->db->get()->row_array();
     }
     public function get_all($order = 'desc'){
-        $this->db->select('*, product_category.title as parent_title, product_category.slug as parent_slug');
+        $this->db->select('product.*, product_category.title as parent_title, product_category.slug as parent_slug');
         $this->db->from($this->table);
         $this->db->join('product_category', 'product_category.id = product.product_category_id');
         $this->db->where($this->table .'.is_deleted', 0);
         $this->db->group_by('product.id');
         $this->db->order_by('product.id', $order);
-        return $result = $this->db->get()->result_array();
+        return $this->db->get()->result_array();
     }
 }

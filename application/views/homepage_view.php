@@ -47,10 +47,10 @@
 		<div class="row">
 			<div class="left col-sm-6 col-xs-12">
 				<div class="head">
-					<h3><?php echo $specialtour['title']; ?></h3>
+					<h3>1</h3>
 				</div>
 				<div class="body">
-					<p><?php echo $specialtour['content']; ?></p>
+					<p>2</p>
 					<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
 						<?php echo $this->lang->line('see-all') ?>
 					</a>
@@ -80,63 +80,46 @@
 			</div>
 		</div>
 		<div class="row">
-			<?php if (!empty($tour_specialtour)): ?>
-	            <?php foreach ($tour_specialtour as $key =>$value): ?>
 					<div class="item col-md-4 col-6 col-xs-12">
 						<div class="mask">
-							<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+							<img src="http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg" alt="image">
 							<div class="overview">
 								<div class="head">
-									<span class="sub-header"><?php echo $value['parent']['title']; ?></span>
-									<h3><?php echo $value['title']; ?></h3>
+									<span class="sub-header">header</span>
+									<h3>header</h3>
 								</div>
 								<div class="body">
-									<h2 class="price"><?php echo number_format($value['price']); ?>vnd</h2>
+									<h2 class="price">100vnd</h2>
 								</div>
 							</div>
 							<div class="content">
 								<div class="head">
-									<span class="sub-header"><?php echo $value['parent']['title']; ?></span>
-									<h4><?php echo $value['title']; ?></h4>
-									<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+									<span class="sub-header">parent</span>
+									<h4>title</h4>
+									<h3 class="price">pricevnd</h3>
 								</div>
 								<div class="body">
 									<table class="table">
 										<tr>
 											<td>Time</td>
-											<td><?php echo count(json_decode($value['dateimg'])) ?></td>
+											<td>Time</td>
 										</tr>
 										<tr>
 											<td>Start</td>
 											<td>
-												<?php
-										            if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
-										                $rmtime = str_replace(" 00:00:00","",$value['date']);
-										                $date= explode("-",$rmtime);
-										                if(count($date) == 3){
-										                    $value['date'] = $date[2]."/".$date[1]."/".$date[0];
-										                }else{
-										                    $value['date'] = "";
-										                }
-										            }else{
-										                $value['date'] = "";
-										            }
-										            echo $value['date'];
-												?>	
+										            date
 											</td>
 										</tr>
 									</table>
 								</div>
 								<div class="foot">
-									<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+									<a href="" class="btn btn-primary" role="button">
 		                                <?php echo $this->lang->line('explore') ?>
 									</a>
 								</div>
 							</div>
 						</div>
 					</div>
-				<?php endforeach; ?>
-			<?php endif ?>
 		</div>
 	</div>
 </section>
@@ -150,7 +133,7 @@
 					<div class="mask">
 						<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
 						<div class="top">
-							<span class="sub-header"><?php echo $value['parent']['title']; ?></span>
+							<span class="sub-header"><?php echo $value['parent_title']; ?></span>
 							<span class="header"><?php echo $value['title']; ?></span>
 						</div>
 						<div class="bottom">
@@ -189,7 +172,7 @@
 						<div class="mask">
 							<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
 							<div class="top">
-								<span class="sub-header"><?php echo $value['parent']['title']; ?></span>
+								<span class="sub-header"><?php echo $value['parent_title']; ?></span>
 								<span class="header"><?php echo $value['title']; ?></span>
 							</div>
 							<div class="bottom">
@@ -242,19 +225,22 @@
 	<div class="section-header">
 		<div class="row">
 			<div class="col-sm-6 col-xs-12">
-				<h3><?php echo $services['title'];?></h3>
-				<p><?php echo $services['content'];?></p>
+				<h1><?php echo $shared_corner['title'];?></h1>
+				<div class="line">
+					<div class="line-primary"></div>
+				</div>
+				<p><?php echo $shared_corner['content'];?></p>
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<?php foreach ($post_services as $key => $value): ?>
+		<?php foreach ($post_shared_corner as $key => $value): ?>
 			<div class="item col-sm-6 col-xs-12">
 				<div class="mask">
-					<img src="<?php echo base_url('/assets/upload/post/'.$value['image']);?>" alt="blogs image">
+					<img src="http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg" alt="blogs image">
 					<div class="content">
-						<h4 class="sub-header"><?php echo $services['title'];?></h4>
-						<a href="<?php echo base_url('') ?>">
+						<h4 class="sub-header"><?php echo $value['title'];?></h4>
+						<a href="<?php echo base_url('bai-viet/').$value['slug'] ?>">
 							<h2 class="header"><?php echo $value['title']; ?></h2>
 						</a>
 					</div>
@@ -264,14 +250,14 @@
 	</div>
 </section>
 
-<section id="visa" class="container-fluid section" style="background-image: url('<?php echo base_url('assets/upload/post_category/'.$visa['image']); ?>');">
+<section id="visa" class="container-fluid section" style="background-image: url('http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg');">
 	<div class="overlay">
 		<div class="container">
 			<div class="head">
-				<h1><?php echo $visa['title'] ?></h1>
+				<h1>title</h1>
 			</div>
 			<div class="body">
-				<h4><?php echo $visa['content'] ?></h4>
+				<h4>content</h4>
 			</div>
 			<div class="foot">
 				<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
@@ -286,17 +272,17 @@
 	<div class="section-header">
 		<div class="row">
 			<div class="col-sm-6 col-xs-12">
-				<h3><?php echo $blogs['title']; ?></h3>
-				<p><?php echo $blogs['content']; ?></p>
+				<h3><?php echo $archive_library['title']; ?></h3>
+				<p><?php echo $archive_library['content']; ?></p>
 			</div>
 		</div>
 	</div>
 	<div class="row">
-        <?php foreach ($post_blogs as $value): ?>
+        <?php foreach ($post_archive_library as $value): ?>
 		<div class="item col-sm-4 col-xs-12">
 			<div class="inner">
 				<div class="mask">
-					<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
+					<img src="http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg" alt="blogs image">
 				</div>
 				<div class="head">
 					<h2><?php echo $value['title']; ?></h2>

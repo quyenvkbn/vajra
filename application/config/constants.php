@@ -13,6 +13,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 
+/**
+ * FIXED TOUR CATEGORIES ID
+ */
+defined('FIXED_DOMESTIC_PILGRIMAGE_CATEGORY_ID') OR define('FIXED_DOMESTIC_PILGRIMAGE_CATEGORY_ID', 22);
+defined('FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID') OR define('FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID', 23);
+
+/**
+ * FIXED POST CATEGORIES ID
+ */
+defined('FIXED_SHARED_CORNER')        OR define('FIXED_SHARED_CORNER', 19);
+defined('FIXED_ARCHIVE_LIBRARY')        OR define('FIXED_ARCHIVE_LIBRARY', 16);
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes

@@ -55,19 +55,19 @@ class Product_category_model extends MY_Model{
     public function get_all_lang($order="asc") {
         $this->db->select($this->table .'.*');
         $this->db->from($this->table);
-        $this->db->where($this->table .'.is_deleted', 0);
-        $this->db->where($this->table .'.is_activated', 0);
-        $this->db->group_by($this->table .".id");
-        $this->db->order_by($this->table .".sort", $order);
+        $this->db->where('is_deleted', 0);
+        $this->db->where('is_activated', 0);
+        $this->db->group_by("id");
+        //$this->db->order_by("sort", $order);
         return $this->db->get()->result_array();
     }
     public function get_by_slug_lang($slug,$order="asc") {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
-        $this->db->select($this->table .'.*');
+        $this->db->select('*');
         $this->db->from($this->table);
-        $this->db->where($this->table .'.is_deleted', 0);
-        $this->db->where($this->table .'.is_activated', 0);
-        $this->db->where($this->table .'.slug', $slug);
+        $this->db->where('is_deleted', 0);
+        $this->db->where('is_activated', 0);
+        $this->db->where('slug', $slug);
         $this->db->limit(1);
         return $this->db->get()->row_array();
     }
