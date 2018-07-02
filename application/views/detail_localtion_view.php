@@ -1,7 +1,7 @@
 <!-- About Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.css">
 
-<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url('<?php echo base_url('assets/upload/post/'.$detail['image']) ?>');" data-stellar-background-ratio="0.5">
+<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url('<?php echo base_url('assets/upload/localtion/'.$detail['slug'].'/'.$detail['image']) ?>');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -23,10 +23,10 @@
             <div class="left col-md-8 col-md-offset-2 col-sm-12">
                 <div class="section-heading">
                     <h2><?php echo $detail['title'] ?></h2>
+                    <img src="<?php echo base_url('assets/upload/localtion/'.$detail['slug'].'/'.$detail['image']) ?>" alt="" style="width: 100%;">
                 </div>
                 <div class="section-body">
-                    <p><?php echo $detail['description'] ?></p>
-                    <?php echo $detail['content'] ?>
+                    <p><?php echo $detail['content'] ?></p>
                 </div>
                 <div class="section-footer">
                     <p>Shared:</p>
@@ -35,9 +35,6 @@
                     </ul>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </div>

@@ -162,4 +162,17 @@ class MY_Model extends CI_Model {
         $this->db->where(array_merge(array('is_deleted' => 0),$where));
         return $this->db->get($this->table)->row_array();
     }
+    /**
+     * FETCH POSTS IN SPECIFY CATEGORY
+     * @param 
+     * @return mixed
+     */
+    public function get_all_item($category){
+        $this->db->select('*')
+            ->from($this->table)
+            ->where($this->table . '.post_category_id', $category)
+            ->where($this->table . '.is_deleted', 0);
+
+        return $result = $this->db->get()->result_array();
+    }
 }

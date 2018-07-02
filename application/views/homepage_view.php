@@ -54,7 +54,7 @@
 								<div class="item active">
 									<div class="inner col-xs-12 col-sm-6 col-md-4">
 	                                    <div class="mask" id="no-hover">
-	                                    	<a href="<?php echo base_url('tours/' . $domestic['slug']) ?>">
+	                                    	<a href="<?php echo base_url('danh-muc/' . $domestic['slug']) ?>">
                                                 <?php if($domestic['image']){ ?>
                                                     <img src="<?php echo base_url('/assets/upload/product_category/'.$domestic['slug'].'/'.$domestic['image']) ?>" alt="image">
                                                 <?php }else{ ?>
@@ -68,7 +68,7 @@
                                                 </div>
                                                 <div class="body">
                                                     <a href="<?php echo base_url('/danh-muc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
-                    									<?php echo $this->lang->line('see-all') ?>
+                    									Xem tất cả
 													</a>
                                                 </div>
                                             </div>
@@ -172,7 +172,7 @@
 								<div class="item active">
 									<div class="inner col-xs-12 col-sm-6 col-md-4">
 	                                    <div class="mask" id="no-hover">
-	                                    	<a href="<?php echo base_url('tours/' . $international['slug']) ?>">
+	                                    	<a href="<?php echo base_url('danh-muc/' . $international['slug']) ?>">
                                                 <?php if($international['image']){ ?>
                                                     <img src="<?php echo base_url('/assets/upload/product_category/'.$international['slug'].'/'.$international['image']) ?>" alt="image">
                                                 <?php }else{ ?>
@@ -186,7 +186,7 @@
                                                 </div>
                                                 <div class="body">
                                                     <a href="<?php echo base_url('/danh-muc/'.$international['slug']) ?>" class="btn btn-primary" role="button">
-                    									<?php echo $this->lang->line('see-all') ?>
+                    									Xem tất cả
 													</a>
                                                 </div>
                                             </div>
@@ -283,15 +283,15 @@
 			<div class="item col-sm-<?php echo ($key == 0)? '12': '4'; ?> col-xs-12" style="<?php echo ($key == 0)? 'padding-bottom: 25px;': ''; ?>">
 				<div class="mask">
 					<div class="col-md-<?php echo ($key == 0)? '8': '12'; ?>" style="padding:0px;<?php echo ($key == 0)? 'padding-right: 10px;': ''; ?>">
-							<img src="http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg" alt="blogs image">
+							<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
 					</div>
 					<div class="col-md-<?php echo ($key == 0)? '4': '12'; ?>" style="padding:0px;">
 						<div class="content">
                             <p class="sub-header"><?php echo $value['created_at'];?></p>
 							<h4 class="sub-header"><?php echo $value['title'];?></h4>
 								<p class="header"><?php echo $value['description']; ?></p>
-							<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-	                            View detail
+							<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+	                            Xem chi tiết
 	                        </a>
 						</div>
 					</div>
@@ -310,7 +310,7 @@
 					<div class="content">
 						<p class="sub-header"><?php echo $value['created_at'];?></p>
                         <h3>
-                            <a href="<?php echo base_url('tours/'.$value['slug']) ?>" role="button">
+                            <a href="<?php echo base_url('location/'.$value['slug']) ?>" role="button">
                                 <?php echo $value['title'];?>
                             </a>
                         </h3>
@@ -333,11 +333,11 @@
 		<?php foreach ($post_shared_corner as $key => $value): ?>
 			<div class="item col-sm-4 col-xs-12">
 				<div class="mask">
-					<img src="http://www.timeoutdubai.com/images/content/73463/2016_3_img_base.jpg" alt="blogs image">
+					<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
 					<div class="content">
                         <p class="sub-header"><?php echo $value['created_at'];?></p>
                         <h3>
-                            <a href="<?php echo base_url('tours/'.$value['slug']) ?>" role="button">
+                            <a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" role="button">
                                 <?php echo $value['title'];?>
                             </a>
                         </h3>
