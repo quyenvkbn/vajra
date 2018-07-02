@@ -63,4 +63,11 @@ class Localtion_model extends MY_Model {
         $this->db->where_in('id', $id);
         return $this->db->get()->result_array();
     }
+    public function fetch_row_by_slug($slug){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('is_deleted', 0);
+        $this->db->where('slug', $slug);
+        return $this->db->get()->row_array();
+    }
 }

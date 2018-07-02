@@ -60,16 +60,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="right col-sm-6 col-xs-12">
 				<ul>
 					<li>
-						<a href="" class="change-language" data-language="vi">
-							<img src="<?php echo site_url('assets/img/vn@2x.png') ?>" alt="flag Vietnam"> Tiếng Việt</li>
-						</a>
-					<li>
-						<a href="" class="change-language" data-language="en">
-							<img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB"> English</li>
-						</a>
-					</li>
-					<li> | </li>
-					<li>
 						<a href="" target="_blank">
 							<i class="fa fa-facebook-square" aria-hidden="true"></i>
 						</a>
@@ -157,7 +147,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="container" id="main-nav">
 			<ul>
 				<li class="menu-tabs">
-					<a href="<?php echo base_url('') ?>">
+					<a href="<?php echo base_url('danh-muc/hanh-huong-trong-nuoc') ?>">
 						Hành hương trong nước<span class="caret"></span>
 					</a>
 					<div class="menu-tabs-expand menu-expand">
@@ -191,7 +181,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</li>
 				<li class="menu-tabs">
-					<a href="<?php echo base_url('') ?>">
+					<a href="<?php echo base_url('danh-muc/hanh-huong-nuoc-ngoai') ?>">
 						Hành hương nước ngoài <span class="caret"></span>
 					</a>
 					<div class="menu-tabs-expand menu-expand">
@@ -199,9 +189,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="left col-md-3 col-sm-4 col-xs-12">
 								<ul>
 									<li>
-										Danh mục menu nước ngoài
-										<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+										<a href="<?php echo base_url('') ?>" style="color:black;">
+											Danh mục menu nước ngoài
+											<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
 														aria-hidden="true"></span>
+										</a>
+										
 										<ul>
 											<li>
 												<div class="mask">
@@ -225,17 +218,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</li>
 				<li>
-					<a href="<?php echo base_url('danh-muc/tour-dac-biet'); ?>">
+					<a href="<?php echo base_url('chuyen-muc/tin-tuc'); ?>">
 						Tin tức
 					</a>
 				</li>
 				<li>
-					<a href="javascript:void(0);">
+					<a href="<?php echo base_url('location'); ?>">
 						Kho thư viện
 					</a>
 				</li>
 				<li>
-					<a href="javascript:void(0);">
+					<a href="<?php echo base_url('chuyen-muc/goc-chia-se'); ?>">
 						Góc chia sẻ
 					</a>
 				</li>

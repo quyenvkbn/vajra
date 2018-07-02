@@ -39,21 +39,21 @@ class Tours extends Public_Controller {
     }
     public function category($slug) {
         if($this->product_category_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
-            $detail = $this->product_category_model->get_by_slug_lang($slug,array(),'vi');
+            $detail = $this->product_category_model->get_by_slug_lang($slug);
             $get_all_lang = $this->product_category_model->get_all_lang();
-            $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(),$detail['parent_id'],$sub);
+            $this->get_multiple_products_with_category($get_all_lang,$detail['parent_id'],$sub);
             if(empty($sub)){
                 $detail['sub'] = $sub;
             }else{
                 $detail['sub'] = array_reverse($sub);
             }
-            $this->get_multiple_products_with_category_id($this->product_category_model->get_all_lang(), $detail['id'], $ids);
+            $this->get_multiple_products_with_category_id($get_all_lang, $detail['id'], $ids);
             if(empty($ids)){
                 $ids = array();
             }
             array_unshift($ids,$detail['id']);
-            $product_array = array();
-            $tour =$this->product_model->get_by_product_category_id_array($ids);
+            $product_array =$this->product_model->get_by_product_category_id_array($ids);
+          
             $this->data['detail'] = $detail;
             $this->data['product_array'] = $product_array;
             $this->render('list_tours_view');
