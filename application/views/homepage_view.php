@@ -24,7 +24,27 @@
 							<img src="<?php echo base_url('/assets/upload/banner/'.$value['image']); ?>" alt="slide 2">
 						</div>
 						<div class="carousel-caption">
-							<?php echo $value['title']; ?>
+							<div class="big-title">
+								<h4 class="subtitle">
+                                    Location
+								</h4>
+								<h1 class="title">
+									title of the tour title of the tour title of the tour title of the tour
+								</h1>
+								<ul class="list-inline">
+									<li>
+										<a href="" class="btn btn-primary" role="button">
+											Book now!
+										</a>
+									</li>
+									<li>
+										<a href="" class="btn btn-default" role="button">
+											View Detail
+										</a>
+									</li>
+								</ul>
+							</div>
+
 						</div>
 					</div>
 				<?php endforeach ?>
@@ -45,103 +65,79 @@
 </section>
 <section id="domestic" class="container-fluid section tour-intro">
 	<div class="container">
+		<div class="section-header">
+			<div class="row">
+				<div class="left col-xs-8">
+					<h1>Hành hương trong nước</h1>
+				</div>
+				<div class="right col-xs-4">
+					<a href="<?php echo base_url('') ?>">See All Tours <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+				</div>
+			</div>
+		</div>
 		<div class="row">
-			<div class="left col-sm-12 col-xs-12">
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="carousel carousel-showmanymoveone slider" id="domestic-slider">
-							<div class="carousel-inner">
-								<div class="item active">
-									<div class="inner col-xs-12 col-sm-6 col-md-4">
-	                                    <div class="mask" id="no-hover">
-	                                    	<a href="<?php echo base_url('danh-muc/' . $domestic['slug']) ?>">
-                                                <?php if($domestic['image']){ ?>
-                                                    <img src="<?php echo base_url('/assets/upload/product_category/'.$domestic['slug'].'/'.$domestic['image']) ?>" alt="image">
-                                                <?php }else{ ?>
-                                                    <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
-                                                <?php } ?>
-                                            </a>
-                                            <div class="overview">
-                                                <div class="head">
-                                                    <h4 class="post-subtitle"><?php echo $domestic['title'] ?></h4>
-                                                    <h2 class="post-title"><?php echo $domestic['content']; ?></h2>
-                                                </div>
-                                                <div class="body">
-                                                    <a href="<?php echo base_url('/danh-muc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
-                    									Xem tất cả
-													</a>
-                                                </div>
-                                            </div>
-	                                    </div>
-	                                </div>
-	                            </div>
-                                <?php if (!empty($tour_domestic)): ?>
-                                    <?php foreach ($tour_domestic as $key => $value): ?>
-                                        <div class="item">
-                                            <div class="inner col-xs-12 col-sm-6 col-md-4">
-                                                <div class="mask">
-                                                    <a href="<?php echo base_url('tours/' . $value['slug']) ?>">
-                                                        <?php if($value['image']){ ?>
-                                                            <img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
-                                                        <?php }else{ ?>
-                                                            <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
-                                                        <?php } ?>
-                                                    </a>
-                                                    <div class="overview">
-                                                        <div class="head">
-                                                            <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
-                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
-                                                        </div>
-                                                        <div class="body">
-                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="head">
-                                                            <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
-                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
-                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
-                                                        </div>
-                                                        <div class="body">
-                                                            <table class="table">
-                                                                <tr>
-                                                                    <td>Time</td>
-                                                                    <td><?php echo count(json_decode($value['dateimg'])) ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Start</td>
-                                                                    <td>
-                                                                        <?php
-                                                                        if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
-                                                                            $rmtime = str_replace(" 00:00:00","",$value['date']);
-                                                                            $date= explode("-",$rmtime);
-                                                                            if(count($date) == 3){
-                                                                                $value['date'] = $date[2]."/".$date[1]."/".$date[0];
-                                                                            }
-                                                                        }
-                                                                        ?>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </div>
-                                                        <div class="foot">
-                                                            <a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-                                                                <?php echo $this->lang->line('explore') ?>
-                                                            </a>
-                                                        </div>
-                                                    </div>
+			<div class="col-xs-12">
+				<div class="carousel carousel-showmanymoveone slider" id="domestic-slider">
+					<div class="carousel-inner">
+						<div class="item active">
+							<div class="inner cover col-xs-12 col-sm-6 col-md-4">
+								<div class="mask">
+									<img src="https://images.unsplash.com/photo-1503432548458-a4bdc273826a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c387dfaa5ef4a26cbaea1337993c702e&auto=format&fit=crop&w=1965&q=80" alt="domestic cover image">
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+									<div class="overlay">
+										<h1>Hành hương trong nước</h1>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet nulla ornare, blandit enim ac, pharetra erat. Aenean pretium ante ornare nunc tempor, eu scelerisque sem viverra. Donec tempor mi nec turpis placerat auctor non ac tellus. Phasellus semper dui nec tellus tempor dictum eu et ex. Donec eget iaculis enim. Fusce justo sapien, semper ac tristique quis, posuere non lorem. Sed mi sem, pellentesque eu fringilla ut, bibendum at nisi. Sed id neque metus.</p>
+										<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">See All Tours</a>
+									</div>
+								</div>
 							</div>
 						</div>
+
+                        <?php if (!empty($tour_domestic)): ?>
+                            <?php foreach ($tour_domestic as $key => $value): ?>
+								<div class="item">
+									<div class="inner col-xs-12 col-sm-6 col-md-4">
+										<div class="wrapper">
+											<div class="mask">
+												<a href="<?php echo base_url('tours/' . $value['slug']) ?>">
+                                                    <?php if($value['image']){ ?>
+														<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+                                                    <?php }else{ ?>
+														<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+                                                    <?php } ?>
+												</a>
+											</div>
+											<div class="head">
+												<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+												<h2 class="post-title"><?php echo $value['title']; ?></h2>
+												<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+											</div>
+											<div class="body">
+												<p class="post-description"><?php echo $value['description']; ?></p>
+											</div>
+											<div class="foot">
+												<ul class="list-inline">
+													<li>
+														<a href="<?php echo base_url('/danh-muc/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+															Đặt Ngay
+														</a>
+													</li>
+													<li>
+														<a href="<?php echo base_url('/danh-muc/'.$value['slug']) ?>" class="btn btn-default" role="button">
+															Xem chi tiết
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
 					</div>
 				</div>
 			</div>
-			<div class="foot">
+			<div class="col-xs-12 slider-control">
 				<ul class="list-inline">
 					<li>
 						<a class="btn btn-default" href="#domestic-slider" data-slide="prev">
@@ -159,115 +155,89 @@
 	</div>
 </section>
 
-
-
 <section id="international" class="container-fluid section tour-intro">
 	<div class="container">
+		<div class="section-header">
+			<div class="row">
+				<div class="left col-xs-8">
+					<h1>Hành hương nước ngoài</h1>
+				</div>
+				<div class="right col-xs-4">
+					<a href="<?php echo base_url('') ?>">See All Tours <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+				</div>
+			</div>
+		</div>
 		<div class="row">
-			<div class="left col-sm-12 col-xs-12">
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="carousel carousel-showmanymoveone slider" id="international-slider">
-							<div class="carousel-inner">
-								<div class="item active">
-									<div class="inner col-xs-12 col-sm-6 col-md-4">
-	                                    <div class="mask" id="no-hover">
-	                                    	<a href="<?php echo base_url('danh-muc/' . $international['slug']) ?>">
-                                                <?php if($international['image']){ ?>
-                                                    <img src="<?php echo base_url('/assets/upload/product_category/'.$international['slug'].'/'.$international['image']) ?>" alt="image">
-                                                <?php }else{ ?>
-                                                    <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
-                                                <?php } ?>
-                                            </a>
-                                            <div class="overview">
-                                                <div class="head">
-                                                    <h4 class="post-subtitle"><?php echo $international['title'] ?></h4>
-                                                    <h2 class="post-title"><?php echo $international['content']; ?></h2>
-                                                </div>
-                                                <div class="body">
-                                                    <a href="<?php echo base_url('/danh-muc/'.$international['slug']) ?>" class="btn btn-primary" role="button">
-                    									Xem tất cả
-													</a>
-                                                </div>
-                                            </div>
-	                                    </div>
-	                                </div>
-	                            </div>
-                                <?php if (!empty($tour_international)): ?>
-                                    <?php foreach ($tour_international as $key => $value): ?>
-                                        <div class="item">
-                                            <div class="inner col-xs-12 col-sm-6 col-md-4">
-                                                <div class="mask">
-                                                    <a href="<?php echo base_url('tours/' . $value['slug']) ?>">
-                                                        <?php if($value['image']){ ?>
-                                                            <img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
-                                                        <?php }else{ ?>
-                                                            <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
-                                                        <?php } ?>
-                                                    </a>
-                                                    <div class="overview">
-                                                        <div class="head">
-                                                            <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
-                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
-                                                        </div>
-                                                        <div class="body">
-                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="head">
-                                                            <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
-                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
-                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
-                                                        </div>
-                                                        <div class="body">
-                                                            <table class="table">
-                                                                <tr>
-                                                                    <td>Time</td>
-                                                                    <td><?php echo count(json_decode($value['dateimg'])) ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Start</td>
-                                                                    <td>
-                                                                        <?php
-                                                                        if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
-                                                                            $rmtime = str_replace(" 00:00:00","",$value['date']);
-                                                                            $date= explode("-",$rmtime);
-                                                                            if(count($date) == 3){
-                                                                                $value['date'] = $date[2]."/".$date[1]."/".$date[0];
-                                                                            }
-                                                                        }
-                                                                        ?>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </div>
-                                                        <div class="foot">
-                                                            <a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-                                                                <?php echo $this->lang->line('explore') ?>
-                                                            </a>
-                                                        </div>
-                                                    </div>
+			<div class="col-xs-12">
+				<div class="carousel carousel-showmanymoveone slider" id="domestic-slider">
+					<div class="carousel-inner">
+						<div class="item active">
+							<div class="inner cover col-xs-12 col-sm-6 col-md-4">
+								<div class="mask">
+									<img src="https://images.unsplash.com/photo-1528333814247-9126273870c8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=266dcac2ce3827ff0b9f8037ec83fa8f&auto=format&fit=crop&w=1951&q=80" alt="international cover image">
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+									<div class="overlay">
+										<h1>Hành hương nước ngoài</h1>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet nulla ornare, blandit enim ac, pharetra erat. Aenean pretium ante ornare nunc tempor, eu scelerisque sem viverra. Donec tempor mi nec turpis placerat auctor non ac tellus. Phasellus semper dui nec tellus tempor dictum eu et ex. Donec eget iaculis enim. Fusce justo sapien, semper ac tristique quis, posuere non lorem. Sed mi sem, pellentesque eu fringilla ut, bibendum at nisi. Sed id neque metus.</p>
+										<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">See All Tours</a>
+									</div>
+								</div>
 							</div>
 						</div>
+
+                        <?php if (!empty($tour_international)): ?>
+                            <?php foreach ($tour_international as $key => $value): ?>
+								<div class="item">
+									<div class="inner col-xs-12 col-sm-6 col-md-4">
+										<div class="wrapper">
+											<div class="mask">
+												<a href="<?php echo base_url('tours/' . $value['slug']) ?>">
+                                                    <?php if($value['image']){ ?>
+														<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+                                                    <?php }else{ ?>
+														<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+                                                    <?php } ?>
+												</a>
+											</div>
+											<div class="head">
+												<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+												<h2 class="post-title"><?php echo $value['title']; ?></h2>
+												<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+											</div>
+											<div class="body">
+												<p class="post-description"><?php echo $value['description']; ?></p>
+											</div>
+											<div class="foot">
+												<ul class="list-inline">
+													<li>
+														<a href="<?php echo base_url('/danh-muc/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+															Đặt Ngay
+														</a>
+													</li>
+													<li>
+														<a href="<?php echo base_url('/danh-muc/'.$value['slug']) ?>" class="btn btn-default" role="button">
+															Xem chi tiết
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
 					</div>
 				</div>
 			</div>
-			<div class="foot">
+			<div class="col-xs-12 slider-control">
 				<ul class="list-inline">
 					<li>
-						<a class="btn btn-default" href="#international-slider" data-slide="prev">
+						<a class="btn btn-default" href="#domestic-slider" data-slide="prev">
 							<i class="fa fa-arrow-left" aria-hidden="false"></i>
 						</a>
 					</li>
 					<li>
-						<a class="btn btn-default" href="#international-slider" data-slide="next">
+						<a class="btn btn-default" href="#domestic-slider" data-slide="next">
 							<i class="fa fa-arrow-right" aria-hidden="false"></i>
 						</a>
 					</li>
@@ -278,6 +248,16 @@
 </section>
 
 <section id="news" class="section container">
+	<div class="section-header">
+		<div class="row">
+			<div class="left col-xs-8">
+				<h1>Tin tức</h1>
+			</div>
+			<div class="right col-xs-4">
+				<a href="<?php echo base_url('') ?>">See All News <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+			</div>
+		</div>
+	</div>
 	<div class="row" style="padding-top: 25px;">
 		<?php foreach ($post_news as $key => $value): ?>
 			<div class="item col-sm-<?php echo ($key == 0)? '12': '4'; ?> col-xs-12" style="<?php echo ($key == 0)? 'padding-bottom: 25px;': ''; ?>">
@@ -286,13 +266,17 @@
 							<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
 					</div>
 					<div class="col-md-<?php echo ($key == 0)? '4': '12'; ?>" style="padding:0px;">
-						<div class="content">
-                            <p class="sub-header"><?php echo $value['created_at'];?></p>
-							<h4 class="sub-header"><?php echo $value['title'];?></h4>
-								<p class="header"><?php echo $value['description']; ?></p>
+						<div class="head">
+							<h4 class="post-subtitle"><?php echo $value['created_at'];?></h4>
+							<h2 class="post-title"><?php echo $value['title'];?></h2>
+						</div>
+						<div class="body">
+							<p class="post-description"><?php echo $value['description']; ?></p>
+						</div>
+						<div class="foot">
 							<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-	                            Xem chi tiết
-	                        </a>
+								Xem chi tiết
+							</a>
 						</div>
 					</div>
 				</div>
@@ -301,30 +285,71 @@
 	</div>
 </section>
 
-<section id="gallery" class="section container">
-	<div class="row">
-		<?php foreach ($location_archive_library as $key => $value): ?>
-			<div class="item col-sm-4 col-xs-12">
-				<div class="mask">
-					<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="blogs image">
-					<div class="content">
-						<p class="sub-header"><?php echo $value['created_at'];?></p>
-                        <h3>
-                            <a href="<?php echo base_url('location/'.$value['slug']) ?>" role="button">
-                                <?php echo $value['title'];?>
-                            </a>
-                        </h3>
-					</div>
+<section id="gallery" class="section container-fluid">
+	<div class="container">
+		<div class="section-header">
+			<div class="row">
+				<div class="left col-xs-8">
+					<h1>Thư viện ảnh</h1>
+				</div>
+				<div class="right col-xs-4">
+					<a href="<?php echo base_url('') ?>">See All <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 				</div>
 			</div>
-			<?php echo (($key+1)%3 == 0)?'<div class="clear" style="clear: left;"></div>':''; ?>
-		<?php endforeach ?>
+		</div>
+		<div class="row">
+			<div class="grid">
+				<div class="grid-sizer"></div>
+                <?php foreach ($location_archive_library as $key => $value): ?>
+                    <?php $class = '';
+                    switch ($key){
+                        case 0:
+                            $class = 'grid-item-width-2 grid-item-height-2';
+                            break;
+                        case 1:
+                            $class = '';
+                            break;
+                        case 2:
+                            $class = '';
+                            break;
+                        case 3:
+                            $class = 'grid-item-width-2';
+                            break;
+                        case 4:
+                            $class = 'grid-item-height-2';
+                            break;
+                        case 5:
+                            $class = 'grid-item-width-2 grid-item-height-2';
+                            break;
+                        case 6:
+                            $class = 'grid-item-height-2';
+                            break;
+                    }?>
+					<div class="grid-item <?php echo $class ?> col-xs-12">
+						<div class="mask">
+							<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="blogs image">
+							<div class="overlay"></div>
+							<div class="content">
+								<h4 class="post-subtitle"><?php echo $value['created_at'];?></h4>
+								<h2 class="post-title">
+									<a href="<?php echo base_url('location/'.$value['slug']) ?>" role="button">
+                                        <?php echo $value['title'];?>
+									</a>
+								</h2>
+							</div>
+						</div>
+					</div>
+                    <?php echo (($key+1)%3 == 0)?'<div class="clear" style="clear: left;"></div>':''; ?>
+                <?php endforeach ?>
+			</div>
+
+		</div>
 	</div>
 </section>
 
 <section id="shared_corner" class="section container">
-	<div class="row" style="padding-top: 25px;">
-		<div class="item col-sm-12 col-xs-12">
+	<div class="row">
+		<div class="item cover col-sm-12 col-xs-12">
 			<div class="mask">
 				<img src="<?php echo base_url('assets/upload/post_category/'.$shared_corner['image']); ?>" alt="blogs image"  style="height: 300px;">
 				<h2><?php echo $shared_corner['title']; ?></h2>
@@ -334,17 +359,50 @@
 			<div class="item col-sm-4 col-xs-12">
 				<div class="mask">
 					<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
+
+					<div class="overlay"></div>
 					<div class="content">
-                        <p class="sub-header"><?php echo $value['created_at'];?></p>
-                        <h3>
-                            <a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" role="button">
+						<h4 class="post-subtitle"><?php echo $value['created_at'];?></h4>
+						<h2 class="post-title">
+							<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" role="button">
                                 <?php echo $value['title'];?>
-                            </a>
-                        </h3>
+							</a>
+						</h2>
 					</div>
 				</div>
 			</div>
 		<?php endforeach ?>
 	</div>
 </section>
+
+<script src='https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js'></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+
+<script type="text/javascript">
+
+    // init Isotope
+    var $grid = $('.grid').isotope({
+        // set itemSelector so .grid-sizer is not used in layout
+        itemSelector: '.grid-item',
+        percentPosition: true,
+        masonry: {
+            // use element for option
+            columnWidth: '.grid-sizer'
+        }
+    });
+
+    // filter items on button click
+    $('.work-control ul li').on( 'click', 'a', function() {
+        var filterValue = $(this).attr('data-filter');
+        $grid.isotope({ filter: filterValue });
+    });
+
+    // layout Isotope after each image loads
+    $grid.imagesLoaded().progress( function() {
+        $grid.isotope('layout');
+    });
+
+</script>
 

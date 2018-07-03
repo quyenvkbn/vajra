@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Diamond Tour</title>
+    <title>Vajra</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -39,89 +39,156 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body>
+<section id="page">
+	<header>
+		<section id="top-nav" class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="left col-sm-6 col-xs-12">
+						<ul>
+							<li>
+								<a href="<?php echo base_url('about/')?>">
+									<i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('contact/')?>">
+									<i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->lang->line('contact') ?>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="right col-sm-6 col-xs-12">
+						<ul>
+							<li>
+								<a href="mailto: info@diamondtour.vn" target="_blank">
+									<i class="fa fa-envelope-o" aria-hidden="true"></i> info@diamondtour.vn
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
 
-<section id="top-nav" class="container-fluid">
-	<div class="container">
-		<div class="row">
-			<div class="left col-sm-6 col-xs-12">
-				<ul>
-					<li>
-						<a href="<?php echo base_url('about/')?>">
-							<i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?>
+		<nav id="main-nav" class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="left col-sm-3 col-xs-6">
+						<a href="<?php echo base_url('') ?>">
+							<img src="<?php echo site_url('assets/img/')?>logo-W.png" alt="logo Diamond">
 						</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('contact/')?>">
-							<i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->lang->line('contact') ?>
-						</a>
-					</li>
-				</ul>
+					</div>
+					<div class="right col-sm-9 hidden-xs">
+						<ul>
+							<li>
+								<a href="<?php echo base_url('') ?>">Home</a>
+							</li>
+							<li class="menu-tabs">
+								<a href="<?php echo base_url('danh-muc/hanh-huong-trong-nuoc') ?>">
+									Domestic <span class="caret"></span>
+								</a>
+								<div class="menu-tabs-expand menu-expand">
+									<div class="row">
+										<div class="left col-md-3 col-sm-4 col-xs-12">
+											<ul>
+												<li>
+													Danh mục menu trong nước
+													<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+														  aria-hidden="true"></span>
+													<ul>
+														<li>
+															<div class="mask">
+																<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
+																	 alt="image example">
+															</div>
+															<a href="<?php echo base_url(''); ?>">title trong nước</a>
+														</li>
+														<li>
+															<div class="mask">
+																<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
+																	 alt="image example">
+															</div>
+															<a href="<?php echo base_url(''); ?>">title trong nước</a>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="menu-tabs">
+								<a href="<?php echo base_url('danh-muc/hanh-huong-nuoc-ngoai') ?>">
+									International <span class="caret"></span>
+								</a>
+								<div class="menu-tabs-expand menu-expand">
+									<div class="row">
+										<div class="left col-md-3 col-sm-4 col-xs-12">
+											<ul>
+												<li>
+													<a href="<?php echo base_url('') ?>" style="color:black;">
+														Danh mục menu nước ngoài
+														<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+															  aria-hidden="true"></span>
+													</a>
+
+													<ul>
+														<li>
+															<div class="mask">
+																<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
+																	 alt="image example">
+															</div>
+															<a href="<?php echo base_url(''); ?>">title nước ngoài</a>
+														</li>
+														<li>
+															<div class="mask">
+																<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
+																	 alt="image example">
+															</div>
+															<a href="<?php echo base_url(''); ?>">title nước ngoài</a>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<a href="<?php echo base_url('chuyen-muc/tin-tuc'); ?>">
+									News
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('location'); ?>">
+									Gallery
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('chuyen-muc/goc-chia-se'); ?>">
+									Share Corner
+								</a>
+							</li>
+
+						</ul>
+					</div>
+					<div class="btn-expand visible-xs col-xs-6">
+						<button class="btn btn-primary" id="btn-expand">
+							<i class="fa fa-bars" aria-hidden="false"></i>
+						</button>
+					</div>
+				</div>
 			</div>
-			<div class="right col-sm-6 col-xs-12">
-				<ul>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-facebook-square" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-twitter-square" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-pinterest-square" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-linkedin-square" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-instagram" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-youtube-square" aria-hidden="true"></i>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+		</nav>
+	</header>
+
+
+
 </section>
-<section id="brand" class="container-fluid">
-	<div class="container">
-		<div class="row">
-			<div class="left col-sm-4 col-xs-6">
-				<a href="<?php echo base_url('') ?>">
-					<img src="<?php echo site_url('assets/img/')?>logo.png" alt="logo Diamond">
-				</a>
-			</div>
-			<div class="right col-sm-8 hidden-xs">
-				<ul>
-					<li class="outline">
-						<i class="fa fa-phone" aria-hidden="true"></i> Hotline <br>
-						<a href="tel:(024) 1234 5678">(024) 1234 5678</a>
-					</li>
-					<li class="outline">
-						<i class="fa fa-envelope-o" aria-hidden="true"></i> Email <br>
-						<a href="mailto:info@diamondtour.vn">info@diamondtour.vn</a>
-					</li>
-				</ul>
-			</div>
-			<div class="btn-expand visible-xs col-xs-6">
-				<button class="btn btn-primary" id="btn-expand">
-					<i class="fa fa-bars" aria-hidden="false"></i>
-				</button>
-			</div>
-		</div>
-	</div>
-</section>
+
+
+
 <script>
     $("a[class='change-language']").click(function(){
         $.ajax({
@@ -145,95 +212,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <header class="header">
 	<div class="container-fluid">
 		<div class="container" id="main-nav">
-			<ul>
-				<li class="menu-tabs">
-					<a href="<?php echo base_url('danh-muc/hanh-huong-trong-nuoc') ?>">
-						Hành hương trong nước<span class="caret"></span>
-					</a>
-					<div class="menu-tabs-expand menu-expand">
-						<div class="row">
-							<div class="left col-md-3 col-sm-4 col-xs-12">
-								<ul>
-									<li>
-										Danh mục menu trong nước
-										<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-														aria-hidden="true"></span>
-										<ul>
-											<li>
-												<div class="mask">
-													<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
-														 alt="image example">
-												</div>
-												<a href="<?php echo base_url(''); ?>">title trong nước</a>
-											</li>
-                                            <li>
-                                                <div class="mask">
-                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
-                                                         alt="image example">
-                                                </div>
-                                                <a href="<?php echo base_url(''); ?>">title trong nước</a>
-                                            </li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li class="menu-tabs">
-					<a href="<?php echo base_url('danh-muc/hanh-huong-nuoc-ngoai') ?>">
-						Hành hương nước ngoài <span class="caret"></span>
-					</a>
-					<div class="menu-tabs-expand menu-expand">
-						<div class="row">
-							<div class="left col-md-3 col-sm-4 col-xs-12">
-								<ul>
-									<li>
-										<a href="<?php echo base_url('') ?>" style="color:black;">
-											Danh mục menu nước ngoài
-											<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-														aria-hidden="true"></span>
-										</a>
-										
-										<ul>
-											<li>
-												<div class="mask">
-													<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
-														 alt="image example">
-												</div>
-												<a href="<?php echo base_url(''); ?>">title nước ngoài</a>
-											</li>
-                                            <li>
-                                                <div class="mask">
-                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
-                                                         alt="image example">
-                                                </div>
-                                                <a href="<?php echo base_url(''); ?>">title nước ngoài</a>
-                                            </li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<a href="<?php echo base_url('chuyen-muc/tin-tuc'); ?>">
-						Tin tức
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo base_url('location'); ?>">
-						Kho thư viện
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo base_url('chuyen-muc/goc-chia-se'); ?>">
-						Góc chia sẻ
-					</a>
-				</li>
-				
-			</ul>
+
 		</div>
 	</div>
 
