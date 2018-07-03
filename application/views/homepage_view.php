@@ -71,7 +71,7 @@
 					<h1>Hành hương trong nước</h1>
 				</div>
 				<div class="right col-xs-4">
-					<a href="<?php echo base_url('') ?>">See All Tours <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+					<a href="<?php echo base_url('danh-muc/'.$domestic['slug']) ?>">Xem tất cả Tours <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 				</div>
 			</div>
 		</div>
@@ -85,9 +85,9 @@
 									<img src="https://images.unsplash.com/photo-1503432548458-a4bdc273826a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c387dfaa5ef4a26cbaea1337993c702e&auto=format&fit=crop&w=1965&q=80" alt="domestic cover image">
 
 									<div class="overlay">
-										<h1>Hành hương trong nước</h1>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet nulla ornare, blandit enim ac, pharetra erat. Aenean pretium ante ornare nunc tempor, eu scelerisque sem viverra. Donec tempor mi nec turpis placerat auctor non ac tellus. Phasellus semper dui nec tellus tempor dictum eu et ex. Donec eget iaculis enim. Fusce justo sapien, semper ac tristique quis, posuere non lorem. Sed mi sem, pellentesque eu fringilla ut, bibendum at nisi. Sed id neque metus.</p>
-										<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">See All Tours</a>
+										<h1><?php echo $domestic['title'];?></h1>
+										<p><?php echo $domestic['content'];?></p>
+										<a href="<?php echo base_url('danh-muc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">Xem tất cả Tours</a>
 									</div>
 								</div>
 							</div>
@@ -118,12 +118,12 @@
 											<div class="foot">
 												<ul class="list-inline">
 													<li>
-														<a href="<?php echo base_url('/danh-muc/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+														<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
 															Đặt Ngay
 														</a>
 													</li>
 													<li>
-														<a href="<?php echo base_url('/danh-muc/'.$value['slug']) ?>" class="btn btn-default" role="button">
+														<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
 															Xem chi tiết
 														</a>
 													</li>
@@ -163,7 +163,7 @@
 					<h1>Hành hương nước ngoài</h1>
 				</div>
 				<div class="right col-xs-4">
-					<a href="<?php echo base_url('') ?>">See All Tours <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+					<a href="<?php echo base_url('') ?>">Xem tất cả Tours <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 				</div>
 			</div>
 		</div>
@@ -177,9 +177,9 @@
 									<img src="https://images.unsplash.com/photo-1528333814247-9126273870c8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=266dcac2ce3827ff0b9f8037ec83fa8f&auto=format&fit=crop&w=1951&q=80" alt="international cover image">
 
 									<div class="overlay">
-										<h1>Hành hương nước ngoài</h1>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet nulla ornare, blandit enim ac, pharetra erat. Aenean pretium ante ornare nunc tempor, eu scelerisque sem viverra. Donec tempor mi nec turpis placerat auctor non ac tellus. Phasellus semper dui nec tellus tempor dictum eu et ex. Donec eget iaculis enim. Fusce justo sapien, semper ac tristique quis, posuere non lorem. Sed mi sem, pellentesque eu fringilla ut, bibendum at nisi. Sed id neque metus.</p>
-										<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">See All Tours</a>
+										<h1><?php echo $international['title'];?></h1>
+										<p><?php echo $international['content'];?></p>
+										<a href="<?php echo base_url('danh-muc/'.$international['slug']) ?>" class="btn btn-primary" role="button">Xem tất cả Tours</a>
 									</div>
 								</div>
 							</div>
@@ -210,12 +210,12 @@
 											<div class="foot">
 												<ul class="list-inline">
 													<li>
-														<a href="<?php echo base_url('/danh-muc/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+														<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
 															Đặt Ngay
 														</a>
 													</li>
 													<li>
-														<a href="<?php echo base_url('/danh-muc/'.$value['slug']) ?>" class="btn btn-default" role="button">
+														<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
 															Xem chi tiết
 														</a>
 													</li>
@@ -254,7 +254,7 @@
 				<h1>Tin tức</h1>
 			</div>
 			<div class="right col-xs-4">
-				<a href="<?php echo base_url('') ?>">See All News <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+				<a href="<?php echo base_url('') ?>">Xem tất cả tin tức <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 			</div>
 		</div>
 	</div>
@@ -267,7 +267,7 @@
 					</div>
 					<div class="col-md-<?php echo ($key == 0)? '4': '12'; ?>" style="padding:0px;">
 						<div class="head">
-							<h4 class="post-subtitle"><?php echo $value['created_at'];?></h4>
+							<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
 							<h2 class="post-title"><?php echo $value['title'];?></h2>
 						</div>
 						<div class="body">
@@ -293,7 +293,7 @@
 					<h1>Thư viện ảnh</h1>
 				</div>
 				<div class="right col-xs-4">
-					<a href="<?php echo base_url('') ?>">See All <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+					<a href="<?php echo base_url('') ?>">Xem tất cả <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 				</div>
 			</div>
 		</div>
@@ -330,7 +330,7 @@
 							<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="blogs image">
 							<div class="overlay"></div>
 							<div class="content">
-								<h4 class="post-subtitle"><?php echo $value['created_at'];?></h4>
+								<h4 class="post-subtitle"><?php echo $value['area'];?></h4>
 								<h2 class="post-title">
 									<a href="<?php echo base_url('location/'.$value['slug']) ?>" role="button">
                                         <?php echo $value['title'];?>
@@ -362,7 +362,7 @@
 
 					<div class="overlay"></div>
 					<div class="content">
-						<h4 class="post-subtitle"><?php echo $value['created_at'];?></h4>
+						<h4 class="post-subtitle"><?php echo date("d/m/Y",strtotime($value['created_at']));?></h4>
 						<h2 class="post-title">
 							<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" role="button">
                                 <?php echo $value['title'];?>
