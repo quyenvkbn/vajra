@@ -22,9 +22,6 @@ class Tours extends Public_Controller {
     }
 
     public function index() {
-        echo '<pre>';
-        print_r($this->product_model->get_all());
-        echo '</pre>';die;
         $this->data['current_link'] = 'tours';
     }
 

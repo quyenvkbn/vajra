@@ -82,4 +82,14 @@ class Product_category_model extends MY_Model{
         
         return $this->db->get()->row_array();
     }
+    
+    public function get_parent_id($parent_id) {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('is_deleted', 0);
+        $this->db->where('is_activated', 0);
+        $this->db->where('parent_id', $parent_id);
+        $this->db->group_by("id");
+        return $this->db->get()->result_array();
+    }
 }

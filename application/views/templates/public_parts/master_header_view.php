@@ -82,37 +82,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="right col-sm-9 hidden-xs">
 						<ul>
 							<li>
-								<a href="<?php echo base_url('') ?>">Home</a>
+								<a href="<?php echo base_url('') ?>">Trang chủ</a>
 							</li>
 							<li class="menu-tabs">
 								<a href="<?php echo base_url('danh-muc/hanh-huong-trong-nuoc') ?>">
-									Domestic <span class="caret"></span>
+									Hành hương trong nước<span class="caret"></span>
 								</a>
 								<div class="menu-tabs-expand menu-expand">
 									<div class="row">
 										<div class="left col-md-3 col-sm-4 col-xs-12">
 											<ul>
-												<li>
-													Danh mục menu trong nước
-													<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-														  aria-hidden="true"></span>
-													<ul>
-														<li>
-															<div class="mask">
-																<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
-																	 alt="image example">
-															</div>
-															<a href="<?php echo base_url(''); ?>">title trong nước</a>
-														</li>
-														<li>
-															<div class="mask">
-																<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
-																	 alt="image example">
-															</div>
-															<a href="<?php echo base_url(''); ?>">title trong nước</a>
-														</li>
-													</ul>
-												</li>
+												<?php foreach ($domestic_menu as $key => $value): ?>
+													<li>
+														<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" style="color:black;">
+															<?php echo $value['title'];?>
+															<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+																  aria-hidden="true"></span>
+														</a>
+
+														<ul>
+															<?php foreach ($value['sub'] as $k => $val): ?>
+																<li>
+																	<div class="mask">
+																		<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']);?>"
+																			 alt="image example">
+																	</div>
+																	<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
+																</li>
+															<?php endforeach ?>
+														</ul>
+													</li>
+												<?php endforeach ?>
 											</ul>
 										</div>
 									</div>
@@ -120,36 +120,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</li>
 							<li class="menu-tabs">
 								<a href="<?php echo base_url('danh-muc/hanh-huong-nuoc-ngoai') ?>">
-									International <span class="caret"></span>
+									Hành hương nước ngoài <span class="caret"></span>
 								</a>
 								<div class="menu-tabs-expand menu-expand">
 									<div class="row">
-										<div class="left col-md-3 col-sm-4 col-xs-12">
+										<div class="left col-md-4 col-xs-12">
 											<ul>
-												<li>
-													<a href="<?php echo base_url('') ?>" style="color:black;">
-														Danh mục menu nước ngoài
-														<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-															  aria-hidden="true"></span>
-													</a>
+												<?php foreach ($international_menu as $key => $value): ?>
+													<li>
+														<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" style="color:black;">
+															<?php echo $value['title'];?>
+															<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+																  aria-hidden="true"></span>
+														</a>
 
-													<ul>
-														<li>
-															<div class="mask">
-																<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
-																	 alt="image example">
-															</div>
-															<a href="<?php echo base_url(''); ?>">title nước ngoài</a>
-														</li>
-														<li>
-															<div class="mask">
-																<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj-ldE7MBQu8aIKXUyehnxOxzOuBto598-N1S3mwCrK6scoOs_-Q"
-																	 alt="image example">
-															</div>
-															<a href="<?php echo base_url(''); ?>">title nước ngoài</a>
-														</li>
-													</ul>
-												</li>
+														<ul>
+															<?php foreach ($value['sub'] as $k => $val): ?>
+																<li>
+																	<div class="mask">
+																		<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']);?>"
+																			 alt="image example">
+																	</div>
+																	<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
+																</li>
+															<?php endforeach ?>
+														</ul>
+													</li>
+												<?php endforeach ?>
 											</ul>
 										</div>
 									</div>
@@ -157,17 +154,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</li>
 							<li>
 								<a href="<?php echo base_url('chuyen-muc/tin-tuc'); ?>">
-									News
+									Tin tức
 								</a>
 							</li>
 							<li>
 								<a href="<?php echo base_url('location'); ?>">
-									Gallery
+									Kho thư viện
 								</a>
 							</li>
 							<li>
 								<a href="<?php echo base_url('chuyen-muc/goc-chia-se'); ?>">
-									Share Corner
+									Góc chia sẻ
 								</a>
 							</li>
 

@@ -269,13 +269,15 @@ class Admin_Controller extends MY_Controller {
 }
 
 class Public_Controller extends MY_Controller {
-
+    protected $category_all = array();
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->library('ion_auth');
-        
+        $this->load->model('product_model');
+        $this->load->model('product_category_model');
+        $this->category_all = $this->product_category_model->get_all_lang();
         $this->langAbbreviation = $this->uri->segment(1) ? $this->uri->segment(1) : 'vi';
         if($this->langAbbreviation == 'vi' || $this->langAbbreviation == 'en' || $this->langAbbreviation == ''){
             $this->session->set_userdata('langAbbreviation', $this->langAbbreviation);
@@ -294,9 +296,28 @@ class Public_Controller extends MY_Controller {
             $this->session->set_userdata("langAbbreviation",'en');
             $this->lang->load('english_lang', 'english');
         }
-        
+        $this->data['domestic_menu'] = $this->product_category_model->get_parent_id(FIXED_DOMESTIC_PILGRIMAGE_CATEGORY_ID);
+        $this->data['international_menu'] = $this->product_category_model->get_parent_id(FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID);
+        $this->get_all_menu_param('domestic_menu');
+        $this->get_all_menu_param('international_menu');
+        $this->data['controller'] = $this;
     }
-
+    protected function get_all_menu_param($param){
+        foreach ($this->data[$param] as $key => $value) {
+            $id_category = array($value['id']);
+            $this->get_all_product_with_category_id($this->category_all,$value['id'],$id_category);
+            $this->data[$param][$key]['sub'] = $this->product_model->get_by_product_category_id_array($id_category,6);
+        }
+    }
+    protected function get_all_product_with_category_id($categories, $parent_id = 0, &$ids){
+        foreach ($categories as $key => $item){
+            if ($item['parent_id'] == $parent_id){
+                $ids[] = $item['id'];
+                unset($categories[$key]);
+                $this->get_all_product_with_category_id($categories, $item['id'], $ids);
+            }
+        }
+    }
     protected function render($the_view = NULL, $template = 'master') {
         parent::render($the_view, $template);
     }
