@@ -7,56 +7,35 @@
 					<a href="<?php echo base_url('') ?>">
 						<img src="<?php echo site_url('assets/img/')?>logo.png" alt="logo Diamond">
 					</a>
-				</div>
-				<div class="head col-sm-12">
-					<h3><?php echo $this->lang->line('branch-1-location') ?></h3>
+					<h1>Diamond Tour</h1>
 				</div>
 			</div>
 			<div class="item col-sm-4 col-xs-12">
-				<div class="head">
-					<h3><?php echo $this->lang->line('branch-1-location') ?></h3>
+				<div class="info">
+					<label>
+						<i class="fa fa-map-marker"></i> Địa chỉ
+					</label>
+					<h2>Dia chi trung tam</h2>
 				</div>
-				<div class="body">
-					<table class="table">
-						<tr>
-							<td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
-							<td><?php echo $this->lang->line('branch-1-address') ?></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-phone" aria-hidden="true"></i></td>
-							<td><a href="tel:(+84) 024 1234 5678">(+84) 024 1234 5678</a> </td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
-							<td><a href="mailto:info@diamondtour.vn">info@diamondtour.vn</a> </td>
-						</tr>
-					</table>
+				<div class="info">
+					<label>
+						<i class="fa fa-phone"></i> Điện thoại
+					</label>
+					<h2>024 1234 5678</h2>
+				</div>
+				<div class="info">
+					<label>
+						<i class="fa fa-envelope-o"></i> Email
+					</label>
+					<h2>info@diamondtour.vn</h2>
 				</div>
 			</div>
 			<div class="item col-sm-4 col-xs-12">
-				<div class="head">
-					<h3><?php echo $this->lang->line('accept') ?></h3>
-				</div>
-				<div class="body">
-					<ul class="list-inline">
-						<li>
-							<i class="fa fa-2x fa-cc-visa" aria-hidden="true"></i>
-						</li>
-						<li>
-							<i class="fa fa-2x fa-cc-mastercard" aria-hidden="true"></i>
-						</li>
-						<li>
-							<i class="fa fa-2x fa-cc-jcb" aria-hidden="true"></i>
-						</li>
-						<li>
-							<i class="fa fa-2x fa-cc-amex" aria-hidden="true"></i>
-						</li>
-					</ul>
-				</div>
-				<div class="head">
-					<h3><?php echo $this->lang->line('follow') ?></h3>
-				</div>
-				<div class="body">
+				<div class="info">
+					<label>
+						<i class="fa fa-globe"></i> Theo dõi chúng tôi tại
+					</label>
+
 					<ul class="list-inline">
 						<li>
 							<a href="" target="_blank">
@@ -90,6 +69,42 @@
 						</li>
 					</ul>
 				</div>
+			</div>
+		</div>
+		<div class="row">
+			<ul class="text-center list-inline">
+				<li>
+					<a href="<?php echo base_url('') ?>">Home</a>
+				</li>
+				<li >
+					<a href="<?php echo base_url('danh-muc/hanh-huong-trong-nuoc') ?>">
+						Domestic
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url('danh-muc/hanh-huong-nuoc-ngoai') ?>">
+						International
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url('chuyen-muc/tin-tuc'); ?>">
+						News
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url('location'); ?>">
+						Gallery
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url('chuyen-muc/goc-chia-se'); ?>">
+						Share Corner
+					</a>
+				</li>
+			</ul>
+
+			<div class="copyright text-center">
+				<b>&copy; 2018 Diamond Tour</b> | All Rights Reversed
 			</div>
 		</div>
 	</div>

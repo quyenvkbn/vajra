@@ -16,8 +16,8 @@ VARIABLES
 =======================================
  */
 
-$primary: #55b73d;
-$primary-hover: #77c564;
+$primary: #FFDB2F;
+$primary-hover: #FFE87B;
 
 $gray-dark: #333;
 $gray: #666;
@@ -89,18 +89,21 @@ a{
     margin-bottom: 15px;
 
     background-color: $primary;
+    color: $gray;
     border: none;
     border-radius: 4px;
 
     &:hover{
         background-color: $primary-hover;
+        color: $gray;
     }
 }
 
 .btn-default{
     padding: 7px 30px;
 
-    background-color: #eaeaea;
+    background-color: #e7e7e7;
+    color: $gray;
     border: none;
     border-radius: 4px;
 
@@ -146,456 +149,417 @@ HEADER STYLE
 =======================================
  */
 
-#top-nav{
-    background-color: #fafafa;
-    border-top: 4px solid $primary;
+#page{
+    position: relative;
 
-    .container{
-        .row{
-            padding-top: 7px;
-            padding-bottom: 7px;
-
-            ul{
-                padding-left: 0;
-                margin-bottom: 0;
-
-                li{
-                    display: inline-block;
-                    font-size: 1.125em;
-                }
-            }
-
-            .left{
-                ul{
-                    padding-top: 5px;
-
-                    li{
-                        padding-right: 15px;
-
-                        a{
-                            i{
-                                color: $primary;
-                            }
-
-                            color: $gray-light;
-
-                            &:hover{
-                                color: $primary;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .right{
-                text-align: right;
-
-                ul{
-                    li{
-                        padding-right: 10px;
-                        color: $gray-light;
-
-                        img{
-                            height: 13px;
-
-                            vertical-align: middle;
-                        }
-
-                        a{
-                            color: $gray-light;
-
-                            &:hover{
-                                color: $primary;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-#brand{
-    background-color: #fff;
-
-    background-image: url("../img/bg-brand.png");
-    background-position: center bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    .container{
-        .row{
-            .left{
-
-            }
-
-            .right{
-                text-align: right;
-
-                ul{
-                    list-style: none;
-                    padding-top: 30px;
-                    padding-bottom: 30px;
-
-                    li{
-                        display: inline-block;
-
-                        &.outline{
-                            text-align: left;
-
-                            padding: 15px 40px;
-                            margin-left: 15px;
-
-                            -webkit-border-radius: 7px;
-                            -moz-border-radius: 7px;
-                            border-radius: 7px;
-
-                            border: 1px dashed $primary;
-                            background-color: #fff;
-
-                            color: $gray-light;
-                        }
-
-                        a{
-                            color: $primary;
-                            font-size: 1.5em;
-
-                            &:hover{
-                                color: $primary-hover;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-header.header{
     width: 100%;
 
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+    header{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1011;
 
-    z-index: 1011;
+        width: 100%;
 
-    @include primary-bg;
+        #top-nav{
+            border-bottom: 2px solid #fff;
 
-    .container-fluid{
-        .container{
-            position: relative;
+            .container{
+                .row{
+                    padding-top: 7px;
+                    padding-bottom: 7px;
 
-            &#main-nav{
+                    ul{
+                        padding-left: 0;
+                        margin-bottom: 0;
 
-                > ul{
-                    margin-bottom: 0;
-                    padding-left: 0;
-
-                    list-style: none;
-
-                    > li{
-                        padding: 20px 30px;
-
-                        display: inline-block;
-
-                        font-size: 1em;
-
-                        &:hover{
-                            background-color: $primary-hover;
-
-                            .menu-expand{
-                                top: 100%;
-
-                                display: block;
-
-                                @include transition(500ms);
-
-                                .row{
-                                    ul{
-                                        list-style: none;
-                                    }
-
-                                    .mask{
-                                        width: 100%;
-                                        height: 150px;
-                                        overflow: hidden;
-
-                                        margin-bottom: 15px;
-                                    }
-
-                                    a{
-                                        overflow: hidden;
-                                        text-overflow: ellipsis;
-                                        display: -webkit-box;
-                                        line-height: 1.5em;
-                                        height: 3em;
-                                        -webkit-line-clamp: 2;
-                                        -webkit-box-orient: vertical;
-                                        font-size: .875em;
-                                    }
-                                }
-
-                            }
+                        li{
+                            display: inline-block;
+                            font-size: 1em;
 
                             a{
                                 color: #fff;
+
+                                i{
+                                    color: $primary;
+                                }
                             }
                         }
+                    }
 
-                        > a{
-                            color: #fff;
-                            text-transform: uppercase;
+                    .left{
+                        ul{
+                            padding-top: 5px;
+
+                            li{
+                                padding-right: 15px;
+                            }
                         }
+                    }
 
-                        .menu-expand{
-                            width: 100%;
+                    .right{
+                        text-align: right;
 
-                            position: absolute;
-                            top: 110%;
-                            left: 0;
-                            z-index: 1001;
+                        ul{
+                            li{
 
-                            background-color: #fff;
-                            border: 1px solid #dadada;
-
-                            -webkit-box-shadow: 3px 3px 10px #ccc;
-                            -moz-box-shadow: 3px 3px 10px #ccc;
-                            box-shadow: 3px 3px 10px #ccc;
-
-                            display: none;
-
-                            @include transition(500ms);
+                            }
                         }
+                    }
+                }
+            }
+        }
 
-                        &.menu-tabs{
-                            .menu-tabs-expand{
-                                .row{
-                                    min-height: 300px;
+        nav{
+            .container{
+                position: relative;
 
-                                    .left{
-                                        > ul{
-                                            list-style: none;
-                                            padding-left: 0;
-                                            text-align: left;
+                .row{
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 700;
+                    font-size: 1.25em;
+                    .left{
+                        img{
+                            width: 120px;
+                        }
+                    }
 
-                                            position: relative;
+                    .right{
+                        text-align: right;
 
-                                            border-right: 1px solid #dadada;
+                        > ul{
+                            margin-bottom: 0;
+                            padding-left: 0;
 
-                                            > li{
-                                                padding: 10px 15px;
-                                                font-size: 1.25em;
+                            list-style: none;
 
-                                                border-bottom: 1px solid #dadada;
+                            > li{
+                                padding: 20px 0px 20px 20px;
 
-                                                &:hover{
-                                                    background-color: #eaeaea;
+                                display: inline-block;
 
-                                                    > ul{
-                                                        display: block;
-                                                    }
-                                                }
+                                font-size: 1em;
 
-                                                > ul{
-                                                    position: absolute;
-                                                    top: 0;
-                                                    left: 100%;
+                                &:hover{
 
-                                                    width: 330%;
+                                    .menu-expand{
+                                        top: 100%;
 
-                                                    display: none;
+                                        display: block;
 
-                                                    > li{
-                                                        width: 32%;
-                                                        padding-left: 15px;
-                                                        padding-right: 15px;
+                                        @include transition(500ms);
 
-                                                        font-size: 1.125em;
-
-                                                        display: inline-block;
-
-                                                        a{
-                                                            color: $gray-light;
-
-                                                            &:hover{
-                                                                color: $gray-dark;
-                                                            }
-                                                        }
-                                                    }
-                                                }
+                                        .row{
+                                            ul{
+                                                list-style: none;
                                             }
-                                        }
-                                    }
 
-                                    .right{
-                                        padding: 15px;
-
-                                        .item{
                                             .mask{
                                                 width: 100%;
-                                                height: 200px;
+                                                height: 150px;
                                                 overflow: hidden;
 
                                                 margin-bottom: 15px;
                                             }
 
-
+                                            a{
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                display: -webkit-box;
+                                                line-height: 1.5em;
+                                                height: 3em;
+                                                -webkit-line-clamp: 2;
+                                                -webkit-box-orient: vertical;
+                                                font-size: .875em;
+                                            }
                                         }
+
+                                    }
+
+                                    a{
+                                        color: #fff;
                                     }
                                 }
-                            }
-                        }
 
-                        &.menu-list{
-                            .menu-list-expand{
-                                .row{
-                                    margin-left: 0;
-                                    margin-right: 0;
+                                > a{
+                                    color: #fff;
+                                    text-transform: uppercase;
+                                }
 
-                                    .item{
-                                        padding: 15px;
+                                .menu-expand{
+                                    width: 100%;
 
-                                        .head{
+                                    position: absolute;
+                                    top: 110%;
+                                    left: 0;
+                                    z-index: 1001;
 
-                                        }
+                                    background-color: #fff;
+                                    border: 1px solid #dadada;
 
-                                        .body{
-                                            ul{
-                                                padding-left: 0;
+                                    -webkit-box-shadow: 3px 3px 10px #ccc;
+                                    -moz-box-shadow: 3px 3px 10px #ccc;
+                                    box-shadow: 3px 3px 10px #ccc;
 
-                                                li{
+                                    display: none;
+
+                                    @include transition(500ms);
+                                }
+
+                                &.menu-tabs{
+                                    .menu-tabs-expand{
+                                        .row{
+                                            min-height: 300px;
+
+                                            .left{
+                                                > ul{
+                                                    list-style: none;
+                                                    padding-left: 0;
+                                                    text-align: left;
+
+                                                    position: relative;
+
+                                                    border-right: 1px solid #dadada;
+
+                                                    > li{
+                                                        padding: 10px 15px;
+                                                        font-size: 1em;
+
+                                                        border-bottom: 1px solid #dadada;
+
+                                                        &:hover{
+                                                            background-color: #eaeaea;
+
+                                                            > ul{
+                                                                display: block;
+                                                            }
+                                                        }
+
+                                                        > ul{
+                                                            position: absolute;
+                                                            top: 0;
+                                                            left: 100%;
+
+                                                            width: 330%;
+
+                                                            display: none;
+
+                                                            > li{
+                                                                width: 32%;
+                                                                padding-left: 15px;
+                                                                padding-right: 15px;
+
+                                                                font-size: 1.125em;
+
+                                                                display: inline-block;
+
+                                                                a{
+                                                                    color: $gray-light;
+
+                                                                    &:hover{
+                                                                        color: $gray-dark;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            .right{
+                                                padding: 15px;
+
+                                                .item{
                                                     .mask{
                                                         width: 100%;
                                                         height: 200px;
                                                         overflow: hidden;
 
-                                                        position: relative;
+                                                        margin-bottom: 15px;
+                                                    }
 
-                                                        a{
-                                                            width: 100%;
-                                                            height: 30%;
 
-                                                            padding: 15px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
 
-                                                            font-size: 1.5em;
-                                                            color: #fff;
+                                &.menu-list{
+                                    .menu-list-expand{
+                                        .row{
+                                            margin-left: 0;
+                                            margin-right: 0;
 
-                                                            position: absolute;
-                                                            bottom: 0;
-                                                            left: 0;
+                                            .item{
+                                                padding: 15px;
 
-                                                            background: rgba(0,0,0,0.5);
-                                                            background: -moz-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
-                                                            background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(0,0,0,0.0)));
-                                                            background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                            background: -o-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                            background: -ms-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                            background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c564', endColorstr='#55b73d', GradientType=1 );
+                                                .head{
 
-                                                            &:hover{
-                                                                color: #fff;
+                                                }
+
+                                                .body{
+                                                    ul{
+                                                        padding-left: 0;
+
+                                                        li{
+                                                            .mask{
+                                                                width: 100%;
+                                                                height: 200px;
+                                                                overflow: hidden;
+
+                                                                position: relative;
+
+                                                                a{
+                                                                    width: 100%;
+                                                                    height: 30%;
+
+                                                                    padding: 15px;
+
+                                                                    font-size: 1.5em;
+                                                                    color: #fff;
+
+                                                                    position: absolute;
+                                                                    bottom: 0;
+                                                                    left: 0;
+
+                                                                    background: rgba(0,0,0,0.5);
+                                                                    background: -moz-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+                                                                    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(0,0,0,0.0)));
+                                                                    background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                                    background: -o-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                                    background: -ms-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                                    background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c564', endColorstr='#55b73d', GradientType=1 );
+
+                                                                    &:hover{
+                                                                        color: #fff;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            a{
+                                                                color: $gray-light;
+                                                                font-size: 1.25em;
+
+                                                                &:hover{
+                                                                    color: $gray;
+                                                                }
                                                             }
                                                         }
                                                     }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
 
+                                &.menu-dropdown{
+
+                                    .menu-dropdown-expand{
+                                        padding: 15px;
+
+                                        .row{
+                                            .media{
+
+                                                .media-left{
+                                                    width: 50%;
+
+                                                    .mask{
+                                                        width: 100%;
+                                                        height: 230px;
+                                                        overflow: hidden;
+                                                    }
+                                                }
+
+                                                .media-body{
                                                     a{
-                                                        color: $gray-light;
-                                                        font-size: 1.25em;
+                                                        color: $primary;
 
                                                         &:hover{
                                                             color: $gray;
                                                         }
                                                     }
+
+                                                    p{
+                                                        color: $gray-light;
+
+                                                        font-size: 1em;
+
+                                                        overflow: hidden;
+                                                        text-overflow: ellipsis;
+                                                        display: -webkit-box;
+                                                        line-height: 1.5;
+                                                        height: 7.5em;
+                                                        -webkit-line-clamp: 5;
+                                                        -webkit-box-orient: vertical;
+                                                    }
+
+                                                    .btn-primary{
+                                                        color: #fff;
+
+                                                        &:hover{
+                                                            color: #fff;
+                                                        }
+                                                    }
                                                 }
                                             }
+                                        }
+
+                                    }
+
+                                    &:hover{
+                                        .menu-dropdown-expand{
+                                            display: block;
                                         }
                                     }
-                                }
-                            }
-                        }
-
-                        &.menu-dropdown{
-
-                            .menu-dropdown-expand{
-                                padding: 15px;
-
-                                .row{
-                                    .media{
-
-                                        .media-left{
-                                            width: 50%;
-
-                                            .mask{
-                                                width: 100%;
-                                                height: 230px;
-                                                overflow: hidden;
-                                            }
-                                        }
-
-                                        .media-body{
-                                            a{
-                                                color: $primary;
-
-                                                &:hover{
-                                                    color: $gray;
-                                                }
-                                            }
-
-                                            p{
-                                                color: $gray-light;
-
-                                                font-size: 1em;
-
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;
-                                                display: -webkit-box;
-                                                line-height: 1.5;
-                                                height: 7.5em;
-                                                -webkit-line-clamp: 5;
-                                                -webkit-box-orient: vertical;
-                                            }
-
-                                            .btn-primary{
-                                                color: #fff;
-
-                                                &:hover{
-                                                    color: #fff;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                            }
-
-                            &:hover{
-                                .menu-dropdown-expand{
-                                    display: block;
                                 }
                             }
                         }
                     }
                 }
-
             }
         }
     }
 
-
-}
-
-section.main-page{
-    width: 100%;
-
-    .container-fluid{
-        position: relative;
-
-    }
 }
 
 section.main-content{
+    .big-title{
+        h4.subtitle{
+            font-weight: 400;
+            font-size: 1em;
+            text-transform: uppercase;
+
+            padding: 7px 25px;
+
+            border-radius: 4px;
+
+            background-color: $primary;
+            color: $gray;
+            text-shadow: none;
+
+            display: inline-block;
+        }
+
+        h1.title{
+            font-weight: 700;
+            font-size: 3.125em;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            line-height: 1.168;
+            max-width: 40%;
+            height: 3.3em;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+
+            margin-bottom: 30px;
+        }
+    }
+
     .section{
         display: block;
         padding-top: 100px;
@@ -604,33 +568,38 @@ section.main-content{
         .section-header{
             margin-bottom: 30px;
 
-            h1{
-                font-size: 2em;
-                margin-top: 0;
-                padding-bottom: 15px;
-            }
+            .row{
+                .left{
+                    h1{
+                        font-size: 3.125em;
+                        font-weight: 700;
 
-            .line{
-                width: 100%;
-                height: 4px;
-                margin-bottom: 30px;
+                        margin-top: 0;
+                        padding-bottom: 15px;
+                    }
+                }
 
-                background-color: #eaeaea;
+                .right{
+                    text-align: right;
+                    padding-top: 10px;
 
-                position: relative;
+                    a{
+                        font-size: 1.25em;
+                        color: $gray-light;
 
-                .line-primary{
-                    width: 25%;
-                    height: 100%;
+                        &:hover{
+                            color: $primary;
+                        }
 
-                    background-color: $primary;
-
-                    position: absolute;
-                    top: 0;
-                    left: 0;
+                        i{
+                            color: $primary;
+                        }
+                    }
                 }
             }
         }
+
+
 
         .item{
             h2.post-title{
@@ -677,24 +646,18 @@ section.main-content{
 }
 
 footer.footer{
-    background-color: #e4f3e0;
-
-    background-image: url("../img/bg-footer.png");
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: 100%;
-
-
     color: $gray;
 
     padding-top: 30px;
-    padding-bottom: 150px;
+    padding-bottom: 100px;
+
+    border-top: 2px solid $primary;
 
     a{
         color: $gray-light;
 
         &:hover{
-            color: $gray-dark;
+            color: $primary;
         }
     }
 
@@ -702,82 +665,58 @@ footer.footer{
         .row{
             padding-bottom: 30px;
 
-            &:last-of-type{
-                border-bottom: none;
-            }
-
-            a{
-                &.link-primary{
-                    color: $primary;
-
-                    &:hover{
-                        color: $primary-hover;
-                    }
-                }
-            }
+            border-bottom: 1px solid $gray-light;
 
             .item{
-                .head{
-                    h3{
-                        padding-bottom: 15px;
-                        border-bottom: 1px solid $gray-light;
-                        font-size: 1.35em;
-                        font-weight: bold;
-                    }
+
+                h1{
+                    font-size: 2.5em;
+                    font-weight: 700;
+
+                    color: $primary;
                 }
 
-                .body{
-                    > ul{
-                        padding-left: 0;
-                        list-style: none;
+                .info{
+                    margin-bottom: 15px;
 
-                        > li{
-                            font-weight: bold;
+                    label{
+                        font-size: 1.125em;
+                        font-weight: 400;
 
-                            > ul{
-                                padding-left: 15px;
-
-                                > li{
-                                    font-weight: normal;
-                                }
-                            }
+                        i{
+                            color: $primary;
                         }
                     }
 
-                    table{
-                        tr{
-                            td{
-                                border-top-color: transparent;
+                    h2{
+                        font-size: 1.5em;
+                        font-weight: 700;
 
-                                img{
-                                    width: 100px;
-                                }
-
-                                .outline{
-                                    padding: 15px;
-
-                                    -webkit-border-radius: 7px;
-                                    -moz-border-radius: 7px;
-                                    border-radius: 7px;
-
-                                    color: $gray-light;
-                                    font-size: 1em;
-
-                                    a{
-                                        h2{
-                                            margin-top: 10px;
-                                            font-size: 1.5em;
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        margin-top: 15px;
                     }
                 }
             }
 
-            .text-center{
-                padding-bottom: 70px;
+            &:last-of-type{
+                border-bottom: none;
+
+                ul.list-inline{
+                    margin-top: 15px;
+
+                    li{
+                        font-size: 1.25em;
+                        font-weight: 700;
+
+                        padding-left: 15px;
+                        padding-right: 15px;
+                    }
+                }
+
+                .copyright{
+                    margin-top: 15px;
+
+                    font-size: 1em;
+                }
             }
         }
     }
