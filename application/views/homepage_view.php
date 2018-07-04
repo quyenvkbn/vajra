@@ -163,7 +163,7 @@
 					<h1>Hành hương nước ngoài</h1>
 				</div>
 				<div class="right col-xs-4">
-					<a href="<?php echo base_url('') ?>">Xem tất cả Tours <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+					<a href="<?php echo base_url('danh-muc/'.$international['slug']) ?>">Xem tất cả Tours <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 				</div>
 			</div>
 		</div>
@@ -254,7 +254,7 @@
 				<h1>Tin tức</h1>
 			</div>
 			<div class="right col-xs-4">
-				<a href="<?php echo base_url('') ?>">Xem tất cả tin tức <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+				<a href="<?php echo base_url('chuyen-muc/tin-tuc') ?>">Xem tất cả tin tức <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 			</div>
 		</div>
 	</div>
@@ -293,7 +293,7 @@
 					<h1>Thư viện ảnh</h1>
 				</div>
 				<div class="right col-xs-4">
-					<a href="<?php echo base_url('') ?>">Xem tất cả <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+					<a href="<?php echo base_url('location') ?>">Xem tất cả <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 				</div>
 			</div>
 		</div>
