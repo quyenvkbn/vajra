@@ -54,7 +54,7 @@ class Homepage extends Public_Controller {
         /**
          * GET BANNER
          */
-        $this->data['banner'] = $this->banner_model->get_all_lang();
+        $this->data['banner'] = $this->product_model->get_all('desc',6);
         /**
          * GET TOURS IN EACH CATEGORY AND CATEGORY DOMESTIC_PILGRIMAGE,INTERNATIONAL_PILGRIMAGE
          */

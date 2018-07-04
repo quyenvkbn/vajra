@@ -70,4 +70,12 @@ class Localtion_model extends MY_Model {
         $this->db->where('slug', $slug);
         return $this->db->get()->row_array();
     }
+    public function get_all_localtion_area($area,$id,$limit = ''){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('area', $area);
+        $this->db->where('id !=', $id);
+        $this->db->limit($limit);
+        return $result = $this->db->get()->result_array();
+    }
 }

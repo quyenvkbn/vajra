@@ -22,6 +22,15 @@ class Post extends Public_Controller {
             }
         }
     }
+    public function get_chilren_posts_with_category_id($categories, $parent_id = 0, &$sub){
+        foreach ($categories as $key => $item){
+            if (!empty($item) && $item['id'] == $parent_id){
+                $sub[] = $item['id'];
+                unset($categories[$key]);
+                $this->get_chilren_posts_with_category_id($categories, $item['parent_id'], $sub);
+            }
+        }
+    }
     public function category($slug) {
         $category = $this->post_category_model->fetch_row_by_slug($slug);
         $total_rows  = $this->post_model->count_search();
@@ -48,6 +57,13 @@ class Post extends Public_Controller {
 
     public function detail($slug){
         $this->data['detail'] = $this->post_model->fetch_row_by_slug($slug);
+        $get_all = $this->post_category_model->get_all();
+        $this->get_chilren_posts_with_category_id($get_all, $this->data['detail']['post_category_id'], $ids);
+        if(empty($ids)){
+            $ids = array();
+        }
+        array_unshift($ids,$this->data['detail']['post_category_id']);
+        $this->data['post_array'] =$this->post_model->get_by_post_category_id_and_not_id($ids,$this->data['detail']['id'],4);
         $this->render('detail_post_view');
     }
 }

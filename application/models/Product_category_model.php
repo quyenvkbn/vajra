@@ -62,7 +62,6 @@ class Product_category_model extends MY_Model{
         return $this->db->get()->result_array();
     }
     public function get_by_slug_lang($slug,$order="asc") {
-        $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->where('is_deleted', 0);

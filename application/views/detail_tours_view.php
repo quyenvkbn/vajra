@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="big-title">
 			<h4 class="subtitle">
-				Location
+				<?php echo $detail['parent_title'] ?>
 			</h4>
 			<h1 class="title">
                 <?php echo $detail['title'] ?>
@@ -58,18 +58,16 @@
 							<tr>
 								<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
 								<td>
-									<div id="rateit_star" data-productid="123" data-rateit-resetable="false" data-rateit-value="<?php echo $rating ?>"></div>
+									<div id="rateit_star" data-productid="<?php echo $detail['id']; ?>" data-rateit-resetable="false" data-rateit-value="<?php echo $rating ?>"></div>
 									<input type="hidden" name="re_rateit" id="re_rateit" value="">
 									<p class="number"><?php echo $rating ?> / 5 điểm <?php echo '(' . $count_rating. ' ' .$this->lang->line('tour-detail-votes') . ')' ?></p>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<div class="captcha-image image col-md-6"></div>
-
-									<div class="captcha-input input-group col-md-6">
+									<div class="captcha-input input-group col-md-12">
 										<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="" >
-										<input placeholder="Nhập mã" name="captcha" id="captcha" type="text" value="" class="form-control" aria-describedby="captcha" style="border-radius: 4px; border: none;margin-right: 5%; color: black;height: 35px;">
+										<input placeholder="Nhập mã" name="captcha" id="captcha" type="text" value="" class="form-control" aria-describedby="captcha" style=" border: 1;margin-right: 5%; color: black;height: 33px;">
 										<span class="input-group-addon" id="basic-addon1"><a class="refresh" href="javascript:void(0)" title="Lấy mã mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
 									</div>
 									<div class="captcha-input col-md-7">
@@ -80,12 +78,19 @@
 									</div>
 								</td>
 								<td>
-									<input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('created_captcha'); ?>">
-									<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
-									<input type="hidden" name="product_id" class="product_id" value="<?php echo $detail['id']?>">
-									<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
-                                        <?php echo $this->lang->line('booking') ?>
-									</button>
+									<div class="captcha-image image col-md-12"></div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-group col-md-12">
+										<input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('created_captcha'); ?>">
+										<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
+										<input type="hidden" name="product_id" class="product_id" value="<?php echo $detail['id']?>">
+										<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
+	                                        <?php echo $this->lang->line('booking') ?>
+										</button>
+									</div>
 								</td>
 							</tr>
 						</table>
@@ -489,39 +494,41 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="item col-xs-12">
-						<div class="wrapper">
-							<div class="mask">
-								<a href="<?php echo base_url('tours/'.$detail['slug']) ?>">
-									<img src="<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['image']) ?>" alt="image">
-								</a>
-							</div>
-							<div class="head">
-								<h4 class="post-subtitle">Location</h4>
-								<h2 class="post-title"><?php echo $detail['title'];?></h2>
-								<h3 class="price"><?php echo $detail['price'];?>vnd</h3>
-							</div>
-							<div class="body">
-								<p class="post-description"><?php echo $detail['description'];?></p>
-							</div>
-							<div class="foot">
-								<ul class="list-inline">
-									<li>
-										<a href="<?php echo base_url('tours/'.$detail['slug']) ?>" class="btn btn-primary" role="button">
-											Đặt Ngay
-										</a>
-									</li>
-									<li>
-										<a href="<?php echo base_url('tours/'.$detail['slug']) ?>" class="btn btn-default" role="button">
-											Xem chi tiết
-										</a>
-									</li>
-								</ul>
+				<?php foreach ($product_array as $key => $value): ?>
+					<div class="row">
+						<div class="item col-xs-12">
+							<div class="wrapper">
+								<div class="mask">
+									<a href="<?php echo base_url('tours/'.$value['slug']) ?>">
+										<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+									</a>
+								</div>
+								<div class="head">
+									<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
+									<h2 class="post-title"><?php echo $value['title'];?></h2>
+									<h3 class="price"><?php echo $value['price'];?>vnd</h3>
+								</div>
+								<div class="body">
+									<p class="post-description"><?php echo $value['description'];?></p>
+								</div>
+								<div class="foot">
+									<ul class="list-inline">
+										<li>
+											<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+												Đặt Ngay
+											</a>
+										</li>
+										<li>
+											<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
+												Xem chi tiết
+											</a>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				<?php endforeach ?>
 			</div>
 		</div>
 	</div>
