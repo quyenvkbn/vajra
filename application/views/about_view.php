@@ -5,21 +5,18 @@
     <img src="https://images.unsplash.com/photo-1516974882164-2136160d59c6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c4b9e1d39ed76f884d4d640f17d00a0c&auto=format&fit=crop&w=1950&q=80" alt="cover">
 </section>
 
-<section id="about" class="content section container-fluid">
+<section id="about" class="content container-fluid">
     <div class="container">
         <div class="row">
             <div class="left col-sm-8 col-xs-12">
                 <?php if($about){ ?>
                     <?php foreach($about as $key => $val){ ?>
                         <div class="about-post" id="<?php echo $val['slug']; ?>">
-                            <div class="section-header">
-
-                                <h1><?php echo $val['title']; ?></h1>
-                                <div class="line">
-                                    <div class="line-primary"></div>
-                                </div>
-                            </div>
-
+							<div class="big-title">
+								<h1 class="title">
+                                    <?php echo $val['title'] ?>
+								</h1>
+							</div>
                             <article>
                                 <img src="<?php echo base_url('assets/upload/post/'.$val['image']); ?>" alt="">
                                 <?php echo $val['content']; ?>
