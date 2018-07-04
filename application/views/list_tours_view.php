@@ -1,9 +1,21 @@
 <!-- Tours Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.min.css">
 
-<section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']) ?>')"></section>
+<section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']) ?>')">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="big-title">
+			<h4 class="subtitle">
+				Location
+			</h4>
+			<h1 class="title">
+                <?php echo $detail['title'] ?>
+			</h1>
+		</div>
+	</div>
+</section>
 
-<section id="page">
+<section id="tours" class="container-fluid">
 	<div class="container">
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url('') ?>"><?php echo $this->lang->line('home') ?></a></li>
@@ -15,18 +27,46 @@
 			<li class="active"><?php echo $detail['title'];?></li>
 		</ol>
 
-		<div class="section-header">
-			<div class="row">
-				<div class="col-xs-12">
-					<h1><?php echo $detail['title'] ?></h1>
-					<p><?php echo $detail['content'] ?></p>
-				</div>
-			</div>
+		<div class="intro">
+			<h4><?php echo $detail['content'] ?></h4>
 		</div>
 
-		<div id="tours" class="section">
+		<div id="list-tours" class="section">
 			<div class="row">
                 <?php for($i =0;$i<count($product_array);$i++): ?>
+					<div class="item col-xs-12 col-sm-6 col-md-4">
+						<div class="wrapper">
+							<div class="mask">
+								<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>">
+									<img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="image">
+								</a>
+							</div>
+							<div class="head">
+								<h4 class="post-subtitle"><?php echo $product_array[$i]['parent_title'] ?></h4>
+								<h2 class="post-title"><?php echo $product_array[$i]['title'] ?></h2>
+								<h3 class="price"><?php echo number_format($product_array[$i]['price']) ?>vnd</h3>
+							</div>
+							<div class="body">
+								<p class="post-description"><?php echo $product_array[$i]['description']; ?></p>
+							</div>
+							<div class="foot">
+								<ul class="list-inline">
+									<li>
+										<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-primary" role="button">
+											Đặt Ngay
+										</a>
+									</li>
+									<li>
+										<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-default" role="button">
+											Xem chi tiết
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!--
 					<div class="item col-md-4 col-6 col-xs-12">
 						<div class="mask">
 							<img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="image">
@@ -80,6 +120,7 @@
 							</div>
 						</div>
 					</div>
+					-->
                 <?php endfor; ?>
 			</div>
 		</div>
