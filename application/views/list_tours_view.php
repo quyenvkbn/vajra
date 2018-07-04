@@ -5,9 +5,11 @@
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="big-title">
-			<h4 class="subtitle">
-				Location
-			</h4>
+			<?php if (!empty($detail['sub'])): ?>
+				<h4 class="subtitle">
+					<?php echo $detail['sub'][count($detail['sub'])-1]['title']; ?>
+				</h4>
+			<?php endif ?>
 			<h1 class="title">
                 <?php echo $detail['title'] ?>
 			</h1>

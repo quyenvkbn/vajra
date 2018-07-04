@@ -7,7 +7,7 @@ class Tours extends Public_Controller {
     private $request_vehicles_icon = array(
         '', 'fa-ban', 'fa-plane', 'fa-ship', 'fa-train', 'fa-bus', 'fa-motorcycle', 'fa-bicycle', 'fa-blind'
     );
-  
+    protected $get_all = array();
     public function __construct() {
         parent::__construct();
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
@@ -17,7 +17,7 @@ class Tours extends Public_Controller {
         $this->load->library('image_lib');
         $this->load->helper('captcha');
         $this->load->helper('common');
-
+        $this->get_all = $this->product_category_model->get_all();
         $this->data['request_vehicles_icon'] = $this->request_vehicles_icon;
     }
 
@@ -34,17 +34,25 @@ class Tours extends Public_Controller {
             }
         }
     }
+    function get_chilren_products_with_category_id($categories, $parent_id = 0, &$sub){
+        foreach ($categories as $key => $item){
+            if (!empty($item) && $item['id'] == $parent_id){
+                $sub[] = $item['id'];
+                unset($categories[$key]);
+                $this->get_chilren_products_with_category_id($categories, $item['parent_id'], $sub);
+            }
+        }
+    }
     public function category($slug) {
         if($this->product_category_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
             $detail = $this->product_category_model->get_by_slug_lang($slug);
-            $get_all_lang = $this->product_category_model->get_all_lang();
-            $this->get_multiple_products_with_category($get_all_lang,$detail['parent_id'],$sub);
+            $this->get_multiple_products_with_category($this->get_all,$detail['parent_id'],$sub);
             if(empty($sub)){
                 $detail['sub'] = $sub;
             }else{
                 $detail['sub'] = array_reverse($sub);
             }
-            $this->get_multiple_products_with_category_id($get_all_lang, $detail['id'], $ids);
+            $this->get_multiple_products_with_category_id($this->get_all, $detail['id'], $ids);
             if(empty($ids)){
                 $ids = array();
             }
@@ -70,13 +78,14 @@ class Tours extends Public_Controller {
         }
     }
     public function detail($slug){
+        // $ip = $_SERVER['SERVER_ADDR'];
+        // $this->session->unset_userdata($ip);
         $this->load->model('rating_model');
         if($this->product_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
             $this->load->helper('form');
             $this->load->library('form_validation');
             $detail = $this->product_model->get_by_slug_lang($slug,array());
-            $get_all_lang = $this->product_category_model->get_all();
-            $this->get_multiple_products_with_category($get_all_lang,$detail['product_category_id'],$sub);
+            $this->get_multiple_products_with_category($this->get_all,$detail['product_category_id'],$sub);
             if(empty($sub)){
                 $detail['sub'] = $sub;
             }else{
@@ -117,19 +126,28 @@ class Tours extends Public_Controller {
             if(!empty($this->data['detail']['dateimg'])){
                     $this->data['detail']['dateimg'] = json_decode($this->data['detail']['dateimg']);
             }
-
+            /**
+             * tour with same category
+             */
+            $this->get_chilren_products_with_category_id($this->get_all, $detail['product_category_id'], $ids);
+            if(empty($ids)){
+                $ids = array();
+            }
+            array_unshift($ids,$detail['product_category_id']);
+            $this->data['product_array'] =$this->product_model->get_by_product_category_id_and_not_id($ids,$detail['id'],4);
             /**
              * RATING SYSTEM
              * [$ip description]
              * @var [type]
              */
             $ip = $_SERVER['SERVER_ADDR'];
+            // print_r($this->session->userdata($ip));die;
             // $this->session->unset_userdata($ip);
             $check_session = false;
-            if($this->session->has_userdata($ip)){
+            if($this->session->has_userdata($ip) && in_array($detail['id'], $this->session->userdata($ip))){
                 $check_session = true;
             }
-            $id = 91;
+            $id = $detail['id'];
             $rating = $this->product_model->rating_by_id($id);
             $count_rating = $rating['count_rating'];
             $total_rating = $rating['total_rating'];
@@ -154,10 +172,10 @@ class Tours extends Public_Controller {
     public function created_rating(){
         $isExits = false;
         $ip = $_SERVER['SERVER_ADDR'];
-        if($this->session->has_userdata($ip)){
+        if($this->session->has_userdata($ip) && in_array($this->input->get('product_id'), $this->session->userdata($ip))){
             $isExits = false;
         }else{
-            $this->session->set_userdata($ip, $ip);
+            $this->session->set_userdata($ip, array($ip, $this->input->get('product_id')));
             $this->session->mark_as_temp($ip, 3600);
             $product_id = $this->input->get('product_id');
             $new_rating = $this->input->get('rating');

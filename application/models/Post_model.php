@@ -56,4 +56,17 @@ class Post_model extends MY_Model{
 
         return $this->db->get()->row_array();
     }
+
+    public function get_by_post_category_id_and_not_id($post_category_id=array(),$id,$limit=0,$order='asc') {
+        $this->db->select('post.*, post_category.title as parent_title, post_category.slug as parent_slug');
+        $this->db->from($this->table);
+        $this->db->join('post_category', 'post_category.id = post.post_category_id');
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where_in('post.post_category_id', $post_category_id);
+        $this->db->where("post.id !=",$id);
+        $this->db->group_by('post.id');
+        $this->db->order_by('rand()');
+        $this->db->limit($limit);
+        return $this->db->get()->result_array();
+    }
 }

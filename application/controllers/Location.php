@@ -36,6 +36,7 @@ class Location extends Public_Controller {
     }
     public function detail($slug){
         $this->data['detail'] = $this->localtion_model->fetch_row_by_slug($slug);
+        $this->data['localtion_array'] = $this->localtion_model->get_all_localtion_area($this->data['detail']['area'],$this->data['detail']['id'],4);
         $this->render('detail_localtion_view');
     }
 }

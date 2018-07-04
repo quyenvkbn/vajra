@@ -3,7 +3,12 @@
 
 <section class="cover">
 	<div class="overlay"></div>
-	<img src="<?php echo base_url('/assets/upload/post_category/' . $category['image']) ?>" alt="cover">
+    <?php if (count($result) >0 ): ?>
+        <img src="<?php echo base_url('/assets/upload/localtion/' . $result[0]['slug'] . '/' . $result[0]['image']) ?>" alt="cover">
+    <?php else: ?>
+        <img src="<?php echo base_url('/assets/image/horizontal.jpg') ?>" alt="cover">
+    <?php endif ?>
+	
 </section>
 
 <section class="content section container-fluid">

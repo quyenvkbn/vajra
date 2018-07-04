@@ -21,25 +21,25 @@
 				<?php foreach ($banner as $key => $value): ?>
 					<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
 						<div class="mask">
-							<img src="<?php echo base_url('/assets/upload/banner/'.$value['image']); ?>" alt="slide 2">
+							<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']); ?>" alt="slide 2">
 						</div>
 						<div class="carousel-caption">
 							<div class="big-title">
 								<h4 class="subtitle">
-                                    Location
+                                    <?php echo $value['parent_title']; ?>
 								</h4>
 								<h1 class="title">
-									title of the tour title of the tour title of the tour title of the tour
+									<?php echo $value['title']; ?>
 								</h1>
 								<ul class="list-inline">
 									<li>
-										<a href="" class="btn btn-primary" role="button">
-											Book now!
+										<a href="<?php echo base_url('tours/'.$value['slug']); ?>" class="btn btn-primary" role="button">
+											Đặt tour!
 										</a>
 									</li>
 									<li>
-										<a href="" class="btn btn-default" role="button">
-											View Detail
+										<a href="<?php echo base_url('tours/'.$value['slug']); ?>" class="btn btn-default" role="button">
+											Xem chi tiết
 										</a>
 									</li>
 								</ul>
