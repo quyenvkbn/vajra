@@ -14,7 +14,7 @@ class Location extends Public_Controller {
         $this->load->library('pagination');
         $base_url = base_url('location/index');
         $uri_segment = 3;
-        $per_page = 8;
+        $per_page = 9;
         foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
             $config[$key] = $value;
         }

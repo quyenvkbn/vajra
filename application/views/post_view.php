@@ -1,5 +1,5 @@
 <!-- About Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.css">
 
 <section class="cover">
 	<div class="overlay"></div>
@@ -9,13 +9,14 @@
 <section class="content section container-fluid">
     <div class="container">
         <div class="row">
-            <div class="left col-md-9 col-sm-8 col-xs-12">
+            <div class="left col-md-12">
 				<div class="section-header">
 					<div class="row">
 						<div class="left col-xs-8">
 							<h1><?php echo $category['title']; ?></h1>
-						</div>
-						<div class="right col-xs-4">
+							<p>
+								<?php echo $category['content']; ?>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -26,7 +27,7 @@
                         foreach($result as $key => $val){
                     ?>
 
-						<div class="item col-xs-12 col-sm-6">
+						<div class="item col-xs-12 col-sm-4">
 							<div class="wrapper">
 								<div class="mask">
 									<a href="<?php echo base_url('bai-viet/' . $val['slug']) ?>">
@@ -51,14 +52,9 @@
                         }
                     }
                     ?>
-                </div>
-            </div>
-            <div class="right col-md-3 col-sm-4 col-xs-12">
-                <div class="section-header">
-                    <h1><?php echo $this->lang->line('blogs') ?></h1>
-                    <div class="line">
-                        <div class="line-primary"></div>
-                    </div>
+	                <div class="col-md-6 col-md-offset-5 page">
+	                    <?php echo (isset($page_links))? $page_links : '';?>
+	                </div>
                 </div>
             </div>
         </div>

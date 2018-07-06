@@ -174,6 +174,50 @@ class Post extends Admin_Controller{
         }
     }
 
+
+    public function active(){
+        $id = $this->input->post('id');
+        if($id &&  is_numeric($id) && ($id > 0)){
+            $post = $this->post_model->find($id);
+            $post_category = $this->post_category_model->find($post['post_category_id']);
+            if($post_category['is_activated'] == 1){
+                return $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(404)
+                    ->set_output(json_encode(array('status' => 404,'message' => MESSAGE_ERROR_ACTIVE_POST)));
+            }
+            if($this->post_model->find_rows(array('id' => $id,'is_deleted' => 0)) != 0){
+                $update = $this->post_model->common_update($id,array_merge(array('is_activated' => 0),$this->author_data));
+                if($update){
+                    $reponse = array(
+                        'csrf_hash' => $this->security->get_csrf_hash()
+                    );
+                    return $this->return_api(HTTP_SUCCESS,'',$reponse);
+                }
+                return $this->return_api(HTTP_BAD_REQUEST);
+            }
+            return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ISSET_ERROR);
+        }
+        return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ID_ERROR);
+    }
+    public function deactive(){
+        $id = $this->input->post('id');
+        if($id &&  is_numeric($id) && ($id > 0)){
+            if($this->post_model->find_rows(array('id' => $id,'is_deleted' => 0)) != 0){
+                $update = $this->post_model->common_update($id,array_merge(array('is_activated' => 1),$this->author_data));
+                if($update){
+                    $reponse = array(
+                        'csrf_hash' => $this->security->get_csrf_hash()
+                    );
+                    return $this->return_api(HTTP_SUCCESS,'',$reponse);
+                }
+                return $this->return_api(HTTP_BAD_REQUEST);
+            }
+            return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ISSET_ERROR);
+        }
+        return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ID_ERROR);
+    }
+
     public function remove(){
         $id = $this->input->post('id');
         $data = array('is_deleted' => 1);

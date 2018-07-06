@@ -33,7 +33,7 @@
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'about' || $this->uri->segment(2) == 'our_message' || $this->uri->segment(2) == 'our_methods')? 'active' : 'treeview' ?>">
+                <!-- <li class="<?php echo ($this->uri->segment(2) == 'about' || $this->uri->segment(2) == 'our_message' || $this->uri->segment(2) == 'our_methods')? 'active' : 'treeview' ?>">
                     <a href="">
                         <i class="fa fa-user-circle-o"></i>
                         <span>Giới Thiệu</span>
@@ -49,7 +49,7 @@
                 </li>
                 <li class="<?php echo ($this->uri->segment(2) == 'banner')? 'active' : '' ?>">
                     <a href="<?php echo base_url('admin/banner') ?>"><i class="fa fa-list"></i> Banner</a>
-                </li>
+                </li> -->
                 <!-- <li class="<?php echo ($this->uri->segment(2) == 'category' || $this->uri->segment(2) == 'blog')? 'active' : 'treeview' ?>">
                     <a href="">
                         <i class="fa fa-newspaper-o"></i>

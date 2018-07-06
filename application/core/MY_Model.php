@@ -33,23 +33,29 @@ class MY_Model extends CI_Model {
         return $this->db->insert_batch($this->table_lang, $data);
     }
 
-    public function get_all_with_pagination_search($order = 'desc',$limit = NULL, $start = NULL, $keywords = '') {
+    public function get_all_with_pagination_search($order = 'desc',$limit = NULL, $start = NULL, $keywords = '',$activated = 1) {
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->like('title', $keywords);
         $this->db->where('is_deleted', 0);
+        if($activated == 0){
+            $this->db->where('is_activated', $activated);
+        }
         $this->db->limit($limit, $start);
         $this->db->group_by('id');
         $this->db->order_by("id", $order);
         return $result = $this->db->get()->result_array();
     }
 
-    public function count_search($keyword = ''){
+    public function count_search($keyword = '',$activated = 1){
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->like('title', $keyword);
         $this->db->group_by('id');
         $this->db->where('is_deleted', 0);
+        if($activated == 0){
+            $this->db->where('is_activated', $activated);
+        }
         return $result = $this->db->get()->num_rows();
     }
 
@@ -174,5 +180,16 @@ class MY_Model extends CI_Model {
             ->where($this->table . '.is_deleted', 0);
 
         return $result = $this->db->get()->result_array();
+    }
+    public function multiple_update_by_ids($ids = array(), $data) {
+        $this->db->where_in('id', $ids);
+
+        return $this->db->update($this->table, $data);
+    }
+
+    public function multiple_update_by_category_ids($category_ids = array(), $data) {
+        $this->db->where_in($this->table .'_category_id', $category_ids);
+
+        return $this->db->update($this->table, $data);
     }
 }

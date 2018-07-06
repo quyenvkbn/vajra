@@ -1,5 +1,5 @@
 <!-- About Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.css">
 
 <section class="cover">
 	<div class="overlay"></div>
@@ -48,7 +48,7 @@
 						<div class="item col-xs-12">
 							<div class="wrapper">
 								<div class="mask">
-									<a href="<?php echo base_url('tours/'.$value['slug']) ?>">
+									<a href="<?php echo base_url('location/'.$value['slug']) ?>">
 										<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']) ?>" alt="" style="width: 100%;">
 									</a>
 								</div>

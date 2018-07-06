@@ -59,9 +59,9 @@ class Homepage extends Public_Controller {
          * GET TOURS IN EACH CATEGORY AND CATEGORY DOMESTIC_PILGRIMAGE,INTERNATIONAL_PILGRIMAGE
          */
         $this->data['domestic'] = $this->product_category_model->get_by_id(FIXED_DOMESTIC_PILGRIMAGE_CATEGORY_ID);
-        $this->data['tour_domestic'] = $this->get_all_product_in_category($this->data['domestic'],3);
+        $this->data['tour_domestic'] = $this->get_all_product_in_category($this->data['domestic'],6);
         $this->data['international'] = $this->product_category_model->get_by_id(FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID);
-        $this->data['tour_international'] = $this->get_all_product_in_category($this->data['international'],3);
+        $this->data['tour_international'] = $this->get_all_product_in_category($this->data['international'],6);
         /**
          * GET POSTS IN SHARED CORNER
          */

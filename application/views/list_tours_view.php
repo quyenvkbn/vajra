@@ -1,5 +1,5 @@
 <!-- Tours Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
 
 <section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']) ?>')">
 	<div class="overlay"></div>
@@ -124,6 +124,9 @@
 					</div>
 					-->
                 <?php endfor; ?>
+                <div class="col-md-6 col-md-offset-5 page">
+                    <?php echo (isset($page_links))? $page_links : '';?>
+                </div>
 			</div>
 		</div>
 	</div>

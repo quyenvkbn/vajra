@@ -6,12 +6,28 @@
 class Post_model extends MY_Model{
 	
 	public $table = 'post';
-    public function get_by_post_category_id($post_category_id = array()) {
+
+
+    public function get_by_category_id($post_category_id = '',$activated=1) {
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->where('is_deleted', 0);
-        $this->db->where('is_activated', 0);
+        $this->db->where('post_category_id', $post_category_id);
+        if($activated == 0){
+            $this->db->where('post.is_activated', 0);
+        }
+        $this->db->group_by("id");
+        return $this->db->get()->result_array();
+    }
+
+    public function get_by_post_category_id($post_category_id = array(),$activated=1) {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('is_deleted', 0);
         $this->db->where_in('post_category_id', $post_category_id);
+        if($activated == 0){
+            $this->db->where('post.is_activated', 0);
+        }
         $this->db->group_by("id");
         return $this->db->get()->result_array();
     }
@@ -35,12 +51,15 @@ class Post_model extends MY_Model{
 
         return $this->db->get()->row_array();
     }
-    public function get_all_with_pagination($order = 'desc',$limit = NULL, $start = NULL, $category = array()) {
+    public function get_all_with_pagination($order = 'desc',$limit = NULL, $start = NULL, $category = array(),$activated=1) {
         $this->db->select('post.*, post_category.title as parent_title,post_category.slug as parent_slug');
         $this->db->from($this->table);
         $this->db->join('post_category','post_category.id = post.post_category_id');
         $this->db->where_in('post.post_category_id', $category);
         $this->db->where('post.is_deleted', 0);
+        if($activated == 0){
+            $this->db->where('post.is_activated', 0);
+        }
         $this->db->limit($limit, $start);
         $this->db->group_by('post.id');
         $this->db->order_by("post.id", $order);
@@ -52,6 +71,7 @@ class Post_model extends MY_Model{
         $this->db->from($this->table);
         $this->db->join('post_category', 'post_category.id = post.post_category_id');
         $this->db->where('post.is_deleted', 0);
+        $this->db->where('post.is_activated', 0);
         $this->db->where('post.slug', $slug);
 
         return $this->db->get()->row_array();
@@ -62,6 +82,7 @@ class Post_model extends MY_Model{
         $this->db->from($this->table);
         $this->db->join('post_category', 'post_category.id = post.post_category_id');
         $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
         $this->db->where_in('post.post_category_id', $post_category_id);
         $this->db->where("post.id !=",$id);
         $this->db->group_by('post.id');

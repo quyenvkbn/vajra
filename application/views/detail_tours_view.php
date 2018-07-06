@@ -1,5 +1,5 @@
 <!-- Tours Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
 
 <section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['image']) ?>')">
 	<div class="overlay"></div>
@@ -25,6 +25,8 @@
                         <?php for($i=0;$i<count($detail['sub']);$i++): ?>
 							<li><a href="<?php echo base_url('/danh-muc/'.$detail['sub'][$i]['slug']) ?>"><?php echo $detail['sub'][$i]['title'] ?></a></li>
                         <?php endfor; ?>
+					<?php else: ?>
+							<li><a href="<?php echo base_url('/danh-muc/'.$detail['parent_slug']) ?>"><?php echo $detail['parent_title'] ?></a></li>
                     <?php endif ?>
 					<li class="active"><?php echo $detail['title'];?></li>
 				</ol>

@@ -1,5 +1,5 @@
 <!-- About Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.css">
 
 <section class="cover">
 	<div class="overlay"></div>
@@ -48,7 +48,7 @@
 						<div class="item col-xs-12">
 							<div class="wrapper">
 								<div class="mask">
-									<a href="<?php echo base_url('tours/'.$value['slug']) ?>">
+									<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>">
 										<img src="<?php echo base_url('assets/upload/post/' . $value['image']) ?>" alt="" style="width: 100%;">
 									</a>
 								</div>
@@ -60,7 +60,7 @@
 									<p class="post-description"><?php echo $value['content'];?></p>
 								</div>
 								<div class="foot">
-									<a href="<?php echo base_url('tours/' . $value['slug']) ?>" class="btn btn-primary" role="button">
+									<a href="<?php echo base_url('bai-viet/' . $value['slug']) ?>" class="btn btn-primary" role="button">
 										Xem chi tiết
 									</a>
 								</div>

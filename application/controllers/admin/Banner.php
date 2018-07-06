@@ -16,6 +16,8 @@ class Banner extends Admin_Controller{
         $this->load->helper('file');
         $this->data['controller'] = $this->banner_model->table;
 		$this->author_data = handle_author_common_data();
+        redirect('admin', 'refresh');
+
 	}
 
     public function index(){
