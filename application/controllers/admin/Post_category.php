@@ -30,7 +30,7 @@ class Post_category extends Admin_Controller{
         $this->load->library('pagination');
         $config = array();
         $base_url = base_url('admin/'. $this->controller .'/index');
-        $per_page = 10;
+        $per_page = 1000;
         $uri_segment = 4;
         foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
             $config[$key] = $value;
@@ -211,47 +211,46 @@ class Post_category extends Admin_Controller{
     public function active(){
         $this->load->model('post_model');
         $id = $this->input->post('id');
-        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
-        $detail_catrgory = $this->post_category_model->get_by_id($id, $this->request_language_template);
-        $this->get_multiple_posts_with_category($list_categories, $detail_catrgory['id'], $ids);
-        $ids = array_unique($ids);
-
-        $data = array('is_activated' => 0);
-
-        $this->db->trans_begin();
-
-        $update = $this->post_category_model->multiple_update_by_ids($ids, $data);
-
-        if ($update == 1) {
-            $this->post_model->multiple_update_by_category_ids($ids, $data);
+        $post_category = $this->post_category_model->find($id);
+        if($post_category['parent_id'] != 0){
+            $parent_id = $this->post_category_model->find($post_category['parent_id']);
+            if($parent_id['is_activated'] == 1){ 
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_ACTIVE_CATEGORY);
+            }
         }
 
-        if ($this->db->trans_status() === false) {
-            $this->db->trans_rollback();
-            return $this->output
-            ->set_content_type('application/json')
-            ->set_status_header(HTTP_BAD_REQUEST)
-            ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
-        } else {
-            $this->db->trans_commit();
+        $data = array('is_activated' => 0);
+        $update = $this->post_category_model->multiple_update_by_ids($id, $data);
+
+        if ($update == 1) {
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
             );
-            return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(HTTP_SUCCESS)
-                ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse)));
+            return $this->return_api(HTTP_SUCCESS,'',$reponse);
         }
+        return $this->return_api(HTTP_BAD_REQUEST);
     }
 
     public function deactive(){
         $this->load->model('post_model');
         $id = $this->input->post('id');
-        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
-        $detail_catrgory = $this->post_category_model->get_by_id($id, $this->request_language_template);
-        $this->get_multiple_posts_with_category($list_categories, $detail_catrgory['id'], $ids);
+        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc',0);
+        $this->get_multiple_posts_with_category($list_categories, $id, $ids);
         $ids = array_unique($ids);
-
+        if(count($ids)>1){
+                $reponse = array(
+                    'csrf_hash' => $this->security->get_csrf_hash()
+                );
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_POST_ERROR,$reponse);
+        }else{
+            $check = $this->post_category_model->get_by_id($id);
+            if(!empty($check['id']) && !empty($this->post_model->get_by_category_id($id,0))){
+                $reponse = array(
+                    'csrf_hash' => $this->security->get_csrf_hash()
+                );
+                return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_POST_ERROR,$reponse);
+            }
+        }
         $data = array('is_activated' => 1);
 
         $this->db->trans_begin();
@@ -264,19 +263,13 @@ class Post_category extends Admin_Controller{
 
         if ($this->db->trans_status() === false) {
             $this->db->trans_rollback();
-            return $this->output
-            ->set_content_type('application/json')
-            ->set_status_header(HTTP_BAD_REQUEST)
-            ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
+            return $this->return_api(HTTP_BAD_REQUEST);
         } else {
             $this->db->trans_commit();
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
             );
-            return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(HTTP_SUCCESS)
-                ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse)));
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_SUCCESS,$reponse);
         }
     }
 

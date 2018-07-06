@@ -1,5 +1,5 @@
 <!-- Homepage Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.css">
 
 <!-- Slider JS -->
 <script src="<?php echo site_url('assets/js/admin/slider.js') ?>"></script>
@@ -163,13 +163,13 @@
 					<h1>Hành hương nước ngoài</h1>
 				</div>
 				<div class="right col-xs-4">
-					<a href="<?php echo base_url('') ?>">Xem tất cả Tours <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+					<a href="<?php echo base_url("danh-muc/".$international['slug']) ?>">Xem tất cả Tours <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="carousel carousel-showmanymoveone slider" id="domestic-slider">
+				<div class="carousel carousel-showmanymoveone slider" id="international-slider">
 					<div class="carousel-inner">
 						<div class="item active">
 							<div class="inner cover col-xs-12 col-sm-6 col-md-4">
@@ -232,12 +232,12 @@
 			<div class="col-xs-12 slider-control">
 				<ul class="list-inline">
 					<li>
-						<a class="btn btn-default" href="#domestic-slider" data-slide="prev">
+						<a class="btn btn-default" href="#international-slider" data-slide="prev">
 							<i class="fa fa-arrow-left" aria-hidden="false"></i>
 						</a>
 					</li>
 					<li>
-						<a class="btn btn-default" href="#domestic-slider" data-slide="next">
+						<a class="btn btn-default" href="#international-slider" data-slide="next">
 							<i class="fa fa-arrow-right" aria-hidden="false"></i>
 						</a>
 					</li>
@@ -254,11 +254,11 @@
 				<h1>Tin tức</h1>
 			</div>
 			<div class="right col-xs-4">
-				<a href="<?php echo base_url('') ?>">Xem tất cả tin tức <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+				<a href="<?php echo base_url('chuyen-muc/tin-tuc') ?>">Xem tất cả tin tức <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 			</div>
 		</div>
 	</div>
-	<div class="row" style="padding-top: 25px;">
+	<div class="row">
 		<?php foreach ($post_news as $key => $value): ?>
 			<div class="item col-sm-<?php echo ($key == 0)? '12': '4'; ?> col-xs-12" style="<?php echo ($key == 0)? 'padding-bottom: 25px;': ''; ?>">
 				<div class="mask">
@@ -293,7 +293,7 @@
 					<h1>Thư viện ảnh</h1>
 				</div>
 				<div class="right col-xs-4">
-					<a href="<?php echo base_url('') ?>">Xem tất cả <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
+					<a href="<?php echo base_url('location') ?>">Xem tất cả <i class="fa fa-arrow-circle-o-right" aria-hidden="false"></i> </a>
 				</div>
 			</div>
 		</div>

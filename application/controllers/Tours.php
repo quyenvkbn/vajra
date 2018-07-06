@@ -17,6 +17,7 @@ class Tours extends Public_Controller {
         $this->load->library('image_lib');
         $this->load->helper('captcha');
         $this->load->helper('common');
+        $this->load->helper("url");
         $this->get_all = $this->product_category_model->get_all();
         $this->data['request_vehicles_icon'] = $this->request_vehicles_icon;
     }
@@ -34,15 +35,6 @@ class Tours extends Public_Controller {
             }
         }
     }
-    function get_chilren_products_with_category_id($categories, $parent_id = 0, &$sub){
-        foreach ($categories as $key => $item){
-            if (!empty($item) && $item['id'] == $parent_id){
-                $sub[] = $item['id'];
-                unset($categories[$key]);
-                $this->get_chilren_products_with_category_id($categories, $item['parent_id'], $sub);
-            }
-        }
-    }
     public function category($slug) {
         if($this->product_category_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
             $detail = $this->product_category_model->get_by_slug_lang($slug);
@@ -57,10 +49,25 @@ class Tours extends Public_Controller {
                 $ids = array();
             }
             array_unshift($ids,$detail['id']);
+            $this->load->library('pagination');
+            $base_url = base_url('tours/category/'.$slug);
+            $uri_segment = 4;
+            $per_page = 9;
+            $this->data['page'] = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
             $product_array =$this->product_model->get_by_product_category_id_array($ids);
-          
+            $total_rows  = 0;
+            if(!empty($product_array)){
+                $total_rows  = count($product_array);
+            }
+            foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+                $config[$key] = $value;
+            }
+            $this->pagination->initialize($config);
+            $this->data['page_links'] = $this->pagination->create_links();
+
+            $this->data['result'] = $this->product_model->get_all_with_pagination_search('desc', $per_page, $this->data['page'],'',0);
             $this->data['detail'] = $detail;
-            $this->data['product_array'] = $product_array;
+            $this->data['product_array'] = $this->product_model->get_by_product_category_id_array($ids,$per_page,'desc',$this->data['page']);
             $this->render('list_tours_view');
         }else{
             $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);
@@ -129,7 +136,7 @@ class Tours extends Public_Controller {
             /**
              * tour with same category
              */
-            $this->get_chilren_products_with_category_id($this->get_all, $detail['product_category_id'], $ids);
+            $this->get_multiple_products_with_category_id($this->get_all, $detail['product_category_id'], $ids);
             if(empty($ids)){
                 $ids = array();
             }

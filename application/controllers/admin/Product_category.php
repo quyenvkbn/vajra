@@ -32,7 +32,7 @@ class Product_category extends Admin_Controller{
         $this->load->library('pagination');
         $config = array();
         $base_url = base_url('admin/'. $this->data['controller'] .'/index');
-        $per_page = 30;
+        $per_page = 1000;
         $uri_segment = 4;
         foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
             $config[$key] = $value;
@@ -248,10 +248,23 @@ class Product_category extends Admin_Controller{
     public function deactive(){
         $this->load->model('product_model');
         $id = $this->input->post('id');
-        $list_categories = $this->product_category_model->get_by_parent_id(null, 'asc');
+        $list_categories = $this->product_category_model->get_by_parent_id(null, 'asc',0);
         $this->get_multiple_products_with_category($list_categories, $id, $ids);
         $ids = array_unique($ids);
-
+        if(count($ids)>1){
+                $reponse = array(
+                    'csrf_hash' => $this->security->get_csrf_hash()
+                );
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_ERROR,$reponse);
+        }else{
+            $check = $this->product_category_model->get_by_id($id);
+            if(!empty($check['id']) && !empty($this->product_model->get_by_product_category_id($ids,0))){
+                $reponse = array(
+                    'csrf_hash' => $this->security->get_csrf_hash()
+                );
+                return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_ERROR,$reponse);
+            }
+        }
         $data = array('is_activated' => 1);
 
         $this->db->trans_begin();
@@ -270,7 +283,7 @@ class Product_category extends Admin_Controller{
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
             );
-            return $this->return_api(HTTP_SUCCESS,'',$reponse);
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_SUCCESS,$reponse);
         }
     }
 

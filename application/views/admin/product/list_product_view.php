@@ -6,7 +6,7 @@
         <h1>
             Danh sách
             <small>
-                Thực Đơn
+                Tours
             </small>
         </h1>
     </section>
@@ -32,7 +32,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">
-                            Thực Đơn
+                            Tours
                         </h3>
                     </div>
 
@@ -119,7 +119,7 @@
                                     </tr>
                                 <?php else: ?>
                                     <tr>
-                                        Chưa có Thực Đơn
+                                        Chưa có Tours
                                     </tr>
                                 <?php endif; ?>
 

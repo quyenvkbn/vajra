@@ -183,22 +183,19 @@ function deactive(controller, id, question) {
                 if(response.status == 200){
                     switch(controller){
                         case 'post_category' :
-                            alert('Tắt danh mục thành công');
-                            break;
-                        case 'order' :
-                            alert('Hủy đặt bàn thành công');
+                            alert(response.message);
                             break;
                         case 'banner' :
                             alert('Tắt banner thành công');
                             break;
                         case 'product' :
-                            alert('Tắt thực đơn thành công');
+                            alert('Tắt tour thành công');
                             break;
                         case 'post' :
                             alert('Tắt bài viết thành công');
                             break;
                         case 'product_category' :
-                            alert('Tắt danh mục thành công');
+                            alert(response.message);
                             break;
                     }
                     location.reload();

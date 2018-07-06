@@ -74,31 +74,31 @@
 		<div class="row">
 			<ul class="text-center list-inline">
 				<li>
-					<a href="<?php echo base_url('') ?>">Home</a>
+					<a href="<?php echo base_url('') ?>">Trang chủ</a>
 				</li>
 				<li >
 					<a href="<?php echo base_url('danh-muc/hanh-huong-trong-nuoc') ?>">
-						Domestic
+						Hành hương trong nước
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo base_url('danh-muc/hanh-huong-nuoc-ngoai') ?>">
-						International
+						Hành hương nước ngoài
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo base_url('chuyen-muc/tin-tuc'); ?>">
-						News
+						Tin tức
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo base_url('location'); ?>">
-						Gallery
+						Kho thư viện
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo base_url('chuyen-muc/goc-chia-se'); ?>">
-						Share Corner
+						Góc chia sẻ
 					</a>
 				</li>
 			</ul>
