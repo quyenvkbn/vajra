@@ -400,31 +400,31 @@ section.main-content .section {
 
 footer.footer {
   color: #666;
+  background-color: #FFDB2F;
   padding-top: 30px;
   padding-bottom: 100px;
   border-top: 2px solid #FFDB2F; }
   footer.footer a {
-    color: #999; }
+    color: #666; }
     footer.footer a:hover {
-      color: #FFDB2F; }
+      color: #fff; }
   footer.footer .container .row {
-    padding-bottom: 30px;
-    border-bottom: 1px solid #999; }
+    border-bottom: 1px solid #666; }
     footer.footer .container .row .item h1 {
       font-size: 2.5em;
       font-weight: 700;
       color: #FFDB2F; }
     footer.footer .container .row .item .info {
-      margin-bottom: 15px; }
+      margin-bottom: 5px; }
       footer.footer .container .row .item .info label {
         font-size: 1.125em;
         font-weight: 400; }
         footer.footer .container .row .item .info label i {
-          color: #FFDB2F; }
+          color: #666; }
       footer.footer .container .row .item .info h2 {
         font-size: 1.5em;
         font-weight: 700;
-        margin-top: 15px; }
+        margin-top: 5px; }
     footer.footer .container .row:last-of-type {
       border-bottom: none; }
       footer.footer .container .row:last-of-type ul.list-inline {
@@ -704,15 +704,15 @@ footer.footer {
               overflow: hidden; }
         #detail .container .row .left .row.tabs .tab-content #overview .row .map img {
           width: 100%; }
-        #detail .container .row .left .row.tabs .tab-content #gallery .row .panel-group .panel-primary {
+        #detail .container .row .left .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary {
           border-color: #FFDB2F; }
-          #detail .container .row .left .row.tabs .tab-content #gallery .row .panel-group .panel-primary .panel-heading {
+          #detail .container .row .left .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary .panel-heading {
             background-color: #FFDB2F;
             border-color: #FFDB2F;
             color: #fff; }
-          #detail .container .row .left .row.tabs .tab-content #gallery .row .panel-group .panel-primary .panel-body {
+          #detail .container .row .left .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary .panel-body {
             border-top-color: #FFDB2F; }
-            #detail .container .row .left .row.tabs .tab-content #gallery .row .panel-group .panel-primary .panel-body .media .media-left .mask {
+            #detail .container .row .left .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary .panel-body .media .media-left .mask {
               width: 250px;
               height: 150px;
               overflow: hidden; }

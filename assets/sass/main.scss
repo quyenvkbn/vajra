@@ -680,6 +680,7 @@ section.main-content{
 
 footer.footer{
     color: $gray;
+    background-color: $primary;
 
     padding-top: 30px;
     padding-bottom: 100px;
@@ -687,18 +688,16 @@ footer.footer{
     border-top: 2px solid $primary;
 
     a{
-        color: $gray-light;
+        color: $gray;
 
         &:hover{
-            color: $primary;
+            color: #fff;
         }
     }
 
     .container{
         .row{
-            padding-bottom: 30px;
-
-            border-bottom: 1px solid $gray-light;
+            border-bottom: 1px solid $gray;
 
             .item{
 
@@ -710,14 +709,14 @@ footer.footer{
                 }
 
                 .info{
-                    margin-bottom: 15px;
+                    margin-bottom: 5px;
 
                     label{
                         font-size: 1.125em;
                         font-weight: 400;
 
                         i{
-                            color: $primary;
+                            color: $gray;
                         }
                     }
 
@@ -725,7 +724,7 @@ footer.footer{
                         font-size: 1.5em;
                         font-weight: 700;
 
-                        margin-top: 15px;
+                        margin-top: 5px;
                     }
                 }
             }

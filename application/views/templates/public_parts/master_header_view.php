@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</li>
 						</ul>
 					</div>
-					<div class="right col-sm-6 col-xs-12 hidden-xs">
+					<div class="right col-sm-6 hidden-xs">
 						<ul>
 							<li>
 								<a href="mailto: info@diamondtour.vn" target="_blank">

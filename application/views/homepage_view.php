@@ -265,23 +265,23 @@
 	<div class="row">
 		<?php foreach ($post_news as $key => $value): ?>
 			<div class="item col-sm-<?php echo ($key == 0)? '12': '4'; ?> col-xs-12" style="<?php echo ($key == 0)? 'padding-bottom: 25px;': ''; ?>">
-				<div class="mask">
-					<div class="col-md-<?php echo ($key == 0)? '8': '12'; ?>" style="padding:0px;<?php echo ($key == 0)? 'padding-right: 10px;': ''; ?>">
+				<div class="col-md-<?php echo ($key == 0)? '8': '12'; ?>" style="padding:0px;<?php echo ($key == 0)? 'padding-right: 10px;': ''; ?>">
+					<div class="mask">
 							<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
 					</div>
-					<div class="col-md-<?php echo ($key == 0)? '4': '12'; ?>" style="padding:0px;">
-						<div class="head">
-							<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
-							<h2 class="post-title"><?php echo $value['title'];?></h2>
-						</div>
-						<div class="body">
-							<p class="post-description"><?php echo $value['description']; ?></p>
-						</div>
-						<div class="foot">
-							<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-								Xem chi tiết
-							</a>
-						</div>
+				</div>
+				<div class="col-md-<?php echo ($key == 0)? '4': '12'; ?>" style="padding:0px;">
+					<div class="head">
+						<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
+						<h2 class="post-title"><?php echo $value['title'];?></h2>
+					</div>
+					<div class="body">
+						<p class="post-description"><?php echo $value['description']; ?></p>
+					</div>
+					<div class="foot">
+						<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+							Xem chi tiết
+						</a>
 					</div>
 				</div>
 			</div>
@@ -330,20 +330,19 @@
                             break;
                     }?>
 					<div class="grid-item <?php echo $class ?>">
-						<div class="mask">
-							<a href="<?php echo base_url('location/'.$value['slug']) ?>" role="button">
+
+						<a href="<?php echo base_url('location/'.$value['slug']) ?>">
+							<div class="mask">
 								<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="blogs image">
 								<div class="overlay"></div>
-							</a>
-							<div class="content">
-								<h4 class="post-subtitle"><?php echo $value['area'];?></h4>
-								<h2 class="post-title">
-									<a href="<?php echo base_url('location/'.$value['slug']) ?>" role="button">
-                                        <?php echo $value['title'];?>
-									</a>
-								</h2>
+								<div class="content">
+									<h4 class="post-subtitle"><?php echo $value['area'];?></h4>
+									<h2 class="post-title">
+										<?php echo $value['title'];?>
+									</h2>
+								</div>
 							</div>
-						</div>
+						</a>
 					</div>
                     <?php echo (($key+1)%3 == 0)?'<div class="clear" style="clear: left;"></div>':''; ?>
                 <?php endforeach ?>
@@ -363,19 +362,19 @@
 		</div>
 		<?php foreach ($post_shared_corner as $key => $value): ?>
 			<div class="item col-sm-4 col-xs-12">
-				<div class="mask">
-					<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
+				<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>">
+					<div class="mask">
+						<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
 
-					<div class="overlay"></div>
-					<div class="content">
-						<h4 class="post-subtitle"><?php echo date("d/m/Y",strtotime($value['created_at']));?></h4>
-						<h2 class="post-title">
-							<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" role="button">
-                                <?php echo $value['title'];?>
-							</a>
-						</h2>
+						<div class="overlay"></div>
+						<div class="content">
+							<h4 class="post-subtitle"><?php echo date("d/m/Y",strtotime($value['created_at']));?></h4>
+							<h2 class="post-title">
+								<?php echo $value['title'];?>
+							</h2>
+						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 		<?php endforeach ?>
 	</div>

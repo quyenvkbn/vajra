@@ -108,7 +108,7 @@
 								</a>
 							</li>
 							<li role="presentation">
-								<a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">
+								<a href="#gallery-tab" aria-controls="gallery" role="tab" data-toggle="tab">
                                     <?php echo $this->lang->line('tour-tabs-gallery') ?>
 								</a>
 							</li>
@@ -175,7 +175,7 @@
 									</div>
 								</div>
 							</div>
-							<div role="tabpanel" class="tab-pane" id="gallery">
+							<div role="tabpanel" class="tab-pane" id="gallery-tab">
 								<div class="row">
 									<div class="col-xs-12">
 										<div class="panel-group" id="gallery-list" role="tablist" aria-multiselectable="true">
@@ -255,6 +255,7 @@
 								<div class="row">
 									<div class="col-xs-12">
 										<div class="table-responsive">
+
                                         	<?php echo $detail['tripnodes'];?>
                                     	</div>
 									</div>

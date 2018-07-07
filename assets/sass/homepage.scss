@@ -478,7 +478,7 @@ body, html{
         }
 
         &#international{
-            background-color: #FFFAE3;
+            background-color: #f9efc7;
             background-image: url("../img/global.png");
 
             .slider-control{
@@ -496,6 +496,20 @@ body, html{
                 background-color: #fff;
 
                 padding: 15px;
+
+                &:first-of-type{
+                    .mask{
+                        width: 100%;
+                        height: 400px;
+                        overflow: hidden;
+                    }
+                }
+
+                .mask{
+                    width: 100%;
+                    height: 230px;
+                    overflow: hidden;
+                }
 
                 .head{
                     padding-left: 15px;
@@ -532,6 +546,8 @@ body, html{
                 .foot{
                     padding-left: 15px;
                     padding-right: 15px;
+
+                    border-top: 1px solid #eee
                 }
 
                 &:first-of-type{
@@ -554,9 +570,12 @@ body, html{
 
                 .grid-item{
                     width: 25%;
-                    height: 200px;
+                    height: 170px;
 
-                    margin-bottom: 30px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+
+                    margin-bottom: 20px;
 
                     float: left;
 
@@ -565,7 +584,15 @@ body, html{
                     }
 
                     &.grid-item-height-2{
-                        height: 430px;
+                        height: 360px;
+                    }
+
+                    a{
+                        color: #fff;
+
+                        &:hover{
+                            color: #fff;
+                        }
                     }
 
                     .mask{
@@ -611,14 +638,6 @@ body, html{
                             h2.post-title{
                                 font-size: 1.5em;
                                 font-weight: 700;
-
-                                a{
-                                    color: #fff;
-
-                                    &:hover{
-                                        color: #fff;
-                                    }
-                                }
                             }
                         }
                     }
@@ -636,6 +655,14 @@ body, html{
             .item{
                 padding-left: 0;
                 padding-right: 0;
+
+                a{
+                    color: #fff;
+
+                    &:hover{
+                        color: #fff;
+                    }
+                }
 
                 .mask{
                     width: 100%;
@@ -678,14 +705,6 @@ body, html{
                         h2.post-title{
                             font-size: 1.5em;
                             font-weight: 700;
-
-                            a{
-                                color: #fff;
-
-                                &:hover{
-                                    color: #fff;
-                                }
-                            }
                         }
                     }
                 }
