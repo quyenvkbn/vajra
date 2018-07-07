@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</li>
 						</ul>
 					</div>
-					<div class="right col-sm-6 col-xs-12 hidden-xs">
+					<div class="right col-sm-6 hidden-xs">
 						<ul>
 							<li>
 								<a href="mailto: info@diamondtour.vn" target="_blank">
@@ -77,12 +77,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<nav id="main-nav" class="container-fluid">
 			<div class="container">
 				<div class="row">
-					<div class="left col-sm-3 col-xs-6">
+					<div class="left col-sm-2 col-xs-6">
 						<a href="<?php echo base_url('') ?>">
 							<img src="<?php echo site_url('assets/img/')?>logo-W.png" alt="logo Diamond">
 						</a>
 					</div>
-					<div class="right col-sm-9 hidden-xs">
+					<div class="right col-sm-10 hidden-xs">
 						<ul>
 							<li>
 								<a href="<?php echo base_url('') ?>">Trang chủ</a>

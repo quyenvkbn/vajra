@@ -18,7 +18,7 @@
 <section id="detail" class="container-fluid">
 	<div class="container">
 		<div class="row">
-			<div class="left col-sm-8 col-xs-12">
+			<div class="left col-sm-9 col-xs-12">
 				<ol class="breadcrumb hidden-xs">
 					<li><a href="<?php echo base_url('') ?>"><?php echo $this->lang->line('home') ?></a></li>
                     <?php if (!empty($detail['sub'])): ?>
@@ -108,7 +108,7 @@
 								</a>
 							</li>
 							<li role="presentation">
-								<a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">
+								<a href="#gallery-tab" aria-controls="gallery" role="tab" data-toggle="tab">
                                     <?php echo $this->lang->line('tour-tabs-gallery') ?>
 								</a>
 							</li>
@@ -175,7 +175,7 @@
 									</div>
 								</div>
 							</div>
-							<div role="tabpanel" class="tab-pane" id="gallery">
+							<div role="tabpanel" class="tab-pane" id="gallery-tab">
 								<div class="row">
 									<div class="col-xs-12">
 
@@ -256,7 +256,9 @@
 							<div role="tabpanel" class="tab-pane" id="trip-notes">
 								<div class="row">
 									<div class="col-xs-12">
-                                        <?php echo $detail['tripnodes'];?>
+										<div class="table-responsive">
+                                            <?php echo $detail['tripnodes'];?>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -486,7 +488,7 @@
 				</div>
 
 			</div>
-			<div class="right col-sm-4 col-xs-12">
+			<div class="right col-sm-3 col-xs-12">
 				<div class="section-header">
 					<div class="row">
 						<div class="left col-xs-8">

@@ -71,6 +71,7 @@
 				</div>
 			</div>
 		</div>
+		<br><br>
 		<div class="row">
 			<ul class="text-center list-inline">
 				<li>
