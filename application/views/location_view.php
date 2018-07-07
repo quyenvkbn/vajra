@@ -1,5 +1,5 @@
 <!-- About Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.min.css">
 
 <section class="cover">
 	<div class="overlay"></div>
@@ -35,6 +35,7 @@
 									</a>
 								</div>
 								<div class="head">
+									<br><br>
 									<h2 class="post-title"><?php echo $val['title']; ?></h2>
 								</div>
 								<div class="body">

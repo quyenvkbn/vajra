@@ -62,11 +62,8 @@ FONT EMBED
 =======================================
  */
 
-/* Embed font Roboto from Google Fonts Library */
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
-
 body{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /*
@@ -163,9 +160,9 @@ HEADER STYLE
         width: 100%;
 
         #top-nav{
-            border-bottom: 2px solid #fff;
-
             .container{
+                border-bottom: 2px solid #fff;
+
                 .row{
                     padding-top: 7px;
                     padding-bottom: 7px;
@@ -241,52 +238,6 @@ HEADER STYLE
 
                                 font-size: 1em;
 
-                                &:hover{
-
-                                    .menu-expand{
-                                        top: 100%;
-
-                                        display: block;
-
-                                        @include transition(500ms);
-
-                                        .row{
-                                            ul{
-                                                list-style: none;
-                                            }
-
-                                            .mask{
-                                                width: 100%;
-                                                height: 150px;
-                                                overflow: hidden;
-
-                                                margin-bottom: 15px;
-                                            }
-
-                                            a{
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;
-                                                display: -webkit-box;
-                                                line-height: 1.5em;
-                                                height: 3em;
-                                                -webkit-line-clamp: 2;
-                                                -webkit-box-orient: vertical;
-                                                font-size: .875em;
-                                            }
-                                        }
-
-                                    }
-
-                                    a{
-                                        color: #fff;
-                                    }
-                                }
-
-                                > a{
-                                    color: #fff;
-                                    text-transform: uppercase;
-                                }
-
                                 .menu-expand{
                                     width: 100%;
 
@@ -307,10 +258,118 @@ HEADER STYLE
                                     @include transition(500ms);
                                 }
 
+                                &:hover{
+                                    .menu-expand{
+                                        top: 100%;
+
+                                        display: block;
+
+                                        @include transition(500ms);
+
+                                        .mask{
+                                            width: 100%;
+                                            height: 150px;
+                                            overflow: hidden;
+
+                                            margin-bottom: 15px;
+                                        }
+
+                                        a{
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            display: -webkit-box;
+                                            line-height: 1.5em;
+                                            height: 3em;
+                                            -webkit-line-clamp: 2;
+                                            -webkit-box-orient: vertical;
+                                            font-size: .875em;
+                                        }
+                                    }
+
+                                    a{
+                                        color: #fff;
+                                    }
+                                }
+
+                                > a{
+                                    color: #fff;
+                                    text-transform: uppercase;
+                                }
+
                                 &.menu-tabs{
                                     .menu-tabs-expand{
+                                        list-style: none;
+                                        padding-left: 0;
+
+                                        > li{
+                                            width: 25%;
+                                            text-align: left;
+
+                                            padding: 30px 15px;
+                                            font-size: 1.25em;
+
+                                            border-right: 1px solid #dadada;
+                                            border-bottom: 1px solid #dadada;
+
+                                            > a{
+                                                color: $gray;
+
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                display: -webkit-box;
+                                                line-height: 1.5em;
+                                                height: 1.5em;
+                                                -webkit-line-clamp: 1;
+                                                -webkit-box-orient: vertical;
+                                                font-size: .875em;
+                                            }
+
+                                            > ul{
+                                                position: absolute;
+                                                top: 0;
+                                                left: 25%;
+
+                                                width: 75%;
+                                                height: 100%;
+
+                                                padding: 15px;
+
+                                                display: none;
+
+                                                > li{
+                                                    display: inline-block;
+                                                    width: 30%;
+                                                    padding-left: 15px;
+                                                    padding-right: 15px;
+
+                                                    .mask{
+                                                        width: 100%;
+                                                        height: 160px;
+
+                                                        margin-bottom: 15px;
+                                                    }
+                                                }
+                                            }
+
+                                            &:hover{
+                                                background-color: #eaeaea;
+
+                                                a{
+                                                    color: $gray;
+
+                                                    &:hover{
+                                                        color: $gray;
+                                                    }
+                                                }
+
+                                                > ul{
+                                                    display: block;
+                                                }
+                                            }
+                                        }
+
                                         .row{
-                                            min-height: 500px;
+                                            min-height: 300px;
 
                                             .left{
                                                 > ul{
@@ -324,7 +383,7 @@ HEADER STYLE
 
                                                     > li{
                                                         padding: 10px 15px;
-                                                        font-size: 1em;
+                                                        font-size: 1.25em;
 
                                                         border-bottom: 1px solid #dadada;
 
@@ -386,135 +445,106 @@ HEADER STYLE
                                     }
                                 }
 
-                                &.menu-list{
-                                    .menu-list-expand{
-                                        .row{
-                                            margin-left: 0;
-                                            margin-right: 0;
+                            }
+                        }
+                    }
+                }
 
-                                            .item{
-                                                padding: 15px;
+                .btn-expand{
+                    text-align: center;
 
-                                                .head{
+                    .btn-primary{
+                        padding: 10px 30px;
+                        margin-top: 25px;
+                        margin-left: 35px;
+                    }
+                }
+            }
 
-                                                }
+            #nav-device{
+                width: 90%;
+                height: 100vh;
+                overflow-y: scroll;
 
-                                                .body{
-                                                    ul{
-                                                        padding-left: 0;
+                background-color: $primary;
 
-                                                        li{
-                                                            .mask{
-                                                                width: 100%;
-                                                                height: 200px;
-                                                                overflow: hidden;
+                position: fixed;
+                top: 0;
+                left: -100%;
 
-                                                                position: relative;
+                padding: 15px;
 
-                                                                a{
-                                                                    width: 100%;
-                                                                    height: 30%;
+                a{
+                    color: $gray;
+                }
 
-                                                                    padding: 15px;
+                > .head{
+                    padding: 10px 0;
+                    display: block;
+                }
 
-                                                                    font-size: 1.5em;
-                                                                    color: #fff;
+                > .body{
+                    display: block;
 
-                                                                    position: absolute;
-                                                                    bottom: 0;
-                                                                    left: 0;
+                    margin-top: 30px;
 
-                                                                    background: rgba(0,0,0,0.5);
-                                                                    background: -moz-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
-                                                                    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(0,0,0,0.0)));
-                                                                    background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                                    background: -o-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                                    background: -ms-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                                    background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c564', endColorstr='#55b73d', GradientType=1 );
+                    .panel-group{
+                        .panel-default{
+                            background-color: transparent;
+                            border-color: transparent;
 
-                                                                    &:hover{
-                                                                        color: #fff;
-                                                                    }
-                                                                }
-                                                            }
+                            -webkit-box-shadow: none;
+                            -moz-box-shadow: none;
+                            box-shadow: none;
 
-                                                            a{
-                                                                color: $gray-light;
-                                                                font-size: 1.25em;
+                            .panel-heading{
+                                background-color: transparent;
+                                border-color: transparent;
 
-                                                                &:hover{
-                                                                    color: $gray;
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
+                                h4{
+                                    a{
+                                        color: $gray;
+                                        text-transform: uppercase;
+                                    }
+                                }
+                            }
+
+                            .panel-body{
+                                ul{
+                                    list-style: none;
+                                    padding-left: 15px;
+                                    color: $gray;
+
+                                    li{
+                                        h3{
+                                            color: $gray;
+                                            font-size: 1em;
+                                        }
+
+                                        a{
+                                            color: $gray;
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
 
-                                &.menu-dropdown{
+                > .foot{
+                    padding-top: 30px;
+                    border-top: 1px solid #fff;
 
-                                    .menu-dropdown-expand{
-                                        padding: 15px;
+                    ul{
+                        list-style: none;
+                        padding-left: 15px;
 
-                                        .row{
-                                            .media{
+                        li{
+                            color: $gray;
 
-                                                .media-left{
-                                                    width: 50%;
-
-                                                    .mask{
-                                                        width: 100%;
-                                                        height: 230px;
-                                                        overflow: hidden;
-                                                    }
-                                                }
-
-                                                .media-body{
-                                                    a{
-                                                        color: $primary;
-
-                                                        &:hover{
-                                                            color: $gray;
-                                                        }
-                                                    }
-
-                                                    p{
-                                                        color: $gray-light;
-
-                                                        font-size: 1em;
-
-                                                        overflow: hidden;
-                                                        text-overflow: ellipsis;
-                                                        display: -webkit-box;
-                                                        line-height: 1.5;
-                                                        height: 7.5em;
-                                                        -webkit-line-clamp: 5;
-                                                        -webkit-box-orient: vertical;
-                                                    }
-
-                                                    .btn-primary{
-                                                        color: #fff;
-
-                                                        &:hover{
-                                                            color: #fff;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-
-                                    }
-
-                                    &:hover{
-                                        .menu-dropdown-expand{
-                                            display: block;
-                                        }
-                                    }
-                                }
+                            h3{
+                                font-size: 1.25em;
+                                margin-top: 5px;
                             }
                         }
                     }

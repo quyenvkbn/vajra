@@ -19,7 +19,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="left col-sm-8 col-xs-12">
-				<ol class="breadcrumb">
+				<ol class="breadcrumb hidden-xs">
 					<li><a href="<?php echo base_url('') ?>"><?php echo $this->lang->line('home') ?></a></li>
                     <?php if (!empty($detail['sub'])): ?>
                         <?php for($i=0;$i<count($detail['sub']);$i++): ?>

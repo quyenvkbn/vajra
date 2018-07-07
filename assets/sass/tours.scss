@@ -45,7 +45,7 @@
             position: absolute;
 
             bottom: 30px;
-            left: 0;
+            left: 15px;
 
             width: 50%;
 
@@ -231,6 +231,14 @@
 
                         .nav-tabs{
 
+                        }
+
+                        @media (max-width: 768px){
+                            .nav-tabs{
+                                li{
+                                    display: inline-block;
+                                }
+                            }
                         }
 
                         .tab-content{

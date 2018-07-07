@@ -325,7 +325,7 @@
                             $class = 'grid-item-height-2';
                             break;
                     }?>
-					<div class="grid-item <?php echo $class ?> col-xs-12">
+					<div class="grid-item <?php echo $class ?>">
 						<div class="mask">
 							<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="blogs image">
 							<div class="overlay"></div>
