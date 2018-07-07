@@ -17,6 +17,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo site_url('assets/css/') ?>client.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/rateit.css') ?>">
 
+	<!-- Embed Open sans Font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
 	<!-- jQuery 3 -->
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.min.js"></script>
 	<!-- Bootstrap JS -->
@@ -58,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</li>
 						</ul>
 					</div>
-					<div class="right col-sm-6 col-xs-12">
+					<div class="right col-sm-6 col-xs-12 hidden-xs">
 						<ul>
 							<li>
 								<a href="mailto: info@diamondtour.vn" target="_blank">
@@ -84,73 +87,62 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<li>
 								<a href="<?php echo base_url('') ?>">Trang chủ</a>
 							</li>
+
 							<li class="menu-tabs">
 								<a href="<?php echo base_url('danh-muc/hanh-huong-trong-nuoc') ?>">
 									Hành hương trong nước<span class="caret"></span>
 								</a>
-								<div class="menu-tabs-expand menu-expand">
-									<div class="row">
-										<div class="left col-md-3 col-sm-4 col-xs-12">
-											<ul>
-												<?php foreach ($domestic_menu as $key => $value): ?>
-													<li>
-														<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" style="color:black;">
-															<?php echo $value['title'];?>
-															<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-																  aria-hidden="true"></span>
-														</a>
+								<ul class="menu-tabs-expand menu-expand">
+                                    <?php foreach ($domestic_menu as $key => $value): ?>
+										<li>
+											<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" style="color:black;">
+                                                <?php echo $value['title'];?>
+												<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+													  aria-hidden="true"></span>
+											</a>
 
-														<ul>
-															<?php foreach ($value['sub'] as $k => $val): ?>
-																<li>
-																	<div class="mask">
-																		<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']);?>"
-																			 alt="image example">
-																	</div>
-																	<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
-																</li>
-															<?php endforeach ?>
-														</ul>
+											<ul>
+                                                <?php foreach ($value['sub'] as $k => $val): ?>
+													<li>
+														<div class="mask">
+															<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']);?>"
+																 alt="image example">
+														</div>
+														<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
 													</li>
-												<?php endforeach ?>
+                                                <?php endforeach ?>
 											</ul>
-										</div>
-									</div>
-								</div>
+										</li>
+                                    <?php endforeach ?>
+								</ul>
 							</li>
 							<li class="menu-tabs">
 								<a href="<?php echo base_url('danh-muc/hanh-huong-nuoc-ngoai') ?>">
 									Hành hương nước ngoài <span class="caret"></span>
 								</a>
-								<div class="menu-tabs-expand menu-expand">
-									<div class="row">
-										<div class="left col-md-4 col-xs-12">
-											<ul>
-												<?php foreach ($international_menu as $key => $value): ?>
-													<li>
-														<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" style="color:black;">
-															<?php echo $value['title'];?>
-															<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-																  aria-hidden="true"></span>
-														</a>
+								<ul class="menu-tabs-expand menu-expand">
+                                    <?php foreach ($international_menu as $key => $value): ?>
+										<li>
+											<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" style="color:black;">
+                                                <?php echo $value['title'];?>
+												<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+													  aria-hidden="true"></span>
+											</a>
 
-														<ul>
-															<?php foreach ($value['sub'] as $k => $val): ?>
-																<li>
-																	<div class="mask">
-																		<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']);?>"
-																			 alt="image example">
-																	</div>
-																	<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
-																</li>
-															<?php endforeach ?>
-														</ul>
+											<ul>
+                                                <?php foreach ($value['sub'] as $k => $val): ?>
+													<li>
+														<div class="mask">
+															<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']);?>"
+																 alt="image example">
+														</div>
+														<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
 													</li>
-												<?php endforeach ?>
+                                                <?php endforeach ?>
 											</ul>
-										</div>
-									</div>
-								</div>
+										</li>
+                                    <?php endforeach ?>
+								</ul>
 							</li>
 							<li>
 								<a href="<?php echo base_url('chuyen-muc/tin-tuc'); ?>">
@@ -174,6 +166,137 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<button class="btn btn-primary" id="btn-expand">
 							<i class="fa fa-bars" aria-hidden="false"></i>
 						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container-fluid visible-xs">
+				<div id="nav-device">
+					<div class="head">
+						<a href="javascript:void(0);" class="pull-right" id="nav-close">
+							<i class="fa fa-close fa-2x" aria-hidden="false"></i>
+						</a>
+					</div>
+					<div class="body">
+						<div class="panel-group" id="main-nav-side" role="tablist" aria-multiselectable="true">
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="homepage">
+									<h4 class="panel-title">
+										<a href="<?php echo site_url('') ?>" role="button">
+											<i class="fa fa-home" aria-hidden="true"></i> Trang chủ
+										</a>
+									</h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="expand-domestic-heading">
+									<h4 class="panel-title">
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#domestic" aria-expanded="true" aria-controls="expand-domestic-heading">
+                                            Hành hương trong nước <span class="caret"></span>
+										</a>
+									</h4>
+								</div>
+								<div id="domestic" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-domestic-heading">
+									<div class="panel-body">
+										<ul>
+                                            <?php
+                                            if($domestic_menu){
+                                                foreach($domestic_menu as $key => $val){
+                                                    ?>
+													<li>
+														<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" >
+															<h3><?php echo $val['title']; ?></h3>
+														</a>
+													</li>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="expand-international-heading">
+									<h4 class="panel-title">
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#international" aria-expanded="false" aria-controls="expand-international-heading">
+                                            Hành hương nước ngoài <span class="caret"></span>
+										</a>
+									</h4>
+								</div>
+								<div id="international" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-international-heading">
+									<div class="panel-body">
+										<ul>
+                                            <?php
+                                            if($international_menu){
+                                                foreach($international_menu as $key => $val){
+                                                    ?>
+													<li>
+														<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" >
+															<h3><?php echo $val['title']; ?></h3>
+														</a>
+													</li>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="news">
+									<h4 class="panel-title">
+										<a href="<?php echo site_url('chuyen-muc/tin-tuc/') ?>" role="button">
+                                            Tin tức
+										</a>
+									</h4>
+								</div>
+							</div>
+
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="gallery">
+									<h4 class="panel-title">
+										<a href="<?php echo site_url('location') ?>" role="button">
+                                            Kho thư viện
+										</a>
+									</h4>
+								</div>
+							</div>
+
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="shared">
+									<h4 class="panel-title">
+										<a href="<?php echo site_url('chuyen-muc/goc-chia-se/') ?>" role="button">
+											Góc chia sẻ
+										</a>
+									</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="foot">
+						<ul>
+							<li>
+								<label>
+									<i class="fa fa-phone" aria-hidden="true"></i> Hotline <br>
+								</label>
+								<h3>
+									<a href="tel:0869 770 333">0869 770 333</a>
+								</h3>
+							</li>
+							<li>
+								<label>
+									<i class="fa fa-envelope-o" aria-hidden="true"></i> Email <br>
+								</label>
+								<h3>
+									<a href="mailto: info@diamondtour.vn">info@diamondtour.vn</a>
+								</h3>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
