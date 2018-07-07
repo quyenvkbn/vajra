@@ -178,8 +178,6 @@
 							<div role="tabpanel" class="tab-pane" id="gallery-tab">
 								<div class="row">
 									<div class="col-xs-12">
-
-
 										<div class="panel-group" id="gallery-list" role="tablist" aria-multiselectable="true">
                                             <?php for($i = 0; $i < count($detail['librarylocaltion']); $i++): ?>
 												<div class="panel panel-primary">
@@ -257,8 +255,9 @@
 								<div class="row">
 									<div class="col-xs-12">
 										<div class="table-responsive">
-                                            <?php echo $detail['tripnodes'];?>
-										</div>
+
+                                        	<?php echo $detail['tripnodes'];?>
+                                    	</div>
 									</div>
 								</div>
 							</div>
@@ -491,10 +490,8 @@
 			<div class="right col-sm-3 col-xs-12">
 				<div class="section-header">
 					<div class="row">
-						<div class="left col-xs-8">
+						<div class="left col-xs-12">
 							<h1>Tour liên quan</h1>
-						</div>
-						<div class="right col-xs-4">
 						</div>
 					</div>
 				</div>
