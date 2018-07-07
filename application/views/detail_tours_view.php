@@ -18,7 +18,7 @@
 <section id="detail" class="container-fluid">
 	<div class="container">
 		<div class="row">
-			<div class="left col-sm-8 col-xs-12">
+			<div class="left col-sm-9 col-xs-12">
 				<ol class="breadcrumb hidden-xs">
 					<li><a href="<?php echo base_url('') ?>"><?php echo $this->lang->line('home') ?></a></li>
                     <?php if (!empty($detail['sub'])): ?>
@@ -178,8 +178,6 @@
 							<div role="tabpanel" class="tab-pane" id="gallery">
 								<div class="row">
 									<div class="col-xs-12">
-
-
 										<div class="panel-group" id="gallery-list" role="tablist" aria-multiselectable="true">
                                             <?php for($i = 0; $i < count($detail['librarylocaltion']); $i++): ?>
 												<div class="panel panel-primary">
@@ -256,7 +254,9 @@
 							<div role="tabpanel" class="tab-pane" id="trip-notes">
 								<div class="row">
 									<div class="col-xs-12">
-                                        <?php echo $detail['tripnodes'];?>
+										<div class="table-responsive">
+                                        	<?php echo $detail['tripnodes'];?>
+                                    	</div>
 									</div>
 								</div>
 							</div>
@@ -486,13 +486,11 @@
 				</div>
 
 			</div>
-			<div class="right col-sm-4 col-xs-12">
+			<div class="right col-sm-3 col-xs-12">
 				<div class="section-header">
 					<div class="row">
-						<div class="left col-xs-8">
+						<div class="left col-xs-12">
 							<h1>Tour liên quan</h1>
-						</div>
-						<div class="right col-xs-4">
 						</div>
 					</div>
 				</div>
