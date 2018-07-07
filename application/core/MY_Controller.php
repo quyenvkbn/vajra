@@ -306,7 +306,7 @@ class Public_Controller extends MY_Controller {
         foreach ($this->data[$param] as $key => $value) {
             $id_category = array($value['id']);
             $this->get_all_product_with_category_id($this->category_all,$value['id'],$id_category);
-            $this->data[$param][$key]['sub'] = $this->product_model->get_by_product_category_id_array($id_category,6);
+            $this->data[$param][$key]['sub'] = $this->product_model->get_by_product_category_id_array($id_category,3);
         }
     }
     protected function get_all_product_with_category_id($categories, $parent_id = 0, &$ids){
