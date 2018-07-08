@@ -233,7 +233,7 @@
 					</div>
 				</div>
 				<div class="col-xs-12 slider-control">
-					<ul class="list-inline">
+					<ul class="list-inline" style="background-color: rgba(0,0,0,0);">
 						<li>
 							<a class="btn btn-default" href="#international-slider" data-slide="prev">
 								<i class="fa fa-arrow-left" aria-hidden="false"></i>
@@ -331,7 +331,7 @@
                     }?>
 					<div class="grid-item <?php echo $class ?>">
 
-						<a href="<?php echo base_url('location/'.$value['slug']) ?>">
+						<a href="<?php echo base_url('thu-vien/'.$value['slug']) ?>">
 							<div class="mask">
 								<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="blogs image">
 								<div class="overlay"></div>
