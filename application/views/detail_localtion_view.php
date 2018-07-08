@@ -46,7 +46,7 @@
 						<div class="item col-xs-12">
 							<div class="wrapper">
 								<div class="mask">
-									<a href="<?php echo base_url('location/'.$value['slug']) ?>">
+									<a href="<?php echo base_url('thu-vien/'.$value['slug']) ?>">
 										<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']) ?>" alt="" style="width: 100%;">
 									</a>
 								</div>
@@ -58,7 +58,7 @@
 									<p class="post-description"><?php echo $value['content'];?></p>
 								</div>
 								<div class="foot">
-									<a href="<?php echo base_url('location/' . $value['slug']) ?>" class="btn btn-primary" role="button">
+									<a href="<?php echo base_url('thu-vien/' . $value['slug']) ?>" class="btn btn-primary" role="button">
 										Xem chi tiết
 									</a>
 								</div>

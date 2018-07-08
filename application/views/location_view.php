@@ -42,7 +42,7 @@
 									<p class="post-description"><?php echo $val['content']; ?></p>
 								</div>
 								<div class="foot">
-									<a href="<?php echo base_url('location/' . $val['slug']) ?>" class="btn btn-primary" role="button">
+									<a href="<?php echo base_url('thu-vien/' . $val['slug']) ?>" class="btn btn-primary" role="button">
 										Xem chi tiết
 									</a>
 								</div>
