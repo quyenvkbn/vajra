@@ -7,11 +7,13 @@ class Post_category_model extends MY_Model{
 	
 	public $table = 'post_category';
 
-	public function get_by_parent_id($parent_id, $order = 'desc'){
+	public function get_by_parent_id($parent_id, $order = 'desc',$activated =1){
 		$this->db->select('*');
         $this->db->from($this->table);
         $this->db->where('is_deleted', 0);
-        $this->db->where('is_activated', 0);
+        if($activated == 0){
+            $this->db->where('is_activated', 0);
+        }
         if(is_numeric($parent_id)){
             $this->db->where('parent_id', $parent_id);
         }

@@ -40,8 +40,11 @@
                             <br>
                         </div>
                         <div class="form-group col-xs-12">
+                            <?php
+                                echo form_label('Danh Mục', 'parent_id_shared');
+                                echo form_error('parent_id_shared');
+                            ?>
                             <select name="parent_id_shared" class="form-control">
-                                <option selected="" value="0">Danh muc gốc</option>
                                 <?php echo $product_category; ?>
                             </select>
                         </div>

@@ -64,6 +64,10 @@ class Product_category extends Admin_Controller{
         $product_category = $this->product_category_model->get_by_parent_id_when_active(null,'asc');
         $this->build_new_category($product_category,0,$this->data['product_category']);
         if($this->input->post()){
+            if($this->input->post('parent_id_shared') == 0){
+                $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
+                redirect('admin/'. $this->data['controller'], 'refresh');
+            }
             $this->load->library('form_validation');
             $this->form_validation->set_rules('title', 'Tiêu đề', 'required');
             if($this->form_validation->run() == TRUE){
@@ -119,6 +123,7 @@ class Product_category extends Admin_Controller{
             $detail = $this->product_category_model->get_by_id($id, array('title', 'content', 'metakeywords', 'metadescription'));
             $this->build_new_category($product_category,0,$this->data['product_category'],$detail['parent_id'],$id);
             $this->data['detail'] = $detail;
+            $this->data['detail']['check_parent_id'] = ($this->data['detail']['parent_id'] == 0)? 'disabled' : '';
             if($this->input->post()){
                 $this->load->library('form_validation');
                 $this->form_validation->set_rules('title', 'Tiêu đề', 'required');
@@ -127,7 +132,7 @@ class Product_category extends Admin_Controller{
                         $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
                     }
                     $unique_slug = $this->data['detail']['slug'];
-                    if($unique_slug !== $this->input->post('slug_shared')){
+                    if($unique_slug !== $this->input->post('slug_shared') && $this->data['detail']['parent_id'] != 0){
                         $unique_slug = $this->product_category_model->build_unique_slug($this->input->post('slug_shared'));
                         if(file_exists("assets/upload/product_category/".$this->data['detail']['slug'])) {
                             rename("assets/upload/product_category/".$detail['slug'], "assets/upload/product_category/".$unique_slug);
@@ -144,9 +149,11 @@ class Product_category extends Admin_Controller{
                         'title' => $this->input->post('title'),
                         'content' => $this->input->post('content'),
                         'metakeywords' => $this->input->post('metakeywords'),
-                        'metadescription' => $this->input->post('metadescription'),
-                        'parent_id' => $this->input->post('parent_id_shared')
+                        'metadescription' => $this->input->post('metadescription')
                     );
+                    if($this->data['detail']['parent_id'] != 0){
+                        $shared_request['parent_id'] = $this->input->post('parent_id_shared');
+                    }
                     if($unique_slug != $this->data['detail']['slug']){
                         $shared_request['slug'] = $unique_slug;
                     }
@@ -177,6 +184,10 @@ class Product_category extends Admin_Controller{
         $id = $this->input->post('id');
         $this->load->model('product_model');
         if($id &&  is_numeric($id) && ($id > 0)){
+            $product_category = $this->product_category_model->get_by_id($id);
+            if($product_category['parent_id'] == 0){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_REMOVE_CATEGORY);
+            }
             if($this->product_category_model->find_rows(array('id' => $id,'is_deleted' => 0)) == 0){
                 return $this->return_api(HTTP_NOT_FOUND, MESSAGE_ISSET_ERROR);
             }
@@ -232,7 +243,6 @@ class Product_category extends Admin_Controller{
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_ACTIVE_CATEGORY);
             }
         }
-
         $data = array('is_activated' => 0);
         $update = $this->product_category_model->multiple_update_by_ids($id, $data);
 
@@ -252,13 +262,19 @@ class Product_category extends Admin_Controller{
         $this->get_multiple_products_with_category($list_categories, $id, $ids);
         $ids = array_unique($ids);
         if(count($ids)>1){
+            $reponse = array(
+                'csrf_hash' => $this->security->get_csrf_hash()
+            );
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_ERROR,$reponse);
+        }else{
+            $product_category = $this->product_category_model->get_by_id($id);
+            if($product_category['parent_id'] == 0){
                 $reponse = array(
                     'csrf_hash' => $this->security->get_csrf_hash()
                 );
-            return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_ERROR,$reponse);
-        }else{
-            $check = $this->product_category_model->get_by_id($id);
-            if(!empty($check['id']) && !empty($this->product_model->get_by_product_category_id($ids,0))){
+                return $this->return_api(HTTP_SUCCESS,MESSAGE_ERROR_DEACTIVE_CATEGORY,$reponse);
+            }
+            if(!empty($this->product_model->get_by_product_category_id($id))){
                 $reponse = array(
                     'csrf_hash' => $this->security->get_csrf_hash()
                 );
@@ -266,20 +282,8 @@ class Product_category extends Admin_Controller{
             }
         }
         $data = array('is_activated' => 1);
-
-        $this->db->trans_begin();
-
-        $update = $this->product_category_model->multiple_update_by_ids($ids, $data);
-
+        $update = $this->product_category_model->common_update($id,array_merge($data,$this->author_data));
         if ($update == 1) {
-            $this->product_model->multiple_update_by_category_ids($ids, $data);
-        }
-
-        if ($this->db->trans_status() === false) {
-            $this->db->trans_rollback();
-            return $this->return_api(HTTP_BAD_REQUEST);
-        } else {
-            $this->db->trans_commit();
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
             );

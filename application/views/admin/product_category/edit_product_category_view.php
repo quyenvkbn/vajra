@@ -43,9 +43,10 @@
                             echo form_label('Danh Mục', 'parent_id_shared');
                             echo form_error('parent_id_shared');
                             ?>
-                            <select name="parent_id_shared" class="form-control">
-                                <<option value="0">Danh mục gốc</option>}
-                                option
+                            <select name="parent_id_shared" class="form-control" <?php echo $detail['check_parent_id'];?>>
+                                <?php if ($detail['parent_id'] == 0): ?>
+                                    <option value="0">Danh mục gốc</option>
+                                <?php endif ?>
                                 <?php echo $product_category; ?>
                             </select>
                         </div>
@@ -56,7 +57,7 @@
                             echo form_input('slug_shared', $detail['slug'], 'class="form-control" id="slug_shared" readonly');
                             echo form_label('Tiêu đề', 'title');
                             echo form_error('title');
-                            echo form_input('title', trim($detail['title']), 'class="form-control" id="title"');
+                            echo form_input('title', trim($detail['title']), 'class="form-control" id="title" '.$detail['check_parent_id']);
                             echo form_label('Từ khóa meta', 'metakeywords');
                             echo form_error('metakeywords');
                             echo form_input('metakeywords', trim($detail['metakeywords']), 'class="form-control"');
@@ -76,6 +77,11 @@
         </div>
     </section>
 </div>
+<script type="text/javascript">
+    $("[name=submit_shared]").click(function() {
+        $('input,select').removeAttr('disabled');
+    });
+</script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/admin/script.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/admin/common.js') ?>"></script>
 

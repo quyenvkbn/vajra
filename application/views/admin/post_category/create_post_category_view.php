@@ -50,18 +50,24 @@
                                 // echo form_dropdown('parent_id_shared', $post_category, 0, 'class="form-control"');
                                 ?>
                                 <select name="parent_id_shared" class="form-control">
-                                    <option value="">Danh mục gốc</option>
                                     <?php build_new_category($post_category, 0, '') ?>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="form-group col-xs-12">
+                        <div class="form-group col-xs-12" style="display: none;">
                             <div class="form-group col-xs-12">
                                 <?php
                                 echo form_label('Kiểu danh mục', 'type_shared');
                                 echo form_error('type_shared');
                                 echo form_dropdown('type_shared', array(0 => 'Danh mục cho danh sách bài viết', 1 => 'Danh mục cho bài vết đơn'), 0, 'class="form-control"');
+                                                    
+                                ?>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <div class="form-group col-xs-12">
+                                <?php
                                 echo form_label('Tiêu đề', 'title');
                                 echo form_error('title');
                                 echo form_input('title', set_value('title'), 'class="form-control" id="title"');

@@ -262,3 +262,5 @@ defined('MESSAGE_CREATE_ERROR_VALIDATE') OR define('MESSAGE_CREATE_ERROR_VALIDAT
 defined('MESSAGE_DEACTIVE_ERROR') OR define('MESSAGE_DEACTIVE_ERROR', 'Bạn phải tắt tất cả danh mục con và tour thuộc danh mục!');
 defined('MESSAGE_DEACTIVE_POST_ERROR') OR define('MESSAGE_DEACTIVE_POST_ERROR', 'Bạn phải tắt tất cả danh mục con và bài viết thuộc danh mục!');
 defined('MESSAGE_DEACTIVE_SUCCESS') OR define('MESSAGE_DEACTIVE_SUCCESS', 'Tắt danh mục thành công!');
+defined('MESSAGE_ERROR_DEACTIVE_CATEGORY') OR define('MESSAGE_ERROR_DEACTIVE_CATEGORY', 'Danh mục này không thể tắt!');
+defined('MESSAGE_ERROR_REMOVE_CATEGORY') OR define('MESSAGE_ERROR_REMOVE_CATEGORY', 'Danh mục này không thể xóa!');
