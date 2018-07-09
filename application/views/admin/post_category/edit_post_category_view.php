@@ -54,22 +54,29 @@
                                 echo form_label('Danh mục', 'parent_id_shared');
                                 echo form_error('parent_id_shared');
                                 ?>
-                                <select name="parent_id_shared" class="form-control">
-                                    <option value="">Danh mục gốc</option>
+                                <select name="parent_id_shared" class="form-control" <?php echo$detail['check_parent_id'];?>>
+                                    <?php if ($detail['parent_id'] == 0): ?>
+                                        <option value="0">Danh mục gốc</option>
+                                    <?php endif ?>
                                     <?php build_new_category($category, 0, $detail['parent_id'],$detail['id'], '') ?>
                                 </select>
                             </div>
                         </div>
-
+                        <div class="form-group col-xs-12" style="display: none;">
+                            <div class="form-group col-xs-12">
+                                <?php
+                                    echo form_label('Kiểu danh mục', 'type_shared');
+                                    echo form_error('type_shared');
+                                    echo form_dropdown('type_shared', array(0 => 'Danh mục cho danh sách bài viết', 1 => 'Danh mục cho bài vết đơn'), $detail['type'], 'class="form-control"');
+                                ?>
+                            </div>
+                        </div>
                         <div class="form-group col-xs-12">
                             <div class="form-group col-xs-12">
                                 <?php
-                                echo form_label('Kiểu danh mục', 'type_shared');
-                                echo form_error('type_shared');
-                                echo form_dropdown('type_shared', array(0 => 'Danh mục cho danh sách bài viết', 1 => 'Danh mục cho bài vết đơn'), $detail['type'], 'class="form-control"');
                                 echo form_label('Tiêu đề', 'title');
                                 echo form_error('title');
-                                echo form_input('title', $detail['title'], 'class="form-control" id="title"');
+                                echo form_input('title', $detail['title'], 'class="form-control" id="title" '.$detail['check_parent_id']);
                                 echo form_label('Mô tả', 'content');
                                 echo form_error('content');
                                 echo form_textarea('content', $detail['content'], 'class="tinymce-area form-control" rows="5"');
@@ -87,6 +94,12 @@
         </div>
     </section>
 </div>
+
+<script type="text/javascript">
+    $("[name=submit_shared]").click(function() {
+        $('input,select').removeAttr('disabled');
+    });
+</script>
 
 <?php 
     function build_new_category($categorie, $parent_id = 0, $detail_parent_id,$detail_id = "",$char = ''){

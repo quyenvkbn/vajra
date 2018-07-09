@@ -65,6 +65,10 @@ class Post_category extends Admin_Controller{
         	$this->render('admin/'. $this->controller .'/create_post_category_view');
         } else {
         	if($this->input->post()){
+                if($this->input->post('parent_id_shared') == 0){
+                    $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
+                    redirect('admin/'. $this->data['controller'], 'refresh');
+                }
         		$check_upload = true;
                 if ($_FILES['image_shared']['size'] > 1228800) {
                     $check_upload = false;
@@ -131,7 +135,7 @@ class Post_category extends Admin_Controller{
         $this->data['category'] = $category;
         
         $this->data['detail'] = $detail;
-        
+        $this->data['detail']['check_parent_id'] = ($this->data['detail']['parent_id'] == 0)? 'disabled' : '';
 
         $this->form_validation->set_rules('title', 'Tiêu đề', 'required');
 
@@ -148,16 +152,18 @@ class Post_category extends Admin_Controller{
                     $unique_slug = $this->post_category_model->build_unique_slug($slug, $id);
                     $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'. $this->controller .'', 'assets/upload/'. $this->controller .'/thumb');
                     $shared_request = array(
-                        'slug' => $unique_slug,
                         'title' => $this->input->post('title'),
                         'content' => $this->input->post('content'),
-                        'parent_id' => $this->input->post('parent_id_shared'),
                         'type' => $this->input->post('type_shared'),
                         'created_at' => $this->author_data['created_at'],
                         'created_by' => $this->author_data['created_by'],
                         'updated_at' => $this->author_data['updated_at'],
                         'updated_by' => $this->author_data['updated_by']
                     );
+                    if($this->data['detail']['parent_id'] != 0){
+                        $shared_request['slug'] = $unique_slug;
+                        $shared_request['parent_id'] = $this->input->post('parent_id_shared');
+                    }
                     if($image){
                         $shared_request['image'] = $image;
                     }
@@ -185,6 +191,10 @@ class Post_category extends Admin_Controller{
         $id = $this->input->post('id');
         $this->load->model('post_model');
         if($id &&  is_numeric($id) && ($id > 0)){
+            $post_category = $this->post_category_model->get_by_id($id);
+            if($post_category['parent_id'] == 0){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_REMOVE_CATEGORY);
+            }
             if($this->post_category_model->find_rows(array('id' => $id,'is_deleted' => 0)) == 0){
                 return $this->return_api(HTTP_NOT_FOUND, MESSAGE_ISSET_ERROR);
             }
@@ -234,38 +244,26 @@ class Post_category extends Admin_Controller{
     public function deactive(){
         $this->load->model('post_model');
         $id = $this->input->post('id');
-        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc',0);
+        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
         $this->get_multiple_posts_with_category($list_categories, $id, $ids);
         $ids = array_unique($ids);
+        $post_category = $this->post_category_model->get_by_id($id);
+        if($post_category['parent_id'] == 0){
+            $reponse = array(
+                'csrf_hash' => $this->security->get_csrf_hash()
+            );
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_ERROR_DEACTIVE_CATEGORY,$reponse);
+        }
         if(count($ids)>1){
-                $reponse = array(
-                    'csrf_hash' => $this->security->get_csrf_hash()
-                );
-            return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_POST_ERROR,$reponse);
+            return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_POST_ERROR);
         }else{
-            $check = $this->post_category_model->get_by_id($id);
-            if(!empty($check['id']) && !empty($this->post_model->get_by_category_id($id,0))){
-                $reponse = array(
-                    'csrf_hash' => $this->security->get_csrf_hash()
-                );
-                return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_POST_ERROR,$reponse);
+            if(!empty($this->post_model->get_by_post_category_id($id))){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_POST_ERROR);
             }
         }
         $data = array('is_activated' => 1);
-
-        $this->db->trans_begin();
-
-        $update = $this->post_category_model->multiple_update_by_ids($ids, $data);
-
+        $update = $this->post_category_model->common_update($id,array_merge($data,$this->author_data));
         if ($update == 1) {
-            $this->post_model->multiple_update_by_category_ids($ids, $data);
-        }
-
-        if ($this->db->trans_status() === false) {
-            $this->db->trans_rollback();
-            return $this->return_api(HTTP_BAD_REQUEST);
-        } else {
-            $this->db->trans_commit();
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
             );
