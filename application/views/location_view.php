@@ -8,7 +8,7 @@
     <?php else: ?>
         <img src="<?php echo base_url('/assets/image/horizontal.jpg') ?>" alt="cover">
     <?php endif ?>
-	
+
 </section>
 
 <section class="content section container-fluid">
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-md-offset-5 page">
-                <?php echo $page_links ?>
+                <?php echo $page_links; ?>
             </div>
            <!--  <div class="right col-md-3 col-sm-4 col-xs-12">
                 <div class="section-header">
