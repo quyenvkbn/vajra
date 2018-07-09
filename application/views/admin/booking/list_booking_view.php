@@ -81,8 +81,8 @@
                                 </thead>
                                 <tbody>
                                     <?php if ($booking): ?>
-                                        <?php foreach ($booking as $key => $value): ?>
                                         <?php $i = 1 ?>
+                                        <?php foreach ($booking as $key => $value): ?>
                                             <tr class="row-status-<?php echo $value['booking_id']; ?>">
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
