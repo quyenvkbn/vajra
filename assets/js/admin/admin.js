@@ -185,13 +185,20 @@ $("#submit-shared,#content-home").click(function(event) {
 				data: post,
 				contentType: false,
 				processData: false,
+				beforeSend: function(){
+					$("#submit-shared").attr('disabled','disabled');
+				},
 				success: function(response){
-					console.log(response);
+					$("#submit-shared").removeAttr('disabled');
 					if(response.status == 200){
 						csrf_hash = response.reponse.csrf_hash;
 						if (response.isExisted == true) {
 							alert(response.message);
-							window.location.href=HOSTNAMEADMIN+"/product";
+							if(window.location.pathname.indexOf("/product/edit/") != '-1'){
+								$("input[name='csrf_myielts_token']").val(csrf_hash);
+							}else{
+								window.location.href=HOSTNAMEADMIN+"/product";
+							}
 						}
 					}
 				},
