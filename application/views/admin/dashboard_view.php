@@ -78,7 +78,7 @@
                     <h4 class="pull-left header"><a href="<?php echo base_url('admin/booking');?>"><i class="fa fa-inbox"></i> Đặt tour</a></h4>
                     <div class="tab-content no-padding">
                         <!-- Morris chart - Sales -->
-                        <div class="chart tab-pane active" id="booking_preprocessor" style="position: relative; height: 200px; overflow-y: scroll;">
+                        <div class="chart tab-pane active" id="booking_preprocessor" style="position: relative;">
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
@@ -122,23 +122,13 @@
                                                 </tr>
                                             <?php endif ?>
                                         </tbody>
-                                        <tfooter>
-                                            <?php if (!empty($booking_preprocessor)): ?>
-                                                <tr>
-                                                    <th>Họ Tên</th>
-                                                    <th>Thời gian</th>
-                                                    <th>Tour</th>
-                                                    <th>Email</th>
-                                                    <th>Số điện thoại</th>
-                                                </tr>
-                                            <?php endif ?>
-                                        </tfooter>
                                     </table>
                                 </div>
                             </div>
+                            <a href="<?php echo base_url('admin/booking');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
-                        <div class="chart tab-pane" id="booking_success" style="position: relative; height: 200px; overflow-y: scroll;">
+                        <div class="chart tab-pane" id="booking_success" style="position: relative;">
                             
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -183,23 +173,13 @@
                                                 </tr>
                                             <?php endif ?>
                                         </tbody>
-                                        <tfooter>
-                                            <?php if (!empty($booking_success)): ?>
-                                                <tr>
-                                                    <th>Họ Tên</th>
-                                                    <th>Thời gian</th>
-                                                    <th>Tour</th>
-                                                    <th>Email</th>
-                                                    <th>Số điện thoại</th>
-                                                </tr>
-                                            <?php endif ?>
-                                        </tfooter>
                                     </table>
                                 </div>
                             </div>
+                            <a href="<?php echo base_url('admin/booking/success');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
-                        <div class="chart tab-pane" id="booking_error" style="position: relative; height: 200px; overflow-y: scroll;">
+                        <div class="chart tab-pane" id="booking_error" style="position: relative;">
                             
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -244,20 +224,10 @@
                                                 </tr>
                                             <?php endif ?>
                                         </tbody>
-                                        <tfooter>
-                                            <?php if (!empty($booking_error)): ?>
-                                                <tr>
-                                                    <th>Họ Tên</th>
-                                                    <th>Thời gian</th>
-                                                    <th>Tour</th>
-                                                    <th>Email</th>
-                                                    <th>Số điện thoại</th>
-                                                </tr>
-                                            <?php endif ?>
-                                        </tfooter>
                                     </table>
                                 </div>
                             </div>
+                            <a href="<?php echo base_url('admin/booking/cancel');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
                     </div>
@@ -273,7 +243,7 @@
                     <h4 class="pull-left header"><a href="<?php echo base_url('admin/customize');?>"><i class="fa fa-inbox"></i> Tùy biến khách hàng</a></h4>
                     <div class="tab-content no-padding">
                         <!-- Morris chart - Sales -->
-                        <div class="chart tab-pane active" id="customize_preprocessor" style="position: relative; height: 200px; overflow-y: scroll;">
+                        <div class="chart tab-pane active" id="customize_preprocessor" style="position: relative;">
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
@@ -317,23 +287,13 @@
                                                 </tr>
                                             <?php endif ?>
                                         </tbody>
-                                        <tfooter>
-                                            <?php if (!empty($customize_preprocessor)): ?>
-                                                <tr>
-                                                    <th>Họ Tên</th>
-                                                    <th>Thời gian</th>
-                                                    <th>Tour</th>
-                                                    <th>Email</th>
-                                                    <th>Số điện thoại</th>
-                                                </tr>
-                                            <?php endif ?>
-                                        </tfooter>
                                     </table>
                                 </div>
                             </div>
+                            <a href="<?php echo base_url('admin/customize');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
-                        <div class="chart tab-pane" id="customize_success" style="position: relative; height: 200px; overflow-y: scroll;">
+                        <div class="chart tab-pane" id="customize_success" style="position: relative;">
                             
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -378,23 +338,13 @@
                                                 </tr>
                                             <?php endif ?>
                                         </tbody>
-                                        <tfooter>
-                                            <?php if (!empty($customize_success)): ?>
-                                                <tr>
-                                                    <th>Họ Tên</th>
-                                                    <th>Thời gian</th>
-                                                    <th>Tour</th>
-                                                    <th>Email</th>
-                                                    <th>Số điện thoại</th>
-                                                </tr>
-                                            <?php endif ?>
-                                        </tfooter>
                                     </table>
                                 </div>
                             </div>
+                            <a href="<?php echo base_url('admin/customize/success');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
-                        <div class="chart tab-pane" id="customize_error" style="position: relative; height: 200px; overflow-y: scroll;">
+                        <div class="chart tab-pane" id="customize_error" style="position: relative;">
                             
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -439,20 +389,10 @@
                                                 </tr>
                                             <?php endif ?>
                                         </tbody>
-                                        <tfooter>
-                                            <?php if (!empty($customize_error)): ?>
-                                                <tr>
-                                                    <th>Họ Tên</th>
-                                                    <th>Thời gian</th>
-                                                    <th>Tour</th>
-                                                    <th>Email</th>
-                                                    <th>Số điện thoại</th>
-                                                </tr>
-                                            <?php endif ?>
-                                        </tfooter>
                                     </table>
                                 </div>
                             </div>
+                            <a href="<?php echo base_url('admin/customize/cancel');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
                     </div>
