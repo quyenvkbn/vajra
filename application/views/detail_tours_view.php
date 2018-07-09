@@ -54,7 +54,7 @@
 							<tr>
 								<td><?php echo $this->lang->line('tour-detail-price') ?></td>
 								<td>
-									<h3><?php echo number_format($detail['price']) ?> vnd</h3>
+									<h3><?php echo number_format($detail['price']) ?> VNĐ</h3>
 								</td>
 							</tr>
 							<tr>
@@ -507,7 +507,7 @@
 								<div class="head">
 									<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
 									<h2 class="post-title"><?php echo $value['title'];?></h2>
-									<h3 class="price"><?php echo $value['price'];?>vnd</h3>
+									<h3 class="price"><?php echo number_format($value['price']);?> VNĐ</h3>
 								</div>
 								<div class="body">
 									<p class="post-description"><?php echo $value['description'];?></p>
