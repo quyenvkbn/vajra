@@ -52,7 +52,7 @@
                         }
                     }
                     ?>
-	                <div class="col-md-6 col-md-offset-5 page">
+	                <div class="col-sm-6 col-sm-offset-3 col-xs-12 page">
 	                    <?php echo (isset($page_links))? $page_links : '';?>
 	                </div>
                 </div>

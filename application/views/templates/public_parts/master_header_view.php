@@ -38,6 +38,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.waypoints.min.js"></script>
 	<script src="<?php echo site_url('assets/js/jquery.rateit.js') ?>"></script>
 
+	<!--Favicon-->
+	<link rel="shortcut icon" type="image/png" href="<?php echo site_url('assets/img/favicon.png') ?>"/>
+
 
 </head>
 

@@ -54,7 +54,7 @@
                     ?>
                 </div>
             </div>
-            <div class="col-md-6 col-md-offset-5 page">
+            <div class="col-sm-6 col-sm-offset-3 col-xs-12 page">
                 <?php echo $page_links; ?>
             </div>
            <!--  <div class="right col-md-3 col-sm-4 col-xs-12">

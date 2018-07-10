@@ -69,7 +69,7 @@
 							</div>
 						</div>
 	                <?php endforeach; ?>
-					<div class="col-md-6 col-md-offset-5 page">
+					<div class="col-md-6 col-md-offset-3 col-xs-12 page">
 	                    <?php echo $page_links;?>
 	                </div>
 				<?php else: ?>

@@ -149,6 +149,23 @@
                     }
                 }
             }
+
+            .page{
+                text-align: center;
+                padding-top: 30px;
+
+                a, strong{
+                    padding: 5px 10px;
+                }
+
+                a{
+                    color: $gray-light;
+
+                    &:hover{
+                        color: $primary;
+                    }
+                }
+            }
         }
     }
 }

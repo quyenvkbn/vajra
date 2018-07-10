@@ -36,10 +36,11 @@
                     </div>
                 </div>
             <?php endforeach ?>
+			<div class="col-sm-6 col-sm-offset-3 col-xs-12 page">
+                <?php echo $page_links ?>
+			</div>
         </div>
-        <div class="row">
-            <?php echo $page_links ?>
-        </div>
+
 
 
     </div>
