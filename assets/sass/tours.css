@@ -653,6 +653,15 @@ footer.footer {
       -ms-transition: all ease 500ms;
       -o-transition: all ease 500ms;
       transition: all ease 500ms; }
+  #tours .container #list-tours .page {
+    text-align: center;
+    padding-top: 30px; }
+    #tours .container #list-tours .page a, #tours .container #list-tours .page strong {
+      padding: 5px 10px; }
+    #tours .container #list-tours .page a {
+      color: #999; }
+      #tours .container #list-tours .page a:hover {
+        color: #FFDB2F; }
 
 #detail .container .row .left {
   background-color: #fff;

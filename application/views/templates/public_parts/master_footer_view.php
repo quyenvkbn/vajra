@@ -5,7 +5,7 @@
 			<div class="item col-sm-4 col-xs-12">
 				<div class="left col-sm-12">
 					<a href="<?php echo base_url('') ?>">
-						<img src="<?php echo site_url('assets/img/')?>logo.png" alt="logo Diamond">
+						<img src="<?php echo site_url('assets/img/')?>logo-w.png" alt="logo Diamond">
 					</a>
 					<h1>Diamond Tour</h1>
 				</div>
