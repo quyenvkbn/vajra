@@ -54,12 +54,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<ul>
 							<li>
 								<a href="<?php echo base_url('about/')?>">
-									<i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?>
+									<i class="fa fa-user-circle-o" aria-hidden="true"></i> Về chúng tôi
 								</a>
 							</li>
 							<li>
 								<a href="<?php echo base_url('contact/')?>">
-									<i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->lang->line('contact') ?>
+									<i class="fa fa-phone" aria-hidden="true"></i> Liên hệ với chúng tôi
 								</a>
 							</li>
 						</ul>
@@ -285,7 +285,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<ul>
 							<li>
 								<label>
-									<i class="fa fa-phone" aria-hidden="true"></i> Hotline <br>
+									<i class="fa fa-phone" aria-hidden="true"></i> Đường dây nóng <br>
 								</label>
 								<h3>
 									<a href="tel:0869 770 333">0869 770 333</a>
