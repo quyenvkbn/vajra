@@ -10,6 +10,16 @@
 			</h4>
 			<h1 class="title">
                 <?php echo $detail['title'] ?>
+				<br>
+                <?php if (!empty($detail['bestselling'])): ?>
+					<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> Tour bán chạy </span>
+                <?php endif ?>
+                <?php if (!empty($detail['hot'])): ?>
+					<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> Tour Hot </span>
+                <?php endif ?>
+                <?php if (!empty($detail['showpromotion']) && !empty($detail['pricepromotion']) && !empty($detail['percen'])): ?>
+					<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> Tour Khuyến mại </span>
+                <?php endif ?>
 			</h1>
 		</div>
 	</div>
@@ -503,15 +513,39 @@
 									<a href="<?php echo base_url('tours/'.$value['slug']) ?>">
 										<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
 									</a>
+
+									<!--BADGE DISCOUNT -->
+                                    <?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+										<div class="badge badge-discount">
+											<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+										</div>
+                                    <?php endif ?>
+
+									<!--BADGE SPECIAL -->
+									<div class="badge badge-special">
+                                        <?php if (!empty($value['hot'])): ?>
+											<div id="tour-hot" class="">
+												<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+											</div>
+                                        <?php endif ?>
+                                        <?php if (!empty($value['bestselling'])): ?>
+											<div id="best-sell" class="">
+												<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+											</div>
+                                        <?php endif ?>
+									</div>
+
 								</div>
 								<div class="head">
 									<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
 									<h2 class="post-title"><?php echo $value['title'];?></h2>
 									<h3 class="price"><?php echo number_format($value['price']);?> VNĐ</h3>
 								</div>
+								<!--
 								<div class="body">
 									<p class="post-description"><?php echo $value['description'];?></p>
 								</div>
+								-->
 								<div class="foot">
 									<ul class="list-inline">
 										<li>

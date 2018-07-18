@@ -106,6 +106,28 @@
 															<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
 	                                                    <?php } ?>
 													</a>
+
+													<!--BADGE DISCOUNT -->
+                                                    <?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+														<div class="badge badge-discount">
+															<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+														</div>
+                                                    <?php endif ?>
+
+													<!--BADGE SPECIAL -->
+													<div class="badge badge-special">
+                                                        <?php if (!empty($value['hot'])): ?>
+															<div id="tour-hot" class="">
+																<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+															</div>
+                                                        <?php endif ?>
+                                                        <?php if (!empty($value['bestselling'])): ?>
+															<div id="best-sell" class="">
+																<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+															</div>
+                                                        <?php endif ?>
+													</div>
+
 												</div>
 												<div class="head">
 													<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
@@ -201,6 +223,28 @@
 															<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
 	                                                    <?php } ?>
 													</a>
+
+													<!--BADGE DISCOUNT -->
+                                                    <?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+														<div class="badge badge-discount">
+															<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+														</div>
+                                                    <?php endif ?>
+
+													<!--BADGE SPECIAL -->
+													<div class="badge badge-special">
+                                                        <?php if (!empty($value['hot'])): ?>
+															<div id="tour-hot" class="">
+																<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+															</div>
+                                                        <?php endif ?>
+                                                        <?php if (!empty($value['bestselling'])): ?>
+															<div id="best-sell" class="">
+																<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+															</div>
+                                                        <?php endif ?>
+													</div>
+
 												</div>
 												<div class="head">
 													<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
