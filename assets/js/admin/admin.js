@@ -13,6 +13,19 @@ switch(window.location.origin){
     default:
         var HOSTNAMEADMIN = 'http://localhost/vajra/admin';
 } 
+$("#box-promotion").fadeOut();
+if(window.location.pathname.indexOf("/product/edit/") != '-1' && $('#promotion').is(':checked') == true){
+	$("#box-promotion").fadeIn();
+}
+$('#promotion').click(function(){
+	if($('#promotion').is(':checked') == true){
+		$("#box-promotion").fadeIn();
+	}else{
+		$("#box-promotion").fadeOut();
+		$("#box-promotion input").val('');
+		$('#showpromotion').prop('checked',false);
+	}
+});
 $("#nav-product #submit-shared").css("display","none");
 $("#nav-product li#content-home").css("float","left");
 $("#content-home").css("display","none");
@@ -20,7 +33,7 @@ $("#go-back").css("display","inline");
 $("#nav-product li#add-date").css("float","right");
 $("#nav-product li#add-date").click(function(){
 	$.validator.setDefaults({
-		ignore: ":hidden:not('input')"
+		ignore: ":hidden:not('.title-content-date.date input')"
 	});
 	$('#register-form').validate({
 		errorElement: 'span',
@@ -77,16 +90,12 @@ $("#submit-shared,#content-home").click(function(event) {
 	$.validator.addMethod("vehicles", function(value, element) {
 		return this.optional(element) || (value>0);
 	}, "Bạn phải chọn phương tiện.");
-	$.validator.setDefaults({
-		ignore: ":hidden:not('input')"
-	});
 	$('#register-form').validate({
 		highlight: function(element, errorClass, validClass) {
-			$(element).closest('.col-xs-12').addClass("has-errors");
 			$(element).addClass("input-error");
+			$(element).closest('#content-full-date .title-content-date.date').addClass("has-errors");
 		},
 		unhighlight: function(element, errorClass, validClass) {
-			$(element).closest('.col-xs-12').removeClass("has-errors");
 			$(element).removeClass("input-error");
 		}
 	});
@@ -113,15 +122,19 @@ $("#submit-shared,#content-home").click(function(event) {
 		});
 	}
 	if ($('#register-form').valid() === false){
-		if($($(".col-xs-12.has-errors")[0]).parents("[id^=showdatecontent_]").length >0){
+		console.log($(".has-errors"));
+		if($(".title-content-date.date.has-errors").parents("[id^=showdatecontent_]").length >0){
 			var active = $($(".col-xs-12.has-errors")[0]).parents("[id^=showdatecontent_]")[0].id;
 			if($("#numberdate").val() == "" || $("#numberdate").val() == 0){
 				$("#numberdate").focus();
 			}else if($($("#"+active+" [name^=vehicles_]")[0]).val() == 0){
-					$($("#"+active+" [name^=vehicles_]")[0]).focus();
-			}else{
-				$(".col-xs-12.has-errors input[name^=title_date_]")[0].focus();
+				$($("#"+active+" [name^=vehicles_]")[0]).focus();
+				$(".title-content-date.date .input-error")[0].focus();
 			}
+		}else if($("#numberdate").val() == "" || $("#numberdate").val() == 0){
+			$("#numberdate").focus();
+		}else{
+			$(".title-content-date.date .input-error")[0].focus();
 		}
 		return false;
 	}else{
@@ -159,6 +172,14 @@ $("#submit-shared,#content-home").click(function(event) {
 				post.append('datetitle[]',$('#title_date_'+k).val());
 				post.append('datecontent[]',tinymce.get("content_date_"+k).getContent());
 			}
+
+			post.append('hot',$('#hot').is(':checked'));
+			post.append('bestselling',$('#bestselling').is(':checked'));
+			
+			post.append('pricepromotion',$('#pricepromotion').val());
+			post.append('showpromotion',$('#showpromotion').is(':checked'));
+
+			
 			post.append('price',$('#price').val());
 			post.append('date',$('#datepicker').val());
 			post.append('priceadults',$('#priceadults').val());

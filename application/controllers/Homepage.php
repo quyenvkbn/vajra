@@ -90,6 +90,9 @@ class Homepage extends Public_Controller {
         $this->data['location_archive_library'] = $this->localtion_model->get_all_with_pagination_search('desc',7);
         $this->render('homepage_view');
     }
+    public function ajax_home(){
+        return $this->return_api(HTTP_SUCCESS,'',$this->lang->line($this->input->get('key')));
+    }
     public function get_post_category_data($parent = '',&$array_id){
         $categories = $this->post_category_model->fetch_post_category_menu($parent);
         foreach($categories as $key => $category){

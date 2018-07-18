@@ -57,6 +57,8 @@ function removeDate(){
     $($("#content-full-date .title-content-date.date")[numberdate-1]).parents(".no_border").prev().css("display","none");
     $($("#content-full-date .title-content-date.date")[numberdate-1]).removeClass('date').addClass('rm');;
     $($("#content-full-date .title-content-date.rm")).css("display","none");
+    $($("#content-full-date .title-content-date.rm span[class$=-error]")).text('');
+    $($("#content-full-date .title-content-date.rm input,#content-full-date .title-content-date.rm [id^=vehicles-]")).attr("class","form-control");
     $(".title-content-date.showdate .btn-margin span.remove").remove();
     if(numberdate>=3){
         $($(".title-content-date.showdate .btn-margin")[numberdate-2]).append("<span class='col-xs-1 remove' style='float:right;padding:0px;' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>");
@@ -121,7 +123,30 @@ function remove_image(controller, id, image, key){
             }
         });
     }
-}function active(controller, id, question) {
+}
+function active_image(controller, id, image, key){
+    var url = HOSTNAMEADMIN + '/' + controller + '/active_image';
+    if(confirm('Chắc chắn chọn ảnh này làm anh đại diện?')){
+        $.ajax({
+            method: "post",
+            url: url,
+            data: {
+                id : id, csrf_myielts_token : csrf_hash, image : image
+            },
+            success: function(response){
+                if(response.status == 200){
+                    csrf_hash = response.reponse.csrf_hash;
+                    $('.row_' + key).fadeOut();
+                    $("input[name='csrf_myielts_token']").val(csrf_hash);
+                }
+            },
+            error: function(jqXHR, exception){
+                location.reload();
+            }
+        });
+    }
+}
+function active(controller, id, question) {
     var url = HOSTNAMEADMIN + '/' + controller + '/active';
     if(confirm(question)){
         $.ajax({

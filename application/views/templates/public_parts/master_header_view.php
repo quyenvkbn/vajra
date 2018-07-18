@@ -107,6 +107,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														<div class="mask">
 															<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']);?>"
 																 alt="image example">
+															<div class="tour-badge">
+                                                                <?php if (!empty($val['bestselling'])): ?>
+																	<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell-short') ?> </span>
+                                                                <?php endif ?>
+                                                                <?php if (!empty($val['hot'])): ?>
+																	<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot-short') ?> </span>
+                                                                <?php endif ?>
+                                                                <?php if (!empty($val['showpromotion']) && !empty($val['percen']) && !empty($val['pricepromotion'])): ?>
+																	<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount-short') ?> </span>
+                                                                <?php endif ?>
+															</div>
 														</div>
 														<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
 													</li>
@@ -135,6 +146,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														<div class="mask">
 															<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']);?>"
 																 alt="image example">
+															<div class="tour-badge">
+                                                                <?php if (!empty($val['bestselling'])): ?>
+																	<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell-short') ?> </span>
+                                                                <?php endif ?>
+                                                                <?php if (!empty($val['hot'])): ?>
+																	<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot-short') ?> </span>
+                                                                <?php endif ?>
+                                                                <?php if (!empty($val['showpromotion']) && !empty($val['percen']) && !empty($val['pricepromotion'])): ?>
+																	<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount-short') ?> </span>
+                                                                <?php endif ?>
+															</div>
 														</div>
 														<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
 													</li>

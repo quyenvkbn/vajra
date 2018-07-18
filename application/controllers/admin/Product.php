@@ -100,6 +100,9 @@ class Product extends Admin_Controller{
                     $dateimage_full[] = "";
                 }
             }
+            $showpromotion = ($this->input->post('showpromotion') == 'true')? '1': '0';
+            $bestselling = ($this->input->post('bestselling') == 'true')? '1': '0';
+            $hot = ($this->input->post('hot') == 'true')? '1': '0';
             $shared_request = array(
                 'slug' => $unique_slug,
                 'price' => $this->input->post('price'),
@@ -117,6 +120,10 @@ class Product extends Admin_Controller{
                 'pricechildren ' => $this->input->post('pricechildren'),
                 'priceinfants ' => $this->input->post('priceinfants'),
                 'percen' => $this->input->post('percen'),
+                'pricepromotion' => $this->input->post('pricepromotion'),
+                'bestselling' => $bestselling,
+                'hot' => $hot,
+                'showpromotion' => $showpromotion,
                 'localtion' => $this->input->post('localtion'),
                 'product_category_id' => $this->input->post('parent_id_shared'),
                 'dateimg' => json_encode($dateimage_full),
@@ -345,6 +352,9 @@ class Product extends Admin_Controller{
                     }
                     $dateimage_json = json_encode($dateimage_full);
                 }
+                $showpromotion = ($this->input->post('showpromotion') == 'true' && (!empty($this->input->post('percen')) || !empty($this->input->post('pricepromotion'))))? '1': '0';
+                $bestselling = ($this->input->post('bestselling') == 'true')? '1': '0';
+                $hot = ($this->input->post('hot') == 'true')? '1': '0';
                 $shared_request = array(
                     'price' => $this->input->post('price'),
                     'title' => $this->input->post('title'),
@@ -361,6 +371,10 @@ class Product extends Admin_Controller{
                     'pricechildren ' => $this->input->post('pricechildren'),
                     'priceinfants ' => $this->input->post('priceinfants'),
                     'percen' => $this->input->post('percen'),
+                    'pricepromotion' => $this->input->post('pricepromotion'),
+                    'bestselling' => $bestselling,
+                    'hot' => $hot,
+                    'showpromotion' => $showpromotion,
                     'localtion' => $this->input->post('localtion'),
                     'product_category_id' => $this->input->post('parent_id_shared'),
                     'vehicles' => json_encode($this->input->post('vehicles')),

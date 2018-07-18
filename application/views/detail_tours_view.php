@@ -11,6 +11,15 @@
 			<h1 class="title">
                 <?php echo $detail['title'] ?>
 			</h1>
+                <?php if (!empty($detail['bestselling'])): ?>
+					<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell');?> </span>
+                <?php endif ?>
+                <?php if (!empty($detail['hot'])): ?>
+					<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot');?> </span>
+                <?php endif ?>
+                <?php if (!empty($detail['showpromotion']) && !empty($detail['pricepromotion']) && !empty($detail['percen'])): ?>
+					<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount');?> </span>
+                <?php endif ?>
 		</div>
 	</div>
 </section>
@@ -37,11 +46,11 @@
 
 				<div class="row">
 					<div class="left col-sm-6 col-xs-12">
-						<h3>Note</h3>
+						<h3>Ghi chú</h3>
 						<p><?php echo $detail['content'] ?></p>
 					</div>
 					<div class="right col-sm-6 col-xs-12">
-						<h3>Tour Detail</h3>
+						<h3>Chi tiết tour</h3>
 						<table class="table">
 							<tr>
 								<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
@@ -54,7 +63,14 @@
 							<tr>
 								<td><?php echo $this->lang->line('tour-detail-price') ?></td>
 								<td>
-									<h3><?php echo number_format($detail['price']) ?> vnd</h3>
+									<h4>
+										<?php if (!empty($detail['pricepromotion']) && !empty($detail['percen']) && !empty($detail['showpromotion'])): ?>
+											<?php echo number_format($detail['pricepromotion']); ?> VNĐ
+											<small class="price-original"><del><?php echo number_format($detail['price']);?> VNĐ</del></small>
+										<?php else: ?>
+											<?php echo number_format($detail['price']); ?> VNĐ
+										<?php endif ?>
+									</h4>
 								</td>
 							</tr>
 							<tr>
@@ -90,7 +106,7 @@
 										<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
 										<input type="hidden" name="product_id" class="product_id" value="<?php echo $detail['id']?>">
 										<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
-	                                        <?php echo $this->lang->line('booking') ?>
+	                                        Đánh giá
 										</button>
 									</div>
 								</td>
@@ -143,7 +159,7 @@
 													<div class="panel-heading" role="tab" id="day-<?php echo $i+1; ?>-heading">
 														<h4 class="panel-title">
 															<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="day-<?php echo $i+1; ?>">
-																Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
+																<?php echo $this->lang->line('day');?> <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 															</a>
 															<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 														</h4>
@@ -184,7 +200,7 @@
 													<div class="panel-heading" role="tab" id="day-1-heading">
 														<h4 class="panel-title">
 															<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $i+1; ?>">
-																Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
+																 <?php echo $this->lang->line('day');?> <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 															</a>
 															<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 														</h4>
@@ -354,7 +370,7 @@
 									</div>
 
 									<div class="col-xs-12">
-										<input id="bookingsubmit" class="btn btn-primary" type="button" value="Book Now!">
+										<input id="bookingsubmit" class="btn btn-primary" type="button" value="Đặt Tour!">
 									</div>
 
                                     <?php echo form_close(); ?>
@@ -477,7 +493,7 @@
                                         ?>
 									</div>
 									<div class="col-xs-12">
-										<input id="customizesubmit" class="btn btn-primary" type="button" value="Book Now!">
+										<input id="customizesubmit" class="btn btn-primary" type="button" value="Đặt Tour!">
 									</div>
                                     <?php echo form_close(); ?>
 								</div>
@@ -503,11 +519,38 @@
 									<a href="<?php echo base_url('tours/'.$value['slug']) ?>">
 										<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
 									</a>
+										<!--BADGE DISCOUNT -->
+                                        <?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+											<div class="badge badge-discount">
+												<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+											</div>
+                                        <?php endif ?>
+
+										<!--BADGE SPECIAL -->
+										<div class="badge badge-special">
+                                            <?php if (!empty($value['hot'])): ?>
+												<div id="tour-hot" class="">
+													<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+												</div>
+                                            <?php endif ?>
+                                            <?php if (!empty($value['bestselling'])): ?>
+												<div id="best-sell" class="">
+													<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+												</div>
+                                            <?php endif ?>
+										</div>
 								</div>
 								<div class="head">
 									<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
 									<h2 class="post-title"><?php echo $value['title'];?></h2>
-									<h3 class="price"><?php echo $value['price'];?>vnd</h3>
+									<h3 class="price">
+										<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+											<?php echo number_format($value['pricepromotion']); ?> VNĐ
+											<small class="price-original"><del><?php echo number_format($value['price']);?> VNĐ</del></small>
+										<?php else: ?>
+											<?php echo number_format($value['price']); ?> VNĐ
+										<?php endif ?>
+									</h3>
 								</div>
 								<div class="body">
 									<p class="post-description"><?php echo $value['description'];?></p>
@@ -516,11 +559,6 @@
 									<ul class="list-inline">
 										<li>
 											<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-												Đặt Ngay
-											</a>
-										</li>
-										<li>
-											<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
 												Xem chi tiết
 											</a>
 										</li>
