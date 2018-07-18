@@ -225,7 +225,12 @@ HEADER STYLE
                       #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li > ul > li .mask {
                         width: 100%;
                         height: 160px;
-                        margin-bottom: 15px; }
+                        margin-bottom: 15px;
+                        position: relative; }
+                        #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li > ul > li .mask .tour-badge {
+                          position: absolute;
+                          top: 5px;
+                          left: 10px; }
                   #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li:hover {
                     background-color: #eaeaea; }
                     #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li:hover a {
@@ -351,6 +356,31 @@ section.main-content .big-title h1.title {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   margin-bottom: 10px; }
+section.main-content .item .mask {
+  position: relative; }
+  section.main-content .item .mask .badge {
+    position: absolute;
+    z-index: 990;
+    background-color: transparent; }
+    section.main-content .item .mask .badge.badge-special {
+      width: 130px;
+      height: 50px;
+      top: 10px;
+      right: 5px; }
+    section.main-content .item .mask .badge.badge-discount {
+      top: 0px;
+      left: 15px;
+      padding: 0 5px 5px;
+      background-color: #FFDB2F;
+      color: #fff;
+      border-radius: 0;
+      font-size: 1.5em;
+      font-weight: 700; }
+      section.main-content .item .mask .badge.badge-discount .content {
+        position: relative;
+        padding: 50px 15px 30px;
+        border: 1px solid #fff;
+        border-top: none; }
 section.main-content .section {
   display: block;
   padding-top: 30px;
@@ -631,7 +661,6 @@ footer.footer {
 #head-slider-section {
   width: 100%;
   height: 60vh;
-  z-index: -1;
   position: relative; }
   #head-slider-section .container {
     position: absolute;
@@ -908,5 +937,113 @@ footer.footer {
     -ms-transition: all ease 500ms;
     -o-transition: all ease 500ms;
     transition: all ease 500ms; }
+
+@media (max-width: 768px) {
+  #detail .container .row .left .row.tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left {
+    width: 100%;
+    padding-right: 0px; }
+    #detail .container .row .left .row.tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left .mask {
+      width: 100%; }
+  #detail .container .row .left .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary .panel-body .media .media-left {
+    width: 100%;
+    padding-right: 0px; }
+    #detail .container .row .left .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary .panel-body .media .media-left .mask {
+      width: 100%; }
+
+  #detail .row .left table {
+    width: 100%; }
+  #detail .row .right table .rating {
+    unicode-bidi: bidi-override;
+    direction: ltr; }
+    #detail .row .right table .rating > span {
+      display: inline-block;
+      position: relative;
+      width: 1.1em; }
+      #detail .row .right table .rating > span:hover:before {
+        content: "\2605";
+        position: absolute; }
+      #detail .row .right table .rating > span:hover ~ span:before {
+        content: "\2605";
+        position: absolute; }
+  #detail .row .right table tbody tr:last-of-type td {
+    border-top: 1px solid transparent; }
+    #detail .row .right table tbody tr:last-of-type td .captcha-image {
+      padding-left: 0;
+      padding-right: 0; }
+      #detail .row .right table tbody tr:last-of-type td .captcha-image img {
+        width: 100%;
+        height: auto;
+        padding-bottom: 15px; }
+  #detail .row.tabs {
+    margin-top: 30px; }
+    #detail .row.tabs .nav-tabs li {
+      display: inline-block; }
+    #detail .row.tabs .tab-content {
+      padding-top: 30px; }
+      #detail .row.tabs .tab-content #overview .row {
+        display: flex;
+        flex-direction: column; }
+        #detail .row.tabs .tab-content #overview .row .schedule {
+          order: 2; }
+          #detail .row.tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-heading h4 a {
+            max-width: 80%; }
+          #detail .row.tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body {
+            border-top-color: #FFDB2F; }
+            #detail .row.tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left {
+              width: 10%;
+              display: block; }
+              #detail .row.tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left .mask {
+                width: 100%;
+                padding-bottom: 15px; }
+        #detail .row.tabs .tab-content #overview .row .map {
+          order: 1; }
+          #detail .row.tabs .tab-content #overview .row .map img {
+            width: 100%; }
+      #detail .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary {
+        border-color: #FFDB2F; }
+        #detail .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary .panel-heading {
+          background-color: #FFDB2F;
+          border-color: #FFDB2F;
+          color: #fff; }
+        #detail .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary .panel-body {
+          border-top-color: #FFDB2F; }
+          #detail .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary .panel-body .media .media-left {
+            width: 100%;
+            display: block; }
+            #detail .row.tabs .tab-content #gallery-tab .row .panel-group .panel-primary .panel-body .media .media-left .mask {
+              width: 100%;
+              padding-bottom: 15px; }
+      #detail .row.tabs .tab-content #price .row table {
+        width: 1000px; }
+        #detail .row.tabs .tab-content #price .row table thead tr th {
+          width: 33.33%; }
+        #detail .row.tabs .tab-content #price .row table tbody tr td {
+          min-height: 50px; }
+      #detail .row.tabs .tab-content #price .row h3 {
+        padding: 7px 15px;
+        background-color: #FFDB2F;
+        color: #fff;
+        border-radius: 7px; }
+      #detail .row.tabs .tab-content #trip-notes .row h3 {
+        padding: 7px 15px;
+        background-color: #FFDB2F;
+        color: #fff;
+        border-radius: 7px; }
+      #detail .row.tabs .tab-content #trip-notes .row table {
+        width: 1000px; }
+      #detail .row.tabs .tab-content #inquire .row .form-horizontal .form-group {
+        margin-left: 0;
+        margin-right: 0; }
+      #detail .row.tabs .tab-content #inquire .row .form-horizontal textarea {
+        resize: none; }
+      #detail .row.tabs .tab-content #customize .row table thead tr th {
+        width: 50%;
+        background-color: #FFDB2F;
+        color: #fff; }
+      #detail .row.tabs .tab-content #customize .row .form-horizontal .form-group {
+        margin-left: 0;
+        margin-right: 0; }
+      #detail .row.tabs .tab-content #customize .row .form-horizontal textarea {
+        resize: none; } }
 
 /*# sourceMappingURL=tours.css.map */

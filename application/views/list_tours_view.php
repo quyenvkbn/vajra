@@ -89,7 +89,15 @@
 								<div class="head">
 									<h4 class="post-subtitle"><?php echo $val['parent_title'] ?></h4>
 									<h2 class="post-title"><?php echo $val['title'] ?></h2>
-									<h3 class="price"><?php echo number_format($val['price']) ?> VNĐ</h3>
+									<h3 class="price">
+										<?php if (!empty($val['pricepromotion']) && !empty($val['percen']) && !empty($val['showpromotion'])): ?>
+											<?php echo number_format($val['pricepromotion']); ?> VNĐ
+											<small class="price-original"><del><?php echo number_format($val['price']);?> VNĐ</del></small>
+										<?php else: ?>
+											<?php echo number_format($val['price']); ?> VNĐ
+										<?php endif ?>
+									</h3>
+
 								</div>
 								<div class="body">
 									<p class="post-description"><?php echo $val['description']; ?></p>
@@ -98,11 +106,6 @@
 									<ul class="list-inline">
 										<li>
 											<a href="<?php echo base_url('tours/' . $val['slug']) ?>" class="btn btn-primary" role="button">
-												Đặt Ngay
-											</a>
-										</li>
-										<li>
-											<a href="<?php echo base_url('tours/' . $val['slug']) ?>" class="btn btn-default" role="button">
 												Xem chi tiết
 											</a>
 										</li>

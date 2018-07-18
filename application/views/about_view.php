@@ -14,7 +14,7 @@
                         <div class="about-post" id="<?php echo $val['slug']; ?>">
 							<div class="big-title">
 								<h1 class="title">
-                                    <?php echo $val['title'] ?>
+                                    <?php echo trim($val['title']); ?>
 								</h1>
 							</div>
                             <article>
@@ -56,7 +56,7 @@
         'use strict';
         if ($(window).scrollTop() > 600) {
             $('#about .container .right').addClass('sticky');
-            $('#about .container .left .about-post').css('padding-top' , '90px');
+            $('#about .container .left .about-post').css('padding-top' , '5px');
         }
         if ($(window).scrollTop() < 600) {
             $('#about .container .right').removeClass('sticky');

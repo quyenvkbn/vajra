@@ -64,7 +64,6 @@
 #head-slider-section{
     width: 100%;
     height: 60vh;
-    z-index: -1;
 
     position: relative;
 
@@ -615,6 +614,305 @@
                                 box-shadow:  0px 4px 15px rgba(0, 0, 0, 0.5);
 
                                 @include transition(500ms);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 768px){
+
+    #detail{
+        .container{
+            .row{
+                .left{
+                    .row{
+                        &.tabs{
+                            .tab-content{
+                                #overview{
+                                    .row{
+                                        .schedule{
+                                            .panel-group{
+                                                .panel-primary{
+                                                    .panel-body{
+                                                        .media{
+                                                            .media-left{
+                                                                width: 100%;
+                                                                padding-right: 0px;
+                                                                .mask{
+                                                                    width: 100%;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                #gallery-tab {
+                                    .row{
+                                        .panel-group{
+                                            .panel-primary{
+                                                .panel-body{
+                                                    .media{
+                                                        .media-left{
+                                                            width: 100%;
+                                                            padding-right: 0px;
+                                                            .mask{
+                                                                width: 100%;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }  
+    #detail{
+        .row{
+            .left{
+                table{
+                    width: 100%;
+                }
+            }
+
+            .right{
+                table{
+
+                    .rating{
+                        unicode-bidi: bidi-override;
+                        direction: ltr;
+
+                        > span {
+                            display: inline-block;
+                            position: relative;
+                            width: 1.1em;
+
+                            &:hover {
+                                &:before {
+                                    content: "\2605";
+                                    position: absolute;
+                                }
+
+                                ~ span:before{
+                                    content: "\2605";
+                                    position: absolute;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody{
+                        tr{
+                            &:last-of-type{
+                                td{
+                                    border-top: 1px solid transparent;
+
+                                    .captcha-image{
+                                        padding-left: 0;
+                                        padding-right: 0;
+
+                                        img{
+                                            width: 100%;
+                                            height: auto;
+                                            padding-bottom: 15px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.tabs{
+                margin-top: 30px;
+
+                .nav-tabs{
+                    li{
+                        display: inline-block;
+                    }
+                }
+
+                .tab-content{
+                    padding-top: 30px;
+
+                    #overview{
+                        .row{
+                            display: flex;
+                            flex-direction: column;
+
+                            .schedule{
+                                order: 2;
+                                .panel-group{
+                                    .panel-primary{
+
+                                        .panel-heading{
+                                            h4{
+                                                a{
+                                                    max-width: 80%;
+                                                }
+                                            }
+                                        }
+
+                                        .panel-body{
+                                            border-top-color: $primary;
+
+                                            .media{
+                                                .media-left{
+                                                    width: 10%;
+                                                    display: block;
+
+                                                    .mask{
+                                                        width: 100%;
+                                                        padding-bottom: 15px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .map{
+                                order: 1;
+
+                                img{
+                                    width: 100%;
+                                }
+                            }
+                        }
+
+                    }
+
+                    #gallery-tab{
+                        .row{
+                            .panel-group{
+                                .panel-primary{
+                                    border-color: $primary;
+
+                                    .panel-heading{
+                                        background-color: $primary;
+                                        border-color: $primary;
+                                        color: #fff;
+                                    }
+
+                                    .panel-body{
+                                        border-top-color: $primary;
+
+                                        .media{
+                                            .media-left{
+                                                width: 100%;
+                                                display: block;
+
+                                                .mask{
+                                                    width: 100%;
+                                                    padding-bottom: 15px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    #price{
+                        .row{
+                            table{
+                                width: 1000px;
+
+                                thead{
+                                    tr{
+                                        th{
+                                            width: 33.33%;
+                                        }
+                                    }
+                                }
+                                tbody{
+                                    tr{
+                                        td{
+                                            min-height: 50px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            h3{
+                                padding: 7px 15px;
+                                background-color: $primary;
+                                color: #fff;
+
+                                border-radius: 7px;
+                            }
+                        }
+                    }
+
+                    #trip-notes{
+                        .row{
+                            h3{
+                                padding: 7px 15px;
+                                background-color: $primary;
+                                color: #fff;
+
+                                border-radius: 7px;
+                            }
+
+                            table{
+                                width: 1000px;
+                            }
+                        }
+                    }
+
+                    #inquire{
+                        .row{
+                            .form-horizontal{
+                                .form-group{
+                                    margin-left: 0;
+                                    margin-right: 0;
+                                }
+
+                                textarea{
+                                    resize: none;
+                                }
+                            }
+                        }
+                    }
+
+                    #customize{
+                        .row{
+                            table{
+                                thead{
+                                    tr{
+                                        th{
+                                            width: 50%;
+                                            background-color: $primary;
+                                            color: #fff;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .form-horizontal{
+                                .form-group{
+                                    margin-left: 0;
+                                    margin-right: 0;
+                                }
+
+                                textarea{
+                                    resize: none;
+                                }
                             }
                         }
                     }

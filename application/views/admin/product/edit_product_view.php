@@ -102,11 +102,36 @@
                                     ?>
                                 </div>
                                 <div class="col-xs-12">
+                                    <div class="checkbox" style="padding-top: 10px;">
+                                        <label style="padding-right: 10px;">
+                                            <input type="checkbox" id="promotion" name="promotion" <?php echo (!empty(trim($detail['pricepromotion'])) || !empty(trim($detail['percen'])))?'checked':''; ?>> Khuyến mãi
+                                        </label>
+                                        <label style="padding-right: 10px;">
+                                            <input type="checkbox" id="bestselling" name="bestselling" <?php echo ($detail['bestselling'] == 1)? 'checked' : '';?>> Bán Chạy
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="hot" name="hot" <?php echo ($detail['hot'] == 1)? 'checked' : '';?>> Hot
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12" id="box-promotion">
+                                    <div class="col-xs-12" style="border:1px solid #d2d6de;">
                                     <?php
                                     echo form_label('Giảm giá', 'percen');
                                     echo form_error('percen');
                                     echo form_input('percen', trim($detail['percen']), 'class="form-control" id="percen" placeholder ="Đơn vị : Phần trăm (%)" onkeypress=" return isNumberKey(event)"');
                                     ?>
+                                    <?php
+                                    echo form_label('Giá tour sau khi giảm giá', 'pricepromotion');
+                                    echo form_error('pricepromotion');
+                                    echo form_input('pricepromotion', trim($detail['pricepromotion']), 'class="form-control" id="pricepromotion" placeholder ="Đơn vị tiền: VNĐ" onkeypress=" return isNumberKey(event)"');
+                                    ?>
+                                    <div class="checkbox">
+                                        <label style="padding-right: 10px;padding-bottom: 10px;">
+                                            <input type="checkbox" id="showpromotion" name="showpromotion" <?php echo (!empty(trim($detail['showpromotion'])))?'checked':''; ?>> Hiển thị khuyến mãi
+                                        </label>
+                                    </div>
+                                    </div>
                                 </div>
                                 <div class="col-xs-12">
                                     <?php
@@ -116,7 +141,8 @@
                                     ?>
                                 </div>
                                 <div class="col-xs-12">
-                                    <select name="parent_id_shared" id="parent_id_shared" class="form-control">
+                                    <?php echo form_label('Danh mục cha', 'parent_id_shared'); ?>
+                                    <select name="parent_id_shared" id="parent_id_shared" class="form-control" style="margin-top: 0px">
                                         <?php echo $product_category; ?>
                                     </select>
                                 </div>

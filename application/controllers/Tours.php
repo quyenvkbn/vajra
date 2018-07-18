@@ -141,7 +141,7 @@ class Tours extends Public_Controller {
                 $ids = array();
             }
             array_unshift($ids,$detail['product_category_id']);
-            $this->data['product_array'] =$this->product_model->get_by_product_category_id_and_not_id($ids,$detail['id'],4);
+            $this->data['product_array'] =$this->product_model->get_by_product_category_id_and_not_id($ids,$detail['id'],3);
             /**
              * RATING SYSTEM
              * [$ip description]

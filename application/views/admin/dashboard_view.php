@@ -13,7 +13,6 @@
             <li class="active">Dashboard</li>
         </ol>
     </section>
-
     <!-- Main content -->
     <section class="content">
         <!-- Small boxes (Stat box) -->
