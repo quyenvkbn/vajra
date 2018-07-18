@@ -97,7 +97,15 @@ HEADER STYLE
     top: 0;
     left: 0;
     z-index: 1011;
-    width: 100%; }
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.5)), color-stop(25%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 ); }
     #page header #top-nav .container {
       border-bottom: 2px solid #fff; }
       #page header #top-nav .container .row {
@@ -397,6 +405,29 @@ section.main-content .section {
     height: 7.5em;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical; }
+  section.main-content .section .item .mask .badge {
+    position: absolute;
+    z-index: 990;
+    background-color: transparent; }
+    section.main-content .section .item .mask .badge.badge-special {
+      width: 130px;
+      height: 50px;
+      top: 25px;
+      right: 15px; }
+    section.main-content .section .item .mask .badge.badge-discount {
+      top: 15px;
+      left: 30px;
+      padding: 0 5px 5px;
+      background-color: #FFDB2F;
+      color: #fff;
+      border-radius: 0;
+      font-size: 1.5em;
+      font-weight: 700; }
+      section.main-content .section .item .mask .badge.badge-discount .content {
+        position: relative;
+        padding: 50px 15px 30px;
+        border: 1px solid #fff;
+        border-top: none; }
 
 footer.footer {
   color: #666;
@@ -406,7 +437,7 @@ footer.footer {
   background-position: center bottom;
   background-size: 100%;
   padding-top: 30px;
-  padding-bottom: 430px;
+  padding-bottom: 600px;
   border-top: 2px solid #FFDB2F; }
   footer.footer a {
     color: #666; }
@@ -597,6 +628,46 @@ footer.footer {
         max-width: 100%;
         color: #fff; }
 
+#head-slider-section {
+  width: 100%;
+  height: 60vh;
+  z-index: -1;
+  position: relative; }
+  #head-slider-section .container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    padding-top: 300px;
+    z-index: 990;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
+    #head-slider-section .container .big-title {
+      width: 50%; }
+      #head-slider-section .container .big-title h1.title {
+        max-width: 100%;
+        color: #fff; }
+  #head-slider-section #head-slider {
+    height: 100%; }
+    #head-slider-section #head-slider .carousel-inner {
+      height: 100%; }
+      #head-slider-section #head-slider .carousel-inner .container {
+        position: relative;
+        height: 100%; }
+        #head-slider-section #head-slider .carousel-inner .container .big-title {
+          position: absolute;
+          bottom: 30px;
+          left: 15px;
+          width: 50%; }
+          #head-slider-section #head-slider .carousel-inner .container .big-title h1.title {
+            max-width: 100%;
+            color: #fff; }
+      #head-slider-section #head-slider .carousel-inner .mask {
+        width: 100%;
+        height: 100%; }
+
 .breadcrumb {
   padding: 10px 0;
   background-color: transparent; }
@@ -623,6 +694,29 @@ footer.footer {
         width: 100%;
         height: 250px;
         overflow: hidden; }
+        #tours .container #list-tours .item .wrapper .mask .badge {
+          position: absolute;
+          z-index: 990;
+          background-color: transparent; }
+          #tours .container #list-tours .item .wrapper .mask .badge.badge-special {
+            width: 130px;
+            height: 50px;
+            top: 25px;
+            right: 15px; }
+          #tours .container #list-tours .item .wrapper .mask .badge.badge-discount {
+            top: 15px;
+            left: 30px;
+            padding: 0 5px 5px;
+            background-color: #FFDB2F;
+            color: #fff;
+            border-radius: 0;
+            font-size: 1.5em;
+            font-weight: 700; }
+            #tours .container #list-tours .item .wrapper .mask .badge.badge-discount .content {
+              position: relative;
+              padding: 50px 15px 30px;
+              border: 1px solid #fff;
+              border-top: none; }
       #tours .container #list-tours .item .wrapper .head {
         padding-left: 15px;
         padding-right: 15px; }
@@ -767,6 +861,7 @@ footer.footer {
   padding: 15px; }
   #detail .container .row .right .row .item .wrapper {
     background-color: #fff;
+    padding-bottom: 15px;
     -webkit-transition: all ease 500ms;
     -moz-transition: all ease 500ms;
     -ms-transition: all ease 500ms;

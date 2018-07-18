@@ -1,19 +1,39 @@
 <!-- Tours Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
 
-<section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']) ?>')">
-	<div class="overlay"></div>
+<section id="head-slider-section">
 	<div class="container">
 		<div class="big-title">
-			<?php if (!empty($detail['sub'])): ?>
+            <?php if (!empty($detail['sub'])): ?>
 				<h4 class="subtitle">
-					<?php echo $detail['sub'][count($detail['sub'])-1]['title']; ?>
+                    <?php echo $detail['sub'][count($detail['sub'])-1]['title']; ?>
 				</h4>
-			<?php endif ?>
+            <?php endif ?>
 			<h1 class="title">
                 <?php echo $detail['title'] ?>
 			</h1>
 		</div>
+	</div>
+	<div id="head-slider" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner" role="listbox">
+            <?php if (!empty(json_decode($detail['image']))): ?>
+                <?php foreach (json_decode($detail['image']) as $key => $value): ?>
+					<div class="item <?php echo ($key == 0)?'active':'';?>">
+						<div class="mask">
+							<img src="<?php echo base_url('assets/upload/product_category/'.$detail['slug'].'/'.$value);?>" alt="...">
+						</div>
+					</div>
+                <?php endforeach ?>
+            <?php endif ?>
+		</div>
+		<a class="left carousel-control" href="#head-slider" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#head-slider" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
 	</div>
 </section>
 
@@ -43,6 +63,28 @@
 									<a href="<?php echo base_url('tours/' . $val['slug']) ?>">
 										<img src="<?php echo base_url('/assets/upload/product/' . $val['slug'].'/' . $val['image']) ?>" alt="image">
 									</a>
+
+									<!--BADGE DISCOUNT -->
+                                    <?php if (!empty($val['pricepromotion']) && !empty($val['percen']) && !empty($val['showpromotion'])): ?>
+										<div class="badge badge-discount">
+											<div class="content">KM<br>-<?php echo $val['percen']; ?>%</div>
+										</div>
+                                    <?php endif ?>
+
+									<!--BADGE SPECIAL -->
+									<div class="badge badge-special">
+                                        <?php if (!empty($val['hot'])): ?>
+											<div id="tour-hot" class="">
+												<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+											</div>
+                                        <?php endif ?>
+                                        <?php if (!empty($val['bestselling'])): ?>
+											<div id="best-sell" class="">
+												<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+											</div>
+                                        <?php endif ?>
+									</div>
+
 								</div>
 								<div class="head">
 									<h4 class="post-subtitle"><?php echo $val['parent_title'] ?></h4>
