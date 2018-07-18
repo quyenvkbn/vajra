@@ -197,6 +197,7 @@
 															<?php echo number_format($value['price']); ?> VNĐ
 														<?php endif ?>
 													</h3>
+
 												</div>
 												<div class="body">
 													<p class="post-description"><?php echo $value['description']; ?></p>
@@ -318,6 +319,7 @@
 															<?php echo number_format($value['price']); ?> VNĐ
 														<?php endif ?>
 													</h3>
+
 												</div>
 												<div class="body">
 													<p class="post-description"><?php echo $value['description']; ?></p>

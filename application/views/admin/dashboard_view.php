@@ -100,7 +100,7 @@
                                                     <tr class="row-status-<?php echo $value['booking_id']; ?>">
                                                         <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                         <td>
-                                                            <?php 
+                                                            <?php
                                                                 if($value['time'] != "0000-00-00 00:00:00" && $value['time'] != "1970-01-01 08:00:00"){
                                                                     $time = explode("-",str_replace(" 00:00:00","",$value['time']));
                                                                     if(count($time) == 3){
@@ -128,7 +128,7 @@
                             <!-- /.box-body -->
                         </div>
                         <div class="chart tab-pane" id="booking_success" style="position: relative;">
-                            
+
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
@@ -151,7 +151,7 @@
                                                     <tr class="row-status-<?php echo $value['booking_id']; ?>">
                                                         <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                         <td>
-                                                            <?php 
+                                                            <?php
                                                                 if($value['time'] != "0000-00-00 00:00:00" && $value['time'] != "1970-01-01 08:00:00"){
                                                                     $time = explode("-",str_replace(" 00:00:00","",$value['time']));
                                                                     if(count($time) == 3){
@@ -168,7 +168,7 @@
                                                 <?php endforeach ?>
                                             <?php else: ?>
                                                 <tr>
-                                                    Chưa có đơn đặt tour nào hoàn thành 
+                                                    Chưa có đơn đặt tour nào hoàn thành
                                                 </tr>
                                             <?php endif ?>
                                         </tbody>
@@ -179,7 +179,7 @@
                             <!-- /.box-body -->
                         </div>
                         <div class="chart tab-pane" id="booking_error" style="position: relative;">
-                            
+
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
@@ -202,7 +202,7 @@
                                                     <tr class="row-status-<?php echo $value['booking_id']; ?>">
                                                         <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                         <td>
-                                                            <?php 
+                                                            <?php
                                                                 if($value['time'] != "0000-00-00 00:00:00" && $value['time'] != "1970-01-01 08:00:00"){
                                                                     $time = explode("-",str_replace(" 00:00:00","",$value['time']));
                                                                     if(count($time) == 3){
@@ -231,6 +231,7 @@
                         </div>
                     </div>
                 </div>
+                <hr style="border:solid 1px grey">
                 <!-- /.nav-tabs-customize --><!-- Custom tabs (Charts with tabs)-->
                 <div class="nav-tabs-customize">
                     <!-- Tabs within a box -->
@@ -265,7 +266,7 @@
                                                     <tr class="row-status-<?php echo $value['customize_id']; ?>">
                                                         <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                         <td>
-                                                            <?php 
+                                                            <?php
                                                                 if($value['time'] != "0000-00-00 00:00:00" && $value['time'] != "1970-01-01 08:00:00"){
                                                                     $time = explode("-",str_replace(" 00:00:00","",$value['time']));
                                                                     if(count($time) == 3){
@@ -293,7 +294,7 @@
                             <!-- /.box-body -->
                         </div>
                         <div class="chart tab-pane" id="customize_success" style="position: relative;">
-                            
+
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
@@ -316,7 +317,7 @@
                                                     <tr class="row-status-<?php echo $value['customize_id']; ?>">
                                                         <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                         <td>
-                                                            <?php 
+                                                            <?php
                                                                 if($value['time'] != "0000-00-00 00:00:00" && $value['time'] != "1970-01-01 08:00:00"){
                                                                     $time = explode("-",str_replace(" 00:00:00","",$value['time']));
                                                                     if(count($time) == 3){
@@ -333,7 +334,7 @@
                                                 <?php endforeach ?>
                                             <?php else: ?>
                                                 <tr>
-                                                    Chưa có đơn đặt tour nào hoàn thành 
+                                                    Chưa có đơn đặt tour nào hoàn thành
                                                 </tr>
                                             <?php endif ?>
                                         </tbody>
@@ -344,7 +345,7 @@
                             <!-- /.box-body -->
                         </div>
                         <div class="chart tab-pane" id="customize_error" style="position: relative;">
-                            
+
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
@@ -367,7 +368,7 @@
                                                     <tr class="row-status-<?php echo $value['customize_id']; ?>">
                                                         <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                         <td>
-                                                            <?php 
+                                                            <?php
                                                                 if($value['time'] != "0000-00-00 00:00:00" && $value['time'] != "1970-01-01 08:00:00"){
                                                                     $time = explode("-",str_replace(" 00:00:00","",$value['time']));
                                                                     if(count($time) == 3){
@@ -396,6 +397,7 @@
                         </div>
                     </div>
                 </div>
+                <hr style="border:solid 1px grey">
                 <!-- /.nav-tabs-customize -->
 
             </section>
@@ -405,4 +407,3 @@
     </section>
     <!-- /.content -->
 </div>
-

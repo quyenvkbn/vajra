@@ -10,6 +10,16 @@
 			</h4>
 			<h1 class="title">
                 <?php echo $detail['title'] ?>
+				<br>
+                <?php if (!empty($detail['bestselling'])): ?>
+					<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> Tour bán chạy </span>
+                <?php endif ?>
+                <?php if (!empty($detail['hot'])): ?>
+					<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> Tour Hot </span>
+                <?php endif ?>
+                <?php if (!empty($detail['showpromotion']) && !empty($detail['pricepromotion']) && !empty($detail['percen'])): ?>
+					<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> Tour Khuyến mại </span>
+                <?php endif ?>
 			</h1>
                 <?php if (!empty($detail['bestselling'])): ?>
 					<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell');?> </span>
@@ -53,15 +63,15 @@
 						<h3>Chi tiết tour</h3>
 						<table class="table">
 							<tr>
-								<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
+								<td>Số ngày</td>
 								<td><?php echo count($detail['datetitle'])?> Ngày</td>
 							</tr>
 							<tr>
-								<td><?php echo $this->lang->line('tour-detail-start') ?></td>
+								<td>Ngày khởi hành</td>
 								<td><?php echo $detail['date'] ?></td>
 							</tr>
 							<tr>
-								<td><?php echo $this->lang->line('tour-detail-price') ?></td>
+								<td>Giá</td>
 								<td>
 									<h4>
 										<?php if (!empty($detail['pricepromotion']) && !empty($detail['percen']) && !empty($detail['showpromotion'])): ?>
@@ -74,11 +84,11 @@
 								</td>
 							</tr>
 							<tr>
-								<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
+								<td>Đánh giá</td>
 								<td>
 									<div id="rateit_star" data-productid="<?php echo $detail['id']; ?>" data-rateit-resetable="false" data-rateit-value="<?php echo $rating ?>"></div>
 									<input type="hidden" name="re_rateit" id="re_rateit" value="">
-									<p class="number"><?php echo $rating ?> / 5 điểm <?php echo '(' . $count_rating. ' ' .$this->lang->line('tour-detail-votes') . ')' ?></p>
+									<p class="number"><?php echo $rating ?> / 5 điểm <?php echo '(' . $count_rating. ' phiếu' . ')' ?></p>
 								</td>
 							</tr>
 							<tr>
@@ -120,32 +130,32 @@
 						<ul class="nav nav-tabs nav-justified" role="tablist">
 							<li role="presentation" class="active">
 								<a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-overview') ?>
+                                    Tổng quan
 								</a>
 							</li>
 							<li role="presentation">
 								<a href="#gallery-tab" aria-controls="gallery" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-gallery') ?>
+                                    Thư viện ảnh
 								</a>
 							</li>
 							<li role="presentation">
 								<a href="#price" aria-controls="price" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-price') ?>
+                                    Chi phí
 								</a>
 							</li>
 							<li role="presentation">
 								<a href="#trip-notes" aria-controls="trip-notes" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-trip-notes') ?>
+                                    Lưu ý
 								</a>
 							</li>
 							<li role="presentation">
 								<a href="#inquire" aria-controls="inquire" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-inquire') ?>
+                                    Đăng ký
 								</a>
 							</li>
 							<li role="presentation">
 								<a href="#customize" aria-controls="customize" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-customize') ?>
+                                    Tùy chỉnh
 								</a>
 							</li>
 						</ul>
@@ -160,6 +170,7 @@
 														<h4 class="panel-title">
 															<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="day-<?php echo $i+1; ?>">
 																<?php echo $this->lang->line('day');?> <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
+
 															</a>
 															<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 														</h4>
@@ -201,6 +212,7 @@
 														<h4 class="panel-title">
 															<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $i+1; ?>">
 																 <?php echo $this->lang->line('day');?> <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
+
 															</a>
 															<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 														</h4>
@@ -246,16 +258,16 @@
 										<table class="table table-bordered">
 											<thead>
 											<tr>
-												<th><?php echo $this->lang->line('tour-price-adult') ?></th>
-												<th><?php echo $this->lang->line('tour-price-u11') ?></th>
-												<th><?php echo $this->lang->line('tour-price-u2') ?></th>
+												<th>Người lớn</th>
+												<th>Trẻ từ 2 đến 11 tuổi</th>
+												<th>Trẻ em dưới 2 tuổi</th>
 											</tr>
 											</thead>
 											<tbody>
 											<tr>
-												<td><?php echo $detail['priceadults'];?>% price</td>
-												<td><?php echo $detail['pricechildren'];?>% price</td>
-												<td><?php echo $detail['priceinfants'];?>% price</td>
+												<td><?php echo $detail['priceadults'];?>% Giá</td>
+												<td><?php echo $detail['pricechildren'];?>% Giá</td>
+												<td><?php echo $detail['priceinfants'];?>% Giá</td>
 											</tr>
 											</tbody>
 										</table>
@@ -285,77 +297,77 @@
                                     ?>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-title') .' (*)', 'inquire_title');
+                                        echo form_label('Chức danh (*)', 'inquire_title');
                                         echo form_error('inquire_title');
                                         echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="inquire_title"')
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-first-name') .' (*)', 'inquire_first_name');
+                                        echo form_label('Tên (*)', 'inquire_first_name');
                                         echo form_error('inquire_first_name');
                                         echo form_input('inquire_first_name', set_value('inquire_first_name'), 'class="form-control" id="inquire_first_name"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-last-name') .' (*)', 'inquire_last_name');
+                                        echo form_label('Họ (*)', 'inquire_last_name');
                                         echo form_error('inquire_last_name');
                                         echo form_input('inquire_last_name', set_value('inquire_last_name'), 'class="form-control" id="inquire_last_name"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-email') .' (*)', 'inquire_email');
+                                        echo form_label('Địa chỉ Email (*)', 'inquire_email');
                                         echo form_error('inquire_email');
                                         echo form_input('inquire_email', set_value('inquire_email'), 'class="form-control" id="inquire_email"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-email-confirm') .' (*)', 'inquire_email_confirm');
+                                        echo form_label('Xác nhận địa chỉ Email (*)', 'inquire_email_confirm');
                                         echo form_error('inquire_email_confirm');
                                         echo form_input('inquire_email_confirm', set_value('inquire_email_confirm'), 'class="form-control" id="inquire_email_confirm"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-phone-number') .' (*)', 'inquire_phone_number');
+                                        echo form_label('Số điện thoại liên hệ (*)', 'inquire_phone_number');
                                         echo form_error('inquire_phone_number');
                                         echo form_input('inquire_phone_number', set_value('inquire_phone_number'), 'class="form-control" id="inquire_phone_number"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-6 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-departure') .' (*)', 'datepicker');
+                                        echo form_label('Ngày khởi hành mong muốn (*)', 'datepicker');
                                         echo form_error('datepicker');
                                         echo form_input('datepicker', set_value('datepicker'), 'class="form-control datepicker" readonly');
                                         ?>
 									</div>
 									<div class="form-group col-sm-6 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-country') .' (*)', 'inquire_country');
+                                        echo form_label('Đất nước (*)', 'inquire_country');
                                         echo form_error('inquire_country');
                                         echo form_input('inquire_country', set_value('inquire_country'), 'class="form-control" id="inquire_country"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-adults') .' (*)', 'inquire_number_adults');
+                                        echo form_label('Người lớn (*)', 'inquire_number_adults');
                                         echo form_error('inquire_number_adults');
                                         echo '<input type="number" class="form-control" id="inquire_number_adults" name="inquire_number_adults" min="0" placeholder="0" >';
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-children-u11') .' (*)', 'inquire_number_children_u11');
+                                        echo form_label('Trẻ từ 2 đến 11 tuổi (*)', 'inquire_number_children_u11');
                                         echo form_error('inquire_number_children_u11');
                                         echo '<input type="number" class="form-control" id="inquire_number_children_u11" name="inquire_number_children_u11" min="0" placeholder="0" >';
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-children-u2') .' (*)', 'inquire_number_children_u2');
+                                        echo form_label('Trẻ em dưới 2 tuổi (*)', 'inquire_number_children_u2');
                                         echo form_error('inquire_number_children_u2');
                                         echo '<input type="number" class="form-control" id="inquire_number_children_u2" name="inquire_number_children_u2" min="0" placeholder="0" >';
                                         ?>
@@ -363,7 +375,7 @@
 
 									<div class="form-group col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-message') .' (*)', 'inquire_message');
+                                        echo form_label('Tin nhắn (*)', 'inquire_message');
                                         echo form_error('inquire_message');
                                         echo form_textarea('inquire_message', set_value('inquire_message'), 'class="form-control" id="inquire_message"')
                                         ?>
@@ -385,8 +397,8 @@
 										<table class="table">
 											<thead>
 											<tr>
-												<th><?php echo $this->lang->line('customize-program') ?></th>
-												<th><?php echo $this->lang->line('customize-change') ?></th>
+												<th>Chương trình mặc định</th>
+												<th>Chương trình thay đổi</th>
 											</tr>
 											</thead>
 
@@ -394,7 +406,7 @@
                                             <?php for ($i = 0;$i< count($detail['dateimg']);$i++): ?>
 												<tr>
 													<td>
-														Day <?php echo $i+1; ?>
+														Ngày <?php echo $i+1; ?>
 													</td>
 													<td>
                                                         <?php
@@ -409,77 +421,77 @@
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-title') .' (*)', 'inquire_title');
+                                        echo form_label('Chức danh (*)', 'inquire_title');
                                         echo form_error('inquire_title');
                                         echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="customize_title"')
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-first-name') .' (*)', 'inquire_first_name');
+                                        echo form_label('Tên (*)', 'inquire_first_name');
                                         echo form_error('inquire_first_name');
                                         echo form_input('inquire_first_name', set_value('inquire_first_name'), 'class="form-control" id="inquire_first_name"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-last-name') .' (*)', 'inquire_last_name');
+                                        echo form_label('Họ (*)', 'inquire_last_name');
                                         echo form_error('inquire_last_name');
                                         echo form_input('inquire_last_name', set_value('inquire_last_name'), 'class="form-control" id="inquire_last_name"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-email') .' (*)', 'inquire_email');
+                                        echo form_label('Địa chỉ Email (*)', 'inquire_email');
                                         echo form_error('inquire_email');
                                         echo form_input('inquire_email', set_value('inquire_email'), 'class="form-control" id="inquire_email"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-email-confirm') .' (*)', 'inquire_email_confirm');
+                                        echo form_label('Xác nhận địa chỉ Email (*)', 'inquire_email_confirm');
                                         echo form_error('inquire_email_confirm');
                                         echo form_input('inquire_email_confirm', set_value('inquire_email_confirm'), 'class="form-control" id="inquire_email_confirm"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-phone-number') .' (*)', 'inquire_phone_number');
+                                        echo form_label('Số điện thoại liên hệ (*)', 'inquire_phone_number');
                                         echo form_error('inquire_phone_number');
                                         echo form_input('inquire_phone_number', set_value('inquire_phone_number'), 'class="form-control" id="inquire_phone_number"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-6 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-departure') .' (*)', 'datepicker');
+                                        echo form_label('Ngày khởi hành mong muốn (*)', 'datepicker');
                                         echo form_error('datepicker');
                                         echo form_input('datepicker', set_value('datepicker'), 'class="form-control datepicker" readonly');
                                         ?>
 									</div>
 									<div class="form-group col-sm-6 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-country') .' (*)', 'inquire_country');
+                                        echo form_label('Đất nước (*)', 'inquire_country');
                                         echo form_error('inquire_country');
                                         echo form_input('inquire_country', set_value('inquire_country'), 'class="form-control" id="inquire_country"');
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-adults') .' (*)', 'inquire_number_adults');
+                                        echo form_label('Người lớn (*)', 'inquire_number_adults');
                                         echo form_error('inquire_number_adults');
                                         echo '<input type="number" class="form-control" id="inquire_number_adults" name="inquire_number_adults" min="0" placeholder="0" >';
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-children-u11') .' (*)', 'inquire_number_children_u11');
+                                        echo form_label('Trẻ từ 2 đến 11 tuổi (*)', 'inquire_number_children_u11');
                                         echo form_error('inquire_number_children_u11');
                                         echo '<input type="number" class="form-control" id="inquire_number_children_u11" name="inquire_number_children_u11" min="0" placeholder="0" >';
                                         ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-children-u2') .' (*)', 'inquire_number_children_u2');
+                                        echo form_label('Trẻ em dưới 2 tuổi (*)', 'inquire_number_children_u2');
                                         echo form_error('inquire_number_children_u2');
                                         echo '<input type="number" class="form-control" id="inquire_number_children_u2" name="inquire_number_children_u2" min="0" placeholder="0" >';
                                         ?>
@@ -487,7 +499,7 @@
 
 									<div class="form-group col-xs-12">
                                         <?php
-                                        echo form_label($this->lang->line('form-message') .' (*)', 'inquire_message');
+                                        echo form_label('Tin nhắn (*)', 'inquire_message');
                                         echo form_error('inquire_message');
                                         echo form_textarea('inquire_message', set_value('inquire_message'), 'class="form-control" id="inquire_message"')
                                         ?>
@@ -539,6 +551,7 @@
 												</div>
                                             <?php endif ?>
 										</div>
+
 								</div>
 								<div class="head">
 									<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
@@ -552,9 +565,11 @@
 										<?php endif ?>
 									</h3>
 								</div>
+								<!--
 								<div class="body">
 									<p class="post-description"><?php echo $value['description'];?></p>
 								</div>
+								-->
 								<div class="foot">
 									<ul class="list-inline">
 										<li>

@@ -97,6 +97,7 @@
 											<?php echo number_format($val['price']); ?> VNĐ
 										<?php endif ?>
 									</h3>
+
 								</div>
 								<div class="body">
 									<p class="post-description"><?php echo $val['description']; ?></p>

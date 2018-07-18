@@ -38,10 +38,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.waypoints.min.js"></script>
 	<script src="<?php echo site_url('assets/js/jquery.rateit.js') ?>"></script>
 
+	<!--Favicon-->
+	<link rel="shortcut icon" type="image/png" href="<?php echo site_url('assets/img/favicon.png') ?>"/>
+
 
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=139238366917004&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <section id="page">
 	<header>
 		<section id="top-nav" class="container-fluid">
@@ -51,12 +64,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<ul>
 							<li>
 								<a href="<?php echo base_url('about/')?>">
-									<i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?>
+									<i class="fa fa-user-circle-o" aria-hidden="true"></i> Về chúng tôi
 								</a>
 							</li>
 							<li>
 								<a href="<?php echo base_url('contact/')?>">
-									<i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->lang->line('contact') ?>
+									<i class="fa fa-phone" aria-hidden="true"></i> Liên hệ với chúng tôi
 								</a>
 							</li>
 						</ul>
@@ -304,7 +317,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<ul>
 							<li>
 								<label>
-									<i class="fa fa-phone" aria-hidden="true"></i> Hotline <br>
+									<i class="fa fa-phone" aria-hidden="true"></i> Đường dây nóng <br>
 								</label>
 								<h3>
 									<a href="tel:0869 770 333">0869 770 333</a>
