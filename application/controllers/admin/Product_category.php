@@ -87,8 +87,6 @@ class Product_category extends Admin_Controller{
                     if (count($_FILES['image_shared']['name'])>0 && !empty($_FILES['image_shared']['name'][0])) {
                         $image = $this->upload_file('assets/upload/product_category/'.$unique_slug, 'image_shared', 'assets/upload/product_category/'. $unique_slug .'/thumb');
                     }
-                    $image = $this->upload_file('assets/upload/product_category/'.$unique_slug, 'image_shared', 'assets/upload/product_category/'. $unique_slug .'/thumb');
-                    // $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'.$this->data['controller']."/".$unique_slug, 'assets/upload/'.$this->data['controller']."/".$unique_slug .'/thumb');
                 }
                 $shared_request = array(
                     'slug' => $unique_slug,
