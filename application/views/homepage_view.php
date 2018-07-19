@@ -31,7 +31,7 @@
         .done(function(data) {
     		var key = to_slug(data.city.name);
     		$.ajax({
-	            url: 'http://localhost/tourist1/homepage/ajax_home?key='+key,
+	            url: '<?php echo base_url('homepage/ajax_home?key='); ?>'+key,
 	            type: 'GET',
 	        })
 	        .done(function(datas) {
