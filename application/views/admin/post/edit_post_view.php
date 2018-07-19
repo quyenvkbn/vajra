@@ -55,7 +55,6 @@
                                 echo form_error('parent_id_shared');
                                 ?>
                                 <select name="parent_id_shared" class="form-control">
-                                    <option value="">Chọn danh mục</option>
                                     <?php build_new_category($category, 0, $detail['post_category_id'], '') ?>
                                 </select>
                             </div>
