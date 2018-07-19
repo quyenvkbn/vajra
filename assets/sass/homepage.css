@@ -623,7 +623,10 @@ footer.footer {
             header.header .container-fluid .container#main-nav > ul > li.menu-list .menu-list-expand .row .item .body ul li a {
               color: #999; }
               header.header .container-fluid .container#main-nav > ul > li.menu-list .menu-list-expand .row .item .body ul li a:hover {
-                color: #666; } }
+                color: #666; }
+
+  footer.footer {
+    padding-bottom: 150px; } }
 /* =======================================================
 *
 * 	HOMEPAGE STYLE
