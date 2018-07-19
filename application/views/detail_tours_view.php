@@ -255,27 +255,31 @@
 							<div role="tabpanel" class="tab-pane" id="price">
 								<div class="row">
 									<div class="col-xs-12">
-										<table class="table table-bordered">
-											<thead>
-											<tr>
-												<th>Người lớn</th>
-												<th>Trẻ từ 2 đến 11 tuổi</th>
-												<th>Trẻ em dưới 2 tuổi</th>
-											</tr>
-											</thead>
-											<tbody>
-											<tr>
-												<td><?php echo $detail['priceadults'];?>% Giá</td>
-												<td><?php echo $detail['pricechildren'];?>% Giá</td>
-												<td><?php echo $detail['priceinfants'];?>% Giá</td>
-											</tr>
-											</tbody>
-										</table>
+										<div class="table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr>
+													<th>Người lớn</th>
+													<th>Trẻ từ 2 đến 11 tuổi</th>
+													<th>Trẻ em dưới 2 tuổi</th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+													<td><?php echo $detail['priceadults'];?>% Giá</td>
+													<td><?php echo $detail['pricechildren'];?>% Giá</td>
+													<td><?php echo $detail['priceinfants'];?>% Giá</td>
+												</tr>
+												</tbody>
+											</table>
+										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-12">
-                                        <?php echo $detail['detailsprice'];?>
+										<div class="table-responsive">
+                                            <?php echo $detail['detailsprice'];?>
+										</div>
 									</div>
 								</div>
 							</div>
