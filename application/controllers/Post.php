@@ -60,7 +60,7 @@ class Post extends Public_Controller {
                 $ids = array();
             }
             array_unshift($ids,$this->data['detail']['post_category_id']);
-            $this->data['post_array'] =$this->post_model->get_by_post_category_id_and_not_id($ids,$this->data['detail']['id'],4);
+            $this->data['post_array'] =$this->post_model->get_by_post_category_id_and_not_id($ids,$this->data['detail']['id'],3);
             $this->render('detail_post_view');
         }else{
             $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);

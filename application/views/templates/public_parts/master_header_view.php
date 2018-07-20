@@ -77,8 +77,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="right col-sm-6 hidden-xs">
 						<ul>
 							<li>
-								<a href="mailto: info@diamondtour.vn" target="_blank">
-									<i class="fa fa-envelope-o" aria-hidden="true"></i> info@diamondtour.vn
+								<a href="mailto: info@vajratravel.vn" target="_blank">
+									<i class="fa fa-envelope-o" aria-hidden="true"></i> info@vajratravel.vn
 								</a>
 							</li>
 						</ul>
@@ -328,7 +328,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<i class="fa fa-envelope-o" aria-hidden="true"></i> Email <br>
 								</label>
 								<h3>
-									<a href="mailto: info@diamondtour.vn">info@diamondtour.vn</a>
+									<a href="mailto: info@vajratravel.vn">info@vajratravel.vn</a>
 								</h3>
 							</li>
 						</ul>
