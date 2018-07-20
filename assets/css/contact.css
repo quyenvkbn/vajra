@@ -366,7 +366,7 @@ section.main-content .item .mask {
       width: 130px;
       height: 50px;
       top: 10px;
-      right: 5px; }
+      right: -20px; }
     section.main-content .item .mask .badge.badge-discount {
       top: 0px;
       left: 15px;
@@ -442,10 +442,10 @@ section.main-content .section {
     section.main-content .section .item .mask .badge.badge-special {
       width: 130px;
       height: 50px;
-      top: 25px;
-      right: 15px; }
+      top: 10px;
+      right: -20px; }
     section.main-content .section .item .mask .badge.badge-discount {
-      top: 15px;
+      top: 0px;
       left: 30px;
       padding: 0 5px 5px;
       background-color: #FFDB2F;
@@ -623,7 +623,10 @@ footer.footer {
             header.header .container-fluid .container#main-nav > ul > li.menu-list .menu-list-expand .row .item .body ul li a {
               color: #999; }
               header.header .container-fluid .container#main-nav > ul > li.menu-list .menu-list-expand .row .item .body ul li a:hover {
-                color: #666; } }
+                color: #666; }
+
+  footer.footer {
+    padding-bottom: 150px; } }
 /* =======================================================
 *
 * 	CONTACT STYLE

@@ -569,11 +569,11 @@
 										<?php endif ?>
 									</h3>
 								</div>
-								<!--
+								
 								<div class="body">
 									<p class="post-description"><?php echo $value['description'];?></p>
 								</div>
-								-->
+								
 								<div class="foot">
 									<ul class="list-inline">
 										<li>

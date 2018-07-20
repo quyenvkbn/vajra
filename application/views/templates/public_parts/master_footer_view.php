@@ -27,7 +27,7 @@
 					<label>
 						<i class="fa fa-envelope-o"></i> Email
 					</label>
-					<h2>info@diamondtour.vn</h2>
+					<h2>info@vajratravel.vn</h2>
 				</div>
 			</div>
 			<div class="item col-sm-4 col-xs-12">
