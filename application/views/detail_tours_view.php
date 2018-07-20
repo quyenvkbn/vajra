@@ -21,15 +21,6 @@
 					<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> Tour Khuyến mại </span>
                 <?php endif ?>
 			</h1>
-                <?php if (!empty($detail['bestselling'])): ?>
-					<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell');?> </span>
-                <?php endif ?>
-                <?php if (!empty($detail['hot'])): ?>
-					<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot');?> </span>
-                <?php endif ?>
-                <?php if (!empty($detail['showpromotion']) && !empty($detail['pricepromotion']) && !empty($detail['percen'])): ?>
-					<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount');?> </span>
-                <?php endif ?>
 		</div>
 	</div>
 </section>
