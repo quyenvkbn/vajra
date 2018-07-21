@@ -101,6 +101,19 @@
                                                     <td><?php echo count($detail['datetitle']) ?></td>
                                                 </tr>
                                                 <tr>
+                                                    <th>Ngày khởi hành</th>
+                                                    <td>
+                                                        <?php
+                                                            if($detail['date'] != "0000-00-00 00:00:00" && $detail['date'] != "1970-01-01 08:00:00"){
+                                                                $time = explode("-",str_replace(" 00:00:00","",$detail['date']));
+                                                                if(count($time) == 3){
+                                                                    echo $time[2]."/".$time[1]."/".$time[0];
+                                                                }
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <th>Giá</th>
                                                     <td><?php echo number_format($detail['price']); ?> VND</td>
                                                 </tr>

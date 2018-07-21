@@ -135,29 +135,35 @@
                                                     <div class="collapse" id="collapse_<?php echo $value['booking_id']; ?>">
                                                         <div class="well">
                                                             <table class="table">
-                                                                <tr>
-                                                                    <td style="width: 20%"><strong>Số điện thoại : </strong></td>
-                                                                    <td><?php echo $value['phone'] ?></td>
-                                                                <tr>
-                                                                <tr>
-                                                                    <td><strong>Email : </strong></td>
-                                                                    <td><?php echo $value['email'] ?></td>
-                                                                <tr>
-                                                                <tr>
-                                                                    <td><strong>Số người lớn : </strong></td>
-                                                                    <td><?php echo $value['adults'] ?></td>
-                                                                <tr>
-                                                                    <td><strong>Trẻ em (2 - 11 tuổi) : </strong></td>
-                                                                    <td><?php echo $value['children'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>Em bé (dưới 2 tuổi) : </strong></td>
-                                                                    <td><?php echo $value['infants'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>Nội dung: </strong></td>
-                                                                    <td><?php echo $value['content'] ?></td>
-                                                                </tr>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Email</th>
+                                                                        <th>Số Điện Thoại</th>
+                                                                        <th>Số người lớn</th>
+                                                                        <th>Trẻ em (2 - 11 tuổi)</th>
+                                                                        <th>Em bé (dưới 2 tuổi)</th>
+                                                                        <th>Quốc Gia</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><?php echo $value['email'] ?></td>
+                                                                        <td><?php echo $value['phone'] ?></td>
+                                                                        <td><?php echo $value['adults'] ?></td>
+                                                                        <td><?php echo $value['children'] ?></td>
+                                                                        <td><?php echo $value['infants'] ?></td>
+                                                                        <td><?php echo $value['country'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <hr>
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th colspan="6">Nội dung: </th>
+                                                                        <td><?php echo $value['content'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
                                                             </table>
                                                         </div>
                                                     </div>
