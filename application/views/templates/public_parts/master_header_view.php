@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</a>
 								<ul class="menu-tabs-expand menu-expand">
                                     <?php foreach ($domestic_menu as $key => $value): ?>
-										<li>
+										<li class="menu-href">
 											<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" style="color:black;">
                                                 <?php echo $value['title'];?>
 												<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
@@ -146,7 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</a>
 								<ul class="menu-tabs-expand menu-expand">
                                     <?php foreach ($international_menu as $key => $value): ?>
-										<li>
+										<li class="menu-href">
 											<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" style="color:black;">
                                                 <?php echo $value['title'];?>
 												<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
