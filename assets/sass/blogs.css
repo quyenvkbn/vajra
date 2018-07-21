@@ -231,13 +231,13 @@ HEADER STYLE
                           position: absolute;
                           top: 5px;
                           left: 10px; }
-                  #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li:hover {
+                  #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li.active {
                     background-color: #eaeaea; }
-                    #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li:hover a {
+                    #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li.active a {
                       color: #666; }
-                      #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li:hover a:hover {
+                      #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li.active a:hover {
                         color: #666; }
-                    #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li:hover > ul {
+                    #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li.active > ul {
                       display: block; }
                 #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row {
                   min-height: 300px; }
