@@ -265,3 +265,6 @@ defined('MESSAGE_DEACTIVE_SUCCESS') OR define('MESSAGE_DEACTIVE_SUCCESS', 'Tắt
 defined('MESSAGE_ERROR_DEACTIVE_CATEGORY') OR define('MESSAGE_ERROR_DEACTIVE_CATEGORY', 'Danh mục này không thể tắt!');
 defined('MESSAGE_ERROR_REMOVE_CATEGORY') OR define('MESSAGE_ERROR_REMOVE_CATEGORY', 'Danh mục này không thể xóa!');
 defined('NO_DATA') OR define('NO_DATA', 'Không có dữ liệu');
+
+
+defined('MESSAGE_CHECK_BANNER_ERROR') OR define('MESSAGE_CHECK_BANNER_ERROR', 'Hiện tại đã có đủ 4 tour hiển thị trên BANNER. Vui lòng tắt 1 Tour đang hiển thị trên BANNER nếu bạn muốn thêm tour vào làm BANNER!');

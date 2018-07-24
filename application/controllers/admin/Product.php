@@ -27,22 +27,24 @@ class Product extends Admin_Controller{
         $this->data['bestselling'] = '';
         $this->data['hot'] = '';
         $this->data['promotion'] = '';
-        if($this->input->get('hot') || $this->input->get('bestselling') || $this->input->get('promotion')){
+        $this->data['banner'] = '';
+        if($this->input->get('hot') || $this->input->get('bestselling') || $this->input->get('promotion') || $this->input->get('banner')){
             $this->data['bestselling'] = ($this->input->get('bestselling') !== null)?'1':'';
             $this->data['hot'] = ($this->input->get('hot') !== null)?'1':'';
             $this->data['promotion'] = ($this->input->get('promotion') !== null)?'1':'';
+            $this->data['banner'] = ($this->input->get('banner') !== null)?'1':'';
         }
         if($this->input->get('search')){
             $this->data['keyword'] = $this->input->get('search');
         }
         $this->load->library('pagination');
         $per_page = 10;
-        $total_rows  = $this->product_model->count_search($this->data['keyword'],1,$this->data['bestselling'],$this->data['hot'],$this->data['promotion']);
+        $total_rows  = $this->product_model->count_search($this->data['keyword'],1,$this->data['bestselling'],$this->data['hot'],$this->data['promotion'],$this->data['banner']);
         $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/index'), $total_rows, $per_page, 4);
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['result'] = $this->product_model->get_all_with_pagination_search('desc', $per_page, $this->data['page'], $this->data['keyword'],1,$this->data['bestselling'],$this->data['hot'],$this->data['promotion']);
+        $this->data['result'] = $this->product_model->get_all_with_pagination_search('desc', $per_page, $this->data['page'], $this->data['keyword'],1,$this->data['bestselling'],$this->data['hot'],$this->data['promotion'],$this->data['banner']);
         foreach ($this->data['result'] as $key => $value) {
             $parent_title = $this->build_parent_title($value['product_category_id']);
             $this->data['result'][$key]['parent_title'] = $parent_title;
@@ -136,7 +138,8 @@ class Product extends Admin_Controller{
                 'product_category_id' => $this->input->post('parent_id_shared'),
                 'dateimg' => json_encode($dateimage_full),
                 'vehicles' => json_encode($this->input->post('vehicles')),
-                'librarylocaltion' => json_encode($this->input->post('librarylocaltion'))
+                'librarylocaltion' => json_encode($this->input->post('librarylocaltion')),
+                'is_banner' => $this->input->post('is_banner')
             );
             if($this->input->post('date') != ''){
                 $date= explode("/",$this->input->post('date'));
@@ -386,7 +389,8 @@ class Product extends Admin_Controller{
                     'localtion' => $this->input->post('localtion'),
                     'product_category_id' => $this->input->post('parent_id_shared'),
                     'vehicles' => json_encode($this->input->post('vehicles')),
-                    'librarylocaltion' => json_encode($this->input->post('librarylocaltion'))
+                    'librarylocaltion' => json_encode($this->input->post('librarylocaltion')),
+                    'is_banner' => $this->input->post('is_banner')
                 );
                 if($unique_slug != $this->data['detail']['slug']){
                     $shared_request['slug'] = $unique_slug;
@@ -634,5 +638,21 @@ class Product extends Admin_Controller{
             'content' => $result
         );
         return $this->return_api(HTTP_SUCCESS,'',$reponse);
+    }
+    public function check_banner(){
+        $id = $this->input->get('id');
+        $total =4;
+        $total = $this->product_model->count_is_banner(1);
+        if(is_numeric($id)){
+            $detail = $this->product_model->find($id);
+            if($detail['is_banner'] == 1){
+                $total = $total - 1;
+            }
+        }
+        if($total >=4){
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_CHECK_BANNER_ERROR,'', false);
+        }else{
+            return $this->return_api(HTTP_SUCCESS,'','', true);
+        }
     }
 }

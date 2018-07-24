@@ -67,7 +67,7 @@
                                 <div class="col-xs-12">
                                     <label>Date:</label>
                                     <div class="input-group date">
-                                      <div class="input-group-addon">
+                                      <div class="input-group-addon" title="Xóa giá trị ngày tháng">
                                         <i class="fa fa-calendar"></i>
                                       </div>
                                       <input type="text" name="date" value ="<?php echo trim($detail['date']); ?>" class="form-control pull-right" id="datepicker" readonly>
@@ -103,6 +103,10 @@
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="checkbox" style="padding-top: 10px;">
+                                        <label style="margin-bottom: 10px;">
+                                            <input type="checkbox" id="is_banner" name="is_banner" <?php echo ($detail['is_banner'] == 1)?'checked':'';?>  data-url="<?php echo base_url('admin/product/check_banner');?>" data-id="<?php echo $detail['id'];?>" > Chọn làm banner
+                                            <span class="check_banner_error" style="font-weight: 700;"></span>
+                                        </label></br>
                                         <label style="padding-right: 10px;">
                                             <input type="checkbox" id="promotion" name="promotion" <?php echo (!empty(trim($detail['pricepromotion'])) || !empty(trim($detail['percen'])))?'checked':''; ?>> Khuyến mãi
                                         </label>

@@ -28,7 +28,7 @@
                     <div class="icon">
                         <i class="fa fa-sort-numeric-asc"></i>
                     </div>
-                    <a href="<?php echo base_url('admin/product'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('admin/product'); ?>" class="small-box-footer">Xem danh sách <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -43,7 +43,7 @@
                     <div class="icon">
                         <i class="fa fa-sort-numeric-asc"></i>
                     </div>
-                    <a href="<?php echo base_url('admin/localtion'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('admin/localtion'); ?>" class="small-box-footer">Xem danh sách <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -58,7 +58,7 @@
                     <div class="icon">
                         <i class="fa fa-sort-numeric-asc"></i>
                     </div>
-                    <a href="<?php echo base_url('admin/post'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('admin/post'); ?>" class="small-box-footer">Xem danh sách <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -124,7 +124,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <a href="<?php echo base_url('admin/booking');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="<?php echo base_url('admin/booking');?>" class="btn btn-success right" style="float: right;">Xem danh sách <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
                         <div class="chart tab-pane" id="booking_success" style="position: relative;">
@@ -175,7 +175,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <a href="<?php echo base_url('admin/booking/success');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="<?php echo base_url('admin/booking/success');?>" class="btn btn-success right" style="float: right;">Xem danh sách <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
                         <div class="chart tab-pane" id="booking_error" style="position: relative;">
@@ -226,7 +226,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <a href="<?php echo base_url('admin/booking/cancel');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="<?php echo base_url('admin/booking/cancel');?>" class="btn btn-success right" style="float: right;">Xem danh sách <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
                     </div>
@@ -290,7 +290,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <a href="<?php echo base_url('admin/customize');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="<?php echo base_url('admin/customize');?>" class="btn btn-success right" style="float: right;">Xem danh sách <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
                         <div class="chart tab-pane" id="customize_success" style="position: relative;">
@@ -341,7 +341,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <a href="<?php echo base_url('admin/customize/success');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="<?php echo base_url('admin/customize/success');?>" class="btn btn-success right" style="float: right;">Xem danh sách <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
                         <div class="chart tab-pane" id="customize_error" style="position: relative;">
@@ -392,7 +392,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <a href="<?php echo base_url('admin/customize/cancel');?>" class="btn btn-success right" style="float: right;">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="<?php echo base_url('admin/customize/cancel');?>" class="btn btn-success right" style="float: right;">Xem danh sách <i class="fa fa-arrow-circle-right"></i></a>
                             <!-- /.box-body -->
                         </div>
                     </div>

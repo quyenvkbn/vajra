@@ -41,7 +41,7 @@
                                 <div class="row">
                                     <?php if (!empty($detail['imglocaltion'])): ?>
                                         <div class="detail-image col-sm-6" style="margin-bottom: 5px;">
-                                            <label>Hình ảnh localtion</label>
+                                            <label>Hình ảnh location</label>
                                             <div class="row">
                                                     <div class="col-xs-12">
                                                         <div class="mask-sm">
@@ -87,6 +87,10 @@
                                                 <tr>
                                                     <th>Hiển thị khuyến mãi</th>
                                                     <td><i class="<?php echo ($detail['showpromotion'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Hiển thị trên banner</th>
+                                                    <td><i class="<?php echo ($detail['is_banner'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
                                                 </tr>
                                                 <tr>
                                                     <th>Slug</th>
