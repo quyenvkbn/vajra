@@ -276,4 +276,8 @@ function errorHandle(jqXHR, exception){
             }
         }); 
     });
+
+    $('.input-group-addon').click(function(){
+        $(this).next().val('');
+    });
     

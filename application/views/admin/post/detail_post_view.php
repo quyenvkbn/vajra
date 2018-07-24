@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="item col-md-12">
                                         <div class="mask-lg" style="padding: 0px;background: gray;">
-                                            <img src="<?php echo base_url('assets/upload/'.$controller.'/'. $detail['image'] ) ?>" alt="Image Detail" width=300px>
+                                            <img src="<?php echo base_url('assets/upload/'.$controller.'/'. $detail['image'] ) ?>" alt="Image Detail" width=300px >
                                         </div>
                                     </div>
                                 </div>

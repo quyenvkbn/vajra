@@ -53,14 +53,14 @@
                         <?php $action = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 'index' ?>
                         <form action="<?php echo base_url('admin/customize/' .$action) ?>" method="get">
                             <div class="input-group col-md-6" style="float: left;border-right: 5px solid white;">
-                              <div class="input-group-addon">
+                              <div class="input-group-addon" title="Xóa giá trị ngày tháng">
                                 <i class="fa fa-calendar"></i>
                               </div>
                               <input type="text" value="<?php echo (isset($date))? $date : '';  ?>" class="form-control pull-right" id="reservation" name="date" readonly>
                             </div>
 
                             <div class="input-group col-md-6" style="float: left;">
-                                <input type="text" value="<?php echo (isset($keywords))? $keywords : '';  ?>" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
+                                <input type="text" value="<?php echo (isset($keywords))? $keywords : '';  ?>" class="form-control" placeholder="Tìm kiếm theo họ hoặc tên KH..." name="search" value="">
                                 <span class="input-group-btn">
                                     <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
                                 </span>

@@ -21,7 +21,7 @@
 					<label>
 						<i class="fa fa-phone"></i> Điện thoại
 					</label>
-					<h2>024 1234 5678</h2>
+					<h2>0869 770 333</h2>
 				</div>
 				<div class="info">
 					<label>

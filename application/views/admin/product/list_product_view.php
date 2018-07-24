@@ -49,12 +49,15 @@
                                     <label style="padding-right: 10px;">
                                         <input type="checkbox" name="bestselling" <?php echo (!empty($bestselling))? 'checked' : '';?>> Bán Chạy
                                     </label>
-                                    <label>
+                                    <label style="padding-right: 10px;">
                                         <input type="checkbox" name="hot" <?php echo (!empty($hot))? 'checked' : '';?>> Hot
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="banner" <?php echo (!empty($banner))? 'checked' : '';?>> banner
                                     </label>
                                 </div>
                                 <div class="input-group col-md-6 col-ms-12">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="<?php echo (!empty($keyword))? $keyword : '';?>">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm theo tên tiêu đề..." name="search" value="<?php echo (!empty($keyword))? $keyword : '';?>">
                                     <span class="input-group-btn">
                                         <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
                                     </span>
@@ -100,8 +103,9 @@
                                             <?php echo ($value['is_activated'] == 0)? '<span class="label label-success">Đang sử dụng</span>' : '<span class="label label-warning">Không sử dụng</span>'; ?>   
                                         </td>
                                         <td>
-                                            <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>"
-                                            <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">See Detail</button>
+                                            <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>">
+                                                <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">Xem chi tiết</button>
+                                            </a>
                                         </td>
                                         <td>
                                             <?php if ($value['is_activated'] == 0): ?>

@@ -159,6 +159,11 @@ $("#submit-shared,#content-home").click(function(event) {
 			}else{
 				var url = HOSTNAME + 'admin/product/create';
 			}
+			if ($('#is_banner').is(':checked')) {
+				var is_banner = 1;
+			}else{
+				var is_banner = 0;
+			}
 			var post = new FormData();
 			numberdates = $(".title-content-date.date").length;
 			for (var k = 0; k < numberdates; k++) {
@@ -181,6 +186,7 @@ $("#submit-shared,#content-home").click(function(event) {
 
 			
 			post.append('price',$('#price').val());
+			post.append('is_banner',is_banner);
 			post.append('date',$('#datepicker').val());
 			post.append('priceadults',$('#priceadults').val());
 			post.append('pricechildren',$('#pricechildren').val());
@@ -335,4 +341,31 @@ $("#button-numberdate,#append-date").click(function(){
 			console.log(errorHandle(jqXHR, exception));
 		}
 	});
+});
+$('#is_banner').change(function(){
+	if($(this).is(':checked')){
+		var url = $(this).data('url');
+		var id = $(this).data('id');
+		console.log(id);
+		$.ajax({
+            method: "get",
+            url: url,
+            data: {
+            	id : id
+            },
+            success: function(response){
+                if(response.isExisted == false){
+                	$('.check_banner_error').text(response.message);
+                	$('#is_banner').prop('checked',false);
+                }
+            },
+            error: function(jqXHR, exception){
+                console.log(errorHandle(jqXHR, exception));
+                if(jqXHR.status == 404 && jqXHR.responseJSON.message != 'undefined'){
+                    alert(jqXHR.responseJSON.message);
+                    location.reload();
+                }
+            }
+        });
+	}
 });

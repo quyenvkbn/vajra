@@ -123,6 +123,20 @@ class Product_model extends MY_Model{
         }
         return $this->db->get()->result_array();
     }
+    public function get_by_banner($order = 'desc',$limit ='4'){
+        $this->db->select('product.*, product_category.title as parent_title, product_category.slug as parent_slug');
+        $this->db->from($this->table);
+        $this->db->join('product_category', 'product_category.id = product.product_category_id');
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
+        $this->db->where($this->table .'.is_banner', 1);
+        $this->db->group_by('product.id');
+        $this->db->order_by('product.id', $order);
+        if($limit != ''){
+            $this->db->limit($limit);
+        }
+        return $this->db->get()->result_array();
+    }
     public function get_by_product_category_id_and_not_id($product_category_id=array(),$id,$limit=0,$order='asc') {
         $this->db->select('product.*, product_category.title as parent_title, product_category.slug as parent_slug');
         $this->db->from($this->table);

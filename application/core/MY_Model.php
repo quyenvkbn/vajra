@@ -33,7 +33,7 @@ class MY_Model extends CI_Model {
         return $this->db->insert_batch($this->table_lang, $data);
     }
 
-    public function get_all_with_pagination_search($order = 'desc',$limit = NULL, $start = NULL, $keywords = '',$activated = 1,$bestselling = '',$hot = '',$promotion = '') {
+    public function get_all_with_pagination_search($order = 'desc',$limit = NULL, $start = NULL, $keywords = '',$activated = 1,$bestselling = '',$hot = '',$promotion = '',$banner = '') {
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->like('title', $keywords);
@@ -48,6 +48,9 @@ class MY_Model extends CI_Model {
             $this->db->where($this->table .'.percen !=', 0);
             $this->db->where($this->table .'.pricepromotion !=', 0);
         }
+        if($banner != ''){
+            $this->db->where($this->table .'.is_banner', $banner);
+        }
         if($activated == 0){
             $this->db->where('is_activated', $activated);
         }
@@ -57,7 +60,7 @@ class MY_Model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
-    public function count_search($keyword = '',$activated = 1,$bestselling = '',$hot = '',$promotion = ''){
+    public function count_search($keyword = '',$activated = 1,$bestselling = '',$hot = '',$promotion = '',$banner = ''){
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->like('title', $keyword);
@@ -70,6 +73,9 @@ class MY_Model extends CI_Model {
         if($promotion != '' && $promotion == 1){
             $this->db->where($this->table .'.percen !=', 0);
             $this->db->where($this->table .'.pricepromotion !=', 0);
+        }
+        if($banner != ''){
+            $this->db->where($this->table .'.is_banner', $banner);
         }
         $this->db->group_by('id');
         $this->db->where('is_deleted', 0);
@@ -211,5 +217,14 @@ class MY_Model extends CI_Model {
         $this->db->where_in($this->table .'_category_id', $category_ids);
 
         return $this->db->update($this->table, $data);
+    }
+
+    
+    public function count_is_banner($is_top){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('is_banner', $is_top);
+        $this->db->where('is_deleted', 0);
+        return $this->db->count_all_results();
     }
 }
