@@ -38,8 +38,8 @@
                     <div class="box-body">
                         <div class="row">
                             <?php if (!empty($detail['image'])): ?>
-                            <label class="col-xs-12" for="image_shared">Hình ảnh đang dùng</label>
-                            <br>
+                                <label class="col-xs-12" for="image_shared">Hình ảnh đang dùng</label>
+                                <br>
                                 <?php foreach (json_decode($detail['image']) as $key => $value): ?>
                                     <div class="col-xs-6 row_<?php echo $key; ?>">
                                         <div  style="background-color: #363636;position: relative;margin-top: 10px;">
