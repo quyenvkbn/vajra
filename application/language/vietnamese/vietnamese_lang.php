@@ -100,6 +100,11 @@ $lang['condition-general'] = 'Tour General Conditions';
 
 $lang['customize-program'] = 'Chương trình mặc định';
 $lang['customize-change'] = 'Chương trình thay đổi';
+//comment
+$lang['comments'] = 'Bình luận';
+$lang['first-and-last-name'] = 'Họ và tên';
+$lang['insert-code'] = 'Nhập mã';
+$lang['this-school'] = 'Please enter this school';
 //Forms
 
 $lang['form-title'] = 'Chức danh';
@@ -143,3 +148,15 @@ $lang['tour-best-sell-short'] = 'BC';
 $lang['tour-hot-short'] = 'Hot';
 $lang['tour-discount-short'] = 'KM';
 
+
+$lang['booking_success'] = 'Đặt tour thành công vui lòng chờ xác nhận.';
+$lang['booking_errors'] = 'Không thể đặt tour vui lòng thử lại.';
+$lang['create_errors_email'] = 'Vui lòng nhập trường Email và xác nhận Email giống nhau.';
+$lang['booking_require'] = 'Vui lòng nhập thông tin đầy đủ.';
+
+
+$lang['there-are-no-comments-for-this-tour-yet'] = 'Chưa có bình luận nào.';
+$lang['see-more-comments'] = 'Xem thêm bình luận';
+$lang['send-comments'] = 'Gửi nhận xét';
+
+$lang['promotion'] = 'KM';

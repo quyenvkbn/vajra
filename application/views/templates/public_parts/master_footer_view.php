@@ -105,7 +105,7 @@
 			</ul>
 
 			<div class="copyright text-center">
-				<b>&copy; 2018 Diamond Tour</b> | All Rights Reversed
+				<b>&copy; 2018 Vajra Travel</b> | All Rights Reversed
 			</div>
 		</div>
 	</div>

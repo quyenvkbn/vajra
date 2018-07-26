@@ -47,7 +47,6 @@ class Booking extends Public_Controller{
                 'created_by' => $this->input->post('first_name') . ' ' . $this->input->post('last_name'),
                 'updated_at' => date('Y-m-d H:i:s', now()),
                 'updated_by' => $this->input->post('first_name') . ' ' . $this->input->post('last_name')
-
             );
             $insert = $this->booking_model->common_insert(array_merge($shared_request,$this->author_data));
             if($insert){

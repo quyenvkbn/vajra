@@ -28,15 +28,16 @@
                 <div class="box">
                     <div class="box-header">
                         <ul class="nav nav-tabs" role="tablist" id="nav-product">
-                            <li role="presentation" class="active"><a href="#tour" class="btn btn-primary" aria-controls="tour" role="tab" data-toggle="tab">Tour</a></li>
+                            <li role="presentation" class="<?php echo ($this->uri->segment(5) == '' && !isset($_GET['active']))? 'active' : '' ?>"><a href="#tour" class="btn btn-primary" aria-controls="tour" role="tab" data-toggle="tab">Tour</a></li>
                             <li role="presentation"><a href="#date-tour" class="btn btn-primary" aria-controls="date-tour" role="tab" data-toggle="tab">Date tour</a></li>
                             <li role="presentation"><a href="#img-tour" class="btn btn-primary" aria-controls="img-tour" role="tab" data-toggle="tab">Nơi đến các ngày của tour</a></li>
+                            <li role="presentation" class="<?php echo ($this->uri->segment(5) != '' || isset($_GET['active']))? 'active' : '' ?>" id="btn-active-comment"><a href="#comment" class="btn btn-primary" aria-controls="comment" role="tab" data-toggle="tab">Bình luận</a></li>
                         </ul>
                         <h3 class="box-title">Chi tiết</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade in active" id="tour">
+                        <div role="tabpanel" class="tab-pane fade <?php echo ($this->uri->segment(5) == '' && !isset($_GET['active']))? 'in active' : '' ?>" id="tour">
                             <div class="box-body">
                                 <div class="row">
                                     <?php if (!empty($detail['imglocaltion'])): ?>
@@ -289,6 +290,42 @@
                                 </div>
                             </div>
                         </div>
+                        <div role="tabpanel" class="tab-pane fade <?php echo ($this->uri->segment(5) != '' || isset($_GET['active']))? 'in active' : '' ?>" id="comment">
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-hover table-bordered table-condensed">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 150px"><b><a href="#">Email</a></b></td>
+                                                    <td style="width: 100px"><b><a href="#">Họ tên</a></b></td>
+                                                    <td><b><a href="#">Nội dung</a></b></td>
+                                                    <td style="width: 100px"><b>Operations</b></td>
+                                                </tr>
+                                                <?php foreach ($comments as $key => $value): ?>
+                                                    <tr class="remove_<?php echo $value['id'] ?>">
+                                                        <td><?php echo $value['email'] ?></td>
+                                                        <td><?php echo $value['name'] ?></td>
+                                                        <td><?php echo $value['content'] ?></td>
+                                                        <td>
+                                                            <form class="form_ajax">
+                                                                <a href="javascript:void(0)" title="Xóa" class="btn-removes" data-id="<?php echo $value['id'] ?>" data-controller="comment" data-type="<?php echo $value['type'] ?>">
+                                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                </a>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            </tbody>
+                                        </table>
+                                        <div class="col-md-6 col-md-offset-5 page">
+                                            <?php echo $page_links ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -308,3 +345,11 @@
         <!-- END ACCORDION & CAROUSEL-->
     </section>
 </div>
+
+<script type="text/javascript">
+    $('#btn-active-comment').click(function(){
+        if(window.location.search != '?active=true'){
+            window.location.replace(window.location.href+"?active=true");
+        }
+    });
+</script>

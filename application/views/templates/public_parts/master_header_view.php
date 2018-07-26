@@ -55,6 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+<input type="hidden" name="language" id="language" value="vi">
 <section id="page">
 	<header>
 		<section id="top-nav" class="container-fluid">
