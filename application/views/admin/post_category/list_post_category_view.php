@@ -108,7 +108,7 @@
     </section>
     <!-- /.content -->
 </div>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $( function() {
         $('.sortable').sortable({
             axis: 'y',
@@ -136,7 +136,7 @@
         }
 
     })
-</script>
+</script> -->
 <?php 
     function build_new_category($categorie, $parent_id = 0, $controller, $check, $sort = 1){
         $cate_child = array();

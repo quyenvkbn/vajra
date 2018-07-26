@@ -51,7 +51,7 @@ class Localtion extends Admin_Controller {
                 }
                 $localtion_request = array(
                     'slug' => $unique_slug,
-                    'area' => $this->input->post('area'),
+                    'area' => mb_convert_case($this->input->post('area'), MB_CASE_TITLE, "UTF-8"),
                     'title' => $this->input->post('title'),
                     'content' => $this->input->post('content'),
                     'localtion' => $this->input->post('localtion'),
@@ -93,7 +93,7 @@ class Localtion extends Admin_Controller {
                     $localtionimage = $this->upload_image('image_localtion', $_FILES['image_localtion']['name'], 'assets/upload/localtion/'.$unique_slug, 'assets/upload/localtion/'.$unique_slug.'/thumb');
                 }
                 $localtion_request = array(
-                    'area' => $this->input->post('area'),
+                    'area' => mb_convert_case($this->input->post('area'), MB_CASE_TITLE, "UTF-8"),
                     'title' => $this->input->post('title'),
                     'content' => $this->input->post('content'),
                     'localtion' => $this->input->post('localtion')
@@ -128,6 +128,16 @@ class Localtion extends Admin_Controller {
     public function detail($id){
         $this->load->helper('form');
         $this->load->library('form_validation');
+
+        $this->load->model('comment_model');
+        $this->load->library('pagination');
+        $per_page = 5;
+        $total_rows  = $this->comment_model->count_search_without_by_product_id($id,2);
+        $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/detail/'. $id), $total_rows, $per_page, 5);
+        $this->data['page'] = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+        $this->pagination->initialize($config);
+        $this->data['page_links'] = $this->pagination->create_links();
+        $this->data['comments'] = $this->comment_model->get_all_by_product_id($id , $per_page, $this->data['page'],2);
 
         $detail = $this->localtion_model->get_by_id($id);
         $this->data['detail'] = $detail;

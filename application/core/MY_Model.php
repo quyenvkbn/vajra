@@ -95,6 +95,15 @@ class MY_Model extends CI_Model {
         return $this->db->get()->row_array();
     }
 
+    public function count_search_without_by_product_id($product_id,$type =0){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.type', $type);
+        $this->db->where($this->table .'.product_id', $product_id);
+
+        return $result = $this->db->get()->num_rows();
+    }
     public function get_by_slug($slug) {
         $this->db->select('*');
         $this->db->from($this->table);
