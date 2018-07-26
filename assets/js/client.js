@@ -7,7 +7,6 @@ $("#inquire input,#customize input,#inquire #inquire_title,#customize #customize
 	}
 	$(targetTab + " [name="+name+"]").val($(this).val());
 });
-
 $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookingsubmit,#customizesubmit",function(){
 	var idForm = $(this).parents('form')[0].id;
 	$('#'+idForm).validate({
@@ -95,10 +94,10 @@ $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookings
 	}
 	if($("#"+idForm).valid() === true){
 		if(idForm == 'form-customize'){
-			url = "http://localhost/vajra/customize";
+			url = HOSTNAME+"customize";
 
 		}else{
-			url = "http://localhost/vajra/booking";
+			url = HOSTNAME+"booking";
 		}
         $.ajax({
             method: "post",

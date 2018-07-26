@@ -9,7 +9,6 @@ switch(window.location.origin){
         var HOSTNAME = 'http://localhost/vajra/';
 }
 var language = $("#language").val();
-console.log(language);
 var required_comment = {
 		required_name:{vi:'Họ và Tên không được trống!', en:'First and last name'},
 		required_email:{vi:'Email không được trống!', en:'Please enter email!'},
@@ -84,17 +83,15 @@ $('.submit-comment').click(function(e){
 		page ++;
 		jQuery.ajax({
 			type: "get",
-            // url: "http://localhost/tuoithantien/comment/see_more_comment",
             url: HOSTNAME+"/comment/see_more_comment",
             data: {page : page, product_id : product_id, type : type},
             success: function(result){
             	console.log(result);
             	comment = result.comment;
-            	// var html = '';
             	$.each(comment, function(key, value) {
             		html = '<div class="media cmt">'
             		+ '<div class="media-left">'
-            		+ '<img class="media-object" src="' + location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + '/tourist1/assets/img/comment_ava.png" alt="Comment Avatar" width="64">'
+            		+ '<img class="media-object" src="' + HOSTNAME+'assets/img/comment_ava.png" alt="Comment Avatar" width="64">'
             		+ '</div>'
             		+ '<div class="media-body">'
             		+ '<h3 class="media-heading" style="color: #f4aa1c">'+ value.name +':</h3>'

@@ -71,44 +71,6 @@
             })
         }
     });
-    // function temperature(id,lang){
-    //     $.ajax({
-    //         url: 'http://api.openweathermap.org/data/2.5/forecast?id='+id+'&mode=json&lang='+lang+'&APPID=279b4be6d54c8bf6ea9b12275a567156&cnt=3',
-    //         type: 'GET',
-    //     })
-    //     .done(function(data) {
-    // 		var key = to_slug(data.city.name);
-    // 		$.ajax({
-	   //          url: '<?php echo base_url('homepage/ajax_home?key='); ?>'+key,
-	   //          type: 'GET',
-	   //      })
-	   //      .done(function(datas) {
-    //         	$("#banner-weather .line ."+id+" h3").text(datas.reponse);
-	   //      })
-	   //      .fail(function() {
-	   //          console.log("error");
-	   //      });
-    //     	$('#banner-weather .line .content-weather').append('<div class="col-md-12 '+id+'" style="padding:0px; margin-bottom:10px;border-bottom:1px solid #CCC;"><div class="row"><div class="img col-md-3 col-ms-12 col-sm-12 col-xs-6" style="padding:0px;"><img src="http://openweathermap.org/img/w/'+data.list[2].weather[0].icon+'.png'+'" width="80px" alt=""></div><div class=" col-md-9 col-ms-12 col-sm-12 col-xs-6" style="padading:0px;paddidng-left:5px;"><h3 style="font-size:1em; text-transform:capitalize;font-weight:600;margin-bottom:0px;margin-top:15px;"></h3><p class="description" style="text-transform:capitalize;margin-bottom:0px;"></p><p class="nhietdo" style="margin-bottom:0px;"></p></div></div></div>');
-    //         $("#banner-weather .line ."+id+" p.description").text(data.list[2].weather[0].description);
-    //         $("#banner-weather .line ."+id+" p.nhietdo").text(Math.floor(data.list[2].main.temp_min/10)+'°C - '+Math.ceil(data.list[2].main.temp_max/10)+'°C');
-    //     })
-    //     .fail(function() {
-    //         console.log("error");
-    //     });
-    // }
-    // temperature('1581129','<?php echo $lang;?>');
-    // temperature('1816670','<?php echo $lang;?>');
-    // temperature('1796236','<?php echo $lang;?>');
-    // temperature('1668341','<?php echo $lang;?>');
-    // temperature('1850147','<?php echo $lang;?>');
-    // temperature('1835848','<?php echo $lang;?>');
-    // temperature('4321929','<?php echo $lang;?>');
-    // temperature('1609350','<?php echo $lang;?>');
-    // temperature('1651944','<?php echo $lang;?>');
-    // temperature('1735161','<?php echo $lang;?>');
-    // temperature('1821306','<?php echo $lang;?>');
-    // temperature('1642911','<?php echo $lang;?>');
-    // temperature('1880252','<?php echo $lang;?>');
 </script>
 <!-- Slider JS -->
 <script src="<?php echo site_url('assets/js/admin/slider.js') ?>"></script>
@@ -136,6 +98,16 @@
 								<h4 class="subtitle">
                                     <?php echo $value['parent_title']; ?>
 								</h4>
+								<br>
+                                <?php if (!empty($value['hot'])): ?>
+									<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i><?php echo $this->lang->line('tour-hot-short') ?></span>
+                                <?php endif ?>
+                                <?php if (!empty($value['bestselling'])): ?>
+									<span class="badge "><i class="fa fa-star" aria-hidden="true"></i><?php echo $this->lang->line('tour-best-sell-short') ?></span>
+                                <?php endif ?>
+                                <?php if (!empty($value['showpromotion']) && !empty($value['percen']) && !empty($value['pricepromotion'])): ?>
+									<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i><?php echo $this->lang->line('tour-discount-short') ?></span>
+                                <?php endif ?>
 								<h1 class="title">
 									<?php echo $value['title']; ?>
 								</h1>

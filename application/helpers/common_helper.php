@@ -33,7 +33,7 @@ if (!function_exists('handle_multi_language_request')) {
     }
 }
 
-if (!function_exists('handle_common_author_data')) {
+if (!function_exists('handle_author_common_data')) {
     /**
      * @return array
      */
@@ -53,7 +53,7 @@ if (!function_exists('handle_common_author_data')) {
 }
 
 //build array for dropdown form template
-if (!function_exists('handle_common_author_data')) {
+if (!function_exists('build_array_for_dropdown')) {
     function build_array_for_dropdown($data = array(), $id = null){
         $new_data = array(0 => 'Danh mục gốc');
         foreach ($data as $key => $value) {
@@ -63,7 +63,8 @@ if (!function_exists('handle_common_author_data')) {
         unset($new_data[$id]);
         return $new_data;
     }
-
+}
+if (!function_exists('build_array_by_slug_for_dropdown')) {
     function build_array_by_slug_for_dropdown($data = array()){
         $new_data = array('' => 'Click để chọn');
         foreach ($data as $key => $value) {
@@ -79,7 +80,7 @@ if (!function_exists('handle_common_author_data')) {
 }
 
 //build title for input
-if (!function_exists('handle_common_author_data')) {
+if (!function_exists('build_template')) {
     function build_template(){
         $template = array(
             'vi' => array(
@@ -110,7 +111,7 @@ if (!function_exists('handle_common_author_data')) {
     - $page_languages = array('vi', 'en', 'cn' ...);
  */
 
-if (!function_exists('handle_common_author_data')) {
+if (!function_exists('build_language')) {
     function build_language($controller, $detail, $select = array(), $page_languages){
         foreach ($select as $key => $value) {
             $result = explode('|||', $detail[$controller .'_'. $value]);
