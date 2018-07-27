@@ -6,7 +6,7 @@
 
 //Top Nav
 $lang['about'] = 'About Us';
-$lang['contact'] = 'Contact Us';
+$lang['contact'] = 'Liên hệ';
 
 //Main Nav
 
@@ -160,3 +160,8 @@ $lang['see-more-comments'] = 'Xem thêm bình luận';
 $lang['send-comments'] = 'Gửi nhận xét';
 
 $lang['promotion'] = 'KM';
+
+$lang['next'] = 'Sau';
+$lang['last'] = 'Cuối';
+$lang['first'] = 'Đầu';
+$lang['prev'] = 'Trước';

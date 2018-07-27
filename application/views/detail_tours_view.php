@@ -8,7 +8,7 @@
 			<h4 class="subtitle">
 				<?php echo $detail['parent_title'] ?>
 			</h4>
-			<h1 class="title">
+			<h1 class="title" title="<?php echo $detail['title'];?>">
                 <?php echo $detail['title'] ?>
 				<br>
                 <?php if (!empty($detail['bestselling'])): ?>
@@ -59,17 +59,27 @@
 							</tr>
 							<tr>
 								<td>Ngày khởi hành</td>
-								<td><?php echo $detail['date'] ?></td>
+								<td>
+									<?php if (!empty($detail['date'])): ?>
+										<?php echo $detail['date'] ?>
+									<?php else: ?>
+										<?php echo $this->lang->line('contact');?>
+									<?php endif ?>
+								</td>
 							</tr>
 							<tr>
 								<td>Giá</td>
 								<td>
 									<h4>
-										<?php if (!empty($detail['pricepromotion']) && !empty($detail['percen']) && !empty($detail['showpromotion'])): ?>
-											<?php echo number_format($detail['pricepromotion']); ?> VNĐ
-											<small class="price-original"><del><?php echo number_format($detail['price']);?> VNĐ</del></small>
+										<?php if (!empty($value['price'])): ?>
+											<?php if (!empty($detail['pricepromotion']) && !empty($detail['percen']) && !empty($detail['showpromotion'])): ?>
+												<?php echo number_format($detail['pricepromotion']); ?> VNĐ
+												<small class="price-original"><del><?php echo number_format($detail['price']);?> VNĐ</del></small>
+											<?php else: ?>
+												<?php echo number_format($detail['price']); ?> VNĐ
+											<?php endif ?>
 										<?php else: ?>
-											<?php echo number_format($detail['price']); ?> VNĐ
+											<?php echo $this->lang->line('contact');?>
 										<?php endif ?>
 									</h4>
 								</td>
@@ -225,8 +235,8 @@
 																				</div>
 																			</div>
 																			<div class="media-body">
-																				<h4 class="media-heading"><?php echo $detail['librarylocaltion'][$i][$j]['title'] ?></h4>
-																				<p><?php echo $detail['librarylocaltion'][$i][$j]['content'] ?></p>
+																				<h4 class="media-heading"><a href="<?php echo base_url('thu-vien/'.$detail['librarylocaltion'][$i][$j]['slug']);?>" target="_blank"><?php echo $detail['librarylocaltion'][$i][$j]['title'] ?></a></h4>
+																				<p><?php echo $detail['librarylocaltion'][$i][$j]['description'] ?></p>
 																			</div>
 																		</div>
                                                                     <?php endif;?>
@@ -614,13 +624,17 @@
 								</div>
 								<div class="head">
 									<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
-									<h2 class="post-title"><?php echo $value['title'];?></h2>
+									<h2 class="post-title" title="<?php echo $value['title'];?>"><?php echo $value['title'];?></h2>
 									<h3 class="price">
-										<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-											<?php echo number_format($value['pricepromotion']); ?> VNĐ
-											<small class="price-original"><del><?php echo number_format($value['price']);?> VNĐ</del></small>
+										<?php if (!empty($value['price'])): ?>
+											<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+												<?php echo number_format($value['pricepromotion']); ?> VNĐ
+												<small class="price-original"><del><?php echo number_format($value['price']);?> VNĐ</del></small>
+											<?php else: ?>
+												<?php echo number_format($value['price']); ?> VNĐ
+											<?php endif ?>
 										<?php else: ?>
-											<?php echo number_format($value['price']); ?> VNĐ
+											<span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contact');?>
 										<?php endif ?>
 									</h3>
 								</div>

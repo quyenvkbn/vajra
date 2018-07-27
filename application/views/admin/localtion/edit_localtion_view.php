@@ -60,14 +60,21 @@
                                     echo form_input('area', $detail['area'], 'class="form-control" id="area" placeholder ="VD:Hà Nội"');
                                     ?>
                                 </div>
+                                <div class="col-xs-12" style="display: none;">
+                                    <?php
+                                        echo form_label('Tên vị trí đến trong khu vực', 'localtion');
+                                        echo form_error('localtion');
+                                        echo form_input('localtion', $detail['localtion'], 'class="form-control" id="localtion" placeholder ="VD:Nguyễn Bỉnh Khiêm"');
+                                    ?>
+                                </div>
                                 <div class="col-xs-12" style="margin-bottom: 5px;">
                                     <?php
-                                    echo form_label('Tên vị trí đến trong khu vực', 'localtion');
-                                    echo form_error('localtion');
-                                    echo form_input('localtion', $detail['localtion'], 'class="form-control" id="localtion" placeholder ="VD:Nguyễn Bỉnh Khiêm"');
                                     echo form_label('Tiêu đề', 'title');
                                     echo form_error('title');
                                     echo form_input('title', trim($detail['title']), 'class="form-control" id="title"');
+                                    echo form_label('Mô tả', 'description');
+                                    echo form_error('description');
+                                    echo form_textarea('description', trim($detail['description']), 'class="form-control" rows="5" ');
                                     echo form_label('Nội dung', 'content');
                                     echo form_error('content');
                                     echo form_textarea('content', trim($detail['content']), 'class="tinymce-area form-control" rows="5" ');

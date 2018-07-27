@@ -54,14 +54,21 @@
                                     echo form_input('area', set_value('area'), 'class="form-control" id="area" placeholder ="VD:Hà Nội"');
                                     ?>
                                 </div>
+                                <div class="col-xs-12" style="display: none;">
+                                    <?php
+                                        echo form_label('Tên vị trí đến trong khu vực', 'localtion');
+                                        echo form_error('localtion');
+                                        echo form_input('localtion', set_value('localtion'), 'class="form-control" id="localtion" placeholder ="VD:Nguyễn Bỉnh Khiêm"');
+                                    ?>
+                                </div>
                                 <div class="col-xs-12" style="margin-bottom: 5px;">
                                     <?php
-                                    echo form_label('Tên vị trí đến trong khu vực', 'localtion');
-                                    echo form_error('localtion');
-                                    echo form_input('localtion', set_value('localtion'), 'class="form-control" id="localtion" placeholder ="VD:Nguyễn Bỉnh Khiêm"');
                                     echo form_label('Tiêu đề', 'title');
                                     echo form_error('title');
                                     echo form_input('title', set_value('title'), 'class="form-control" id="title"');
+                                    echo form_label('Mô tả', 'description');
+                                    echo form_error('description');
+                                    echo form_textarea('description', set_value('description', '', false), 'class="form-control" rows="5" ');
                                     echo form_label('Nội dung', 'content');
                                     echo form_error('content');
                                     echo form_textarea('content', set_value('content', '', false), 'class="tinymce-area form-control" rows="5" ');

@@ -53,6 +53,7 @@ class Localtion extends Admin_Controller {
                     'slug' => $unique_slug,
                     'area' => mb_convert_case($this->input->post('area'), MB_CASE_TITLE, "UTF-8"),
                     'title' => $this->input->post('title'),
+                    'description' => $this->input->post('description'),
                     'content' => $this->input->post('content'),
                     'localtion' => $this->input->post('localtion'),
                 );
@@ -61,8 +62,10 @@ class Localtion extends Admin_Controller {
                 }
                 $insert = $this->localtion_model->common_insert(array_merge($localtion_request,$this->author_data));
                 if($insert){
+                    $this->session->set_flashdata('message_success', 'Thêm mới thành công!');
                     redirect('admin/'. $this->data['controller'] .'', 'refresh');
                 }else {
+                    $this->session->set_flashdata('message_error', 'Thêm mới thất bại!');
                     $this->render('admin/'. $this->data['controller'] .'/create_localtion_view');
                 }
             }
@@ -95,6 +98,7 @@ class Localtion extends Admin_Controller {
                 $localtion_request = array(
                     'area' => mb_convert_case($this->input->post('area'), MB_CASE_TITLE, "UTF-8"),
                     'title' => $this->input->post('title'),
+                    'description' => $this->input->post('description'),
                     'content' => $this->input->post('content'),
                     'localtion' => $this->input->post('localtion')
                 );

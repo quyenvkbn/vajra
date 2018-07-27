@@ -402,12 +402,13 @@ class Product extends Admin_Controller{
                     'product_category_id' => $this->input->post('parent_id_shared'),
                     'vehicles' => json_encode($this->input->post('vehicles')),
                     'librarylocaltion' => json_encode($this->input->post('librarylocaltion')),
-                    'is_banner' => $this->input->post('is_banner')
+                    'is_banner' => $this->input->post('is_banner'),
+                    'date' => '',
                 );
                 if($unique_slug != $this->data['detail']['slug']){
                     $shared_request['slug'] = $unique_slug;
                 }
-                if($this->input->post('date') !== null){
+                if($this->input->post('date') !== ''){
                     $date= explode("/",$this->input->post('date'));
                     $datetime=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
                 }
@@ -643,7 +644,7 @@ class Product extends Admin_Controller{
         $detail = $this->localtion_model->get_by_slug_localtion($area);
         $result = '';
         foreach ($this->localtion_model->get_by_area($detail['area']) as $key => $value) {
-            $result .= '<option value="'.$value['id'].'">'.$value['localtion'].'</option>';
+            $result .= '<option value="'.$value['id'].'">'.$value['title'].'</option>';
         }
         $reponse = array(
             'csrf_hash' => $this->security->get_csrf_hash(),

@@ -108,7 +108,7 @@
                                 <?php if (!empty($value['showpromotion']) && !empty($value['percen']) && !empty($value['pricepromotion'])): ?>
 									<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i><?php echo $this->lang->line('tour-discount-short') ?></span>
                                 <?php endif ?>
-								<h1 class="title">
+								<h1 class="title" title="<?php echo $value['title']; ?>">
 									<?php echo $value['title']; ?>
 								</h1>
 								<ul class="list-inline">
@@ -162,7 +162,7 @@
 											<img src="<?php echo base_url('assets/upload/product_category/'.$domestic['slug'].'/'.json_decode($domestic['image'])[0]); ?>" alt="domestic cover image">
 										<?php endif ?>
 										<div class="overlay">
-											<h1><?php echo $domestic['title'];?></h1>
+											<h1 title="<?php echo $domestic['title']; ?>"><?php echo $domestic['title'];?></h1>
 											<p><?php echo $domestic['content'];?></p>
 											<a href="<?php echo base_url('danh-muc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">Xem tất cả Tours</a>
 										</div>
@@ -208,13 +208,17 @@
 												</div>
 												<div class="head">
 													<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
-													<h2 class="post-title"><?php echo $value['title']; ?></h2>
+													<h2 class="post-title" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
 													<h3 class="price">
-														<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-															<?php echo number_format($value['pricepromotion']); ?> VNĐ
-															<small class="price-original"><del><?php echo number_format($value['price']);?> VNĐ</del></small>
+														<?php if (!empty($value['price'])): ?>
+															<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																<?php echo number_format($value['pricepromotion']); ?> VNĐ
+																<small class="price-original"><del><?php echo number_format($value['price']);?> VNĐ</del></small>
+															<?php else: ?>
+																<?php echo number_format($value['price']); ?> VNĐ
+															<?php endif ?>
 														<?php else: ?>
-															<?php echo number_format($value['price']); ?> VNĐ
+															<span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contact');?>
 														<?php endif ?>
 													</h3>
 
@@ -284,7 +288,7 @@
 										<?php endif ?>
 
 										<div class="overlay">
-											<h1><?php echo $international['title'];?></h1>
+											<h1 title="<?php echo $international['title']; ?>"><?php echo $international['title'];?></h1>
 											<p><?php echo $international['content'];?></p>
 											<a href="<?php echo base_url('danh-muc/'.$international['slug']) ?>" class="btn btn-primary" role="button">Xem tất cả Tours</a>
 										</div>
@@ -330,13 +334,17 @@
 												</div>
 												<div class="head">
 													<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
-													<h2 class="post-title"><?php echo $value['title']; ?></h2>
+													<h2 class="post-title" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
 													<h3 class="price">
-														<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-															<?php echo number_format($value['pricepromotion']); ?> VNĐ
-															<small class="price-original"><del><?php echo number_format($value['price']);?> VNĐ</del></small>
+														<?php if (!empty($value['price'])): ?>
+															<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																<?php echo number_format($value['pricepromotion']); ?> VNĐ
+																<small class="price-original"><del><?php echo number_format($value['price']);?> VNĐ</del></small>
+															<?php else: ?>
+																<?php echo number_format($value['price']); ?> VNĐ
+															<?php endif ?>
 														<?php else: ?>
-															<?php echo number_format($value['price']); ?> VNĐ
+															<span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contact');?>
 														<?php endif ?>
 													</h3>
 
@@ -402,7 +410,7 @@
 				<div class="col-md-<?php echo ($key == 0)? '4': '12'; ?>" style="padding:0px;">
 					<div class="head">
 						<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
-						<h2 class="post-title"><?php echo $value['title'];?></h2>
+						<h2 class="post-title" title="<?php echo $value['title'];?>"><?php echo $value['title'];?></h2>
 					</div>
 					<div class="body">
 						<p class="post-description"><?php echo $value['description']; ?></p>
@@ -466,7 +474,7 @@
 								<div class="overlay"></div>
 								<div class="content">
 									<h4 class="post-subtitle"><?php echo $value['area'];?></h4>
-									<h2 class="post-title">
+									<h2 class="post-title" title="<?php echo $value['title'];?>">
 										<?php echo $value['title'];?>
 									</h2>
 								</div>
@@ -499,7 +507,7 @@
 							<div class="overlay"></div>
 							<div class="content">
 								<h4 class="post-subtitle"><?php echo date("d/m/Y",strtotime($value['created_at']));?></h4>
-								<h2 class="post-title">
+								<h2 class="post-title" title="<?php echo $value['title'];?>">
 									<?php echo $value['title'];?>
 								</h2>
 							</div>
