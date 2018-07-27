@@ -16,7 +16,7 @@
 						<h4 class="subtitle">
 							<?php echo $detail['area'] ?>
 						</h4>
-						<h1 class="title">
+						<h1 class="title" title="<?php echo $detail['title'] ?>">
 	                        <?php echo $detail['title'] ?>
 						</h1>
 					</div>

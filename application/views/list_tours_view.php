@@ -88,7 +88,7 @@
 								</div>
 								<div class="head">
 									<h4 class="post-subtitle"><?php echo $val['parent_title'] ?></h4>
-									<h2 class="post-title"><?php echo $val['title'] ?></h2>
+									<h2 class="post-title" title="<?php echo $val['title'] ?>"><?php echo $val['title'] ?></h2>
 									<h3 class="price">
 										<?php if (!empty($val['price'])): ?>
 											<?php if (!empty($val['pricepromotion']) && !empty($val['percen']) && !empty($val['showpromotion'])): ?>

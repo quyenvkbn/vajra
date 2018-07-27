@@ -13,7 +13,7 @@
 				<div class="section-header">
 					<div class="row">
 						<div class="left col-xs-8">
-							<h1><?php echo $category['title']; ?></h1>
+							<h1 title="<?php echo $category['title']; ?>"><?php echo $category['title']; ?></h1>
 							<p>
 								<?php echo $category['content']; ?>
 							</p>
@@ -36,7 +36,7 @@
 								</div>
 								<div class="head">
 									<h4 class="post-subtitle"><?php echo $val['parent_title']; ?></h4>
-									<h2 class="post-title"><?php echo $val['title']; ?></h2>
+									<h2 class="post-title" title="<?php echo $val['title']; ?>"><?php echo $val['title']; ?></h2>
 								</div>
 								<div class="body">
 									<p class="post-description"><?php echo $val['description']; ?></p>
