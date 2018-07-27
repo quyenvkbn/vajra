@@ -36,7 +36,7 @@
 								</div>
 								<div class="head">
 									<h4 class="post-subtitle"><?php echo $val['area']; ?></h4>
-									<h2 class="post-title"><?php echo $val['title']; ?></h2>
+									<h2 class="post-title" title="<?php echo $val['title']; ?>"><?php echo $val['title']; ?></h2>
 								</div>
 								<div class="body">
 									<p class="post-description"><?php echo $val['content']; ?></p>
