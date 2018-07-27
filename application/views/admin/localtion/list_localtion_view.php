@@ -63,7 +63,6 @@
                                     <th>Hình ảnh</th>
                                     <th>Tiêu đề</th>
                                     <th>Khu vực</th>
-                                    <th>Vị trí</th>
                                     <th>Detail</th>
                                     <th>Action</th>
                                 </tr>
@@ -85,7 +84,6 @@
                                         </td>
                                         <td><?php echo $value['title'] ?></td>
                                         <td><?php echo $value['area'] ?></td>
-                                        <td><?php echo $value['localtion'] ?></td>
                                         <td>
                                             <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>"
                                             <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">Xem chi tiết</button>
@@ -100,13 +98,11 @@
 
                                     </tr>
                                 <?php endforeach ?>
-
                                     <tr>
                                         <th>No.</th>
                                         <th>Hình ảnh</th>
                                         <th>Tiêu đề</th>
                                         <th>Khu vực</th>
-                                        <th>Vị trí</th>
                                         <th>Detail</th>
                                         <th>Action</th>
                                     </tr>

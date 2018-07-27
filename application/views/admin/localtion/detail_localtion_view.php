@@ -70,10 +70,10 @@
                                                     <th>Khu vực</th>
                                                     <td><?php echo $detail['area'] ?></td>
                                                 </tr>
-                                                <tr>
+                                                <!-- <tr>
                                                     <th>Vị trí</th>
                                                     <td><?php echo $detail['localtion'] ?></td>
-                                                </tr>
+                                                </tr> -->
 
                                             </table>
                                         </div>
@@ -85,6 +85,10 @@
                                                         <tr>
                                                             <th style="width: 120px">Tiêu đề: </th>
                                                             <td><?php echo $detail['title'] ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th style="width: 120px">Mô tả: </th>
+                                                            <td><?php echo $detail['description'] ?></td>
                                                         </tr>
                                                         <tr>
                                                             <th style="width: 120px">Nội dung: </th>

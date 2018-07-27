@@ -90,11 +90,15 @@
 									<h4 class="post-subtitle"><?php echo $val['parent_title'] ?></h4>
 									<h2 class="post-title"><?php echo $val['title'] ?></h2>
 									<h3 class="price">
-										<?php if (!empty($val['pricepromotion']) && !empty($val['percen']) && !empty($val['showpromotion'])): ?>
-											<?php echo number_format($val['pricepromotion']); ?> VNĐ
-											<small class="price-original"><del><?php echo number_format($val['price']);?> VNĐ</del></small>
+										<?php if (!empty($val['price'])): ?>
+											<?php if (!empty($val['pricepromotion']) && !empty($val['percen']) && !empty($val['showpromotion'])): ?>
+												<?php echo number_format($val['pricepromotion']); ?> VNĐ
+												<small class="price-original"><del><?php echo number_format($val['price']);?> VNĐ</del></small>
+											<?php else: ?>
+												<?php echo number_format($val['price']); ?> VNĐ
+											<?php endif ?>
 										<?php else: ?>
-											<?php echo number_format($val['price']); ?> VNĐ
+											<span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contact');?>
 										<?php endif ?>
 									</h3>
 
