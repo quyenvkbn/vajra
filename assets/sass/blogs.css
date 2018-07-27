@@ -757,16 +757,26 @@ footer.footer {
       #detail-post .container .row .right .row .item .wrapper .head h2.post-title {
         font-weight: 700;
         margin-top: 0;
-        font-size: 1.25em; }
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        font-size: 1.25em;
+        line-height: 1.5;
+        height: 2.9em;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical; }
     #detail-post .container .row .right .row .item .wrapper .body {
       color: #999;
       padding-left: 15px;
       padding-right: 15px; }
       #detail-post .container .row .right .row .item .wrapper .body p.post-description {
         overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
         line-height: 1.5;
-        max-height: 4.5em;
-        -webkit-line-clamp: 3; }
+        height: 4.5em;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical; }
     #detail-post .container .row .right .row .item .wrapper .foot {
       padding-left: 15px;
       padding-right: 15px; }
