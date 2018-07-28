@@ -87,7 +87,7 @@ class Homepage extends Public_Controller {
         /**
          * GET POSTS IN ARCHIVE LIBRARY
          */
-        $this->data['location_archive_library'] = $this->localtion_model->get_all_with_pagination_search('desc',7);
+        $this->data['location_archive_library'] = $this->localtion_model->get_all_with_pagination_searchs('desc',7);
         $this->render('homepage_view');
     }
     public function ajax_home(){

@@ -220,11 +220,12 @@
                                                                 echo form_label('Chọn khu vực ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
                                                             ?>
                                                             <select class="form-control" name="parengoplace_<?php echo $i; ?>" data-idlocaltion="<?php echo $i; ?>" style="width: 100%;"  id="paren-go-place_<?php echo $i; ?>">';
+                                                                <option>Chọn Khu vực</option>
                                                                     <?php foreach ($area_selected as $key => $value): ?>
                                                                         <?php if(!empty($detail['librarylocaltion'][$i][0])): ?>
-                                                                            <option <?php echo ($value['slug'] == $detail['librarylocaltion'][$i][0]['slug'])?'selected' :''; ?> value="<?php echo $value['slug']; ?>"><?php echo $value['area']; ?></option>
+                                                                            <option <?php echo ($value['id'] == $detail['librarylocaltion'][$i][0]['area_id'])?'selected' :''; ?> value="<?php echo $value['id']; ?>"><?php echo $value['vi']; ?></option>
                                                                         <?php else: ?>
-                                                                            <option value="<?php echo $value['slug']; ?>"><?php echo $value['area']; ?></option>
+                                                                            <option value="<?php echo $value['id']; ?>"><?php echo $value['vi']; ?></option>
                                                                         <?php endif ?>
                                                                     <?php endforeach ?>
                                                             </select>
@@ -233,12 +234,12 @@
                                                             <select class="form-control select2 select2-hidden-accessible" name="goplace_<?php echo $i; ?>" multiple="" data-placeholder="Select a State" style="width: 100%;min-height:34px;min-width:300px;" tabindex="-1" aria-hidden="true" id="go-place_<?php echo $i; ?>">
                                                                 <?php if (!empty($detail['librarylocaltion'])): ?>
                                                                     <?php for ($m=0;$m< count($detail['librarylocaltion'][$i]);$m++): ?>
-                                                                            <option selected value="<?php echo $detail['librarylocaltion'][$i][$m]['id']; ?>"><?php echo $detail['librarylocaltion'][$i][$m]['localtion']; ?></option>
+                                                                            <option selected value="<?php echo $detail['librarylocaltion'][$i][$m]['id']; ?>"><?php echo $detail['librarylocaltion'][$i][$m]['title']; ?></option>
                                                                     <?php endfor ?>
                                                                 <?php endif ?>
                                                                 <?php if (!empty($detail['notlibrarylocaltion'])): ?>
                                                                     <?php for ($m=0;$m< count($detail['notlibrarylocaltion'][$i]);$m++): ?>
-                                                                            <option value="<?php echo $detail['notlibrarylocaltion'][$i][$m]['id']; ?>"><?php echo $detail['notlibrarylocaltion'][$i][$m]['localtion']; ?></option>
+                                                                            <option value="<?php echo $detail['notlibrarylocaltion'][$i][$m]['id']; ?>"><?php echo $detail['notlibrarylocaltion'][$i][$m]['title']; ?></option>
                                                                     <?php endfor ?>
                                                                 <?php endif ?>
                                                             </select>

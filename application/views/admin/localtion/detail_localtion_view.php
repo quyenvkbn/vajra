@@ -68,7 +68,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Khu vực</th>
-                                                    <td><?php echo $detail['area'] ?></td>
+                                                    <td><?php echo $area['vi'] ?></td>
                                                 </tr>
                                                 <!-- <tr>
                                                     <th>Vị trí</th>

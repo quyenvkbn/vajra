@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Thêm mới
+            Cập nhật
             <small>
                 Địa điểm
             </small>
@@ -33,42 +33,11 @@
                                 <div class="row">
                                     <span><?php echo $this->session->flashdata('message'); ?></span>
                                 </div>
-                                <div class="col-xs-12">
-                                    <?php
-                                    echo form_label('Hình ảnh', 'image_localtion');
-                                    echo form_error('image_localtion');
-                                    echo form_upload('image_localtion', set_value('image_localtion'), 'class="form-control" id="image_localtion" multiple');
-                                    ?>
-                                </div>
-                                <div class="col-xs-12">
-                                    <?php
-                                    echo form_label('Slug', 'slug_localtion');
-                                    echo form_error('slug_localtion');
-                                    echo form_input('slug_localtion', set_value('slug_localtion'), 'class="form-control" id="slug_shared" readonly');
-                                    ?>
-                                </div>
                                 <div class="col-xs-12" style="margin-bottom: 5px;">
                                     <?php
-                                    echo form_label('Chọn khu vực đến', 'area_id');
-                                    echo form_error('area_id');
-                                    ?>
-                                    <select name="area_id" class="form-control">
-                                        <?php foreach ($area as $key => $value): ?>
-                                            <option value="<?php echo $value['id']; ?>"><?php echo $value['vi']; ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div>
-                                <div class="col-xs-12" style="margin-bottom: 5px;">
-                                    <?php
-                                    echo form_label('Tiêu đề', 'title');
-                                    echo form_error('title');
-                                    echo form_input('title', set_value('title'), 'class="form-control" id="title"');
-                                    echo form_label('Mô tả', 'description');
-                                    echo form_error('description');
-                                    echo form_textarea('description', set_value('description', '', false), 'class="form-control" rows="5" ');
-                                    echo form_label('Nội dung', 'content');
-                                    echo form_error('content');
-                                    echo form_textarea('content', set_value('content', '', false), 'class="tinymce-area form-control" rows="5" ');
+                                    echo form_label('Tên khu vực đến', 'vi');
+                                    echo form_error('vi');
+                                    echo form_input('vi', $detail['vi'], 'class="form-control" id="vi" placeholder ="VD:Hà nội"');
                                     ?>
                                 </div>
                             </div>

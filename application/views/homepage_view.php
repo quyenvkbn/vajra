@@ -473,7 +473,7 @@
 								<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="blogs image">
 								<div class="overlay"></div>
 								<div class="content">
-									<h4 class="post-subtitle"><?php echo $value['area'];?></h4>
+									<h4 class="post-subtitle"><?php echo $value['vi'];?></h4>
 									<h2 class="post-title" title="<?php echo $value['title'];?>">
 										<?php echo $value['title'];?>
 									</h2>
