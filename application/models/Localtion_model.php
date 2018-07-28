@@ -22,6 +22,13 @@ class Localtion_model extends MY_Model {
         $this->db->group_by('area');
         return $result = $this->db->get()->result_array();
     }
+    public function get_by_area_id($area_id='') {
+        $this->db->select($this->table . '.*');
+        $this->db->from($this->table);
+        $this->db->where('is_deleted', 0);
+        $this->db->where('area_id', $area_id);
+        return $result = $this->db->get()->result_array();
+    }
     public function get_by_slug_localtion($slug='') {
         $this->db->select('*');
         $this->db->from($this->table);
@@ -40,13 +47,15 @@ class Localtion_model extends MY_Model {
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->where_in('id', $librarylocaltion);
+        $this->db->where('is_deleted', 0);
         return $result = $this->db->get()->result_array();
     }
     public function get_librarylocaltion_by_not_id_array($notlibrarylocaltion = array(),$area){
         $this->db->select('*');
         $this->db->from($this->table);
-        $this->db->where('area', $area);
-        $this->db->where_not_in('id', $notlibrarylocaltion);
+        $this->db->where('area_id', $area);
+        $this->db->where_not_in('id', $notlibrarylocaltion);        
+        $this->db->where('is_deleted', 0);
         return $result = $this->db->get()->result_array();
     }
     public function get_by_id_array($id = array()) {
@@ -64,18 +73,46 @@ class Localtion_model extends MY_Model {
         return $this->db->get()->result_array();
     }
     public function fetch_row_by_slug($slug){
-        $this->db->select('*');
+        $this->db->select($this->table . '.*, ' . 'area.vi as vi');
         $this->db->from($this->table);
-        $this->db->where('is_deleted', 0);
-        $this->db->where('slug', $slug);
+        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id');
+        $this->db->where($this->table . '.is_deleted', 0);
+        $this->db->where($this->table . '.slug', $slug);
         return $this->db->get()->row_array();
     }
     public function get_all_localtion_area($area,$id,$limit = ''){
-        $this->db->select('*');
+        $this->db->select($this->table . '.*, ' . 'area.vi as vi');
         $this->db->from($this->table);
-        $this->db->where('area', $area);
-        $this->db->where('id !=', $id);
+        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id');
+        $this->db->where($this->table . '.area_id', $area);
+        $this->db->where($this->table . '.id !=', $id);
         $this->db->limit($limit);
         return $result = $this->db->get()->result_array();
+    }
+    public function get_all_with_pagination_searchs($order = 'desc',$limit = NULL, $start = NULL, $keywords = '',$area_id = '') {
+        $this->db->select($this->table .'.*, area.vi as vi');
+        $this->db->from($this->table);
+        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id');
+        $this->db->like($this->table .'.title', $keywords);
+        $this->db->where($this->table .'.is_deleted', 0);
+        if($area_id != ''){
+            $this->db->where($this->table .'.area_id', $area_id);
+        }
+        $this->db->limit($limit, $start);
+        $this->db->order_by($this->table .".id", $order);
+
+        return $this->db->get()->result_array();
+    }
+    public function count_searchs($keyword = '',$area_id = ''){
+        $this->db->select($this->table . '.*');
+        $this->db->from($this->table);
+        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id');
+        $this->db->like($this->table .'.title', $keyword);
+        if($area_id != ''){
+            $this->db->where($this->table .'.area_id', $area_id);
+        }
+        $this->db->where($this->table .'.is_deleted', 0);
+
+        return $this->db->get()->num_rows();
     }
 }

@@ -303,6 +303,8 @@ class Public_Controller extends MY_Controller {
         $this->get_all_menu_param('domestic_menu');
         $this->get_all_menu_param('international_menu');
         $this->data['controller'] = $this;
+        //one lang is vietnam
+        $this->session->set_userdata('langAbbreviation', 'vi');
     }
     protected function get_all_menu_param($param){
         foreach ($this->data[$param] as $key => $value) {

@@ -121,10 +121,12 @@ $("#submit-shared,#content-home").click(function(event) {
 			}
 		});
 	}
+
 	if ($('#register-form').valid() === false){
-		console.log($(".has-errors"));
 		if($(".title-content-date.date.has-errors").parents("[id^=showdatecontent_]").length >0){
 			var active = $($(".col-xs-12.has-errors")[0]).parents("[id^=showdatecontent_]")[0].id;
+			$("#"+active).parent().prev().attr("aria-expanded","true").removeClass('collapsed');
+			$("#"+active).addClass('in');
 			if($("#numberdate").val() == "" || $("#numberdate").val() == 0){
 				$("#numberdate").focus();
 			}else if($($("#"+active+" [name^=vehicles_]")[0]).val() == 0){
