@@ -76,8 +76,8 @@
                                     <th>No.</th>
                                     <th>Hình ảnh</th>
                                     <th>Tiêu đề</th>
-                                    <th>Khu vực</th>
-                                    <th>Vị trí</th>
+                                    <th>Danh mục</th>
+                                    <th>Trạng thái</th>
                                     <th>Detail</th>
                                     <th>Action</th>
                                 </tr>

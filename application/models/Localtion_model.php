@@ -89,7 +89,7 @@ class Localtion_model extends MY_Model {
         $this->db->limit($limit);
         return $result = $this->db->get()->result_array();
     }
-    public function get_all_with_pagination_searchs($order = 'desc',$limit = NULL, $start = NULL, $keywords = '',$area_id = '') {
+    public function get_all_with_pagination_searchs($order = 'asc',$limit = NULL, $start = NULL, $keywords = '',$area_id = '',$is_hot = '', $is_backend = '') {
         $this->db->select($this->table .'.*, area.vi as vi');
         $this->db->from($this->table);
         $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id','left');
@@ -98,12 +98,19 @@ class Localtion_model extends MY_Model {
         if($area_id != ''){
             $this->db->where($this->table .'.area_id', $area_id);
         }
+        if($is_hot != ''){
+            $this->db->where($this->table .'.is_hot', $is_hot);
+        }
         $this->db->limit($limit, $start);
-        $this->db->order_by($this->table .".id", $order);
+        if(empty($is_backend)){
+            $this->db->order_by($this->table .".is_hot desc, " . $this->table . ".title ". $order);
+        }else{
+            $this->db->order_by($this->table .".id", $order);
+        }
 
         return $this->db->get()->result_array();
     }
-    public function count_searchs($keyword = '',$area_id = ''){
+    public function count_searchs($keyword = '',$area_id = '',$is_hot = ''){
         $this->db->select($this->table . '.*');
         $this->db->from($this->table);
         $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id','left');
@@ -111,8 +118,10 @@ class Localtion_model extends MY_Model {
         if($area_id != ''){
             $this->db->where($this->table .'.area_id', $area_id);
         }
+        if($is_hot != ''){
+            $this->db->where($this->table .'.is_hot', $is_hot);
+        }
         $this->db->where($this->table .'.is_deleted', 0);
-
         return $this->db->get()->num_rows();
     }
 }

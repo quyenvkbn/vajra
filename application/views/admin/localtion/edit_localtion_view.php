@@ -64,6 +64,13 @@
                                         <?php endforeach ?>
                                     </select>
                                 </div>
+                                <div class="col-xs-12">
+                                    <div class="checkbox" style="padding-top: 10px;padding-bottom: 10px;">
+                                        <label>
+                                            <input type="checkbox" id="hot" name="is_hot" <?php echo ($detail['is_hot'] == 1)? 'checked' : '';?>> Nổi bật
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="col-xs-12" style="margin-bottom: 5px;">
                                     <?php
                                     echo form_label('Tiêu đề', 'title');

@@ -70,10 +70,10 @@
                                                     <th>Khu vực</th>
                                                     <td><?php echo $area['vi'] ?></td>
                                                 </tr>
-                                                <!-- <tr>
-                                                    <th>Vị trí</th>
-                                                    <td><?php echo $detail['localtion'] ?></td>
-                                                </tr> -->
+                                                <tr>
+                                                    <th>Địa điểm nổi bật</th>
+                                                    <td><i class="<?php echo ($detail['is_hot'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
+                                                </tr>
 
                                             </table>
                                         </div>
