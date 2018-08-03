@@ -7,7 +7,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vajra</title>
+    <title><?php echo (isset($detail['title']) || isset($category['title']))? (isset($detail['title']))? $detail['title'] : $category['title'] : 'Vajra' ?></title>
+    <meta name="description" content="<?php echo (isset($detail['title']))? (isset($detail['metadescription']) && !empty($detail['metadescription']	))? $detail['metadescription']: $detail['title'] : 'Vajra' ?>">
+    <meta name="keywords" content="<?php echo (isset($detail['title']))? (isset($detail['metakeywords']) && !empty($detail['metakeywords']	))? $detail['metakeywords']: $detail['title'] : 'Vajra' ?>">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
