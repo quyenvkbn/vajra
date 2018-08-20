@@ -152,6 +152,11 @@ $("#submit-shared,#content-home").click(function(event) {
 		    $("#nav-product #add-date").css("display","inline");
 			return true;
 		}else{
+			var html = `<div class="modal" role="dialog" style="display: block; opacity: 0.5">
+	                        <div class="modal-dialog" style="color:#fff; text-align:center; padding-top:300px;">
+	                            <i class="fa fa-2x fa-spinner fa-spin" aria-hidden="true"></i>
+	                        </div>
+	                    </div>`;
 			if($(".title-content-date.date").length<=0){
 				alert("Vui lòng tạo ra một ngày của tour");
 				return false;
@@ -216,9 +221,11 @@ $("#submit-shared,#content-home").click(function(event) {
 				processData: false,
 				beforeSend: function(){
 					$("#submit-shared").attr('disabled','disabled');
+					$('#encypted_ppbtn_all').html(html);
 				},
 				success: function(response){
 					$("#submit-shared").removeAttr('disabled');
+					$('#encypted_ppbtn_all').html('');
 					if(response.status == 200){
 						csrf_hash = response.reponse.csrf_hash;
 						if (response.isExisted == true) {
@@ -317,14 +324,22 @@ $("#button-numberdate,#append-date").click(function(){
 		 	$(document).off("change","[id^=paren-go-place_]").on("change","[id^=paren-go-place_]",function(){
 		 		var stt = $($(this)[0])[0].dataset.idlocaltion;
 		 		var url = HOSTNAMEADMIN + '/product/ajax_area_selected';
+		 		var html = `<div class="modal" role="dialog" style="display: block; opacity: 0.5">
+		                    <div class="modal-dialog" style="color:#fff; text-align:center; padding-top:300px;">
+		                        <i class="fa fa-2x fa-spinner fa-spin" aria-hidden="true"></i>
+		                    </div>
+		                </div>`;
 		        $.ajax({
 		            method: "post",
 		            url: url,
+		            beforeSend:function(){
+		                $('#encypted_ppbtn_all').html(html);
+		            },
 		            data: {
-		                area : $($(this)[0]).val(), csrf_myielts_token : csrf_hash
+		                area : $($(this)[0]).val(), selectlocaltion:$('#go-place_'+stt).val(), csrf_myielts_token : csrf_hash
 		            },
 		            success: function(response){
-		            	console.log(response)
+		            	$('#encypted_ppbtn_all').html('');
 		                csrf_hash = response.reponse.csrf_hash;
 		                if(response.status == 200 && response.isExisted == true){
 		                    $("input[name='csrf_myielts_token']").val(csrf_hash);
