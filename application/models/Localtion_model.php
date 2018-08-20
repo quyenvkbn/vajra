@@ -50,10 +50,18 @@ class Localtion_model extends MY_Model {
         $this->db->where('is_deleted', 0);
         return $result = $this->db->get()->result_array();
     }
-    public function get_librarylocaltion_by_not_id_array($notlibrarylocaltion = array(),$area){
+    public function get_groupby_area_id_array($librarylocaltion = array()){
         $this->db->select('*');
         $this->db->from($this->table);
-        $this->db->where('area_id', $area);
+        $this->db->where_in('id', $librarylocaltion);
+        $this->db->where('is_deleted', 0);
+        $this->db->group_by('area_id');
+        return $result = $this->db->get()->result_array();
+    }
+    public function get_librarylocaltion_by_not_id_array($notlibrarylocaltion = array(),$area = array()){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where_in('area_id', $area);
         $this->db->where_not_in('id', $notlibrarylocaltion);        
         $this->db->where('is_deleted', 0);
         return $result = $this->db->get()->result_array();
