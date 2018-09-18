@@ -61,6 +61,12 @@
                                     echo form_label('Tiêu đề', 'title');
                                     echo form_error('title');
                                     echo form_input('title', set_value('title'), 'class="form-control" id="title"');
+                                    echo form_label('Từ khóa meta', 'metakeywords');
+                                    echo form_error('metakeywords');
+                                    echo form_input('metakeywords', set_value('metakeywords'), 'class="form-control"');
+                                    echo form_label('Mô tả meta', 'metadescription');
+                                    echo form_error('metadescription');
+                                    echo form_input('metadescription', set_value('metadescription'), 'class="form-control"');
                                     echo form_label('Mô tả', 'description');
                                     echo form_error('description');
                                     echo form_textarea('description', set_value('description', '', false), 'class="form-control" rows="5"');

@@ -8,7 +8,6 @@
             </small>
         </h1>
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -77,6 +76,12 @@
                                 echo form_label('Tiêu đề', 'title');
                                 echo form_error('title');
                                 echo form_input('title', $detail['title'], 'class="form-control" id="title" '.$detail['check_parent_id']);
+                                echo form_label('Từ khóa meta', 'metakeywords');
+                                echo form_error('metakeywords');
+                                echo form_input('metakeywords', $detail['metakeywords'], 'class="form-control" id="metakeywords"');
+                                echo form_label('Mô tả meta', 'metadescription');
+                                echo form_error('metadescription');
+                                echo form_input('metadescription', $detail['metadescription'], 'class="form-control" id="metadescription"');
                                 echo form_label('Mô tả', 'content');
                                 echo form_error('content');
                                 echo form_textarea('content', $detail['content'], 'class="tinymce-area form-control" rows="5"');
