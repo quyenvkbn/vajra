@@ -82,6 +82,14 @@
                                                             <td><?php echo $detail['title'] ?></td>
                                                         </tr>
                                                         <tr>
+                                                            <th style="width: 100px">Từ khóa meta: </th>
+                                                            <td><?php echo $detail['metakeywords'] ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th style="width: 100px">Mô tả meta: </th>
+                                                            <td><?php echo $detail['metadescription'] ?></td>
+                                                        </tr>
+                                                        <tr>
                                                             <th style="width: 100px">Mô tả: </th>
                                                             <td><?php echo $detail['description'] ?></td>
                                                         </tr>

@@ -3,7 +3,7 @@
 
 <section class="cover">
 	<div class="overlay"></div>
-    <img src="<?php echo base_url('/assets/upload/post_category/' . $category['image']) ?>" alt="cover">
+    <img src="<?php echo base_url('/assets/upload/post_category/' . $detail['image']) ?>" alt="cover">
 </section>
 
 <section class="content section container-fluid">
@@ -13,9 +13,9 @@
 				<div class="section-header">
 					<div class="row">
 						<div class="left col-xs-8">
-							<h1 title="<?php echo $category['title']; ?>"><?php echo $category['title']; ?></h1>
+							<h1 title="<?php echo $detail['title']; ?>"><?php echo $detail['title']; ?></h1>
 							<p>
-								<?php echo $category['content']; ?>
+								<?php echo $detail['content']; ?>
 							</p>
 						</div>
 					</div>

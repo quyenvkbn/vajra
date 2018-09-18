@@ -82,6 +82,8 @@ class Post_category extends Admin_Controller{
                         'slug' => $unique_slug,
                         'title' => $this->input->post('title'),
                         'content' => $this->input->post('content'),
+                        'metakeywords' => $this->input->post('metakeywords'),
+                        'metadescription' => $this->input->post('metadescription'),
                         'parent_id' => $this->input->post('parent_id_shared'),
                         'type' => $this->input->post('type_shared'),
                         'created_at' => $this->author_data['created_at'],
@@ -154,6 +156,8 @@ class Post_category extends Admin_Controller{
                     $shared_request = array(
                         'title' => $this->input->post('title'),
                         'content' => $this->input->post('content'),
+                        'metakeywords' => $this->input->post('metakeywords'),
+                        'metadescription' => $this->input->post('metadescription'),
                         'type' => $this->input->post('type_shared'),
                         'created_at' => $this->author_data['created_at'],
                         'created_by' => $this->author_data['created_by'],
